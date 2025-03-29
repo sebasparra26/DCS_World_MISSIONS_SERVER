@@ -407,7 +407,7 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 -- to use the other method.
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to drop smoke
-ctld.maxExtractDistance = 10000 -- max distance from vehicle to troops to allow a group extraction
+ctld.maxExtractDistance = 2000 -- max distance from vehicle to troops to allow a group extraction
 ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics to allow a loading or spawning operation
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
@@ -877,9 +877,10 @@ ctld.unitLoadLimits = {
 ctld.internalCargoLimits = {
 
     -- Remove the -- below to turn on options
-    ["Mi-8MT"] = 6,
-    ["CH-47Fbl1"] = 8,
+    ["Mi-8MT"] = 8,
+    ["CH-47Fbl1"] = 10,
     ["UH-1H"] = 2,
+    ["Mi-24P"] = 4,
 }
 
 
