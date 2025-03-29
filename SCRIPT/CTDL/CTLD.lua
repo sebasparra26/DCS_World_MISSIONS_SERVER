@@ -412,7 +412,7 @@ ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics t
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
-ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130
+ctld.numberOfTroops = 20 -- default number of troops to load on a transport heli or C-130
                          -- also works as maximum size of group that'll fit into a helicopter unless overridden
 ctld.enableFastRopeInsertion = true -- allows you to drop troops by fast rope
 ctld.fastRopeMaximumHeight = 18.28 -- in meters which is 60 ft max fast rope (not rappell) safe height
@@ -535,13 +535,18 @@ ctld.dropOffZones = {
     { "dropzone1", "green", 2 },
     { "dropzone2", "blue", 2 },
     { "dropzone3", "orange", 2 },
-    { "dropzone4", "none", 2 },
-    { "dropzone5", "none", 1 },
-    { "dropzone6", "none", 1 },
-    { "dropzone7", "none", 1 },
-    { "dropzone8", "none", 1 },
-    { "dropzone9", "none", 1 },
-    { "dropzone10", "none", 1 },
+    { "dropzone4", "orange", 2 },
+    { "dropzone5", "orange", 2 },
+    { "dropzone6", "orange", 2 },
+    { "dropzone7", "orange", 2 },
+    { "dropzone8", "orange", 2 },
+    { "dropzone9", "orange", 2 },
+    { "dropzone10", "orange", 2 },
+    { "dropzone11", "orange", 2 },
+    { "dropzone12", "orange", 2 },
+    { "dropzone13", "orange", 2 },
+    { "dropzone14", "orange", 2 },
+    { "dropzone15", "orange", 2 },
 }
 
 --wpZones = { "Zone name", "smoke color",  "ACTIVE (yes/no)", "side (0 = Both sides / 1 = Red / 2 = Blue )", }
