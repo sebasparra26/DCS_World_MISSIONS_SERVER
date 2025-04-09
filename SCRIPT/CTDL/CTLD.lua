@@ -409,8 +409,8 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to drop smoke
 ctld.maxExtractDistance = 2000 -- max distance from vehicle to troops to allow a group extraction
 ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics to allow a loading or spawning operation
-ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
-ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
+ctld.maximumSearchDistance = 50000 -- max distance for troops to search for enemy
+ctld.maximumMoveDistance = 30000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
 ctld.numberOfTroops = 20 -- default number of troops to load on a transport heli or C-130
                          -- also works as maximum size of group that'll fit into a helicopter unless overridden
@@ -436,8 +436,8 @@ ctld.cratesRequiredForFOB = 3 -- The amount of crates required to build a FOB. O
 -- To build the FOB entirely out of small crates you will need ctld.cratesRequiredForFOB * 3
 
 ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a created FOB
-ctld.buildTimeFOB = 120 --time in seconds for the FOB to be built
-ctld.crateWaitTime = 40 -- time in seconds to wait before you can spawn another crate
+ctld.buildTimeFOB = 30 --time in seconds for the FOB to be built
+ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
 ctld.forceCrateToBeMoved = true -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
@@ -532,7 +532,7 @@ ctld.pickupZones = {
 
 -- dropOffZones = {"name","smoke colour",0,side 1 = Red or 2 = Blue or 0 = Both sides}
 ctld.dropOffZones = {
-    { "dropzone1", "green", 2 },
+    { "dropzone1", "orange", 2 },
     { "dropzone2", "blue", 2 },
     { "dropzone3", "orange", 2 },
     { "dropzone4", "orange", 2 },
