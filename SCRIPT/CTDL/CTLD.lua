@@ -443,7 +443,7 @@ ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB 
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
 ctld.deployedBeaconBattery = 30 -- the battery on deployed beacons will last for this number minutes before needing to be re-deployed
 ctld.enabledRadioBeaconDrop = true -- if its set to false then beacons cannot be dropped by units
-ctld.allowRandomAiTeamPickups = false -- Allows the AI to randomize the loading of infantry teams (specified below) at pickup zones
+ctld.allowRandomAiTeamPickups = true -- Allows the AI to randomize the loading of infantry teams (specified below) at pickup zones
 
 -- Simulated Sling load configuration
 ctld.minimumHoverHeight = 7.5 -- Lowest allowable height for crate hover
