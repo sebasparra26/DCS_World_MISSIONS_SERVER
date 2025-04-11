@@ -8,11 +8,11 @@ local deathMessage = "Grupo destruido."  -- Mensaje que se muestra cuando un gru
 local activationMessages = {
     "Misión: Los Enemigos se han tomado el puerto de lockwood, han detenido nuestro flujo de suministros terrestres, recupera el puerto. --- Ubicación de la mision en F10",
     "Misión: Los Enemigos han desplegado un avanzado sistema de radar muy bien protegido, han desplegado Artilleria y Vehiculos AA avanzados, destruyelos o Muere en el intento. --- Ubicación de la mision en F10",
-    "Misión: Los Enemigos han desplegado misiles SKUD en la posición, destruyelos. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos han desplegado misiles SMERCH en la posición, destruyelos. --- Ubicación de la mision en F10",
     "Misión: Los Enemigos han tomado el Helipuerto de Old Orote y han Desplegado un sistema SA 15 TOR. Destruyelos. --- Ubicación de la mision en F10",
-    "Misión: Los Enemigos se tomaron el atolon del sur de la isla y han desplegado un sistema AA, destruyelo. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos se tomaron el atolon del sur de la isla y han desplegado un sistema AA y Misiles SKUD, destruyelo. --- Ubicación de la mision en F10",
     "Misión: Los Enemigos han tomado el lago titikaka y han desplegado un sistema de misiles SMERCH, Destruyelos antes que ellos a nosotros. --- Ubicación de la mision en F10",
-    "Misión: Los enemigos tomaron un condominio en la parte central de la isla y han desplegado muchos sistemas IGLA y Artilleria pesada, inteligencia informa que ese preparan para atacar, Destruyelos. --- Ubicación de la mision en F10"
+    "Misión: Los enemigos tomaron un condominio en la parte central de la isla y han desplegado muchos sistemas IGLA y Artilleria pesada, inteligencia informa que ese preparan para atacar, Destr --- Ubicación de la mision en F10"
 }  -- Mensajes de activación personalizados
 local endMessage = "Todos los grupos han muerto. Script finalizado."  -- Mensaje al finalizar
 local spawnInterval = 15  -- Intervalo de tiempo entre activaciones (en segundos)
@@ -116,7 +116,7 @@ local function spawnGroup(groupName)
         activeGroup = groupName
         local missionNumber = tonumber(string.sub(groupName, 5, 6))
         local activationMessage = activationMessages[missionNumber] or "Misión activada."
-        trigger.action.outText(activationMessage, 10)
+        trigger.action.outText(activationMessage, 20)
         debug("Grupo " .. groupName .. " activado correctamente.")
         createMarker(activationMessage, group)
         createDrawForActiveGroup(group)  -- Crear el draw cuando el grupo se active
