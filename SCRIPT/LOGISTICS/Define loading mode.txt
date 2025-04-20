@@ -1,0 +1,43 @@
+Define loading mode
+
+Flag is false
+
+setToFlagIsFalseToEnable
+
+
+CTLD_DYNAMIC_PATH=[[c:\Users\User\Saved Games\DCS.openbeta\Missions\DCS-CTLD-master\]]
+
+
+----------------------------------------------
+Load CTLD-i18n - dynamic
+lua Predicate : return CTLD_DYNAMIC_PATH~=nil
+
+do script: assert(loadfile(CTLD_DYNAMIC_PATH.."CTLD-i18n.lua"))()
+
+Load CTLD - dynamic
+lua Predicate : return CTLD_DYNAMIC_PATH~=nil
+
+do script assert(loadfile(CTLD_DYNAMIC_PATH.."CTLD.lua"))()
+
+Load CTLD-i18n - static
+
+
+return CTLD_DYNAMIC_PATH==nil}
+
+load do sc
+
+Load CTLD - static
+
+return CTLD_DYNAMIC_PATH==nil
+------------------------------------------
+static lua predicate
+return CTLD_DYNAMIC_PATH==nil
+
+Dyn lua predicate
+
+return CTLD_DYNAMIC_PATH~=nil
+
+---------------------------------------------------------------------------------------------------
+doscript : assert(loadfile(CTLD_DYNAMIC_PATH.."CTLD-i18n.lua"))()
+
+assert(loadfile(CTLD_DYNAMIC_PATH.."CTLD.lua"))()

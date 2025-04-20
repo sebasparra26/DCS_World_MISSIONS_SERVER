@@ -1,0 +1,22 @@
+Ford - Metric: X+00147466 Z-00025753
+Friston - Metric: X+00143314 Z+00028130
+Maupertus - Metric: X+00016011 Z-00084865
+Brucheville - Metric: X-00014865 Z-00066032
+Carpiquet - Metric: X-00034775 Z-00009992
+Ronai - Metric: X-00073108 Z+00012832
+Bernay Saint Martin - Metric: X-00039530 Z+00067036
+Barville - Metric: X-00039512 Z+00067098
+Saint-Andre-de-IEure - Metric: X-00060606 Z+00117326
+Orly - Metric: X-00073529 Z+00200430
+Fecamp-Benouville - Metric: X+00031004 Z+00046274
+Saint-Aubin -  Metric: X+00048979 Z+00097582
+Beauvais-Tille - Metric: X+00006070 Z+00175169
+Amiens-Glisy - Metric: X+00053411 Z+00191760
+Abbeville Drucat - Metric: X+00081026 Z+00150752
+
+
+
+
+
+ 
+

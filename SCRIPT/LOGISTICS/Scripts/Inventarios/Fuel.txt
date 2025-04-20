@@ -1,0 +1,12 @@
+tipoAviones = tipoAviones or {}
+
+tipoAviones["logistica_combustible"] = {
+    costo = 5,
+
+    recursos = {
+        ["gasoline"]         = { cantidad = 300 },
+        ["jet_fuel"]         = { cantidad = 200 },
+        ["diesel"]           = { cantidad = 100 },
+        ["methanol_mixture"] = { cantidad = 50 }
+    }
+}
