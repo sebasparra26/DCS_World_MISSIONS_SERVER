@@ -1,5 +1,5 @@
 -- Activar o desactivar debug
-local debugActivo = true
+local debugActivo = false
 
 -- Estado de banderas: (Bandera, Valor)
 estadoBanderasAeropuertos = {

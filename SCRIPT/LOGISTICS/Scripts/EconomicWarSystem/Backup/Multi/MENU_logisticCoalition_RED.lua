@@ -5,7 +5,11 @@ comandosPorSubID = {}
 tiposAvion = {
     ["Mosquito FB Mk VI"] = {
         clave = "MosquitoPayload",
-        categoria = "Nacionales UK"
+        categoria = "Importados UK"
+    },
+    ["Spitfire-LF-Mk.IX"] = {
+        clave = "SpitfirePayload",
+        categoria = "Importados UK"
     }
 }
 
@@ -16,6 +20,14 @@ subvariantesAvion = {
         ["Mosquito FB Mk-VI - Bombing Wing"] = "Mosquito-FB-Mk-VI-B",
         ["Mosquito FB Mk-VI - Tactical G-Attack"] = "Mosquito-FB-Mk-VI-TA",
         ["Mosquito FB Mk-VI - Mosquito FB Mk-VI - Logistic"] = "Mosquito-FB-Mk-VI-L"
+    },
+    ["SpitfirePayload"] = {
+        ["Spitfire LF Mk.IX - Standard Unit"] = "Spitfire-LF-Mk.IX-S",
+        ["Spitfire LF Mk.IX -   Interceptor Squadron"] = "Spitfire-LF-Mk.IX-I",
+        ["Spitfire LF Mk.IX -   Bombing Wing"] = "Spitfire-LF-Mk.IX-B",
+        ["Spitfire LF Mk.IX CW - Standard Unit"] = "Spitfire-LF-Mk.IX-CW-S",
+        ["Spitfire LF Mk.IX CW -   Interceptor Squadron"] = "Spitfire-LF-Mk.IX-CW-I",
+        ["Spitfire LF Mk.IX CW -   Bombing Wing"] = "Spitfire-LF-Mk.IX-CW-B"
     }
 }
 
@@ -31,17 +43,23 @@ destinosPorSubvariante = {
     ["Mosquito-FB-Mk-VI-I"] = destinosBase,
     ["Mosquito-FB-Mk-VI-B"] = destinosBase,
     ["Mosquito-FB-Mk-VI-TA"] = destinosBase,
-    ["Mosquito-FB-Mk-VI-L"] = destinosBase
+    ["Mosquito-FB-Mk-VI-L"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-S"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-I"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-B"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-CW-S"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-CW-I"] = destinosBase,
+    ["Spitfire-LF-Mk.IX-CW-B"] = destinosBase
 }
 
-function crearMenuLogisticoAzul()
-    local menuRaiz = missionCommands.addSubMenuForCoalition(2, "Mercado de Pulgas")
+function crearMenuLogisticoRojo()
+    local menuRaiz = missionCommands.addSubMenuForCoalition(1, "Mercado de Pulgas ROJO")
     local menuCategorias = {}
 
     for nombreAvion, datos in pairs(tiposAvion) do
         local categoria = datos.categoria or "Sin Clasificar"
         if not menuCategorias[categoria] then
-            menuCategorias[categoria] = missionCommands.addSubMenuForCoalition(2, categoria, menuRaiz)
+            menuCategorias[categoria] = missionCommands.addSubMenuForCoalition(1, categoria, menuRaiz)
         end
     end
 
@@ -49,11 +67,11 @@ function crearMenuLogisticoAzul()
         local claveTipo = datos.clave
         local categoria = datos.categoria
         local menuCat = menuCategorias[categoria]
-        local menuAvion = missionCommands.addSubMenuForCoalition(2, nombreAvion, menuCat)
+        local menuAvion = missionCommands.addSubMenuForCoalition(1, nombreAvion, menuCat)
 
         if subvariantesAvion[claveTipo] then
             for nombreSub, claveSub in pairs(subvariantesAvion[claveTipo]) do
-                local menuSub = missionCommands.addSubMenuForCoalition(2, nombreSub, menuAvion)
+                local menuSub = missionCommands.addSubMenuForCoalition(1, nombreSub, menuAvion)
                 actualizarOpcionesParaAvion(menuSub, claveSub)
             end
         end
@@ -72,26 +90,26 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
         local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Página " .. pagina
 
         if not paginasPorAvion[claveSubVar][pagina] then
-            local subID = missionCommands.addSubMenuForCoalition(2, nombreSubmenu, menuAvion)
+            local subID = missionCommands.addSubMenuForCoalition(1, nombreSubmenu, menuAvion)
             paginasPorAvion[claveSubVar][pagina] = subID
         end
 
         local subID = paginasPorAvion[claveSubVar][pagina]
-        local dummy = missionCommands.addCommandForCoalition(2, "_clear", subID, function() end)
+        local dummy = missionCommands.addCommandForCoalition(1, "_clear", subID, function() end)
         missionCommands.removeItem(dummy)
 
         for i = 1, porPagina do
             local idx = (pagina - 1) * porPagina + i
             local aeropuerto = entradas[idx]
             if aeropuerto then
-                local data = plantillasLogisticaB[aeropuerto]
+                local data = plantillasLogisticaR[aeropuerto]
                 if data then
                     local tipo = claveSubVar
                     local costoBase = tipoAviones[tipo] and tipoAviones[tipo].costo or 0
-                    local recargo = recargoAeropuertoB[aeropuerto] or 1
+                    local recargo = recargoAeropuertoR[aeropuerto] or 1
                     local costoFinal = math.floor(costoBase * recargo)
 
-                    local function formatearDolaresLegibleB(valor)
+                    local function formatearDolaresLegibleR(valor)
                         if type(valor) ~= "number" then return "$0" end
                         local entero, decimal = math.modf(valor)
                         local partes = {}
@@ -103,13 +121,13 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
                         return "$" .. table.concat(partes, ".")
                     end
 
-                    local textoMenu = aeropuerto .. " (" .. formatearDolaresLegibleB(costoFinal) ..
-                        ") - Fondos: " .. formatearDolaresLegibleB(puntosCoalicion.PuntosAZUL)
+                    local textoMenu = aeropuerto .. " (" .. formatearDolaresLegibleR(costoFinal) ..
+                        ") - Fondos: " .. formatearDolaresLegibleR(puntosCoalicion.PuntosROJO)
 
-                    local cmd = missionCommands.addCommandForCoalition(2, textoMenu, subID, function()
+                    local cmd = missionCommands.addCommandForCoalition(1, textoMenu, subID, function()
                         local bandera = trigger.misc.getUserFlag(data.bandera)
-                        if bandera == 1 then
-                            ejecutarEntregaB(aeropuerto, data, claveSubVar)
+                        if bandera == 3 then
+                            ejecutarEntregaR(aeropuerto, data, claveSubVar)
                         else
                             trigger.action.outText("Este aeródromo no está disponible en este momento.", 5)
                         end
@@ -122,14 +140,14 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
     end
 end
 
-crearMenuLogisticoAzul()
+crearMenuLogisticoRojo()
 
 ------------------------------------------------------------
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundos = 600         -- Duración total del mercado (2h)
-intervaloAnuncioMercado = 20          -- Intervalo de mensaje (15min)
+duracionMercadoSegundos = 7200         -- Duración total del mercado (2h)
+intervaloAnuncioMercado = 60          -- Intervalo de mensaje (15min)
 tiempoInicioMercado = timer.getTime()  -- Tiempo de inicio real
 
 function actualizarTemporizadorMercado()
@@ -150,7 +168,7 @@ function actualizarTemporizadorMercado()
     local minutos = math.floor(tiempoRestante / 60)
     local segundos = math.floor(tiempoRestante % 60)
 
-    trigger.action.outText("El mercado se cerrará en: " .. minutos .. " min " .. segundos .. " seg", 10)
+    trigger.action.outTextForCoalition(1, "El mercado se cerrará en: " .. minutos .. " min " .. segundos .. " seg", 10)
     mist.scheduleFunction(actualizarTemporizadorMercado, {}, timer.getTime() + intervaloAnuncioMercado)
 end
 
