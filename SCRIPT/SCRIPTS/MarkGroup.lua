@@ -73,7 +73,7 @@ local function actualizarMarcador()
 
     -- Crear shape (texto flotante)
     local idShape = math.random(100000, 999999)
-    trigger.action.markToAll(idShape, "Grupo: " .. grupoObjetivo, pos, true)
+    trigger.action.markToAll(idShape, "Destruye el convoy de las SS", pos, true)
     shapes[grupoObjetivo] = idShape
 
     -- Repetimos después del intervalo
