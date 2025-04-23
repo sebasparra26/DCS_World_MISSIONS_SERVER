@@ -2,7 +2,7 @@
 tipoAviones = tipoAviones or {}
 
 tipoAviones["FA-18C_hornet_AA"] = {
-    costo = 120000000,
+    costo = 20,
     nombreAvion = "FA-18C_hornet x2",
     avion = { ws = {1, 1, 1, 280}, cantidad = 2 },
 
@@ -26,7 +26,7 @@ tipoAviones["FA-18C_hornet_AA"] = {
     }
 }
 tipoAviones["FA-18C_hornet_AG"] = {
-    costo = 146000000,
+    costo = 20,
     nombreAvion = "FA-18C_hornet x2",
     avion = { ws = {1, 1, 1, 280}, cantidad = 2 },
 

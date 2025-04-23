@@ -3,53 +3,56 @@ comandosPorSubID = {}
 
 -- Tipos de avión con subclave principal
 tiposAvion = {
-    ["Mosquito FB Mk VI"] = {
-        clave = "MosquitoPayload",
-        categoria = "Nacionales UK"
-    },
-    ["Spitfire-LF-Mk.IX"] = {
-        clave = "SpitfirePayload",
-        categoria = "Nacionales UK"
+    ["FA-18C_hornet"] = {
+        clave = "FA-18C_PAYLOAD",
+        categoria = "Importados USA"
     }
+ 
 }
 
 subvariantesAvion = {
-    ["MosquitoPayload"] = {
-        ["Mosquito FB Mk-VI - Standard Unit"] = "Mosquito-FB-Mk-VI-S",
-        ["Mosquito FB Mk-VI - Interceptor Squadron"] = "Mosquito-FB-Mk-VI-I",
-        ["Mosquito FB Mk-VI - Bombing Wing"] = "Mosquito-FB-Mk-VI-B",
-        ["Mosquito FB Mk-VI - Tactical G-Attack"] = "Mosquito-FB-Mk-VI-TA",
-        ["Mosquito FB Mk-VI - Mosquito FB Mk-VI - Logistic"] = "Mosquito-FB-Mk-VI-L"
-    },
-    ["SpitfirePayload"] = {
-        ["Spitfire LF Mk.IX - Standard Unit"] = "Spitfire-LF-Mk.IX-S",
-        ["Spitfire LF Mk.IX -   Interceptor Squadron"] = "Spitfire-LF-Mk.IX-I",
-        ["Spitfire LF Mk.IX -   Bombing Wing"] = "Spitfire-LF-Mk.IX-B",
-        ["Spitfire LF Mk.IX CW - Standard Unit"] = "Spitfire-LF-Mk.IX-CW-S",
-        ["Spitfire LF Mk.IX CW -   Interceptor Squadron"] = "Spitfire-LF-Mk.IX-CW-I",
-        ["Spitfire LF Mk.IX CW -   Bombing Wing"] = "Spitfire-LF-Mk.IX-CW-B"
+    ["FA-18C_PAYLOAD"] = {
+        ["FA-18C_hornet_AA"] = "FA-18C_hornet_AA",
+        ["FA-18C_hornet_AG"] = "FA-18C_hornet_AG"
     }
+ 
 }
 
 local destinosBase = {
-    "Friston", "Ford", "Maupertus", "Brucheville", "Carpiquet",
-    "Bernay Saint Martin", "Barville", "Evreux", "Orly",
-    "Fecamp-Benouville", "Saint-Aubin", "Beauvais-Tille",
-    "Amiens-Glisy", "Abbeville Drucat", "Ronai"
+"Liwa AFB",
+"Al Dhafra AFB",
+"Al-Bateen",
+"Sas Al Nakheel",
+"Abu Dhabi Intl",
+"Al Ain Intl",
+"Al Maktoum Intl",
+"Al Minhad AFB",
+"Dubai Intl",
+"Sharjah Intl",
+"Fujairah intl",
+"Ras Al Khaimah Intl",
+"Khasab",
+"Bandar-e-Jask",
+"Sir Abu Nauyr",
+"Abu Musa Island",
+"Sirri Island",
+"Tunb Kochak",
+"Tunb Island AFB",
+"Bandar Lengeh",
+"Kish Intl",
+"Lavan Island",
+"Qeshm Island",
+"Havadarya",
+"Bandar Abbas intl",
+"Lar",
+"Jiroft",
+"Shiraz Intl",
+"Kerman"
 }
 
 destinosPorSubvariante = {
-    ["Mosquito-FB-Mk-VI-S"] = destinosBase,
-    ["Mosquito-FB-Mk-VI-I"] = destinosBase,
-    ["Mosquito-FB-Mk-VI-B"] = destinosBase,
-    ["Mosquito-FB-Mk-VI-TA"] = destinosBase,
-    ["Mosquito-FB-Mk-VI-L"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-S"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-I"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-B"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-CW-S"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-CW-I"] = destinosBase,
-    ["Spitfire-LF-Mk.IX-CW-B"] = destinosBase
+    ["FA-18C_hornet_AA"] = destinosBase,
+    ["FA-18C_hornet_AG"] = destinosBase
 }
 
 function crearMenuLogisticoAzul()
@@ -146,8 +149,8 @@ crearMenuLogisticoAzul()
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundosB = 99999         -- Duración total del mercado (2h)
-intervaloAnuncioMercadoB = 99999          -- Intervalo de mensaje (15min)
+duracionMercadoSegundosB = 9000         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoB = 60          -- Intervalo de mensaje (15min)
 tiempoInicioMercadoB = timer.getTime()  -- Tiempo de inicio real
 
 function actualizarTemporizadorMercadoB()
