@@ -1,6 +1,6 @@
 -- Variables principales
 -- Variables principales
-local coalicion = 2  -- 1 = Rojo, 2 = Azul (ajustar según necesidad)
+local coalicion = 1  -- 1 = Rojo, 2 = Azul (ajustar según necesidad)
 
 -- Nombre de la variable de puntos que se actualizará según coalición
 local nombrePuntos = (coalicion == 1) and "PuntosROJO" or "PuntosAZUL"
@@ -9,18 +9,18 @@ local nombrePuntos = (coalicion == 1) and "PuntosROJO" or "PuntosAZUL"
 puntosCoalicion = { PuntosROJO = 0, PuntosAZUL = 0 }
 
 -- Nombre de la zona de detección (definida en el Mission Editor)
-local zonaDeteccion = 'EconomicZoneBLUE'
+local zonaDeteccion = 'EconomicZoneRED'
 
 -- Lista de nombres de unidades estáticas que se verificarán
   -- 1 = Rojo, 2 = Azul (ajustar según necesidad)
 local nombrePuntos = (coalicion == 1) and "PuntosROJO" or "PuntosAZUL"  -- Nombre de la variable de puntos dinámico
 puntosCoalicion = { PuntosROJO = 0, PuntosAZUL = 0 }  -- Tabla para manejar puntos por coalición
-local zonaDeteccion = 'EconomicZoneBLUE'  -- Nombre de la zona de detección en el ME
+local zonaDeteccion = 'EconomicZoneRED'  -- Nombre de la zona de detección en el ME
 
 -- Array con los nombres de las unidades estáticas a detectar
 local unidadesEstaticas = {
-    "Factory_Blue_1", "Factory_Blue_2", "Factory_Blue_3", "Factory_Blue_4", "Factory_Blue_5", 
-    "Factory_Blue_6", "Factory_Blue_7", "Factory_Blue_8", "Factory_Blue_9", "Factory_Blue_10"
+    "Factory_RED_1", "Factory_RED_2", "Factory_RED_3", "Factory_RED_4", "Factory_RED_5", 
+    "Factory_RED_6", "Factory_RED_7", "Factory_RED_8", "Factory_RED_9", "Factory_RED_10"
 }
 
 -- Variable para almacenar información de depuración general
@@ -81,4 +81,4 @@ end
 
 
 -- Llamar a la función de verificación cada 10 segundos
-mist.scheduleFunction(verificarPuntos, {}, timer.getTime() + 10, 10) -- los puntos se generan cada 5 minutos (300 Segundos)
+mist.scheduleFunction(verificarPuntos, {}, timer.getTime() + 10, 10)
