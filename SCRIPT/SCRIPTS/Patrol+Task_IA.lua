@@ -2,7 +2,7 @@
 -- PATRULLA USA
 -- ========================================
 do
-    local nombre = "PATRULLA_USA"
+    local nombre = "PATRULLA_USA" --ENV.inf
     local templates = { "Patrol_IA_USA_1", "Patrol_IA_USA_2", "Patrol_IA_USA_3", "Patrol_IA_USA_4" }
     local prefijo = "USA air "
     local rangoDeteccion = 60 * 1852
