@@ -45,6 +45,7 @@ plantillasLogisticaB = {
     ["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126 },
     ["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
     ["Kerman"] = { template = "SuppliesBLUEToKerman", bandera = 128 }
+
 }
 
 recargoAeropuertoB = {
@@ -140,7 +141,8 @@ coordenadasAerodromosB = {
     ["Lar"] = {x = 168884, y = 0, z = -182473},                              --27- Metric: X+00168884 Z-00182473   Medium
     ["Jiroft"] = {x = 282634, y = 0, z = 141649},                            --28- Metric: X+00282634 Z+00141649   Medium
     ["Shiraz Intl"] = {x = 380994, y = 0, z = -351952},                         --29- Metric: X+00380994 Z-00351952   high
-    ["Kerman"] = {x = 454327, y = 0, z = 71866}   
+    ["Kerman"] = {x = 454327, y = 0, z = 71866}
+
 }
 
 function cargarInventarioCompletoB(nombreAeropuerto, data)
@@ -282,7 +284,8 @@ function verificarAterrizajesB()
                     info.altMax = math.max(info.altMax or 0, altAGL)
 
                     -- Mostrar AGL en pantalla cada 5 segundos
-                    trigger.action.outText("Grupo " .. nombreGrupo .. " AGL: " .. math.floor(altAGL) .. " m", 5)
+                    
+                    --trigger.action.outText("Grupo " .. nombreGrupo .. " AGL: " .. math.floor(altAGL) .. " m", 5)
 
                     local v = unidad:getVelocity()
                     local speed = math.sqrt(v.x^2 + v.z^2)
@@ -340,8 +343,11 @@ end
 local nombresSubvariantes = {
 
     --FA-18C_hornet--
-    ["FA-18C_hornet_AA"] = "FA-18C_hornet_AA",
-    ["FA-18C_hornet_AG"] = "FA-18C_hornet_AG"
+    ["FA-18C-1"] = "FA-18C_hornet - Pack x 2",
+    ["FA-18C-2"] = "FA-18C_hornet - Pack x 4",
+    ["F-16CM-1"] = "F-16CM bl.50 - Viper - Pack x 2",
+    ["F-16CM-2"] = "F-16CM bl.50 - Viper - Pack x 4"
+    
 }
 
 function mostrarResumenRutasB()

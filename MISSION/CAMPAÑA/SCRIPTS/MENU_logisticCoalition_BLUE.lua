@@ -3,8 +3,12 @@ comandosPorSubID = {}
 
 -- Tipos de avión con subclave principal
 tiposAvion = {
-    ["FA-18C_hornet"] = {
+    ["FA-18C-Hornet"] = {
         clave = "FA-18C_PAYLOAD",
+        categoria = "Importados USA"
+    },
+    ["F-16CM-Viper"] = {
+        clave = "F-16CM_PAYLOAD",
         categoria = "Importados USA"
     }
  
@@ -12,10 +16,13 @@ tiposAvion = {
 
 subvariantesAvion = {
     ["FA-18C_PAYLOAD"] = {
-        ["FA-18C_hornet_AA"] = "FA-18C_hornet_AA",
-        ["FA-18C_hornet_AG"] = "FA-18C_hornet_AG"
+        ["FA-18C_hornet - Pack x 2"] = "FA-18C-1",
+        ["FA-18C_hornet - Pack x 4"] = "FA-18C-2"
+    },
+    ["F-16CM_PAYLOAD"] = {
+        ["F-16CM bl.50 - Viper - Pack x 2"] = "F-16CM-1",
+        ["F-16CM bl.50 - Viper - Pack x 4"] = "F-16CM-2"
     }
- 
 }
 
 local destinosBase = {
@@ -51,8 +58,10 @@ local destinosBase = {
 }
 
 destinosPorSubvariante = {
-    ["FA-18C_hornet_AA"] = destinosBase,
-    ["FA-18C_hornet_AG"] = destinosBase
+    ["FA-18C-1"] = destinosBase,
+    ["FA-18C-2"] = destinosBase,
+    ["F-16CM-1"] = destinosBase,
+    ["F-16CM-2"] = destinosBase
 }
 
 function crearMenuLogisticoAzul()
