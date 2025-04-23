@@ -146,8 +146,8 @@ crearMenuLogisticoAzul()
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundosB = 7200         -- Duración total del mercado (2h)
-intervaloAnuncioMercadoB = 60          -- Intervalo de mensaje (15min)
+duracionMercadoSegundosB = 99999         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoB = 99999          -- Intervalo de mensaje (15min)
 tiempoInicioMercadoB = timer.getTime()  -- Tiempo de inicio real
 
 function actualizarTemporizadorMercadoB()

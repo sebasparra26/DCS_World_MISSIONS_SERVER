@@ -146,13 +146,13 @@ crearMenuLogisticoRojo()
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundos = 7200         -- Duración total del mercado (2h)
-intervaloAnuncioMercado = 60          -- Intervalo de mensaje (15min)
-tiempoInicioMercado = timer.getTime()  -- Tiempo de inicio real
+duracionMercadoSegundosR = 99999         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoR = 99999          -- Intervalo de mensaje (15min)
+tiempoInicioMercadoR = timer.getTime()  -- Tiempo de inicio real
 
-function actualizarTemporizadorMercado()
+function actualizarTemporizadorMercadoR()
     local tiempoActual = timer.getTime()
-    local tiempoRestante = math.max(0, (tiempoInicioMercado + duracionMercadoSegundos) - tiempoActual)
+    local tiempoRestante = math.max(0, (tiempoInicioMercadoR + duracionMercadoSegundosR) - tiempoActual)
 
     if tiempoRestante <= 0 then
         -- Cerrar todos los submenús
@@ -169,9 +169,9 @@ function actualizarTemporizadorMercado()
     local segundos = math.floor(tiempoRestante % 60)
 
     trigger.action.outTextForCoalition(1, "El mercado se cerrará en: " .. minutos .. " min " .. segundos .. " seg", 10)
-    mist.scheduleFunction(actualizarTemporizadorMercado, {}, timer.getTime() + intervaloAnuncioMercado)
+    mist.scheduleFunction(actualizarTemporizadorMercadoR, {}, timer.getTime() + intervaloAnuncioMercadoR)
 end
 
 -- Iniciar temporizador
-mist.scheduleFunction(actualizarTemporizadorMercado, {}, timer.getTime() + intervaloAnuncioMercado)
+mist.scheduleFunction(actualizarTemporizadorMercadoR, {}, timer.getTime() + intervaloAnuncioMercadoR)
 
