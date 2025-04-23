@@ -1,6 +1,6 @@
 -- Configuración del spawn
 local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 6     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local spawnEnd = 30     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
 local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
 local spawnZone = "Zone_Helis_01"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
