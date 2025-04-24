@@ -17,7 +17,7 @@ estadoBanderasAeropuertos = {
     ["Ras Al Khaimah Intl"] = { bandera = 111, valor = nil },
     ["Khasab"] = { bandera = 112, valor = nil },
     ["Bandar-e-Jask"] = { bandera = 113, valor = nil },
-    ["Sir Abu Nauyr"] = { bandera = 114, valor = nil },
+    ["Sir Abu Nuayr"] = { bandera = 114, valor = nil },
     ["Abu Musa Island"] = { bandera = 115, valor = nil },
     ["Sirri Island"] = { bandera = 116, valor = nil },
     ["Tunb Kochak"] = { bandera = 117, valor = nil },
@@ -50,7 +50,7 @@ local aeropuertos = {
     ["Ras Al Khaimah Intl"] = { position = {x = -61632, y = 0, z = -30809}, radius = 12000 },                   --12-- Metric: X-00061632 Z-00030809   high
     ["Khasab"] = { position = {x = -152, y = 0, z = -164}, radius = 5000 },                                     --13-- Metric: X-00000152 Z-00000164   Medium
     ["Bandar-e-Jask"] = { position = {x = -57219, y = 0, z = 156064}, radius = 5000 },                          --14-- Metric: X-00057219 Z+00156064   Medium
-    ["Sir Abu Nauyr"] = { position = {x = -103098, y = 0, z = -202998}, radius = 5000 },                        --16-- Metric: X-00103098 Z-00202998   Small
+    ["Sir Abu Nuayr"] = { position = {x = -103098, y = 0, z = -202998}, radius = 5000 },                        --16-- Metric: X-00103098 Z-00202998   Small
     ["Abu Musa Island"] = { position = {x = -31498, y = 0, z = -121336}, radius = 5000 },                       --17-- Metric: X-00031498 Z-00121336   Small
     ["Sirri Island"] = { position = {x = -26948, y = 0, z = -170744}, radius = 5000 },                          --18-- Metric: X-00026948 Z-00170744   Small
     ["Tunb Kochak"] = { position = {x = 9023, y = 0, z = -109467}, radius = 5000 },                             --19-- Metric: X+00009023 Z-00109467   Small

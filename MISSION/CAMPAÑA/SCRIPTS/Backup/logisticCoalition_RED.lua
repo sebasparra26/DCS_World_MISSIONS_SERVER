@@ -2,13 +2,14 @@
 
 
 puntosCoalicion = { PuntosAZUL = 2000000000, PuntosROJO = 2000000000 }
-menuCooldownsB = menuCooldownsB or {}
-activeDeliveriesB = activeDeliveriesB or {}
+menuCooldownsR = menuCooldownsR or {}
+activeDeliveriesR = activeDeliveriesR or {}
 tipoAviones = tipoAviones or {}
+
 
 local cooldownTiempo = 300 -- segundos
 
-function formatearDolaresB(numero)
+function formatearDolaresR(numero)
     if type(numero) ~= "number" then return "$0" end
     local entero = math.floor(numero)
     local partes = {}
@@ -20,7 +21,7 @@ function formatearDolaresB(numero)
     return "$" .. table.concat(partes, ".")
 end
 
-function cargarInventarioCompletoB(nombreAeropuerto, data)
+function cargarInventarioCompletoR(nombreAeropuerto, data)
     local base = Airbase.getByName(nombreAeropuerto)
     if not base then return end
     local warehouse = base:getWarehouse()
@@ -51,42 +52,40 @@ function cargarInventarioCompletoB(nombreAeropuerto, data)
     trigger.action.outText(mensaje, 30)
 end
 
-function ejecutarEntregaB(aeropuerto, data, tipoAvion)
-    if trigger.misc.getUserFlag(data.bandera) ~= 1 then
-        trigger.action.outTextForCoalition(2, "Aeródromo no disponible: " .. aeropuerto, 10)
+function ejecutarEntregaR(aeropuerto, data, tipoAvion)
+    if trigger.misc.getUserFlag(data.bandera) ~= 3 then
+        trigger.action.outTextForCoalition(1, "Aeródromo no disponible: " .. aeropuerto, 10)
         return
     end
 
-    if menuCooldownsB[aeropuerto] and timer.getTime() < menuCooldownsB[aeropuerto] then
-        trigger.action.outTextForCoalition(2, "Ya pediste a " .. aeropuerto .. ", espera el cooldown.", 10)
+    if menuCooldownsR[aeropuerto] and timer.getTime() < menuCooldownsR[aeropuerto] then
+        trigger.action.outTextForCoalition(1, "Ya pediste a este " .. aeropuerto .. ", espera 5 Minutos antes de volver a Comprar.", 10)
         return
     end
 
     local tipo = tipoAvion or "p51d25na"
     local baseCosto = tipoAviones[tipo].costo
-    local recargo = recargoAeropuertoB[aeropuerto] or 1
+    local recargo = recargoAeropuertoR[aeropuerto] or 1
     local costo = math.floor(baseCosto * recargo)
 
-    if puntosCoalicion.PuntosAZUL < costo then
-        trigger.action.outTextForCoalition(2, "No tienes suficientes dólares. Requiere: " .. formatearDolaresB(costo), 10)
-
-
+    if puntosCoalicion.PuntosROJO < costo then
+        trigger.action.outTextForCoalition(1, "No tienes suficientes dólares. Requiere: " .. formatearDolaresR(costo), 10)
         return
     end
 
-    local origen = { x = -189594, z = -176119 }
-    local destino = coordenadasAerodromosB[aeropuerto] or { x = 0, z = 0 }
+    local origen = { x = 109317, z = -6529 }
+    local destino = coordenadasAerodromosR[aeropuerto] or { x = 0, z = 0 }
     local dx, dz = destino.x - origen.x, destino.z - origen.z
     local distancia = math.sqrt(dx * dx + dz * dz)
     local velocidad = 82.31
-    local tiempoEst = math.floor((distancia / velocidad) * (multiplicadorTiempoB[aeropuerto] or 1))
+    local tiempoEst = math.floor((distancia / velocidad) * (multiplicadorTiempoR[aeropuerto] or 1))
     local minutos, segundos = math.floor(tiempoEst / 60), tiempoEst % 60
 
-    trigger.action.outTextForCoalition(2, "Compra confirmada. Enviando a " .. aeropuerto, 10)
-    trigger.action.outTextForCoalition(2, "Llegada estimada: " .. minutos .. " min " .. segundos .. " seg", 20)
+    trigger.action.outTextForCoalition(1, "Compra confirmada. Enviando a " .. aeropuerto, 10)
+    trigger.action.outTextForCoalition(1, "Llegada estimada: " .. minutos .. " min " .. segundos .. " seg", 20)
 
     local nombresAntes = {}
-    for _, nombre in ipairs(nombresPosiblesB) do
+    for _, nombre in ipairs(nombresPosiblesR) do
         if Group.getByName(nombre) and Group.getByName(nombre):isExist() then
             nombresAntes[nombre] = true
         end
@@ -96,7 +95,7 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
 
     timer.scheduleFunction(function()
         local grupoNuevo
-        for _, nombre in ipairs(nombresPosiblesB) do
+        for _, nombre in ipairs(nombresPosiblesR) do
             if Group.getByName(nombre) and Group.getByName(nombre):isExist() and not nombresAntes[nombre] then
                 grupoNuevo = nombre
                 break
@@ -104,20 +103,20 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
         end
 
         if grupoNuevo then
-            activeDeliveriesB[grupoNuevo] = {
+            activeDeliveriesR[grupoNuevo] = {
                 destino = aeropuerto,
                 plantilla = data.template,
                 entregado = false,
                 inventario = tipo,
                 altMax = 0
             }
-            puntosCoalicion.PuntosAZUL = puntosCoalicion.PuntosAZUL - costo
-            menuCooldownsB[aeropuerto] = timer.getTime() + cooldownTiempo
+            puntosCoalicion.PuntosROJO = puntosCoalicion.PuntosROJO - costo
+            menuCooldownsR[aeropuerto] = timer.getTime() + cooldownTiempo
         end
     end, {}, timer.getTime() + 1)
 end
 
-function cargarInventarioCompletoB(nombreAeropuerto, data)
+function cargarInventarioCompletoR(nombreAeropuerto, data)
     local base = Airbase.getByName(nombreAeropuerto)
     if not base then return end
     local warehouse = base:getWarehouse()
@@ -145,11 +144,11 @@ function cargarInventarioCompletoB(nombreAeropuerto, data)
     local mensaje = "Suministros entregados en " .. nombreAeropuerto .. ":\n\n"
     mensaje = mensaje .. (data.nombreAvion or "Avión") .. " x" .. totalAviones .. "\n"
     mensaje = mensaje .. table.concat(resumen, "\n")
-    trigger.action.outTextForCoalition(2, mensaje, 30)
+    trigger.action.outTextForCoalition(1, mensaje, 30)
 end
 
-function verificarAterrizajesB()
-    for nombreGrupo, info in pairs(activeDeliveriesB) do
+function verificarAterrizajesR()
+    for nombreGrupo, info in pairs(activeDeliveriesR) do
         if not info.entregado then
             local grupo = Group.getByName(nombreGrupo)
             if grupo and Group.isExist(grupo) then
@@ -168,7 +167,7 @@ function verificarAterrizajesB()
                     local speed = math.sqrt(v.x^2 + v.z^2)
 
                     if info.altMax >= 100 and speed < 0.5 then
-                        cargarInventarioCompletoB(info.destino, tipoAviones[info.inventario])
+                        cargarInventarioCompletoR(info.destino, tipoAviones[info.inventario])
                         info.entregado = true
 
                         -- Programar destrucción del grupo 30 segundos después
@@ -183,9 +182,8 @@ function verificarAterrizajesB()
             end
         end
     end
-    timer.scheduleFunction(verificarAterrizajesB, {}, timer.getTime() + 5)
+    timer.scheduleFunction(verificarAterrizajesR, {}, timer.getTime() + 5)
 end
-
 
 -- Intervalo de tiempo entre resúmenes (en segundos)
 local intervaloResumenRutas = 120
@@ -219,11 +217,11 @@ end
 -- Tabla local para obtener nombres legibles de subvariantes
 local nombreVisible = nombresSubvariantes[claveSubVar]
 
-function mostrarResumenRutasB()
+function mostrarResumenRutasR()
     local mensaje = "Rutas activas Logistica:\n"
     local hay = false
 
-    for nombreGrupo, datos in pairs(activeDeliveriesB) do
+    for nombreGrupo, datos in pairs(activeDeliveriesR) do
         if not datos.entregado then
             local grupo = Group.getByName(nombreGrupo)
             if grupo and Group.isExist(grupo) then
@@ -243,12 +241,12 @@ function mostrarResumenRutasB()
         mensaje = mensaje .. "\n(No hay rutas activas dentro de la zona en este momento)"
     end
 
-    trigger.action.outTextForCoalition(2, mensaje, 30)
-    timer.scheduleFunction(mostrarResumenRutasB, {}, timer.getTime() + intervaloResumenRutas)
+    trigger.action.outTextForCoalition(1, mensaje, 30)
+    timer.scheduleFunction(mostrarResumenRutasR, {}, timer.getTime() + intervaloResumenRutas)
 end
 
 
 
-mostrarResumenRutasB()
+mostrarResumenRutasR()
 
-verificarAterrizajesB()
+verificarAterrizajesR()
