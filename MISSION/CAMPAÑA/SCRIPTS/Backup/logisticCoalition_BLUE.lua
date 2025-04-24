@@ -1,6 +1,3 @@
----------------------------BAZTIAN---------------------------------------------------------------------------
-
-
 puntosCoalicion = { PuntosAZUL = 2000000000, PuntosROJO = 2000000000 }
 menuCooldownsB = menuCooldownsB or {}
 activeDeliveriesB = activeDeliveriesB or {}
@@ -16,7 +13,7 @@ for i = 1, 9999 do
     table.insert(nombresPosiblesB, "USA hel " .. i)
 end
 
-local cooldownTiempo = 600 -- segundos
+local cooldownTiempo = 10 -- segundos
 
 plantillasLogisticaB = {
     ["Liwa AFB"] = { template = "SuppliesBLUEToliwa", bandera = 100 },
@@ -147,17 +144,6 @@ coordenadasAerodromosB = {
     --["Kerman"] = {x = 454327, y = 0, z = 71866}
 
 }
-function formatearDolaresB(numero)
-    if type(numero) ~= "number" then return "$0" end
-    local entero = math.floor(numero)
-    local partes = {}
-    repeat
-        table.insert(partes, 1, string.format("%03d", entero % 1000))
-        entero = math.floor(entero / 1000)
-    until entero == 0
-    partes[1] = tostring(tonumber(partes[1])) -- elimina ceros a la izquierda
-    return "$" .. table.concat(partes, ".")
-end
 
 function cargarInventarioCompletoB(nombreAeropuerto, data)
     local base = Airbase.getByName(nombreAeropuerto)
@@ -207,9 +193,7 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
     local costo = math.floor(baseCosto * recargo)
 
     if puntosCoalicion.PuntosAZUL < costo then
-        trigger.action.outTextForCoalition(2, "No tienes suficientes dólares. Requiere: " .. formatearDolaresB(costo), 10)
-
-
+        trigger.action.outTextForCoalition(2, "No tienes suficientes dólares. Requiere: " .. formatearDolares(costo), 10)
         return
     end
 
@@ -400,8 +384,6 @@ local nombresSubvariantes = {
 
     ["M-2000-1"] = "Mirage M-2000 C  - Pack x 2",
     ["M-2000-2"] = "Mirage M-2000 C  - Pack x 4",
-    ["F1-EE-1"] = "Mirage F1 EE  - Pack x 2",
-    ["F1-EE-2"] = "Mirage F1 EE  - Pack x 4",
     ["SA342-L-1"] = "SA342 - L - Gazelle - Pack x 2",
     ["SA342-M-1"] = "SA342 - M - Gazelle - Pack x 2",
     ["SA342-Minigun-1"] = "SA342 - Minigun - Gazelle - Pack x 2",
@@ -435,16 +417,6 @@ local nombresSubvariantes = {
     ["MI-24P-2"] = "MI-24P - Hind - Pack x 4",
     ["MI-8MTV2-1"] = "MI-8MTV2 - Pack x 2",
     ["MI-8MTV2-2"] = "MI-8MTV2 - Pack x 4"
-
-    --AWACKS.
-
-   -- ["A-50-1"] = "Beriev A-50 Pack x 1",
-   -- ["A-50-2"] = "Beriev A-50 Pack x 2",
-   -- ["E-2D-1"] = "E-2D - Hawkeye - Pack x 1",
-   -- ["E-2D-2"] = "E-2D - Hawkeye - Pack x 2",
-    --["E-3A-1"] = "E-3A - Centry - Pack x 1",
-   -- ["E-3A-2"] = "E-3A - Centry - Pack x 2"
-
 
 
     

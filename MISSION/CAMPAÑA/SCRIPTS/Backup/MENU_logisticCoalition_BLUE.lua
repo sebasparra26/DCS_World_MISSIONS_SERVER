@@ -1,8 +1,7 @@
----------------------------BAZTIAN---------------------------------------------------------------------------
-
 paginasPorAvion = {}
 comandosPorSubID = {}
 
+-- Tipos de avión con subclave principal
 tiposAvion = {
     --USA PLANES
     ["FA-18C-Hornet"] = {
@@ -79,10 +78,6 @@ tiposAvion = {
         clave = "M-2000_PAYLOAD",
         categoria = "Aviones Importados FRANCIA"
     },
-    ["Mirage-F1-EE"] = {
-        clave = "F1-EE-PAYLOAD",
-        categoria = "Aviones Importados FRANCIA"
-    },
     ["SA342-Gazelle"] = {
         clave = "SA342_PAYLOAD",
         categoria = "Aviones Importados FRANCIA"
@@ -138,12 +133,6 @@ tiposAvion = {
         clave = "MI-8MTV2_PAYLOAD",
         categoria = "Helicopteros Importados RUSIA"
     }
-    --AWACS
-    --["AWACS-SYSTEM"] = {
-        --clave = "AWACS_PAYLOAD",
-       -- categoria = "Sistema Awacs"
-    --}
-
  
 }
 
@@ -223,10 +212,6 @@ subvariantesAvion = {
         ["Mirage M-2000 C  - Pack x 2"] = "M-2000-1",
         ["Mirage M-2000 C  - Pack x 4"] = "M-2000-2"
     },
-    ["F1-EE-PAYLOAD"] = {
-        ["Mirage F1 EE  - Pack x 2"] = "F1-EE-1",
-        ["Mirage F1 EE  - Pack x 4"] = "F1-EE-2"
-    },
     ["SA342_PAYLOAD"] = {
         ["SA342 - L - Gazelle - Pack x 2"] = "SA342-L-1",
         ["SA342 - M - Gazelle - Pack x 2"] = "SA342-M-1",
@@ -280,18 +265,7 @@ subvariantesAvion = {
     ["MI-8MTV2_PAYLOAD"] = {
         ["MI-8MTV2 - Pack x 2"] = "MI-8MTV2-1",
         ["MI-8MTV2 - Pack x 4"] = "MI-8MTV2-2"
-    },
-
-    --AWACS
-
-    --["AWACS_PAYLOAD"] = {
-     --   ["Beriev A-50 Pack x 1"] = "A-50-1",
-     --   ["Beriev A-50 Pack x 2"] = "A-50-2",
-      --  ["E-2D - Hawkeye - Pack x 1"] = "E-2D-1",
-       -- ["E-2D - Hawkeye - Pack x 2"] = "E-2D-2",
-       -- ["E-3A - Centry - Pack x 1"] = "E-3A-1",
-        --["E-3A - Centry - Pack x 2"] = "E-3A-2"
-    --19--}
+    }
     
 }
 
@@ -369,8 +343,6 @@ destinosPorSubvariante = {
 
     ["M-2000-1"] = destinosBase,
     ["M-2000-2"] = destinosBase,
-    ["F1-EE-1"] = destinosBase,
-    ["F1-EE-2"] = destinosBase,
     ["SA342-L-1"] = destinosBase,
     ["SA342-M-1"] = destinosBase,
     ["SA342-Minigun-1"] = destinosBase,
@@ -408,14 +380,6 @@ destinosPorSubvariante = {
     ["MI-8MTV2-1"] = destinosBase,
     ["MI-8MTV2-2"] = destinosBase
     
-    --AWACS
-
-    --["A-50-1"] = destinosBase,
-   -- ["A-50-2"] = destinosBase,
-   -- ["E-2D-1"] = destinosBase,
-   -- ["E-2D-2"] = destinosBase,
-   -- ["E-3A-1"] = destinosBase,
-   -- ["E-3A-2"] = destinosBase
 
 
     
@@ -456,7 +420,7 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
     paginasPorAvion[claveSubVar] = paginasPorAvion[claveSubVar] or {}
 
     for pagina = 1, totalPaginas do
-        local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Aeropuerto Pag " .. pagina
+        local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Página " .. pagina
 
         if not paginasPorAvion[claveSubVar][pagina] then
             local subID = missionCommands.addSubMenuForCoalition(2, nombreSubmenu, menuAvion)
