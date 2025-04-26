@@ -350,7 +350,7 @@ do
     local categoriasPermitidas = {
         [Unit.Category.AIRPLANE]   = true,   -- Aviones
         [Unit.Category.HELICOPTER] = false,  -- Helicópteros
-        [Unit.Category.GROUND_UNIT] = false  -- Vehículos terrestres
+        [Unit.Category.GROUND_UNIT] = true  -- Vehículos terrestres
     }
 
     local grupoClonadoActual = nil

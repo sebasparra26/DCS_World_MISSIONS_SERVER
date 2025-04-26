@@ -1,15 +1,9 @@
 trigger.action.outText("Script de escolta cargado correctamente", 5)
 
 local escoltasActivas = {}
-local nombresPosiblesEscolta = {}
-local debugEscolta = false
+local cooldownEscolta = {}
+local tiempoCooldown = 10
 
--- Nombres que MIST puede asignar
-for i = 1, 9999 do
-    table.insert(nombresPosiblesEscolta, "UK air " .. i)
-end
-
--- Opcional: nombres visibles para mostrar por plantilla
 local nombresVisiblesEscolta = {
     ["EscortTemplate01"] = "Escuadrón Centinela",
     ["EscortTemplate02"] = "Escuadrón Lobo",
@@ -18,15 +12,10 @@ local nombresVisiblesEscolta = {
 
 local plantillasEscolta = { "EscortTemplate01", "EscortTemplate02", "EscortTemplate03" }
 
-local function log(msg)
-    if debugEscolta then env.info("[ESCOLTA] " .. msg) end
-end
-
 local function destruirGrupo(nombreGrupo)
     local grupo = Group.getByName(nombreGrupo)
     if grupo and grupo:isExist() then
         grupo:destroy()
-        log("Grupo destruido: " .. nombreGrupo)
     end
 end
 
@@ -36,7 +25,7 @@ local function regresarABase(nombreGrupoEscolta)
 
     local destino = { x = 202918, y = 0, z = 6949 }
 
-    local task = {
+    grupo:getController():setTask({
         id = 'Mission',
         params = {
             route = {
@@ -53,9 +42,8 @@ local function regresarABase(nombreGrupoEscolta)
                 }
             }
         }
-    }
+    })
 
-    grupo:getController():setTask(task)
     mist.scheduleFunction(destruirGrupo, { nombreGrupoEscolta }, timer.getTime() + 180)
 end
 
@@ -105,8 +93,8 @@ local function detectarYEnganchar(nombreGrupoEscolta, nombreGrupoJugador)
         local enemigos = coalition.getGroups(1)
         local amenazaDetectada, grupoEnemigoDetectado
         local amenazaCercana, grupoEnemigoCercano
-        local rangoDeteccion = 10000
-        local rangoEnganche = 5556
+        local rangoDeteccion = 12000
+        local rangoEnganche = 7000
 
         for _, grupoEnemigo in ipairs(enemigos) do
             if Group.isExist(grupoEnemigo) then
@@ -148,7 +136,7 @@ local function detectarYEnganchar(nombreGrupoEscolta, nombreGrupoJugador)
                         id = 'Follow',
                         params = {
                             groupId = grupoJugador:getID(),
-                            pos = { x = -80, y = 0, z = -190 },
+                            pos = { x = -100, y = 0, z = -150 },
                             lastWptIndexFlag = false,
                             followTaskIndex = 1,
                             formation = "Finger Four" 
@@ -166,7 +154,7 @@ local function detectarYEnganchar(nombreGrupoEscolta, nombreGrupoJugador)
                         id = 'Follow',
                         params = {
                             groupId = grupoJugador:getID(),
-                            pos = { x = -80, y = 0, z = -190 },
+                            pos = { x = -100, y = 0, z = -150 },
                             lastWptIndexFlag = false,
                             followTaskIndex = 1,
                             formation = "Finger Four"
@@ -180,7 +168,41 @@ local function detectarYEnganchar(nombreGrupoEscolta, nombreGrupoJugador)
 end
 
 
+local function clonarEscoltaCerca(unidadJugador, plantillaSeleccionada)
+    local posJugador = unidadJugador:getPoint()
+    local matrizJugador = unidadJugador:getPosition()
 
+    local distanciaNM = 1800
+    local nuevaPos = {
+        x = posJugador.x - (matrizJugador.z.x * distanciaNM),
+        y = posJugador.y - (matrizJugador.z.z * distanciaNM),
+        z = posJugador.z 
+    }
+
+    local datosTemplate = mist.getGroupData(plantillaSeleccionada)
+
+    if not datosTemplate then
+        trigger.action.outText("Error al obtener plantilla de escolta", 10)
+        return nil
+    end
+
+    -- Mover todas las unidades manualmente
+    for i, unidad in ipairs(datosTemplate.units) do
+        unidad.x = nuevaPos.x + math.random(-10, 10)
+        unidad.y = nuevaPos.z + math.random(-10, 10)
+        unidad.alt = nuevaPos.y
+    end
+
+    datosTemplate.x = nuevaPos.x
+    datosTemplate.y = nuevaPos.z
+    datosTemplate.alt = nuevaPos.y
+
+    local nuevoGrupo = mist.dynAdd(datosTemplate)
+
+    return nuevoGrupo
+end
+
+-- Menú
 local menuRaizEscolta = missionCommands.addSubMenuForCoalition(2, "Solicitar escolta aérea")
 
 missionCommands.addCommandForCoalition(2, "Pedir escolta ahora", menuRaizEscolta, function()
@@ -190,69 +212,83 @@ missionCommands.addCommandForCoalition(2, "Pedir escolta ahora", menuRaizEscolta
             local grupoJugador = u:getGroup()
             if grupoJugador then
                 local nombreGrupoJugador = grupoJugador:getName()
+                local ahora = timer.getTime()
+
+                if cooldownEscolta[nombreGrupoJugador] and ahora < cooldownEscolta[nombreGrupoJugador] then
+                    trigger.action.outText("Debes esperar unos segundos antes de solicitar otra escolta.", 10)
+                    return
+                end
 
                 if escoltasActivas[nombreGrupoJugador] then
                     trigger.action.outText("Ya tienes una escolta activa.", 10)
                     return
                 end
 
-                local nombresAntes = {}
-                for _, nombre in ipairs(nombresPosiblesEscolta) do
-                    if Group.getByName(nombre) and Group.getByName(nombre):isExist() then
-                        nombresAntes[nombre] = true
-                    end
+                local unidadJugador = grupoJugador:getUnit(1)
+                if not unidadJugador then
+                    trigger.action.outText("No se pudo encontrar tu unidad.", 10)
+                    return
                 end
 
+                -- Verificar Altura AGL
+                local punto = unidadJugador:getPoint()
+                local alturaTerreno = land.getHeight({ x = punto.x, y = punto.z })
+                local altAGL = punto.y - alturaTerreno
+
+                if altAGL < 30 then
+                    trigger.action.outText("Debes estar a más de 30 metros AGL para solicitar escolta.", 10)
+                    return
+                end
+
+                -- Proceder si cumple AGL
                 local indice = math.random(1, #plantillasEscolta)
                 local plantillaSeleccionada = plantillasEscolta[indice]
-                mist.cloneGroup(plantillaSeleccionada, true)
 
-                timer.scheduleFunction(function()
-                    local grupoClonado = nil
-                    for _, nombre in ipairs(nombresPosiblesEscolta) do
-                        if Group.getByName(nombre) and Group.getByName(nombre):isExist() and not nombresAntes[nombre] then
-                            grupoClonado = nombre
-                            break
-                        end
-                    end
+                local grupoClonado = clonarEscoltaCerca(unidadJugador, plantillaSeleccionada)
 
-                    if grupoClonado then
-                        local followTask = {
-                            id = 'ControlledTask',
-                            params = {
-                                task = {
-                                    id = 'Follow',
-                                    params = {
-                                        groupId = grupoJugador:getID(),
-                                        pos = { x = -100, y = 0, z = -100 },
-                                        lastWptIndexFlag = false,
-                                        followTaskIndex = 1,
-                                        formation = "Diamond"
-                                    }
-                                }
-                            }
-                        }
-
-                        local grupoIA = Group.getByName(grupoClonado)
-                        if grupoIA then
-                            grupoIA:getController():pushTask(followTask)
-                            escoltasActivas[nombreGrupoJugador] = grupoClonado
-                            local nombreVisible = nombresVisiblesEscolta[plantillaSeleccionada] or plantillaSeleccionada
-                            trigger.action.outText("Tu escolta ha sido desplegada: " .. nombreVisible, 10)
-                            monitorearJugador(nombreGrupoJugador, grupoClonado)
-                            detectarYEnganchar(grupoClonado, nombreGrupoJugador)
-                        else
-                            trigger.action.outText("Error al encontrar grupo clonado", 10)
-                        end
-                    else
-                        trigger.action.outText("No se encontró el grupo clonado", 10)
-                    end
-                end, {}, timer.getTime() + 1)
-
-                return
+                if grupoClonado then
+                    escoltasActivas[nombreGrupoJugador] = grupoClonado.name
+                    trigger.action.outText("Tu escolta ha sido desplegada: " .. (nombresVisiblesEscolta[plantillaSeleccionada] or plantillaSeleccionada), 10)
+                    monitorearJugador(nombreGrupoJugador, grupoClonado.name)
+                    detectarYEnganchar(grupoClonado.name, nombreGrupoJugador)
+                    cooldownEscolta[nombreGrupoJugador] = timer.getTime() + tiempoCooldown
+                else
+                    trigger.action.outText("Error al clonar la escolta.", 10)
+                end
             end
         end
     end
+end)
 
-    trigger.action.outText("No se pudo detectar tu grupo. ¿Estás en cabina?", 10)
+missionCommands.addCommandForCoalition(2, "Cancelar escolta activa", menuRaizEscolta, function()
+    local unidades = coalition.getPlayers(2)
+    for _, u in ipairs(unidades) do
+        if u and u:isActive() then
+            local grupoJugador = u:getGroup()
+            if grupoJugador then
+                local nombreGrupoJugador = grupoJugador:getName()
+                local ahora = timer.getTime()
+
+                if cooldownEscolta[nombreGrupoJugador] and ahora < cooldownEscolta[nombreGrupoJugador] then
+                    trigger.action.outText("Debes esperar unos segundos antes de cancelar la escolta.", 10)
+                    return
+                end
+
+                local nombreGrupoEscolta = escoltasActivas[nombreGrupoJugador]
+                if nombreGrupoEscolta then
+                    local grupoEscolta = Group.getByName(nombreGrupoEscolta)
+                    if grupoEscolta and grupoEscolta:isExist() then
+                        grupoEscolta:destroy()
+                        trigger.action.outText("Has cancelado tu escolta.", 10)
+                    else
+                        trigger.action.outText("No se encontró la escolta activa.", 10)
+                    end
+                    escoltasActivas[nombreGrupoJugador] = nil
+                    cooldownEscolta[nombreGrupoJugador] = timer.getTime() + tiempoCooldown
+                else
+                    trigger.action.outText("No tienes escolta activa para cancelar.", 10)
+                end
+            end
+        end
+    end
 end)

@@ -3,7 +3,7 @@
 -- ============================================
 
 -- Activar o desactivar mensajes y marcas de depuración
-local debugClonado = true
+local debugClonado = false
 
 -- Lista de plantillas a usar
 local plantillasBombardero = {}
