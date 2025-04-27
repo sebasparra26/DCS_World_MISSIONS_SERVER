@@ -249,3 +249,21 @@ tipoAviones["FW-190-D9"] = { --1250
         ["300 Liter Fuel Tank Type E2"]  = {ws = {1, 3, 43, 264}, cantidad = 2}
     }
 }
+
+tipoAviones["I-16"] = {
+    costo = 456000,
+    nombreAvion = "I-16 Caza - Cohetero",
+    avion = { ws = {1, 1, 1, 282}, cantidad = 2 },
+
+    --bombas = {
+  --},
+
+    cohetes = {
+        ["RS-82"]  = {ws = {4, 7, 33, 326}, cantidad = 20}
+    },
+
+    tanques = {
+        ["I-16 External fuel Tank"]  = {ws = {1, 3, 43, 589}, cantidad = 4} 
+    }
+}
+

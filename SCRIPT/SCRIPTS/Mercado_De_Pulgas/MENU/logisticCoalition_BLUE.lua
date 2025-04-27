@@ -79,9 +79,13 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
     end
 
     --configuracionEntregaB = {
-        --origen = { x = 109317, y = 0, z = -6529 },
-        --velocidad = 172.34
+        --origen = { x = 156125, y = 0, z = -100878 },
+        --velocidad = 180
     --}
+    --configuracionEntregaR = {
+        --origen = { x = -72828, y = 0, z = 201007 },
+        --velocidad = 180
+   -- }
 
     local origen = { x = configuracionEntregaB.origen.x, y = configuracionEntregaB.origen.y, z = configuracionEntregaB.origen.z }
     local destino = coordenadasAerodromosB[aeropuerto] or { x = 0, z = 0 }

@@ -1,3 +1,7 @@
+MercadoSetuptimerR = MercadoSetuptimerR or {
+    Total = 138.88,
+    Intervalo = 200
+}
 paginasPorAvion = {}
 comandosPorSubID = {}
 
@@ -96,8 +100,8 @@ crearMenuLogisticoRojo()
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundosR = 9000         -- Duración total del mercado (2h)
-intervaloAnuncioMercadoR = 60          -- Intervalo de mensaje (15min)
+duracionMercadoSegundosR = MercadoSetuptimerR.Total         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoR = MercadoSetuptimerR.Intervalo           -- Intervalo de mensaje (15min)
 tiempoInicioMercadoR = timer.getTime()  -- Tiempo de inicio real
 
 function actualizarTemporizadorMercadoR()

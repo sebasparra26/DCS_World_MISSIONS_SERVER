@@ -1,5 +1,8 @@
----------------------------BAZTIAN---------------------------------------------------------------------------
 
+MercadoSetuptimerB = MercadoSetuptimerB or {
+    Total = 138.88,
+    Intervalo = 200
+}
 paginasPorAvion = {}
 comandosPorSubID = {}
 
@@ -99,8 +102,8 @@ crearMenuLogisticoAzul()
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundosB = 9000         -- Duración total del mercado (2h)
-intervaloAnuncioMercadoB = 60          -- Intervalo de mensaje (15min)
+duracionMercadoSegundosB = MercadoSetuptimerB.Total         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoB = MercadoSetuptimerB.Intervalo         -- Intervalo de mensaje (15min)
 tiempoInicioMercadoB = timer.getTime()  -- Tiempo de inicio real
 
 function actualizarTemporizadorMercadoB()
