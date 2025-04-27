@@ -102,7 +102,7 @@ tiposAvion = {
 
     ["AH-64D BLK.II-Apache"] = {
         clave = "AH-64D_PAYLOAD",
-        categoria = "Helicopteros Importados USA"
+        categoria = "3 Helicopteros Importados USA"
     },
     ["OH-58D(R)-Kiowa Warrior"] = {
         clave = "OH-58D_PAYLOAD",
@@ -126,15 +126,15 @@ tiposAvion = {
 
      ["KA-50-III-BlackShark-3"] = {
         clave = "KA-50_PAYLOAD",
-        categoria = "Helicopteros Importados RUSIA"
+        categoria = "2 Helicopteros Importados RUSIA"
     },
     ["MI-24P-Hind"] = {
         clave = "MI-24P_PAYLOAD",
-        categoria = "Helicopteros Importados RUSIA"
+        categoria = "2 Helicopteros Importados RUSIA"
     },
     ["MI-8MTV2"] = {
         clave = "MI-8MTV2_PAYLOAD",
-        categoria = "Helicopteros Importados RUSIA"
+        categoria = "2 Helicopteros Importados RUSIA"
     },
     --AWACS
     --["AWACS-SYSTEM"] = {
@@ -145,15 +145,15 @@ tiposAvion = {
     --ARMAMENTO
     ["AA FOX 1"] = {
         clave = "FOX-1_PAYLOAD",
-        categoria = "ARMAMENTO"
+        categoria = "Armamento"
     },
     ["AA FOX 2"] = {
         clave = "FOX-2_PAYLOAD",
-        categoria = "ARMAMENTO"
+        categoria = "Armamento"
     },
     ["AA FOX 3"] = {
         clave = "FOX-3_PAYLOAD",
-        categoria = "ARMAMENTO"
+        categoria = "Armamento"
     }
  
 }
@@ -319,6 +319,12 @@ subvariantesAvion = {
         ["9M39-Igla"] = "FOX02PACK_07",
         ["FIM-92"] = "FOX02PACK_08",
         ["Mistral"] = "FOX02PACK_09"
+    },
+    ["FOX-3_PAYLOAD"] = {
+        ["AIM-120B/AIM-120C"] = "FOX03PACK_01",
+        ["AIM-54A-Mk47P/AIM-54C-Mk60"] = "FOX03PACK_02",
+        ["SD-10A"] = "FOX03PACK_03",
+        ["R-77"] = "FOX04PACK_04"
     }
     
 }
@@ -449,10 +455,11 @@ destinosPorSubvariante = {
 
 --ARMAMENTO.
 
-
+    --FOX 1
    ["FOX01PACK_01"] = destinosBase,
    ["FOX01PACK_02"] = destinosBase,
    ["FOX01PACK_03"] = destinosBase,
+    --FOX 2
    ["FOX02PACK_01"] = destinosBase,
    ["FOX02PACK_02"] = destinosBase,
    ["FOX02PACK_03"] = destinosBase,
@@ -461,8 +468,12 @@ destinosPorSubvariante = {
    ["FOX02PACK_06"] = destinosBase,
    ["FOX02PACK_07"] = destinosBase,
    ["FOX02PACK_08"] = destinosBase,
-   ["FOX02PACK_09"] = destinosBase
-
+   ["FOX02PACK_09"] = destinosBase,
+    --FOX 3
+    ["FOX03PACK_01"] = destinosBase,
+    ["FOX03PACK_02"] = destinosBase,
+    ["FOX03PACK_03"] = destinosBase,
+    ["FOX03PACK_04"] = destinosBase
 }
 
 
@@ -570,7 +581,14 @@ nombresSubvariantes = {
     ["FOX02PACK_06"] = "PL-5EII",
     ["FOX02PACK_07"] = "9M39-Igla",
     ["FOX02PACK_08"] = "FIM-92",
-    ["FOX02PACK_09"] = "Mistral"
+    ["FOX02PACK_09"] = "Mistral",
+    --FOX 3
+    ["FOX03PACK_01"] = "AIM-120B/AIM-120",
+    ["FOX03PACK_02"] = "AIM-54A-Mk47P/AIM-54C-Mk60",
+    ["FOX03PACK_03"] = "SD-10A",
+    ["FOX03PACK_04"] = "R-77"
+
+
 
    
 }
@@ -729,12 +747,12 @@ end
 plantillasLogisticaR = {
     ["Liwa AFB"] = { template = "SuppliesREDToliwa", bandera = 100 },
     --["Al Dhafra AFB"] = { template = "SuppliesBLUEToDhafra", bandera = 101 },
-    ["Al-Bateen"] = { template = "SuppliesBLUEToBateen", bandera = 102 },
+    ["Al-Bateen"] = { template = "SuppliesREDToBateen", bandera = 102 },
     --["Sas Al Nakheel"] = { template = "SuppliesBLUEToNakheel", bandera = 103 },
     --["Abu Dhabi Intl"] = { template = "SuppliesBLUEToDhabi", bandera = 104 },
-    ["Al Ain Intl"] = { template = "SuppliesBLUEToAin", bandera = 105 },
-    ["Al Maktoum Intl"] = { template = "SuppliesBLUEToMaktoum", bandera = 106 },
-    ["Al Minhad AFB"] = { template = "SuppliesBLUEToMinhad", bandera = 107 },
+    ["Al Ain Intl"] = { template = "SuppliesREDToAin", bandera = 105 },
+    ["Al Maktoum Intl"] = { template = "SuppliesREDToMaktoum", bandera = 106 },
+    ["Al Minhad AFB"] = { template = "SuppliesREDToMinhad", bandera = 107 },
     ["Dubai Intl"] = { template = "SuppliesBLUEToDubai", bandera = 108 },
     ["Sharjah Intl"] = { template = "SuppliesBLUEToSharjah", bandera = 109 },
     ["Fujairah intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110 },

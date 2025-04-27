@@ -103,3 +103,38 @@ tipoAviones["FOX02PACK_09"] = {
         ["Mistral"]  = {ws = {4, 4, 34, 291}, cantidad = 10}
        }
 }
+-- ===============================
+-- FOX 3
+-- ==============================
+tipoAviones["FOX03PACK_01"] = {
+    costo = 19560000,
+
+    misiles = {
+        ["AIM-120B"]  = {ws = {4, 4, 7, 24}, cantidad = 40},
+        ["AIM-120C"]  = {ws = {4, 4, 7, 106}, cantidad = 20}
+       }
+}
+tipoAviones["FOX03PACK_02"] = {
+    costo = 11480000,
+
+    misiles = {
+        ["AIM-54A-Mk47"]  = {ws = {4, 4, 7, 24}, cantidad = 10},
+        ["AIM-54C-Mk60"]  = {ws = {4, 4, 7, 106}, cantidad = 40}
+       }
+}
+tipoAviones["FOX03PACK_03"] = {
+    costo = 3600000,
+
+    misiles = {
+        ["SD-10A"]  = {ws = {4, 4, 7, 307}, cantidad = 8}
+       
+       }
+}
+tipoAviones["FOX03PACK_04"] = {
+    costo = 1500000,
+
+    misiles = {
+        ["R-77"]  = {ws = {4, 4, 7, 19}, cantidad = 10}
+       
+       }
+}
