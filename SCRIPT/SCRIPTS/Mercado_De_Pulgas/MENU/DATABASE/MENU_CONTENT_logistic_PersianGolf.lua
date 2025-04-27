@@ -135,13 +135,26 @@ tiposAvion = {
     ["MI-8MTV2"] = {
         clave = "MI-8MTV2_PAYLOAD",
         categoria = "Helicopteros Importados RUSIA"
-    }
+    },
     --AWACS
     --["AWACS-SYSTEM"] = {
         --clave = "AWACS_PAYLOAD",
        -- categoria = "Sistema Awacs"
     --}
 
+    --ARMAMENTO
+    ["AA FOX 1"] = {
+        clave = "FOX-1_PAYLOAD",
+        categoria = "ARMAMENTO"
+    },
+    ["AA FOX 2"] = {
+        clave = "FOX-2_PAYLOAD",
+        categoria = "ARMAMENTO"
+    },
+    ["AA FOX 3"] = {
+        clave = "FOX-3_PAYLOAD",
+        categoria = "ARMAMENTO"
+    }
  
 }
 
@@ -290,6 +303,23 @@ subvariantesAvion = {
        -- ["E-3A - Centry - Pack x 1"] = "E-3A-1",
         --["E-3A - Centry - Pack x 2"] = "E-3A-2"
     --19--}
+
+    ["FOX-1_PAYLOAD"] = {
+        ["AIM-7M/AIM-7P"] = "FOX01PACK_01",
+        ["R-27ER/R-27R"] = "FOX01PACK_02",
+        ["Super-530D/S530F"] = "FOX01PACK_03"
+    },
+    ["FOX-2_PAYLOAD"] = {
+        ["AIM-9B/AIM-9J"] = "FOX02PACK_01",
+        ["AIM-9P/AIM-9P3"] = "FOX02PACK_02",
+        ["AIM-9L/AIM-9M"] = "FOX02PACK_03",
+        ["R-60M/R-73"] = "FOX02PACK_04",
+        ["R-550-M2/MAGIC-II"] = "FOX02PACK_05",
+        ["PL-5EII"] = "FOX02PACK_06",
+        ["9M39-Igla"] = "FOX02PACK_07",
+        ["FIM-92"] = "FOX02PACK_08",
+        ["Mistral"] = "FOX02PACK_09"
+    }
     
 }
 
@@ -404,7 +434,7 @@ destinosPorSubvariante = {
     ["MI-24P-1"] = destinosBase,
     ["MI-24P-2"] = destinosBase,
     ["MI-8MTV2-1"] = destinosBase,
-    ["MI-8MTV2-2"] = destinosBase
+    ["MI-8MTV2-2"] = destinosBase,
     
     --AWACS
 
@@ -416,7 +446,23 @@ destinosPorSubvariante = {
    -- ["E-3A-2"] = destinosBase
 
 
-    
+
+--ARMAMENTO.
+
+
+   ["FOX01PACK_01"] = destinosBase,
+   ["FOX01PACK_02"] = destinosBase,
+   ["FOX01PACK_03"] = destinosBase,
+   ["FOX02PACK_01"] = destinosBase,
+   ["FOX02PACK_02"] = destinosBase,
+   ["FOX02PACK_03"] = destinosBase,
+   ["FOX02PACK_04"] = destinosBase,
+   ["FOX02PACK_05"] = destinosBase,
+   ["FOX02PACK_06"] = destinosBase,
+   ["FOX02PACK_07"] = destinosBase,
+   ["FOX02PACK_08"] = destinosBase,
+   ["FOX02PACK_09"] = destinosBase
+
 }
 
 
@@ -499,7 +545,7 @@ nombresSubvariantes = {
     ["MI-24P-1"] = "MI-24P - Hind - Pack x 2",
     ["MI-24P-2"] = "MI-24P - Hind - Pack x 4",
     ["MI-8MTV2-1"] = "MI-8MTV2 - Pack x 2",
-    ["MI-8MTV2-2"] = "MI-8MTV2 - Pack x 4"
+    ["MI-8MTV2-2"] = "MI-8MTV2 - Pack x 4",
 
     --AWACKS.
 
@@ -511,8 +557,22 @@ nombresSubvariantes = {
    -- ["E-3A-2"] = "E-3A - Centry - Pack x 2"
 
 
+    --FOX 1
+    ["FOX01PACK_01"] = "AIM-7M/AIM-7P",
+    ["FOX01PACK_02"] = "R-27ER/R-27R",
+    ["FOX01PACK_03"] = "Super-530D/S530F",
+    --FOX 2
+    ["FOX02PACK_01"] = "AIM-9B/AIM-9J",
+    ["FOX02PACK_02"] = "AIM-9P/AIM-9P3",
+    ["FOX02PACK_03"] = "AIM-9L/AIM-9M",
+    ["FOX02PACK_04"] = "R-60M/R-73",
+    ["FOX02PACK_05"] = "R-550-M2/MAGIC-II",
+    ["FOX02PACK_06"] = "PL-5EII",
+    ["FOX02PACK_07"] = "9M39-Igla",
+    ["FOX02PACK_08"] = "FIM-92",
+    ["FOX02PACK_09"] = "Mistral"
 
-    
+   
 }
 ---------------------------------------------------------------------------------------------------------------------
 --------------------------------LOGISTIC FILE---------------------------------------------------------------
