@@ -753,7 +753,7 @@ plantillasLogisticaR = {
     ["Al Ain Intl"] = { template = "SuppliesREDToAin", bandera = 105 },
     ["Al Maktoum Intl"] = { template = "SuppliesREDToMaktoum", bandera = 106 },
     ["Al Minhad AFB"] = { template = "SuppliesREDToMinhad", bandera = 107 },
-    ["Dubai Intl"] = { template = "SuppliesBLUEToDubai", bandera = 108 },
+    ["Dubai Intl"] = { template = "SuppliesREDToDubai", bandera = 108 },
     ["Sharjah Intl"] = { template = "SuppliesBLUEToSharjah", bandera = 109 },
     ["Fujairah intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110 },
     ["Ras Al Khaimah Intl"] = { template = "SuppliesBLUEToKhaimah", bandera = 111 },

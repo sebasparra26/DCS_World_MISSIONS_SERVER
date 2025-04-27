@@ -133,3 +133,119 @@ tipoAviones["Spitfire-LF-Mk.IX-CW-B"] = {
         --["45 Gal. Torpedo Tank"]  = {ws = {1, 3, 43, 275}, cantidad = 10}
     }
 }
+-- ===============================
+-- P47D
+-- ===============================
+tipoAviones["P-47D-30_I"] = {
+    costo = 172436,
+    nombreAvion = "P-47D-30 -   Interceptor Squadron",
+    avion = { ws = {1, 1, 1, 260}, cantidad = 2 },
+    tanques = {
+        ["150 US gal. Fuel Tank"] = {ws = {1, 3, 43, 267}, cantidad = 4}
+    }
+}
+tipoAviones["P-47D-30_B"] = {
+    costo = 174136,
+    nombreAvion = "P-47D-30 -   Bombing Squadron",
+    avion = { ws = {1, 1, 1, 260}, cantidad = 2 },
+    bombas = {
+        ["AN-M65 - Bomb"]       = {ws = {4, 5, 9, 283}, cantidad = 4}
+    },
+    tanques = {
+        ["110 US gal. Fuel Tank"] = {ws = {1, 3, 43, 266}, cantidad = 2}
+    }
+}
+tipoAviones["P-47D-30_Early_I"] = {
+    costo = 171796,
+    nombreAvion = "P-47D-30 - Early Interceptor Squadron",
+    avion = { ws = {1, 1, 1, 261}, cantidad = 2 },
+    tanques = {
+        ["150 US gal. Fuel Tank"] = {ws = {1, 3, 43, 267}, cantidad = 4}
+    }
+}
+tipoAviones["P-47D-30_Early_B"] = {
+    costo = 173716,
+    nombreAvion = "P-47D-30 Early - Bombing Squadron",
+    avion = { ws = {1, 1, 1, 261}, cantidad = 2 },
+    bombas = {
+        ["AN-M64 - Bomb"]       = {ws = {4, 5, 9, 90}, cantidad = 4}
+    },
+    tanques = {
+        ["110 US gal. Fuel Tank"] = {ws = {1, 3, 43, 266}, cantidad = 2}
+    }
+}
+tipoAviones["P-47D-40_I"] = {
+    costo = 171796,
+    nombreAvion = "P-47D-40 Interceptor Squadron",
+    avion = { ws = {1, 1, 1, 262}, cantidad = 2 },
+    tanques = {
+        ["150 US gal. Fuel Tank"] = {ws = {1, 3, 43, 267}, cantidad = 4}
+    }
+}
+tipoAviones["P-47D-40_B"] = {
+    costo = 177976,
+    nombreAvion = "P-47D-40 - Bombing Squadron",
+    avion = { ws = {1, 1, 1, 262}, cantidad = 2 },
+    bombas = {
+        ["AN-M65 - Bomb"]       = {ws = {4, 5, 9, 283}, cantidad = 4}
+    },
+    cohetes = {
+        ["HVAR Ung Rocket"]  = {ws = {4, 7, 33, 159}, cantidad = 12}
+    },
+    tanques = {
+        ["110 US gal. Fuel Tank"] = {ws = {1, 3, 43, 266}, cantidad = 2}
+    }
+}
+-- ===============================
+-- P51
+-- ===============================
+tipoAviones["P-51D-25NA"] = {
+    costo = 102970,
+    nombreAvion = "P-51D-25NA - Interceptor Squadron",
+    avion = { ws = {1, 1, 1, 63}, cantidad = 2 },
+
+     tanques = {
+        ["75 us Gal. Tank"]  = {ws = {1, 3, 43, 152}, cantidad = 4}
+    }
+}
+tipoAviones["P-51D-30NA"] = {
+    costo = 141000,
+    nombreAvion = "P-51D-30NA - Interceptor Squadron",
+    avion = { ws = {1, 1, 1, 64}, cantidad = 2 },
+
+     tanques = {
+        ["75 us Gal. Tank"]  = {ws = {1, 3, 43, 152}, cantidad = 4}
+    }
+}
+-- ===============================
+-- German
+-- ===============================
+tipoAviones["BF-109-k-4"] = {
+    costo = 200000,
+    nombreAvion = "BF-109 k-4 - Caza",
+    avion = { ws = {1, 1, 1, 257}, cantidad = 2 },
+
+    tanques = {
+        ["100 gal. Drop Tank"] = {ws = {1, 3, 43, 263}, cantidad = 2}
+    }
+}
+tipoAviones["FW-190-A8"] = { 
+    costo = 185500,
+    nombreAvion = "FW-190-A8 - Caza",
+    avion = { ws = {1, 1, 1, 256}, cantidad = 2 },
+
+
+    tanques = {
+        ["300 Liter Fuel Tank"]  = {ws = {1, 3, 43, 263}, cantidad = 2} 
+    }
+}
+tipoAviones["FW-190-D9"] = { --1250
+    costo = 251000,
+    nombreAvion = "FW-190-D9 - Caza",
+    avion = { ws = {1, 1, 1, 255}, cantidad = 2 },
+
+
+    tanques = {
+        ["300 Liter Fuel Tank Type E2"]  = {ws = {1, 3, 43, 264}, cantidad = 2}
+    }
+}
