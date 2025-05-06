@@ -13,7 +13,7 @@ estadoBanderasAeropuertos = {
     ["Zweibrucken"] = { bandera = 109, valor = nil },
     ["Frankfurt"] = { bandera = 110, valor = nil },
     ["Giebelstadt"] = { bandera = 111, valor = nil },
-    ["Scheweinfurt"] = { bandera = 112, valor = nil },
+    ["Schweinfurt"] = { bandera = 112, valor = nil },
     ["Gutersloh"] = { bandera = 113, valor = nil },
     ["Hildesheim"] = { bandera = 114, valor = nil },
     ["Braunschweig"] = { bandera = 115, valor = nil },
@@ -74,7 +74,7 @@ aeropuertos = {
     ["Zweibrucken"] = { position = {x = -521029, y = 0, z = -953581}, radius = 5000 }, --Metric: X-00521029 Z-00953581
     ["Frankfurt"] = { position = {x = -444345, y = 0, z = -853705}, radius = 5000 }, --Metric: X-00444345 Z-00853705
     ["Giebelstadt"] = { position = {x = -503287, y = 0, z = -760295}, radius = 5000 }, --Metric: X-00503287 Z-00760295
-    ["Scheweinfurt"] = { position = {x = -460636, y = 0, z = -738784}, radius = 5000 }, --Metric: X-00460636 Z-00738784
+    ["Schweinfurt"] = { position = {x = -460636, y = 0, z = -738784}, radius = 5000 }, --Metric: X-00460636 Z-00738784
     ["Gutersloh"] = { position = {x = -232362, y = 0, z = -835832}, radius = 5000 }, --Metric: X-00232362 Z-00835832
     ["Hildesheim"] = { position = {x = -222778, y = 0, z = -719214}, radius = 5000 }, --Metric: X-00222778 Z-00719214
     ["Braunschweig"] = { position = {x = -213644, y = 0, z = -675538}, radius = 5000 }, --Metric: X-00213644 Z-00675538
