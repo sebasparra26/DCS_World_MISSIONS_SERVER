@@ -156,7 +156,7 @@ do
                 debug("Monitoreo de altitud activado")
             end
 
-            if monitoreoVelocidad and speed < 30 and not grupoYaSeDetuvo then
+            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
                 grupoYaSeDetuvo = true
                 debug("El avión se detuvo después de volar, será destruido")
 
@@ -368,8 +368,8 @@ do
     local nombre = "PATRULLA_RUSSIA_AIR"
     local templates = { "Patrol_IA_RUSSIA_1", "Patrol_IA_RUSSIA_2", "Patrol_IA_RUSSIA_3", "Patrol_IA_RUSSIA_4" }
     local prefijo = "RUSSIA air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
+    local rangoDeteccion = 90 * 1852
+    local rangoEnganche = 80 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {
@@ -549,8 +549,8 @@ do
     local nombre = "PATRULLA_IRAN_AIR"
     local templates = { "Patrol_IA_IRAN_1", "Patrol_IA_IRAN_2"}
     local prefijo = "IRAN air "
-    local rangoDeteccion = 50 * 1852
-    local rangoEnganche = 40 * 1852
+    local rangoDeteccion = 70 * 1852
+    local rangoEnganche = 55 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {
