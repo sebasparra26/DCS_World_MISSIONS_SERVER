@@ -550,7 +550,7 @@ do
     local prefijo = "USA hel "
     local rangoDeteccion = 60 * 1852
     local rangoEnganche = 50 * 1852
-    local debugMensajes = true
+    local debugMensajes = false
 
     local categoriasPermitidas = {
         [Unit.Category.AIRPLANE]   = true,
