@@ -367,8 +367,8 @@ do
     local nombre = "PATRULLA_USSR_AIR"
     local templates = { "Patrol_IA_USSR_1", "Patrol_IA_USSR_2", "Patrol_IA_USSR_3", "Patrol_IA_USSR_4" }
     local prefijo = "USSR air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
+    local rangoDeteccion = 90 * 1852
+    local rangoEnganche = 70 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {
@@ -548,8 +548,8 @@ do
     local nombre = "PATRULLA_ROMANIA_AIR"
     local templates = { "Patrol_IA_ROMANIA_1", "Patrol_IA_ROMANIA_2", "Patrol_IA_ROMANIA_3" }
     local prefijo = "ROMANIA air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
+    local rangoDeteccion = 80 * 1852
+    local rangoEnganche = 60 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {

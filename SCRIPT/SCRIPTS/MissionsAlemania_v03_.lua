@@ -1,27 +1,19 @@
 -- Configuración del spawn
-local spawnStart = 09    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 16     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
-local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
+local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
+local spawnEnd = 9     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local groupNamePrefix = "TGT2_"  -- Prefijo común de los grupos
 local spawnZone = "Zone_Helis_02"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
 local deathMessage = "Grupo destruido."  -- Mensaje que se muestra cuando un grupo muere
 local activationMessages = {
-    "Misión: Los Enemigos se han tomado han desplegado tropas al norte de Schwinfurt , Destruyelos. --- Ubicación de la mision en F10", --01
-    "Misión: Los Enemigos han cruzado el muro con equipo belico, poniendo en riesgo las negociacionesde la UN, Destruyelos antes que tomen Ventaja --- Ubicación de la mision en F10",--02
-    "Misión: Los Enemigos han desplegado misiles SMERCH en la posición, destruyelos. --- Ubicación de la mision en F10",--03
-    "Misión: Los Enemigos han tomado el Helipuerto de Old Orote y han Desplegado un sistema de cañones antiaereos. Destruyelos. --- Ubicación de la mision en F10",--04
-    "Misión: Los Enemigos se tomaron la ciudad de Braunschweig, se han desplegado en el bosque de hact, destruyelo. --- Ubicación de la mision en F10",--05
-    "Misión: Los Enemigos se desplegaron en la estacion de trenes de wach, eliminalos. --- Ubicación de la mision en F10",--06
-    "Misión: Los enemigos tomaron un condominio cerca de los acueductos al norte, destruyelos. --- Ubicación de la mision en F10",--07
-    "Misión: Los enemigos se tomaron una ciudad al occidente de Lubeck, intercepta y destruye. --- Ubicación de la mision en F10",--08
-    "Misión: Los enemigos tomaron un condominio cerca de los acueductos al norte, destruyelos. NDB 680 Mhz - Interceptado  --- Ubicación de la mision en F10",--09 ---------------Segundas
-    "Misión: Los enemigos se tomaron una ciudad al Norte de Hannover, intercepta y destruye. NDB 330 Mhz - Interceptado --- Ubicación de la mision en F10",--10
-    "Misión: Los Enemigos han desplegado misiles SMERCH en la posición, destruyelos. NDB 125 Mhz - Interceptado --- Ubicación de la mision en F10",--11
-    "Misión: Los Enemigos han tomado el Helipuerto de Old Orote y han Desplegado un sistema de cañones antiaereos y Smerch. Destruyelos. NDB 300 Mhz - Interceptado --- Ubicación de la mision en F10",--12
-    "Misión: Los Enemigos se tomaron una factoria al sur, destruyelo. NDB 480 Mhz - Interceptado --- Ubicación de la mision en F10",--13
-    "Misión: Los Enemigos se desplegaron en la estacion de trenes de wach, eliminalos. NDB 220 Mhz - Interceptado --- Ubicación de la mision en F10",--14
-    "Misión: Los enemigos tomaron un condominio cerca de los acueductos al norte, destruyelos. NDB 580 Mhz - Interceptado --- Ubicación de la mision en F10",--15
-    "Misión: Los enemigos se tomaron una ciudad al occidente de Lubeck, intercepta y destruye. NDB 420 Mhz - Interceptado --- Ubicación de la mision en F10"--16
+    "Misión: Los Enemigos se han tomado han desplegado tropas al norte de Schwinfurt , Destruyelos. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos han cruzado el muro con equipo belico, poniendo en riesgo las negociacionesde la UN, Destruyelos antes que tomen Ventaja --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos han desplegado misiles SMERCH en la posición, destruyelos. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos han tomado el Helipuerto de Old Orote y han Desplegado un sistema de cañones antiaereos. Destruyelos. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos se tomaron la ciudad de Braunschweig, se han desplegado en el bosque de hact, destruyelo. --- Ubicación de la mision en F10",
+    "Misión: Los Enemigos se desplegaron en la estacion de trenes de wach, eliminalos. --- Ubicación de la mision en F10",
+    "Misión: Los enemigos tomaron un condominio cerca de los acueductos al norte, destruyelos. --- Ubicación de la mision en F10",
+    "Misión: Los enemigos se tomaron una ciudad al occidente de Lubeck, intercepta y destruye. --- Ubicación de la mision en F10"
 }  -- Mensajes de activación personalizados
 local endMessage = "Todos los grupos han muerto. Script finalizado."  -- Mensaje al finalizar
 local spawnInterval = 15  -- Intervalo de tiempo entre activaciones (en segundos)
@@ -33,7 +25,7 @@ local deathValue = 2  -- Valor de la bandera de muerte
 
 -- Parámetros de configuración para los Draws
 local drawRadius = 10000  -- Radio en metros
-local drawColor = {225, 250, 0}  -- Color en formato RGB (verde en este caso)
+local drawColor = {255, 0, 0}  -- Color en formato RGB (verde en este caso)
 local drawLife = 0  -- Tiempo de vida del marcador (0 significa que no desaparecerá solo)
 local drawVisible = true  -- Si el marcador es visible
 
@@ -49,7 +41,7 @@ end
 local activeGroup = nil  -- Grupo actualmente activo
 local deadGroupsCount = 0  -- Contador de grupos muertos
 local scriptActive = true  -- Bandera para controlar el ciclo
-local drawName = "TestCircle"  -- Nombre para el draw
+local drawName = "TestCircle2"  -- Nombre para el draw
 local markerId = nil  -- ID del marcador
 
 -- Función para crear una marca en el mapa
@@ -70,7 +62,7 @@ local function createDrawForActiveGroup(group)
         mist.marker.add({
             name = drawName,
             type = 'circle',  -- Tipo de marcador: puede ser 'circle', 'ellipse', etc.
-            fillColor = {225, 250, 0, 72},
+            fillColor = {255, 0, 0, 72},
             lineType = 4,
             point = {x = pos.x, y = 0, z = pos.z},  -- Coordenadas del grupo (X, Z)
             radius = drawRadius,  -- Radio en metros
