@@ -66,7 +66,8 @@ aeropuertos = {
     ["Spangdahlem"] = { position = {x = -426582, y = 0, z = -987862}, radius = 10000 }, --Metric: X-00426582 Z-00987862
     ["Ramstein"] = { position = {x = -498686, y = 0, z = -934642}, radius = 10000 }, --Metric: X-00498686 Z-00934642
     ["Buchel"] = { position = {x = -410062, y = 0, z = -958002}, radius = 10000 }, -- Metric: X-00410062 Z-00958002
-    ["Wiesbaden"] = { position = {x = -440103, y = 0, z = -70706}, radius = 10000 }, --Metric: X-00440103 Z-00870706
+    ["Wiesbaden"] = { position = {x = -440074, y = 0, z = -870705}, radius = 10000 }, --Metric: X-00440074 Z-00870705
+
     ["Buckeburg"] = { position = {x = -202302, y = 0, z = -776161}, radius = 10000 }, --Metric: X-00202302 Z-00776161
     ["Hahn"] = { position = {x = -437823, y = 0, z = -948207}, radius = 5000 }, --Metric: X-00437823 Z-00948207
     ["Mending"] = { position = {x = -392152, y = 0, z = -936096}, radius = 5000 }, --Metric: X-00392152 Z-00936096

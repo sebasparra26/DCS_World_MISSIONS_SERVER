@@ -73,57 +73,85 @@ local function updateTankerStatusMenu()
 end
 
 -- Función para agregar un nuevo tanquero y actualizar el submenú
-local function addNewTanker(groupName, tankerInfo, position, direction)
-    -- Verificar si el tanquero ya está en la lista para evitar duplicados
+-- Reemplaza la definición original de addNewTanker por esta:
+local function addNewTanker(groupName, tankerInfo, point1, point2, heading)
     if isTankerExist(groupName) then
         trigger.action.outTextForCoalition(coalition.side.BLUE, "Este tanquero ya está desplegado.", 10)
-        return -- Ya existe, no lo agregamos de nuevo
+        return
     end
+
+    -- Parámetros fijos de altitud y velocidad
+    local altitude = 7620      -- 25 000 ft en metros
+    local speed    = 154.4     -- 300 kt en m/s
 
     -- TACAN par entre 2 y 126
     local tacanChannel = math.random(1, 63) * 2
-
     -- Frecuencia par entre 225 y 399 MHz
     local rawFreq = math.floor((225 + math.random() * (399 - 225)) * 10) / 10
     local evenFreq = math.floor(rawFreq)
-    if evenFreq % 2 ~= 0 then
-        evenFreq = evenFreq + 1
-    end
+    if evenFreq % 2 ~= 0 then evenFreq = evenFreq + 1 end
     local frequency = evenFreq + 0.0
 
     local callsignNumber = math.random(111, 999)
 
+    -- Registro interno para menú de estado
     table.insert(tankerList, {
-        name = "Unit_" .. math.random(1000,9999),
-        type = tankerInfo.type,
-        tacanChannel = tacanChannel,
-        frequency = frequency,
-        groupName = groupName,
+        name        = "Unit_" .. math.random(1000,9999),
+        type        = tankerInfo.type,
+        tacanChannel= tacanChannel,
+        frequency   = frequency,
+        groupName   = groupName,
         callsignStr = tostring(callsignNumber)
     })
 
+    -- Construcción del grupo con ruta y tarea de reabastecimiento
     local groupData = {
         category = Group.Category.AIRPLANE,
-        country = tankerCountry,
-        name = groupName,
-        units = { {
-            type = tankerInfo.type,
-            name = "Unit_" .. math.random(1000,9999),
-            skill = "High",
-            x = position.x,
-            y = position.y,
-            alt = 7620, -- 25,000 ft
-            alt_type = "BARO",
-            heading = direction.heading,
-            speed = 154.4, -- 300 kt en m/s
-            payload = {},
-            frequency = frequency,
+        country  = tankerCountry,
+        name     = groupName,
+        units = {{
+            type       = tankerInfo.type,
+            name       = "Unit_" .. math.random(1000,9999),
+            skill      = "High",
+            x          = point1.x,
+            y          = point1.y,
+            alt        = altitude,
+            alt_type   = "BARO",
+            heading    = heading,
+            speed      = speed,
+            payload    = {},
+            frequency  = frequency,
             communication = true,
-            callsign = { tankerInfo.callsign[1], tankerInfo.callsign[2], callsignNumber },
-            task = {}
-        } },
+            callsign   = { tankerInfo.callsign[1], tankerInfo.callsign[2], callsignNumber },
+            -- aquí asignamos la tarea de tanker para que responda a peticiones
+            task = {
+                id     = 'Tanker',
+                params = {}
+            }
+        }},
         route = {
-            points = {}
+            points = {
+                {
+                    type     = "Turning Point",
+                    id       = 1,
+                    x        = point1.x,
+                    y        = point1.y,
+                    alt      = altitude,
+                    alt_type = "BARO",
+                    speed    = speed
+                },
+                {
+                    type     = "Turning Point",
+                    id       = 2,
+                    x        = point2.x,
+                    y        = point2.y,
+                    alt      = altitude,
+                    alt_type = "BARO",
+                    speed    = speed
+                }
+            },
+            -- indicamos que hagan el circuito en bucle
+            loop = true
         }
     }
 
@@ -132,55 +160,24 @@ local function addNewTanker(groupName, tankerInfo, position, direction)
     end)
 
     if success then
-        trigger.action.outTextForCoalition(coalition.side.BLUE, string.format(
-            "Tanquero %s desplegado.\nTACAN: %dX\nFrecuencia: %.1f MHz", 
-            tankerInfo.type, tacanChannel, frequency
-        ), 60)
-        -- Actualizar el submenú de tanqueros activos
+        trigger.action.outTextForCoalition(coalition.side.BLUE,
+            string.format("Tanquero %s desplegado.\nTACAN: %dX\nFrecuencia: %.1f MHz",
+                tankerInfo.type, tacanChannel, frequency),
+            60
+        )
         updateTankerStatusMenu()
     else
-        trigger.action.outTextForCoalition(coalition.side.BLUE, "Error al crear el tanquero: " .. tostring(err), 10)
+        trigger.action.outTextForCoalition(coalition.side.BLUE,
+            "Error al desplegar tanquero: "..tostring(err), 10
+        )
     end
 end
 
--- Event handler para colocar marcador
-local handler = {}
+-- Y en tu manejador de evento, reemplaza la llamada:
+--   addNewTanker(groupName, tankerInfo, point1, direction)
+-- por esta versión que pasa también point2 y heading:
+addNewTanker(groupName, tankerInfo, point1, point2, heading)
 
-function handler:onEvent(event)
-    if not (event.id == world.event.S_EVENT_MARK_ADDED or event.id == world.event.S_EVENT_MARK_CHANGE) then return end
-    if not event.text or not selectedTankerType then return end
-
-    local text = string.lower(event.text)
-    if text ~= "tankerh" and text ~= "tankerv" then return end
-
-    local pos = event.pos
-    if not pos then
-        trigger.action.outTextForCoalition(coalition.side.BLUE, "Error al obtener la posición del marcador.", 10)
-        return
-    end
-
-    local tankerInfo = tankerTypes[selectedTankerType]
-    local altitude = 7620 -- 25,000 ft
-    local speed = 154.4 -- 300 kt en m/s
-    local halfDistance = 15 * 1852 -- 15 NM
-
-    local point1, point2, direction, heading
-    if text == "tankerh" then
-        point1 = { x = pos.x, y = pos.z - halfDistance }
-        point2 = { x = pos.x, y = pos.z + halfDistance }
-        direction = "Este-Oeste"
-        heading = 90
-    else
-        point1 = { x = pos.x - halfDistance, y = pos.z }
-        point2 = { x = pos.x + halfDistance, y = pos.z }
-        direction = "Sur-Norte"
-        heading = 180
-    end
-
-    local groupName = "Tanker_" .. selectedTankerType .. "_" .. math.random(1000,9999)
-    
-    -- Agregar el tanquero y actualizar el menú
-    addNewTanker(groupName, tankerInfo, point1, direction)
 
     selectedTankerType = nil
 end
