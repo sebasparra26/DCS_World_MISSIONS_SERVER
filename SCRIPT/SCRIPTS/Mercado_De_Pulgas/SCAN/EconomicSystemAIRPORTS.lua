@@ -3,9 +3,9 @@ local debugActivo = false
 
 -- Colores para el marcador
 local coloresPorCoalicion = {
-    [1] = { contorno = {255, 0, 0, 255}, relleno = {255, 0, 0, 100} },
-    [2] = { contorno = {0, 0, 255, 255}, relleno = {0, 0, 255, 100} },
-    [0] = { contorno = {255, 255, 255, 255}, relleno = {255, 255, 255, 100} }
+    [1] = { contorno = {255, 0, 0, 255}, relleno = {255, 0, 0, 30} },
+    [2] = { contorno = {0, 0, 255, 255}, relleno = {0, 0, 255, 30} },
+    [0] = { contorno = {255, 255, 255, 255}, relleno = {255, 255, 255, 30} }
 }
 
 coalicionPorBase = coalicionPorBase or {}

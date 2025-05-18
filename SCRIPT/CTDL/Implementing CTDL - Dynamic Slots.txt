@@ -1,0 +1,41 @@
+Implementing CTDL - Dynamic Slots
+
+1 	- Triggers - MISSION START (Define loading mode)
+	- Conditions - TYPE - FLAG IS FALSE (setToFlagIsFalseToEnable)
+	- Actions - DO SCRIPT (CTLD_DYNAMIC_PATH = "l10n/DEFAULT/")
+
+2	- Triggers - MISSION START (MistLoad)
+	- Conditions - "EMPTY"
+	- Actions - DO SCRIPT FILE ("mist.lua")
+	          - MESSAGE TO ALL ("LOAD MIST"), Seconds = 20,
+
+3	- Triggers - MISSION START (SOUNDCTDL)
+	- Conditions - "EMPTY"
+	- Actions - SOUND TO COUNTRY (Canada = "beacon.ogg")
+		  - SOUND TO COUNTRY (Australia = "beaconsilent.ogg")
+
+4	- Triggers - MISSION START (Load CTLD-i18n - static)
+	- Conditions - TYPE - LUA PREDICATE (return CTLD_DYNAMIC_PATH == nil or CTLD_SECONDARY_PATH == nil)
+	- Actions - MESSAGE TO ALL ("LOAD CTDL-I18n"), Seconds = 20,
+		  - DO SCRIPT FILE ("CTDL-i18n.lua")
+
+5	- Triggers - MISSION START (Load CTLD - static)
+	- Conditions - TYPE - LUA PREDICATE (return CTLD_DYNAMIC_PATH == nil or CTLD_SECONDARY_PATH == nil)
+	- Actions - MESSAGE TO ALL ("LOAD CTDL"), Seconds = 20,
+		  - DO SCRIPT FILE ("CTDL.lua")
+
+6	- Triggers - MISSION START (Load CTLD-i18n - dynamic)
+	- Conditions - TYPE - LUA PREDICATE (return CTLD_DYNAMIC_PATH ~= nil)
+	- Actions - DO SCRIPT (dofile(CTLD_DYNAMIC_PATH .. "CTLD.lua"))
+
+7	- Triggers - MISSION START (Load CTLD - dynamic)
+	- Conditions - TYPE - LUA PREDICATE (return CTLD_DYNAMIC_PATH ~= nil)
+	- Actions - DO SCRIPT (dofile(CTLD_DYNAMIC_PATH .. "CTLD-i18n.lua"))
+
+3	- Triggers - MISSION START (LoaCSAR)
+	- Conditions - "EMPTY"
+	- Actions - SOUND TO COUNTRY (Brazil = "beacon.ogg")
+		  - SOUND TO COUNTRY (Hungary = "beaconsilent.ogg")
+		  - DO SCRIPT FILE ("CSAR.lua")
+	          - MESSAGE TO ALL ("LOAD CSAR"), Seconds = 20,
+		  

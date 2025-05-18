@@ -93,6 +93,10 @@ ctld.i18n["en"]["Mortar Squad Red"] = ""
 --- crates names
 ctld.i18n["en"]["Humvee - MG"] = ""
 ctld.i18n["en"]["Humvee - TOW"] = ""
+ctld.i18n["en"]["Heavy Tank - M-1 Abrams"] = ""
+ctld.i18n["en"]["Heavy Tank - Leopard"] = ""
+ctld.i18n["en"]["Med Tank - Bradley"] = ""
+ctld.i18n["en"]["Med Tank - Marder"] = ""
 ctld.i18n["en"]["Light Tank - MRAP"] = ""
 ctld.i18n["en"]["Med Tank - LAV-25"] = ""
 ctld.i18n["en"]["Heavy Tank - Abrams"] = ""
@@ -154,6 +158,7 @@ ctld.i18n["en"]["S-300 Grumble Big Bird SR"] = ""
 ctld.i18n["en"]["S-300 Grumble C2"] = ""
 ctld.i18n["en"]["S-300 Repair"] = ""
 ctld.i18n["en"]["Humvee - TOW - All crates"] = ""
+ctld.i18n["en"]["M-1 Abrams - All crates"] = ""
 ctld.i18n["en"]["Light Tank - MRAP - All crates"] = ""
 ctld.i18n["en"]["Med Tank - LAV-25 - All crates"] = ""
 ctld.i18n["en"]["Heavy Tank - Abrams - All crates"] = ""
@@ -392,7 +397,7 @@ end
 -- ************************************************************************
 ctld.staticBugWorkaround = false --  DCS had a bug where destroying statics would cause a crash. If this happens again, set this to TRUE
 
-ctld.disableAllSmoke = true -- if true, all smoke is diabled at pickup and drop off zones regardless of settings below. Leave false to respect settings below
+ctld.disableAllSmoke = false -- if true, all smoke is diabled at pickup and drop off zones regardless of settings below. Leave false to respect settings below
 
 -- Allow units to CTLD by aircraft type and not by pilot name - this is done everytime a player enters a new unit
 ctld.addPlayerAircraftByType = true
@@ -407,22 +412,22 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 -- to use the other method.
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to drop smoke
-ctld.maxExtractDistance = 2000 -- max distance from vehicle to troops to allow a group extraction
-ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics to allow a loading or spawning operation
-ctld.maximumSearchDistance = 50000 -- max distance for troops to search for enemy
-ctld.maximumMoveDistance = 30000 -- max distance for troops to move from drop point if no enemy is nearby
+ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
+ctld.maximumDistanceLogistic = 8000 -- max distance from vehicle to logistics to allow a loading or spawning operation
+ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
+ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
 ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130
                          -- also works as maximum size of group that'll fit into a helicopter unless overridden
 ctld.enableFastRopeInsertion = true -- allows you to drop troops by fast rope
 ctld.fastRopeMaximumHeight = 18.28 -- in meters which is 60 ft max fast rope (not rappell) safe height
 ctld.vehiclesForTransportRED = { "BRDM-2", "BTR_D" } -- vehicles to load onto Il-76 - Alternatives {"Strela-1 9P31","BMP-1"}
-ctld.vehiclesForTransportBLUE = { "M4_Tractor", "M8_Greyhound" } -- vehicles to load onto c130 - Alternatives {"M1128 Stryker MGS","M1097 Avenger"}
+ctld.vehiclesForTransportBLUE = { "M1045 HMMWV TOW", "M1043 HMMWV Armament" } -- vehicles to load onto c130 - Alternatives {"M1128 Stryker MGS","M1097 Avenger"}
 ctld.vehiclesWeight = {
     ["BRDM-2"] = 7000,
     ["BTR_D"] = 8000,
-    ["M4_Tractor"] = 1500,
-    ["M8_Greyhound"] = 1800
+    ["M1045 HMMWV TOW"] = 3220,
+    ["M1043 HMMWV Armament"] = 2500
 }
 
 ctld.spawnRPGWithCoalition = true --spawns a friendly RPG unit with Coalition forces
@@ -436,14 +441,14 @@ ctld.cratesRequiredForFOB = 3 -- The amount of crates required to build a FOB. O
 -- To build the FOB entirely out of small crates you will need ctld.cratesRequiredForFOB * 3
 
 ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a created FOB
-ctld.buildTimeFOB = 30 --time in seconds for the FOB to be built
-ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
+ctld.buildTimeFOB = 120 --time in seconds for the FOB to be built
+ctld.crateWaitTime = 10 -- time in seconds to wait before you can spawn another crate
 ctld.forceCrateToBeMoved = true -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
 ctld.deployedBeaconBattery = 30 -- the battery on deployed beacons will last for this number minutes before needing to be re-deployed
 ctld.enabledRadioBeaconDrop = true -- if its set to false then beacons cannot be dropped by units
-ctld.allowRandomAiTeamPickups = true -- Allows the AI to randomize the loading of infantry teams (specified below) at pickup zones
+ctld.allowRandomAiTeamPickups = false -- Allows the AI to randomize the loading of infantry teams (specified below) at pickup zones
 
 -- Simulated Sling load configuration
 ctld.minimumHoverHeight = 7.5 -- Lowest allowable height for crate hover
@@ -507,14 +512,14 @@ ctld.JTAC_allow9Line = true -- if true, allow players to ask for a 9Line (indivi
 ctld.pickupZones = {
     { "pickzone1", "blue", -1, "yes", 2 },
     { "pickzone2", "blue", -1, "yes", 2 },
-    { "pickzone3", "blue", -1, "yes", 2 },
-    { "pickzone4", "blue", -1, "yes", 2 },
-    { "pickzone5", "blue", -1, "yes", 2 },
-    { "pickzone6", "blue", -1, "yes", 2 },
-    { "pickzone7", "blue", -1, "yes", 2 },
-    { "pickzone8", "blue", -1, "yes", 2 },
-    { "pickzone9", "blue", -1, "yes", 2 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
-    { "pickzone10", "blue", -1, "yes", 2 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
+    { "pickzone3", "none", -1, "yes", 0 },
+    { "pickzone4", "none", -1, "yes", 0 },
+    { "pickzone5", "none", -1, "yes", 0 },
+    { "pickzone6", "none", -1, "yes", 0 },
+    { "pickzone7", "none", -1, "yes", 0 },
+    { "pickzone8", "none", -1, "yes", 0 },
+    { "pickzone9", "none", 5, "yes", 1 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
+    { "pickzone10", "none", 10, "yes", 2 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
 
     { "pickzone11", "blue", 20, "no", 2 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
     { "pickzone12", "red", 20, "no", 1 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
@@ -532,52 +537,42 @@ ctld.pickupZones = {
 
 -- dropOffZones = {"name","smoke colour",0,side 1 = Red or 2 = Blue or 0 = Both sides}
 ctld.dropOffZones = {
-    { "dropzone1", "orange", 2 },
+    { "dropzone1", "green", 2 },
     { "dropzone2", "blue", 2 },
     { "dropzone3", "orange", 2 },
-    { "dropzone4", "orange", 2 },
-    { "dropzone5", "orange", 2 },
-    { "dropzone6", "orange", 2 },
-    { "dropzone7", "orange", 2 },
-    { "dropzone8", "orange", 2 },
-    { "dropzone9", "orange", 2 },
-    { "dropzone10", "orange", 2 },
-    { "dropzone11", "orange", 2 },
-    { "dropzone12", "orange", 2 },
-    { "dropzone13", "orange", 2 },
-    { "dropzone14", "orange", 2 },
-    { "dropzone15", "orange", 2 },
+    { "dropzone4", "none", 2 },
+    { "dropzone5", "none", 1 },
+    { "dropzone6", "none", 1 },
+    { "dropzone7", "none", 1 },
+    { "dropzone8", "none", 1 },
+    { "dropzone9", "none", 1 },
+    { "dropzone10", "none", 1 },
 }
 
 --wpZones = { "Zone name", "smoke color",  "ACTIVE (yes/no)", "side (0 = Both sides / 1 = Red / 2 = Blue )", }
 ctld.wpZones = {
-    { "wpzone1", "green","yes", 2 },
-    { "wpzone2", "green","yes", 2 },
-    { "wpzone3", "green","yes", 2 },
-    { "wpzone4", "green","yes", 2 },
-    { "wpzone5", "green","yes", 2 },
-    { "wpzone20", "blue","yes", 2 },
-    { "wpzone7", "blue","yes", 2 },
-    { "wpzone8", "blue","yes", 2 },
-    { "wpzone9", "blue","yes", 2 },
-    { "wpzone10", "blue","yes", 2 },
-    { "wpzone11", "blue","yes", 2 },
-    { "wpzone12", "blue","yes", 2 },
-    { "wpzone13", "blue","yes", 2 },
-    { "wpzone14", "blue","yes", 2 },
-    { "wpzone15", "blue","yes", 2 },
-    { "wpzone16", "blue","yes", 2 },
-    { "wpzone17", "blue","yes", 2 },
-    { "wpzone18", "blue","yes", 2 },
-    { "wpzone19", "blue","yes", 2 },
-    { "wpzone20", "blue","yes", 2 }, -- Both sides as its set to 0
+    { "wpzone1", "none","yes", 2 },
+    { "wpzone2", "none","yes", 2 },
+    { "wpzone3", "none","yes", 2 },
+    { "wpzone4", "none","yes", 2 },
+    { "wpzone5", "none","yes", 2 },
+    { "wpzone6", "none","yes", 2 },
+    { "wpzone7", "none","yes", 2 },
+    { "wpzone8", "none","yes", 2 },
+    { "wpzone9", "none","yes", 2 },
+    { "wpzone10", "none","yes", 2 },
+    { "wpzone11", "none","yes", 2 },
+    { "wpzone12", "none","yes", 2 },
+    { "wpzone13", "none","yes", 2 },
+    { "wpzone14", "none","yes", 2 },
+    { "wpzone15", "none","yes", 2 }, -- Both sides as its set to 0
 }
 
 -- ******************** Transports names **********************
 -- If ctld.addPlayerAircraftByType = True, comment or uncomment lines to allow aircraft's type carry CTLD
 ctld.aircraftTypeTable = {
     --%%%%% MODS %%%%%
-        "Bronco-OV-10A",
+        --"Bronco-OV-10A",
         "Hercules",
         --"SK-60",
         "UH-60L",
@@ -591,7 +586,7 @@ ctld.aircraftTypeTable = {
         "SA342L",
         "SA342M",
         "SA342Mistral",
-        "SA342Minigun",
+        --"SA342Minigun",
         "UH-1H",
         "CH-47Fbl1",
 
@@ -616,7 +611,7 @@ ctld.aircraftTypeTable = {
         --"Fw 190A8",
         --"FW-190D9",
         --"I-16",
-        "MosquitoFBMkVI",
+        --"MosquitoFBMkVI",
         --"P-47D-30",
         --"P-47D-40",
         --"P-51D",
@@ -806,8 +801,6 @@ ctld.logisticUnits = {
 ctld.vehicleTransportEnabled = {
     "76MD", -- the il-76 mod doesnt use a normal - sign so il-76md wont match... !!!! GRR
     "Hercules",
-    "C-47",
-    
 }
 
 -- ************** Units able to use DCS dynamic cargo system ******************
@@ -829,8 +822,8 @@ ctld.dynamicCargoUnits = {
 ctld.unitLoadLimits = {
     -- Remove the -- below to turn on options
     -- ["SA342Mistral"] = 4,
-    -- ["SA342L"] = 4,
-    -- ["SA342M"] = 4,
+    --["SA342L"] = 4,
+ --["SA342M"] = 4,
 
     --%%%%% MODS %%%%%
         --["Bronco-OV-10A"] = 4,
@@ -842,10 +835,10 @@ ctld.unitLoadLimits = {
     --%%%%% CHOPPERS %%%%%
         ["Mi-8MT"] = 16,
         ["Mi-24P"] = 10,
-        ["SA342L"] = 4,
-        ["SA342M"] = 4,
-        ["SA342Mistral"] = 4,
-        ["SA342Minigun"] = 3,
+        ["SA342L"] = 3,
+        ["SA342M"] = 3,
+        --["SA342Mistral"] = 4,
+        --["SA342Minigun"] = 3,
         ["UH-1H"] = 8,
         ["CH-47Fbl1"] = 33,
 
@@ -870,7 +863,7 @@ ctld.unitLoadLimits = {
         --["Fw 190A8"] = 1,
         --["FW-190D9"] = 1,
         --["I-16"] = 1,
-        ["MosquitoFBMkVI"] = 6,
+        --["MosquitoFBMkVI"] = 1,
         --["P-47D-30"] = 1,
         --["P-47D-40"] = 1,
         --["P-51D"] = 1,
@@ -878,19 +871,16 @@ ctld.unitLoadLimits = {
         --["SpitfireLFMkIX"] = 1,
         --["SpitfireLFMkIXCW"] = 1,
         --["TF-51D"] = 1,
-        ["C-47"] = 32,
 }
 
 -- Put the name of the Unit you want to enable loading multiple crates
 ctld.internalCargoLimits = {
 
     -- Remove the -- below to turn on options
-    ["Mi-8MT"] = 8,
-    ["CH-47Fbl1"] = 10,
-    ["UH-1H"] = 2,
-    ["Mi-24P"] = 4,
-    ["MosquitoFBMkVI"] = 10,
-    ["C-47"] = 60,
+    ["Mi-8MT"] = 3,
+    ["CH-47Fbl1"] = 5,
+    --["UH-1H"] = 2,
+    ["Mi-24P"] = 1,
 }
 
 
@@ -928,9 +918,9 @@ ctld.unitActions = {
         ["Mi-24P"] = {crates=true, troops=true},
         ["SA342L"] = {crates=false, troops=true},
         ["SA342M"] = {crates=false, troops=true},
-        ["SA342Mistral"] = {crates=false, troops=true},
-        ["SA342Minigun"] = {crates=false, troops=true},
-        ["UH-1H"] = {crates=true, troops=true},
+        --["SA342Mistral"] = {crates=false, troops=true},
+        --["SA342Minigun"] = {crates=false, troops=true},
+        ["UH-1H"] = {crates=false, troops=true},
         ["CH-47Fbl1"] = {crates=true, troops=true},
 
     --%%%%% AIRCRAFTS %%%%%
@@ -954,7 +944,7 @@ ctld.unitActions = {
         --["Fw 190A8"] = {crates=true, troops=false},
         --["FW-190D9"] = {crates=true, troops=false},
         --["I-16"] = {crates=true, troops=false},
-        ["MosquitoFBMkVI"] = {crates=true, troops=true},
+        --["MosquitoFBMkVI"] = {crates=true, troops=true},
         --["P-47D-30"] = {crates=true, troops=false},
         --["P-47D-40"] = {crates=true, troops=false},
         --["P-51D"] = {crates=true, troops=false},
@@ -962,7 +952,6 @@ ctld.unitActions = {
         --["SpitfireLFMkIX"] = {crates=true, troops=false},
         --["SpitfireLFMkIXCW"] = {crates=true, troops=false},
         --["TF-51D"] = {crates=true, troops=true},
-        ["C-47"] = {crates=true, troops=true},
 }
 
 -- ************** WEIGHT CALCULATIONS FOR INFANTRY GROUPS ******************
@@ -1003,15 +992,15 @@ ctld.loadableGroups = {
     {name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
     {name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
     {name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
-    {name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
-    {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
-    {name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
-    {name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
-    {name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
-    {name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
-    {name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
-    {name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
-    {name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
+    --{name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
+    --{name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
+    --{name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
+    --{name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
+    --{name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
+    --{name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
+    --{name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
+    --{name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
+    --{name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
     -- {name = ctld.i18n_translate("Mortar Squad Red"), inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
 }
 
@@ -1032,15 +1021,14 @@ ctld.spawnableCrates = {
         -- Some descriptions are filtered to determine if JTAC or not!
 
         --- BLUE
-        { weight = 1000.01, desc = ctld.i18n_translate("Humvee - MG"), unit = "M8_Greyhound", side = 2 },  --careful with the names as the script matches the desc to JTAC types
-        { weight = 1000.02, desc = ctld.i18n_translate("Humvee - TOW"), unit = "M4_Tractor", side = 2, cratesRequired = 2 },
-        { multiple = {1000.02, 1000.02}, desc = ctld.i18n_translate("Humvee - TOW - All crates"), side = 2 },
-        { weight = 1000.03, desc = ctld.i18n_translate("Light Tank - MRAP"), unit="MaxxPro_MRAP", side = 2, cratesRequired = 2 },
-        { multiple = {1000.03, 1000.03}, desc = ctld.i18n_translate("Light Tank - MRAP - All crates"), side = 2 },
-        { weight = 1000.04, desc = ctld.i18n_translate("Med Tank - LAV-25"), unit="LAV-25", side = 2, cratesRequired = 2 },
-        { multiple = {1000.04, 1000.04, 1000.04}, desc = ctld.i18n_translate("Med Tank - LAV-25 - All crates"), side = 2 },
-        { weight = 1000.05, desc = ctld.i18n_translate("Heavy Tank - Abrams"), unit="M1A2C_SEP_V3", side = 2, cratesRequired = 4 },
-        { multiple = {1000.05, 1000.05, 1000.05, 1000.05}, desc = ctld.i18n_translate("Heavy Tank - Abrams - All crates"), side = 2 },
+        { weight = 1000.01, desc = ctld.i18n_translate("Humvee - MG"), unit = "M1043 HMMWV Armament", side = 2 },  --careful with the names as the script matches the desc to JTAC types
+        { weight = 2000.02, desc = ctld.i18n_translate("Humvee - TOW"), unit = "M1045 HMMWV TOW", side = 2},
+        { weight = 3000.03, desc = ctld.i18n_translate("Med Tank - Bradley"), unit="M-2 Bradley", side = 2},
+        { weight = 3000.04, desc = ctld.i18n_translate("Med Tank - LAV-25"), unit="LAV-25", side = 2},
+        { weight = 3000.04, desc = ctld.i18n_translate("Med Tank - Marder"), unit="Marder", side = 2},
+        { weight = 4000.05, desc = ctld.i18n_translate("Heavy Tank - Leopard"), unit="Leopard1A3", side = 2},
+        { weight = 4000.05, desc = ctld.i18n_translate("Heavy Tank - Abrams"), unit="M-1 Abrams", side = 2},
+        --{ multiple = {1000.05, 1000.05, 1000.05, 1000.05}, desc = ctld.i18n_translate("Heavy Tank - Abrams - All crates"), side = 2 },
 
         --- RED
         { weight = 1000.11, desc = ctld.i18n_translate("BTR-D"), unit = "BTR_D", side = 1 },
@@ -1049,12 +1037,9 @@ ctld.spawnableCrates = {
     },
     ["Support"] = {
         --- BLUE
-        { weight = 1001.01, desc = ctld.i18n_translate("Hummer - JTAC"), unit = "Hummer", side = 2, cratesRequired = 2 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        { multiple = {1001.01, 1001.01}, desc = ctld.i18n_translate("Hummer - JTAC - All crates"), side = 2 },
-        { weight = 1001.02, desc = ctld.i18n_translate("M-818 Ammo Truck"), unit = "M 818", side = 2, cratesRequired = 2 },
-        { multiple = {1001.02, 1001.02}, desc = ctld.i18n_translate("M-818 Ammo Truck - All crates"), side = 2 },
-        { weight = 1001.03, desc = ctld.i18n_translate("M-978 Tanker"), unit = "M978 HEMTT Tanker", side = 2, cratesRequired = 2 },
-        { multiple = {1001.03, 1001.03}, desc = ctld.i18n_translate("M-978 Tanker - All crates"), side = 2 },
+        { weight = 2001.01, desc = ctld.i18n_translate("Hummer - JTAC"), unit = "Hummer", side = 2}, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
+        { weight = 2001.02, desc = ctld.i18n_translate("M-818 Ammo Truck"), unit = "M 818", side = 2},
+        { weight = 2001.03, desc = ctld.i18n_translate("M-978 Tanker"), unit = "M978 HEMTT Tanker", side = 2},
 
          --- RED
         { weight = 1001.11, desc = ctld.i18n_translate("SKP-11 - JTAC"), unit = "SKP-11", side = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
@@ -1112,60 +1097,60 @@ ctld.spawnableCrates = {
     ["SAM mid range"] = {
         --- BLUE
         -- HAWK System
-        { weight = 1004.01, desc = ctld.i18n_translate("HAWK Launcher"), unit = "Hawk ln", side = 2},
-        { weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar"), unit = "Hawk sr", side = 2 },
-        { weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar"), unit = "Hawk tr", side = 2 },
-        { weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP"), unit = "Hawk pcp" , side = 2 },
-        { weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR"), unit = "Hawk cwar" , side = 2 },
-        { weight = 1004.06, desc = ctld.i18n_translate("HAWK Repair"), unit = "HAWK Repair" , side = 2 },
-        { multiple = {1004.01, 1004.02, 1004.03}, desc = ctld.i18n_translate("HAWK - All crates"), side = 2 },
+        --{ weight = 1004.01, desc = ctld.i18n_translate("HAWK Launcher"), unit = "Hawk ln", side = 2},
+        --{ weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar"), unit = "Hawk sr", side = 2 },
+        --{ weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar"), unit = "Hawk tr", side = 2 },
+        --{ weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP"), unit = "Hawk pcp" , side = 2 },
+        --{ weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR"), unit = "Hawk cwar" , side = 2 },
+        --{ weight = 1004.06, desc = ctld.i18n_translate("HAWK Repair"), unit = "HAWK Repair" , side = 2 },
+        --{ multiple = {1004.01, 1004.02, 1004.03}, desc = ctld.i18n_translate("HAWK - All crates"), side = 2 },
         -- End of HAWK
 
         -- NASAMS Sysyem
-        { weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C"), unit = "NASAMS_LN_C", side = 2},
-        { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar"), unit = "NASAMS_Radar_MPQ64F1", side = 2 },
-        { weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post"), unit = "NASAMS_Command_Post", side = 2 },
-        { weight = 1004.14, desc = ctld.i18n_translate("NASAMS Repair"), unit = "NASAMS Repair", side = 2 },
-        { multiple = {1004.11, 1004.12, 1004.13}, desc = ctld.i18n_translate("NASAMS - All crates"), side = 2 },
+        --{ weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C"), unit = "NASAMS_LN_C", side = 2},
+       -- { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar"), unit = "NASAMS_Radar_MPQ64F1", side = 2 },
+        --{ weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post"), unit = "NASAMS_Command_Post", side = 2 },
+        --{ weight = 1004.14, desc = ctld.i18n_translate("NASAMS Repair"), unit = "NASAMS Repair", side = 2 },
+        --{ multiple = {1004.11, 1004.12, 1004.13}, desc = ctld.i18n_translate("NASAMS - All crates"), side = 2 },
         -- End of NASAMS
 
         --- RED
         -- KUB SYSTEM
-        { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher"), unit = "Kub 2P25 ln", side = 1},
-        { weight = 1004.22, desc = ctld.i18n_translate("KUB Radar"), unit = "Kub 1S91 str", side = 1 },
-        { weight = 1004.23, desc = ctld.i18n_translate("KUB Repair"), unit = "KUB Repair", side = 1},
-        { multiple = {1004.21, 1004.22}, desc = ctld.i18n_translate("KUB - All crates"), side = 1 },
+       -- { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher"), unit = "Kub 2P25 ln", side = 1},
+        --{ weight = 1004.22, desc = ctld.i18n_translate("KUB Radar"), unit = "Kub 1S91 str", side = 1 },
+        --{ weight = 1004.23, desc = ctld.i18n_translate("KUB Repair"), unit = "KUB Repair", side = 1},
+        --{ multiple = {1004.21, 1004.22}, desc = ctld.i18n_translate("KUB - All crates"), side = 1 },
         -- End of KUB
 
         -- BUK System
-        { weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher"), unit = "SA-11 Buk LN 9A310M1", side = 1},
-        { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar"), unit = "SA-11 Buk SR 9S18M1", side = 1},
-        { weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar"), unit = "SA-11 Buk CC 9S470M1", side = 1},
-        { weight = 1004.34, desc = ctld.i18n_translate("BUK Repair"), unit = "BUK Repair", side = 1},
-        { multiple = {1004.31, 1004.32, 1004.33}, desc = ctld.i18n_translate("BUK - All crates"), side = 1 },
+        --{ weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher"), unit = "SA-11 Buk LN 9A310M1", side = 1},
+       -- { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar"), unit = "SA-11 Buk SR 9S18M1", side = 1},
+        --{ weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar"), unit = "SA-11 Buk CC 9S470M1", side = 1},
+       -- { weight = 1004.34, desc = ctld.i18n_translate("BUK Repair"), unit = "BUK Repair", side = 1},
+        --{ multiple = {1004.31, 1004.32, 1004.33}, desc = ctld.i18n_translate("BUK - All crates"), side = 1 },
         -- END of BUK
     },
     ["SAM long range"] = {
         --- BLUE
         -- Patriot System
-        { weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher"), unit = "Patriot ln", side = 2 },
-        { weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar"), unit = "Patriot str" , side = 2 },
-        { weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS"), unit = "Patriot ECS", side = 2 },
+        --{ weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher"), unit = "Patriot ln", side = 2 },
+        --{ weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar"), unit = "Patriot str" , side = 2 },
+        --{ weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS"), unit = "Patriot ECS", side = 2 },
         -- { weight = 1005.04, desc = ctld.i18n_translate("Patriot ICC"), unit = "Patriot cp", side = 2 },
         -- { weight = 1005.05, desc = ctld.i18n_translate("Patriot EPP"), unit = "Patriot EPP", side = 2 },
-        { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional)"), unit = "Patriot AMG" , side = 2 },
-        { weight = 1005.07, desc = ctld.i18n_translate("Patriot Repair"), unit = "Patriot Repair" , side = 2 },
-        { multiple = {1005.01, 1005.02, 1005.03}, desc = ctld.i18n_translate("Patriot - All crates"), side = 2 },
+       -- { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional)"), unit = "Patriot AMG" , side = 2 },
+       -- { weight = 1005.07, desc = ctld.i18n_translate("Patriot Repair"), unit = "Patriot Repair" , side = 2 },
+        --{ multiple = {1005.01, 1005.02, 1005.03}, desc = ctld.i18n_translate("Patriot - All crates"), side = 2 },
         -- End of Patriot
 
         -- S-300 SYSTEM
-        { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C"), unit = "S-300PS 5P85C ln", side = 1 },
-        { weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR"), unit = "S-300PS 40B6M tr", side = 1 },
-        { weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR"), unit = "S-300PS 40B6MD sr", side = 1 },
-        { weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR"), unit = "S-300PS 64H6E sr", side = 1 },
-        { weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2"), unit = "S-300PS 54K6 cp", side = 1 },
-        { weight = 1005.16, desc = ctld.i18n_translate("S-300 Repair"), unit = "S-300 Repair", side = 1 },
-        { multiple = {1005.11, 1005.12, 1005.13, 1005.14, 1005.15}, desc = ctld.i18n_translate("Patriot - All crates"), side = 1 },
+       -- { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C"), unit = "S-300PS 5P85C ln", side = 1 },
+        --{ weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR"), unit = "S-300PS 40B6M tr", side = 1 },
+        --{ weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR"), unit = "S-300PS 40B6MD sr", side = 1 },
+        --{ weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR"), unit = "S-300PS 64H6E sr", side = 1 },
+        --{ weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2"), unit = "S-300PS 54K6 cp", side = 1 },
+        --{ weight = 1005.16, desc = ctld.i18n_translate("S-300 Repair"), unit = "S-300 Repair", side = 1 },
+        --{ multiple = {1005.11, 1005.12, 1005.13, 1005.14, 1005.15}, desc = ctld.i18n_translate("Patriot - All crates"), side = 1 },
         -- End of S-300
     },
     ["Drone"] = {
@@ -2674,16 +2659,16 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
 
         if _countOrTemplate.inf then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("soldier_wwii_us",_countOrTemplate.inf,_troops)
+                _troops = ctld.insertIntoTroopsArray("Soldier M4 GRG",_countOrTemplate.inf,_troops)
             else
-                _troops = ctld.insertIntoTroopsArray("soldier_wwii_us",_countOrTemplate.inf,_troops)
+                _troops = ctld.insertIntoTroopsArray("Infantry AK",_countOrTemplate.inf,_troops)
             end
             _weight = _weight + getSoldiersWeight(_countOrTemplate.inf, ctld.RIFLE_WEIGHT)
         end
 
         if _countOrTemplate.mg then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("soldier_wwii_us",_countOrTemplate.mg,_troops)
+                _troops = ctld.insertIntoTroopsArray("Soldier M249",_countOrTemplate.mg,_troops)
             else
                 _troops = ctld.insertIntoTroopsArray("Paratrooper AKS-74",_countOrTemplate.mg,_troops)
             end
@@ -2702,9 +2687,9 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
 
         if _countOrTemplate.jtac then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("soldier_wwii_us",_countOrTemplate.jtac,_troops, "JTAC")
+                _troops = ctld.insertIntoTroopsArray("Soldier M4 GRG",_countOrTemplate.jtac,_troops, "JTAC")
             else
-                _troops = ctld.insertIntoTroopsArray("soldier_wwii_us",_countOrTemplate.jtac,_troops, "JTAC")
+                _troops = ctld.insertIntoTroopsArray("Infantry AK",_countOrTemplate.jtac,_troops, "JTAC")
             end
             _hasJTAC = true
             _weight = _weight + getSoldiersWeight(_countOrTemplate.jtac, ctld.JTAC_WEIGHT + ctld.RIFLE_WEIGHT)
@@ -2713,11 +2698,11 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
     else
         for _i = 1, _countOrTemplate do
 
-            local _unitType = "soldier_wwii_us"
+            local _unitType = "Infantry AK"
 
             if _side == 2 then
                 if _i <=2 then
-                    _unitType = "soldier_wwii_us"
+                    _unitType = "Soldier M249"
                     _weight = _weight + getSoldiersWeight(1, ctld.MG_WEIGHT)
                 elseif ctld.spawnRPGWithCoalition and _i > 2 and _i <= 4 then
                     _unitType = "Paratrooper RPG-16"
@@ -2726,7 +2711,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
                     _unitType = "Soldier stinger"
                     _weight = _weight + getSoldiersWeight(1, ctld.MANPAD_WEIGHT)
                 else
-                    _unitType = "soldier_wwii_us"
+                    _unitType = "Soldier M4 GRG"
                     _weight = _weight + getSoldiersWeight(1, ctld.RIFLE_WEIGHT)
                 end
             else
@@ -2740,7 +2725,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
                     _unitType = "SA-18 Igla manpad"
                     _weight = _weight + getSoldiersWeight(1, ctld.MANPAD_WEIGHT)
                 else
-                    _unitType = "soldier_wwii_us"
+                    _unitType = "Infantry AK"
                     _weight = _weight + getSoldiersWeight(1, ctld.RIFLE_WEIGHT)
                 end
             end
@@ -2795,8 +2780,8 @@ end
 function ctld.loadTroops(_heli, _troops, _numberOrTemplate)
 
     -- load troops + vehicles if c130 or herc
-    -- "M4_Tractor"
-    -- "M8_Greyhound"
+    -- "M1045 HMMWV TOW"
+    -- "M1043 HMMWV Armament"
     local _onboard = ctld.inTransitTroops[_heli:getName()]
 
     --number doesnt apply to vehicles
