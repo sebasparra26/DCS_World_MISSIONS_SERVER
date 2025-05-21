@@ -63,7 +63,7 @@ end
 local activeGroup = nil  -- Grupo actualmente activo
 local deadGroupsCount = 0  -- Contador de grupos muertos
 local scriptActive = true  -- Bandera para controlar el ciclo
-local drawName = "TestCircle"  -- Nombre para el draw
+local drawName = "TestCircle2"  -- Nombre para el draw
 local markerId = nil  -- ID del marcador
 
 -- Función para crear una marca en el mapa
