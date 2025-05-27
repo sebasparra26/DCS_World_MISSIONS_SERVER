@@ -332,7 +332,7 @@ subvariantesAvion = {
 local destinosBase = {
 "Liwa AFB",
 --"Al Dhafra AFB",
-"Al-Bateen",
+--"Al-Bateen",
 --"Sas Al Nakheel",
 --"Abu Dhabi Intl",
 "Al Ain Intl",
@@ -340,25 +340,25 @@ local destinosBase = {
 "Al Minhad AFB",
 "Dubai Intl",
 "Sharjah Intl",
-"Fujairah intl",
+"Fujairah Intl",
 "Ras Al Khaimah Intl",
 "Khasab",
 "Bandar-e-Jask",
 "Sir Abu Nuayr",
 "Abu Musa Island",
 "Sirri Island",
-"Tunb Kochak",
-"Tunb Island AFB",
-"Bandar Lengeh",
+--"Tunb Kochak",
+--"Tunb Island AFB",
+--"Bandar Lengeh",
 "Kish Intl",
-"Lavan Island",
+--"Lavan Island",
 "Qeshm Island",
---"Havadarya",
-"Bandar Abbas intl",
-"Lar"
+"Havadarya",
+--"Bandar Abbas intl",
+"Lar",
 --"Jiroft",
 --"Shiraz Intl",
---"Kerman"
+"Kerman"
 }
 
 destinosPorSubvariante = {
@@ -607,7 +607,7 @@ end
 plantillasLogisticaB = {
     ["Liwa AFB"] = { template = "SuppliesBLUEToliwa", bandera = 100 },
     --["Al Dhafra AFB"] = { template = "SuppliesBLUEToDhafra", bandera = 101 },
-    ["Al-Bateen"] = { template = "SuppliesBLUEToBateen", bandera = 102 },
+    --["Al-Bateen"] = { template = "SuppliesBLUEToBateen", bandera = 102 },
     --["Sas Al Nakheel"] = { template = "SuppliesBLUEToNakheel", bandera = 103 },
     --["Abu Dhabi Intl"] = { template = "SuppliesBLUEToDhabi", bandera = 104 },
     ["Al Ain Intl"] = { template = "SuppliesBLUEToAin", bandera = 105 },
@@ -615,32 +615,32 @@ plantillasLogisticaB = {
     ["Al Minhad AFB"] = { template = "SuppliesBLUEToMinhad", bandera = 107 },
     ["Dubai Intl"] = { template = "SuppliesBLUEToDubai", bandera = 108 },
     ["Sharjah Intl"] = { template = "SuppliesBLUEToSharjah", bandera = 109 },
-    ["Fujairah intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110 },
+    ["Fujairah Intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110 },
     ["Ras Al Khaimah Intl"] = { template = "SuppliesBLUEToKhaimah", bandera = 111 },
     ["Khasab"] = { template = "SuppliesBLUEToKhasab", bandera = 112 },
     ["Bandar-e-Jask"] = { template = "SuppliesBLUEToJask", bandera = 113 },
     ["Sir Abu Nuayr"] = { template = "SuppliesBLUEToNauyr", bandera = 114 },
     ["Abu Musa Island"] = { template = "SuppliesBLUEToAbuMusa", bandera = 115 },
     ["Sirri Island"] = { template = "SuppliesBLUEToSirri", bandera = 116 },
-    ["Tunb Kochak"] = { template = "SuppliesBLUEToKochak", bandera = 117 },
-    ["Tunb Island AFB"] = { template = "SuppliesBLUEToTunbIsland", bandera = 118 },
-    ["Bandar Lengeh"] = { template = "SuppliesBLUEToLenge", bandera = 119 },
+    --["Tunb Kochak"] = { template = "SuppliesBLUEToKochak", bandera = 117 },
+    --["Tunb Island AFB"] = { template = "SuppliesBLUEToTunbIsland", bandera = 118 },
+    --["Bandar Lengeh"] = { template = "SuppliesBLUEToLenge", bandera = 119 },
     ["Kish Intl"] = { template = "SuppliesBLUEToKish", bandera = 120 },
-    ["Lavan Island"] = { template = "SuppliesBLUEToLavan", bandera = 121 },
+    --["Lavan Island"] = { template = "SuppliesBLUEToLavan", bandera = 121 },
     ["Qeshm Island"] = { template = "SuppliesBLUEToQeshm", bandera = 122},
-    --["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123 },
-    ["Bandar Abbas intl"] = { template = "SuppliesBLUEToAbbas", bandera = 124 },
-    ["Lar"] = { template = "SuppliesBLUEToLar", bandera = 125 }
+    ["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123 },
+    --["Bandar Abbas intl"] = { template = "SuppliesBLUEToAbbas", bandera = 124 },
+    ["Lar"] = { template = "SuppliesBLUEToLar", bandera = 125 },
     --["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126 },
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
-    --["Kerman"] = { template = "SuppliesBLUEToKerman", bandera = 128 }
+    ["Kerman"] = { template = "SuppliesBLUEToKerman", bandera = 128 }
 
 }
 
 recargoAeropuertoB = {
     ["Liwa AFB"] = 1.08,
     --["Al Dhafra AFB"] = 1.0,
-    ["Al-Bateen"] = 1.0,
+    --["Al-Bateen"] = 1.0,
     --["Sas Al Nakheel"] = 1.0,
     --["Abu Dhabi Intl"] = 1.0,
     ["Al Ain Intl"] = 1.2,
@@ -648,63 +648,63 @@ recargoAeropuertoB = {
     ["Al Minhad AFB"] = 1.26,
     ["Dubai Intl"] = 1.27,
     ["Sharjah Intl"] = 1.28,
-    ["Fujairah intl"] = 1.29,
+    ["Fujairah Intl"] = 1.29,
     ["Ras Al Khaimah Intl"] = 1.32,
     ["Khasab"] = 1.4,
     ["Bandar-e-Jask"] = 1.7,
     ["Sir Abu Nuayr"] = 1.28,
     ["Abu Musa Island"] = 1.29,
     ["Sirri Island"] = 1.32,
-    ["Tunb Kochak"] = 1.33,
-    ["Tunb Island AFB"] = 1.34,
-    ["Bandar Lengeh"] = 1.6,
+    --["Tunb Kochak"] = 1.33,
+    --["Tunb Island AFB"] = 1.34,
+    --["Bandar Lengeh"] = 1.6,
     ["Kish Intl"] = 1.9,
-    ["Lavan Island"] = 1.92,
+    --["Lavan Island"] = 1.92,
     ["Qeshm Island"] = 1.8,
-    --["Havadarya"] = 1.0,
-    ["Bandar Abbas intl"] = 1.9,
-    ["Lar"] = 2.5
-    --["Jiroft"] = 1.0,
+    ["Havadarya"] = 1.9,
+    --["Bandar Abbas intl"] = 1.9,
+    ["Lar"] = 2.5,
+    --["Jiroft"] = 3.5,
     --["Shiraz Intl"] = 1.0,
-    --["Kerman"] = 1.0
+    ["Kerman"] = 1.0
 }
 
 multiplicadorTiempoB = {
     ["Liwa AFB"] = 1.0,
     --["Al Dhafra AFB"] = 1.0,
-    ["Al-Bateen"] = 3.0,
+    --["Al-Bateen"] = 3.0,
     --["Sas Al Nakheel"] = 1.0,
     --["Abu Dhabi Intl"] = 1.0,
-    ["Al Ain Intl"] = 1.0,
+    ["Al Ain Intl"] = 1,
     ["Al Maktoum Intl"] = 1.0,
     ["Al Minhad AFB"] = 1.0,
     ["Dubai Intl"] = 1.0,
     ["Sharjah Intl"] = 1.0,
-    ["Fujairah intl"] = 1.0,
+    ["Fujairah Intl"] = 1.0,
     ["Ras Al Khaimah Intl"] = 1.0,
     ["Khasab"] = 1.0,
     ["Bandar-e-Jask"] = 1.0,
     ["Sir Abu Nuayr"] = 1.0,
     ["Abu Musa Island"] = 1.0,
     ["Sirri Island"] = 1.0,
-    ["Tunb Kochak"] = 1.0,
-    ["Tunb Island AFB"] = 1.0,
-    ["Bandar Lengeh"] = 1.0,
+    --["Tunb Kochak"] = 1.0,
+    --["Tunb Island AFB"] = 1.0,
+    --["Bandar Lengeh"] = 1.0,
     ["Kish Intl"] = 1.0,
-    ["Lavan Island"] = 1.0,
+    --["Lavan Island"] = 1.0,
     ["Qeshm Island"] = 1.0,
-    --["Havadarya"] = 1.0,
-    ["Bandar Abbas intl"] = 1.0,
-    ["Lar"] = 1.0
+    ["Havadarya"] = 1.0,
+    --["Bandar Abbas intl"] = 1.0,
+    ["Lar"] = 1.0,
     --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
-    --["Kerman"] = 1.0
+    ["Kerman"] = 1.0
 }
 
 coordenadasAerodromosB = {
     ["Liwa AFB"] = {x = -275733, y = 0, z = -248186},                            --1-- Metric: X-00275733 Z-00248186    high
     --["Al Dhafra AFB"] = {x = -211657, y = 0, z = -173058},                      --2-- Metric: X-00211657 Z-00173058    High
-    ["Al-Bateen"] = {x = -190948, y = 0, z = -181927},                            --3-- Metric: X-00190948 Z-00181927    Medium
+    --["Al-Bateen"] = {x = -190948, y = 0, z = -181927},                            --3-- Metric: X-00190948 Z-00181927    Medium
     --["Sas Al Nakheel"] = {x = -189610, y = 0, z = -175974},                       --4-- Metric: X-00189610 Z-00175974    Medium
     --["Abu Dhabi Intl"] = {x = -189658, y = 0, z = -162399},                    --5-- Metric: X-00189658 Z-00162399    high
     ["Al Ain Intl"] = {x = -211063, y = 0, z = -65171},                          --6-- Metric: X-00211063 Z-00065171    high
@@ -712,25 +712,25 @@ coordenadasAerodromosB = {
     ["Al Minhad AFB"] = {x = -126104, y = 0, z = -89108},                      --8-- Metric: X-00126104 Z-00089108    high
     ["Dubai Intl"] = {x = -100874, y = 0, z = -88902},                        --9-- Metric: X-00100874 Z-00088902    high
     ["Sharjah Intl"] = {x = -92768, y = 0, z = -73636},                          --10-- Metric: X-00092768 Z-00073636   high
-    ["Fujairah intl"] = {x = -117483, y = 0, z = 7840},                        --11-- Metric: X-00117483 Z+00007840   high
+    ["Fujairah Intl"] = {x = -117483, y = 0, z = 7840},                        --11-- Metric: X-00117483 Z+00007840   high
     ["Ras Al Khaimah Intl"] = {x = -61632, y = 0, z = -30809},                   --12-- Metric: X-00061632 Z-00030809   high
     ["Khasab"] = {x = -152, y = 0, z = -164},                                --13-- Metric: X-00000152 Z-00000164   Medium
     ["Bandar-e-Jask"] = {x = -57219, y = 0, z = 156064},                    --14-- Metric: X-00057219 Z+00156064   Medium
     ["Sir Abu Nuayr"] = {x = -103098, y = 0, z = -202998},                        --16-- Metric: X-00103098 Z-00202998   Small
     ["Abu Musa Island"] = {x = -31498, y = 0, z = -121336},                      --17-- Metric: X-00031498 Z-00121336   Small
     ["Sirri Island"] = {x = -26948, y = 0, z = -170744},                         --18-- Metric: X-00026948 Z-00170744   Small
-    ["Tunb Kochak"] = {x = 9023, y = 0, z = -109467},                           --19-- Metric: X+00009023 Z-00109467   Small
-    ["Tunb Island AFB"] = {x = 10630, y = 0, z = -92388},                       --20-- Metric: X+00010630 Z-00092388   Small
-    ["Bandar Lengeh"] = {x = 41538, y = 0, z = -140953},                        --21-- Metric: X+00041538 Z-00140953   Small
+    --["Tunb Kochak"] = {x = 9023, y = 0, z = -109467},                           --19-- Metric: X+00009023 Z-00109467   Small
+    --["Tunb Island AFB"] = {x = 10630, y = 0, z = -92388},                       --20-- Metric: X+00010630 Z-00092388   Small
+    --["Bandar Lengeh"] = {x = 41538, y = 0, z = -140953},                        --21-- Metric: X+00041538 Z-00140953   Small
     ["Kish Intl"] = {x = 42782, y = 0, z = -225092},                         --22-- Metric: X+00042782 Z-00225092   Medium
-    ["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
+    --["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
     ["Qeshm Island"] = {x = 64762, y = 0, z = -33452},                         --24- Metric: X+00064762 Z-00033452   high
-    --["Havadarya"] = {x = 109336, y = 0, z = -6364},                          --25- Metric: X+00109336 Z-00006364   Small
-    ["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
-    ["Lar"] = {x = 168884, y = 0, z = -182473}                         --27- Metric: X+00168884 Z-00182473   Medium
+    ["Havadarya"] = {x = 109331, y = 0, z = -6369},                          --25- Metric: X+00109336 Z-00006364   Small
+    --["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
+    ["Lar"] = {x = 168884, y = 0, z = -182473},                       --27- Metric: X+00168884 Z-00182473   Medium
     --["Jiroft"] = {x = 282634, y = 0, z = 141649},                            --28- Metric: X+00282634 Z+00141649   Medium
     --["Shiraz Intl"] = {x = 380994, y = 0, z = -351952},                         --29- Metric: X+00380994 Z-00351952   high
-    --["Kerman"] = {x = 454327, y = 0, z = 71866}
+    ["Kerman"] = {x = 454327, y = 0, z = 71866}
 
 }
 
@@ -747,7 +747,7 @@ end
 plantillasLogisticaR = {
     ["Liwa AFB"] = { template = "SuppliesREDToliwa", bandera = 100 },
     --["Al Dhafra AFB"] = { template = "SuppliesBLUEToDhafra", bandera = 101 },
-    ["Al-Bateen"] = { template = "SuppliesREDToBateen", bandera = 102 },
+    --["Al-Bateen"] = { template = "SuppliesREDToBateen", bandera = 102 },
     --["Sas Al Nakheel"] = { template = "SuppliesBLUEToNakheel", bandera = 103 },
     --["Abu Dhabi Intl"] = { template = "SuppliesBLUEToDhabi", bandera = 104 },
     ["Al Ain Intl"] = { template = "SuppliesREDToAin", bandera = 105 },
@@ -755,32 +755,32 @@ plantillasLogisticaR = {
     ["Al Minhad AFB"] = { template = "SuppliesREDToMinhad", bandera = 107 },
     ["Dubai Intl"] = { template = "SuppliesREDToDubai", bandera = 108 },
     ["Sharjah Intl"] = { template = "SuppliesREDToSharjah", bandera = 109 },
-    ["Fujairah intl"] = { template = "SuppliesREDToFujairah", bandera = 110 },
+    ["Fujairah Intl"] = { template = "SuppliesREDToFujairah", bandera = 110 },
     ["Ras Al Khaimah Intl"] = { template = "SuppliesREDToKhaimah", bandera = 111 },
     ["Khasab"] = { template = "SuppliesREDToKhasab", bandera = 112 },
     ["Bandar-e-Jask"] = { template = "SuppliesREDToJask", bandera = 113 },
     ["Sir Abu Nuayr"] = { template = "SuppliesREDToNauyr", bandera = 114 },
     ["Abu Musa Island"] = { template = "SuppliesREDToAbuMusa", bandera = 115 },
     ["Sirri Island"] = { template = "SuppliesREDToSirri", bandera = 116 },
-    ["Tunb Kochak"] = { template = "SuppliesREDToKochak", bandera = 117 },
-    ["Tunb Island AFB"] = { template = "SuppliesREDToTunbIsland", bandera = 118 },
-    ["Bandar Lengeh"] = { template = "SuppliesREDToLenge", bandera = 119 },
+    --["Tunb Kochak"] = { template = "SuppliesREDToKochak", bandera = 117 },
+    --["Tunb Island AFB"] = { template = "SuppliesREDToTunbIsland", bandera = 118 },
+    --["Bandar Lengeh"] = { template = "SuppliesREDToLenge", bandera = 119 },
     ["Kish Intl"] = { template = "SuppliesREDToKish", bandera = 120 },
-    ["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121 },
+    --["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121 },
     ["Qeshm Island"] = { template = "SuppliesREDToQeshm", bandera = 122},
-    --["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123 },
-    ["Bandar Abbas intl"] = { template = "SuppliesREDToAbbas", bandera = 124 },
-    ["Lar"] = { template = "SuppliesREDToLar", bandera = 125 }
-    --["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126 },
+    ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123 },
+    --["Bandar Abbas intl"] = { template = "SuppliesREDToAbbas", bandera = 124 },
+    ["Lar"] = { template = "SuppliesREDToLar", bandera = 125 },
+    --["Jiroft"] = { template = "SuppliesREDToJiroft", bandera = 126 },
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
-    --["Kerman"] = { template = "SuppliesBLUEToKerman", bandera = 128 }
+    ["Kerman"] = { template = "SuppliesREDToKerman", bandera = 128 }
 
 }
 
 recargoAeropuertoR = {
     ["Liwa AFB"] = 2.5,
     --["Al Dhafra AFB"] = 1.0,
-    ["Al-Bateen"] = 2.0,
+    --["Al-Bateen"] = 2.0,
     --["Sas Al Nakheel"] = 1.0,
     --["Abu Dhabi Intl"] = 1.0,
     ["Al Ain Intl"] = 1.65,
@@ -788,31 +788,31 @@ recargoAeropuertoR = {
     ["Al Minhad AFB"] = 1.6,
     ["Dubai Intl"] = 1.52,
     ["Sharjah Intl"] = 1.51,
-    ["Fujairah intl"] = 1.5,
+    ["Fujairah Intl"] = 1.5,
     ["Ras Al Khaimah Intl"] = 1.42,
     ["Khasab"] = 1.2,
     ["Bandar-e-Jask"] = 1.35,
     ["Sir Abu Nuayr"] = 1.4,
     ["Abu Musa Island"] = 1.38,
     ["Sirri Island"] = 1.24,
-    ["Tunb Kochak"] = 1.23,
-    ["Tunb Island AFB"] = 1.2,
-    ["Bandar Lengeh"] = 1.18,
+    --["Tunb Kochak"] = 1.23,
+    --["Tunb Island AFB"] = 1.2,
+    --["Bandar Lengeh"] = 1.18,
     ["Kish Intl"] = 1.4,
-    ["Lavan Island"] = 1.4,
+    --["Lavan Island"] = 1.4,
     ["Qeshm Island"] = 1.15,
-    --["Havadarya"] = 1.0,
-    ["Bandar Abbas intl"] = 1.0,
-    ["Lar"] = 1.2
-    --["Jiroft"] = 1.0,
+    ["Havadarya"] = 1.2,
+    --["Bandar Abbas intl"] = 1.0,
+    ["Lar"] = 1.2,
+   --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
-    --["Kerman"] = 1.0
+    ["Kerman"] = 1.0
 }
 
 multiplicadorTiempoR = {
     ["Liwa AFB"] = 1.0,
     --["Al Dhafra AFB"] = 1.0,
-    ["Al-Bateen"] = 1.0,
+    --["Al-Bateen"] = 1.0,
     --["Sas Al Nakheel"] = 1.0,
     --["Abu Dhabi Intl"] = 1.0,
     ["Al Ain Intl"] = 1.0,
@@ -820,31 +820,31 @@ multiplicadorTiempoR = {
     ["Al Minhad AFB"] = 1.0,
     ["Dubai Intl"] = 1.0,
     ["Sharjah Intl"] = 1.0,
-    ["Fujairah intl"] = 1.0,
+    ["Fujairah Intl"] = 1.0,
     ["Ras Al Khaimah Intl"] = 1.0,
     ["Khasab"] = 1.0,
     ["Bandar-e-Jask"] = 1.0,
     ["Sir Abu Nuayr"] = 1.0,
     ["Abu Musa Island"] = 1.0,
     ["Sirri Island"] = 1.0,
-    ["Tunb Kochak"] = 1.0,
-    ["Tunb Island AFB"] = 1.0,
-    ["Bandar Lengeh"] = 1.0,
+    --["Tunb Kochak"] = 1.0,
+    --["Tunb Island AFB"] = 1.0,
+    --["Bandar Lengeh"] = 1.0,
     ["Kish Intl"] = 1.0,
-    ["Lavan Island"] = 1.0,
+    --["Lavan Island"] = 1.0,
     ["Qeshm Island"] = 1.0,
-    --["Havadarya"] = 1.0,
-    ["Bandar Abbas intl"] = 1.0,
-    ["Lar"] = 1.0
+    ["Havadarya"] = 1.0,
+    --["Bandar Abbas intl"] = 1.0,
+    ["Lar"] = 1.0,
     --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
-    --["Kerman"] = 1.0
+    ["Kerman"] = 1.0
 }
 
 coordenadasAerodromosR = {
     ["Liwa AFB"] = {x = -275733, y = 0, z = -248186},                            --1-- Metric: X-00275733 Z-00248186    high
     --["Al Dhafra AFB"] = {x = -211657, y = 0, z = -173058},                      --2-- Metric: X-00211657 Z-00173058    High
-    ["Al-Bateen"] = {x = -190948, y = 0, z = -181927},                            --3-- Metric: X-00190948 Z-00181927    Medium
+    --["Al-Bateen"] = {x = -190948, y = 0, z = -181927},                            --3-- Metric: X-00190948 Z-00181927    Medium
     --["Sas Al Nakheel"] = {x = -189610, y = 0, z = -175974},                       --4-- Metric: X-00189610 Z-00175974    Medium
     --["Abu Dhabi Intl"] = {x = -189658, y = 0, z = -162399},                    --5-- Metric: X-00189658 Z-00162399    high
     ["Al Ain Intl"] = {x = -211063, y = 0, z = -65171},                          --6-- Metric: X-00211063 Z-00065171    high
@@ -852,25 +852,25 @@ coordenadasAerodromosR = {
     ["Al Minhad AFB"] = {x = -126104, y = 0, z = -89108},                      --8-- Metric: X-00126104 Z-00089108    high
     ["Dubai Intl"] = {x = -100874, y = 0, z = -88902},                        --9-- Metric: X-00100874 Z-00088902    high
     ["Sharjah Intl"] = {x = -92768, y = 0, z = -73636},                          --10-- Metric: X-00092768 Z-00073636   high
-    ["Fujairah intl"] = {x = -117483, y = 0, z = 7840},                        --11-- Metric: X-00117483 Z+00007840   high
+    ["Fujairah Intl"] = {x = -117483, y = 0, z = 7840},                        --11-- Metric: X-00117483 Z+00007840   high
     ["Ras Al Khaimah Intl"] = {x = -61632, y = 0, z = -30809},                   --12-- Metric: X-00061632 Z-00030809   high
     ["Khasab"] = {x = -152, y = 0, z = -164},                                --13-- Metric: X-00000152 Z-00000164   Medium
     ["Bandar-e-Jask"] = {x = -57219, y = 0, z = 156064},                    --14-- Metric: X-00057219 Z+00156064   Medium
     ["Sir Abu Nuayr"] = {x = -103098, y = 0, z = -202998},                        --16-- Metric: X-00103098 Z-00202998   Small
     ["Abu Musa Island"] = {x = -31498, y = 0, z = -121336},                      --17-- Metric: X-00031498 Z-00121336   Small
     ["Sirri Island"] = {x = -26948, y = 0, z = -170744},                         --18-- Metric: X-00026948 Z-00170744   Small
-    ["Tunb Kochak"] = {x = 9023, y = 0, z = -109467},                           --19-- Metric: X+00009023 Z-00109467   Small
-    ["Tunb Island AFB"] = {x = 10630, y = 0, z = -92388},                       --20-- Metric: X+00010630 Z-00092388   Small
-    ["Bandar Lengeh"] = {x = 41538, y = 0, z = -140953},                        --21-- Metric: X+00041538 Z-00140953   Small
+    --["Tunb Kochak"] = {x = 9023, y = 0, z = -109467},                           --19-- Metric: X+00009023 Z-00109467   Small
+    --["Tunb Island AFB"] = {x = 10630, y = 0, z = -92388},                       --20-- Metric: X+00010630 Z-00092388   Small
+    --["Bandar Lengeh"] = {x = 41538, y = 0, z = -140953},                        --21-- Metric: X+00041538 Z-00140953   Small
     ["Kish Intl"] = {x = 42782, y = 0, z = -225092},                         --22-- Metric: X+00042782 Z-00225092   Medium
-    ["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
+    --["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
     ["Qeshm Island"] = {x = 64762, y = 0, z = -33452},                         --24- Metric: X+00064762 Z-00033452   high
-    --["Havadarya"] = {x = 109336, y = 0, z = -6364},                          --25- Metric: X+00109336 Z-00006364   Small
-    ["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
-    ["Lar"] = {x = 168884, y = 0, z = -182473}                         --27- Metric: X+00168884 Z-00182473   Medium
+    ["Havadarya"] = {x = 109331, y = 0, z = -6369},                          --25- Metric: X+00109336 Z-00006364   Small
+    --["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
+    ["Lar"] = {x = 168884, y = 0, z = -182473},                         --27- Metric: X+00168884 Z-00182473   Medium
     --["Jiroft"] = {x = 282634, y = 0, z = 141649},                            --28- Metric: X+00282634 Z+00141649   Medium
     --["Shiraz Intl"] = {x = 380994, y = 0, z = -351952},                         --29- Metric: X+00380994 Z-00351952   high
-    --["Kerman"] = {x = 454327, y = 0, z = 71866}
+    ["Kerman"] = {x = 454327, y = 0, z = 71866}
 
 }
 

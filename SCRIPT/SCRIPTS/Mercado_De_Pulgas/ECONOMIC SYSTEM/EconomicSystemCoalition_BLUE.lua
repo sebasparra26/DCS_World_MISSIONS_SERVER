@@ -59,7 +59,7 @@ function verificarPuntos()
 
             -- Verificar si la unidad está dentro de la zona
             if distancia <= zona.radius and (unidad:getCoalition() == coalicion) then
-                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 5000  -- Sumar 10 puntos por unidad detectada dentro de la zona
+                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 92593  -- Sumar 10 puntos por unidad detectada dentro de la zona
                 debugInfo = debugInfo .. "\n[DEBUG] Unidad " .. nombreUnidad .. " detectada. Puntos actuales: " .. puntosCoalicion[nombrePuntos]
             end
         else

@@ -171,7 +171,7 @@ function verificarAterrizajesR()
                     local v = unidad:getVelocity()
                     local speed = math.sqrt(v.x^2 + v.z^2)
 
-                    if info.altMax >= 100 and speed < 0.5 then
+                    if info.altMax >= 100 and speed < 1 then
                         cargarInventarioCompletoR(info.destino, tipoAviones[info.inventario])
                         info.entregado = true
 
