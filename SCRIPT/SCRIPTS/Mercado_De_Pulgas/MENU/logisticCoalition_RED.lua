@@ -12,7 +12,7 @@ tipoAviones = tipoAviones or {}
 
 
 
-local cooldownTiempo = 300 -- segundos
+local cooldownTiempo = 5 -- segundos
 
 function formatearDolaresR(numero)
     if type(numero) ~= "number" then return "$0" end
@@ -46,9 +46,11 @@ function cargarInventarioCompletoR(nombreAeropuerto, data)
     end
 
     cargarSeccion(data.bombas, "BOMBA")
+    cargarSeccion(data.bombas_guiadas, "BOMBAG")
     cargarSeccion(data.cohetes, "COHETE")
     cargarSeccion(data.tanques, "TANQUE")
     cargarSeccion(data.misiles, "MISIL")
+    cargarSeccion(data.misiles_guiados, "MISILG")
     cargarSeccion(data.misc, "MISCELANEO")
 
     local mensaje = "Suministros entregados en " .. nombreAeropuerto .. ":\n\n"
@@ -141,9 +143,11 @@ function cargarInventarioCompletoR(nombreAeropuerto, data)
     end
 
     cargarSeccion(data.bombas, "BOMBA")
+    cargarSeccion(data.bombas_guiadas, "BOMBAG")
     cargarSeccion(data.cohetes, "COHETE")
     cargarSeccion(data.tanques, "TANQUE")
     cargarSeccion(data.misiles, "MISIL")
+    cargarSeccion(data.misiles_guiados, "MISILG")
     cargarSeccion(data.misc, "MISCELANEO")
 
     local mensaje = "Suministros entregados en " .. nombreAeropuerto .. ":\n\n"
@@ -181,7 +185,7 @@ function verificarAterrizajesR()
                             if grupoParaEliminar and grupoParaEliminar:isExist() then
                                 grupoParaEliminar:destroy()
                             end
-                        end, {}, timer.getTime() + 120)
+                        end, {}, timer.getTime() + 60)
                     end
                 end
             end

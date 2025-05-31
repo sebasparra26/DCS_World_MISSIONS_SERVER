@@ -9,7 +9,7 @@ comandosPorSubID = {}
 
 
 function crearMenuLogisticoAzul()
-    local menuRaiz = missionCommands.addSubMenuForCoalition(2, "Mercado de Pulgas AZUL")
+    local menuRaiz = missionCommands.addSubMenuForCoalition(2, "MARKETPLACE")
     local menuCategorias = {}
 
     for nombreAvion, datos in pairs(tiposAvion) do

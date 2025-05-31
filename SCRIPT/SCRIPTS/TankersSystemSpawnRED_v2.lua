@@ -1,11 +1,11 @@
 -- CONFIGURACIÓN GENERAL
-local coalicion = 2
-local nombrePuntos = "PuntosAZUL"
+local coalicion = 1
+local nombrePuntos = "PuntosROJO"
 local side = coalicion
-local defaultCountry = country.id.USA
+local defaultCountry = country.id.RUSSIA
 
 local USAR_ECONOMIA = true
-local AUTO_DELETE_SECONDS = 7200
+local AUTO_DELETE_SECONDS = 3600
 local INTERVALO_RESUMEN = 60
 
 local function formatearDolaresLegible(valor)
@@ -37,36 +37,36 @@ local COSTOS_TANKER = {
   ["KC130J"] = 800000, ["S-3B Tanker"] = 250000
 }
 
-local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = false, false, false
+local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = true, true, true
 
 local tankerTypes = {
-  ["KC-135"] = { type = "KC-135", cs = {1, 1, 0}, tac = "BSL" },
-  ["KC-135 MPRS"] = { type = "KC135MPRS", cs = {2, 1, 0}, tac = "BAR" },
-  ["KC130J"] = { type = "KC130J", cs = {3, 1, 0}, tac = "BEX" },
-  ["S-3B Tanker"] = { type = "S-3B Tanker", cs = {3, 1, 0}, tac = "S3B" }
+  ["KC-135"] = { type = "KC-135", cs = {1, 1, 0}, tac = "RSL" },
+  ["KC-135 MPRS"] = { type = "KC135MPRS", cs = {2, 1, 0}, tac = "RAR" },
+  ["KC130J"] = { type = "KC130J", cs = {3, 1, 0}, tac = "REX" },
+  ["S-3B Tanker"] = { type = "S-3B Tanker", cs = {3, 1, 0}, tac = "S3R" }
 }
 
 local function MHz(v) return v * 1e6 end
-local function randFreq() return MHz(math.random(2510, 2590) / 10) end
-local function randChan() return math.random(1, 63) end
+local function randFreq() return MHz(math.random(2610, 2690) / 10) end
+local function randChan() return math.random(64, 108) end
 
 puntosCoalicion = puntosCoalicion or {}
-puntosCoalicion.PuntosAZUL = puntosCoalicion.PuntosAZUL or 0
+puntosCoalicion.PuntosROJO = puntosCoalicion.PuntosROJO or 0
 
-local rootMenu = missionCommands.addSubMenuForCoalition(side, "Tanqueros")
-local activeBlue = {}
+local rootMenu = missionCommands.addSubMenuForCoalition(side, "Tanqueros (ROJO)")
+local activeRed = {}
 
-local function eliminarTankerAzul(gName)
+local function eliminarTankerRojo(gName)
   if Group.getByName(gName) and Group.getByName(gName):isExist() then
     Group.getByName(gName):destroy()
   end
-  activeBlue[gName] = nil
+  activeRed[gName] = nil
 end
 
-local function tipoDisponibleAzul(tp)
+local function tipoDisponibleRojo(tp)
   local max = MAX_TANKERS_POR_TIPO[tp] or 1
   local count = 0
-  for gName, datos in pairs(activeBlue) do
+  for gName, datos in pairs(activeRed) do
     if datos and datos.tipo == tp and Group.getByName(gName) and Group.getByName(gName):isExist() then
       count = count + 1
     end
@@ -74,8 +74,8 @@ local function tipoDisponibleAzul(tp)
   return count < max
 end
 
-local function spawnTankerAzul(tp, p1, p2, hdg)
-  if not tipoDisponibleAzul(tp) then
+local function spawnTankerRojo(tp, p1, p2, hdg)
+  if not tipoDisponibleRojo(tp) then
     trigger.action.outTextForCoalition(side, "Ya se alcanzó el máximo de tanqueros activos para " .. tp, 10)
     return
   end
@@ -89,10 +89,49 @@ local function spawnTankerAzul(tp, p1, p2, hdg)
   local info = tankerTypes[tp]
   local freqHz = randFreq()
   local chan = randChan()
-  local gName = tp:gsub("%s", "") .. "_" .. chan
+  local gName = tp:gsub("%s", "") .. "_" .. chan .. "_RED"
   local alt = PARAMETROS_TANKER[tp].alt
   local spd = PARAMETROS_TANKER[tp].spd
   local tiempoExp = timer.getTime() + AUTO_DELETE_SECONDS
+
+  local puntosRuta = {}
+  for i = 1, 50, 2 do
+    local wpInicio = {
+      x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
+      task = {
+        id = "ComboTask",
+        params = {
+          tasks = {
+            { id = "Tanker", enabled = true }
+          }
+        }
+      }
+    }
+
+    local wpFinal = {
+      x = p2.x, y = p2.y, alt = alt, speed = spd, action = "Turning Point",
+      task = {
+        id = "ComboTask",
+        params = {
+          tasks = {
+            {
+              id = "WrappedAction",
+              params = {
+                action = {
+                  id = "SwitchWaypoint",
+                  params = { fromWaypointIndex = i + 1, goToWaypointIndex = i }
+                }
+              }
+            },
+            { id = "Tanker", enabled = true }
+          }
+        }
+      }
+    }
+
+    table.insert(puntosRuta, wpInicio)
+    table.insert(puntosRuta, wpFinal)
+  end
 
   local groupData = {
     category = Group.Category.AIRPLANE,
@@ -108,54 +147,9 @@ local function spawnTankerAzul(tp, p1, p2, hdg)
       callsign = { info.cs[1], info.cs[2], math.random(11, 99) },
       communication = true
     } },
-route = {
-  points = {
-    {
-      x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
-            { id = "Tanker", enabled = true }
-          }
-        }
-      }
-    },
-    {
-      x = p2.x, y = p2.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
-            { id = "Tanker", enabled = true }
-          }
-        }
-      }
-    },
-    {
-      x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
-            {
-              id = "WrappedAction",
-              params = {
-                action = {
-                  id = "SwitchWaypoint",
-                  params = { fromWaypointIndex = 3, goToWaypointIndex = 2 }
-                }
-              }
-            },
-            { id = "Tanker", enabled = true }
-          }
-        }
-      }
+    route = {
+      points = puntosRuta
     }
-  }
-}
-
-
   }
 
   coalition.addGroup(defaultCountry, groupData.category, groupData)
@@ -169,7 +163,7 @@ route = {
     }
   })
 
-  activeBlue[gName] = {
+  activeRed[gName] = {
     freq = freqHz, chan = chan, mode = "X", cs = info.tac,
     tipo = tp, tiempoExpiracion = tiempoExp
   }
@@ -183,39 +177,38 @@ route = {
 
   timer.scheduleFunction(function(g)
     if Group.getByName(g) and Group.getByName(g):isExist() then
-      eliminarTankerAzul(g)
+      eliminarTankerRojo(g)
     end
   end, gName, tiempoExp)
 end
 
--- HANDLER AZUL
-local eventHandlerAzul = {}
-function eventHandlerAzul:onEvent(e)
-  if e.id ~= world.event.S_EVENT_MARK_CHANGE or not e.text or not _G.__SEL_AZUL then return end
+-- HANDLER ROJO
+local eventHandlerRojo = {}
+function eventHandlerRojo:onEvent(e)
+  if e.id ~= world.event.S_EVENT_MARK_CHANGE or not e.text or not _G.__SEL_ROJO then return end
   local t = string.lower(e.text)
   if t == "tankerh" or t == "tankerv" then
     local hdg = (t == "tankerh") and math.rad(90) or 0
     local p1 = { x = e.pos.x, y = e.pos.z }
-    local d = 20 * 1852
-    local p2 = { x = p1.x + math.cos(hdg) * d, y = p1.y + math.sin(hdg) * d }
-    spawnTankerAzul(_G.__SEL_AZUL, p1, p2, hdg)
-    _G.__SEL_AZUL = nil
+    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 50, y = p1.y + math.sin(hdg) * 1852 * 50 }
+    spawnTankerRojo(_G.__SEL_ROJO, p1, p2, hdg)
+    _G.__SEL_ROJO = nil
   end
 end
-world.addEventHandler(eventHandlerAzul)
+world.addEventHandler(eventHandlerRojo)
 
 -- MENÚS
 for name, _ in pairs(tankerTypes) do
   local texto = name .. (USAR_ECONOMIA and (" (" .. formatearDolaresLegible(COSTOS_TANKER[name]) .. ")") or "")
   missionCommands.addCommandForCoalition(side, texto, rootMenu, function()
-    _G.__SEL_AZUL = name
+    _G.__SEL_ROJO = name
     trigger.action.outTextForCoalition(side, "Seleccionado: " .. name .. ". Coloca marcador 'TankerH' (E-W) o 'TankerV' (N-S).", 10)
   end)
 end
 
 missionCommands.addCommandForCoalition(side, "Tanqueros Activos", rootMenu, function()
   local msg, now, hay = "Tanqueros Activos\n", timer.getTime(), false
-  for g, d in pairs(activeBlue) do
+  for g, d in pairs(activeRed) do
     if Group.getByName(g) and Group.getByName(g):isExist() then
       local restante = math.max(0, math.floor(d.tiempoExpiracion - now))
       msg = msg .. string.format("- %s  %.1f MHz AM  TACAN %d%s  [%02d:%02d]\n", g, d.freq/1e6, d.chan, d.mode, math.floor(restante/60), restante%60)
@@ -226,9 +219,9 @@ missionCommands.addCommandForCoalition(side, "Tanqueros Activos", rootMenu, func
   trigger.action.outTextForCoalition(side, msg, 10)
 end)
 
-local function resumenAutoAzul()
+local function resumenAutoRojo()
   local msg, now, hay = "Tanqueros Activos\n", timer.getTime(), false
-  for g, d in pairs(activeBlue) do
+  for g, d in pairs(activeRed) do
     if Group.getByName(g) and Group.getByName(g):isExist() then
       local restante = math.max(0, math.floor(d.tiempoExpiracion - now))
       msg = msg .. string.format("- %s  %.1f MHz AM  TACAN %d%s  [%02d:%02d]\n", g, d.freq/1e6, d.chan, d.mode, math.floor(restante/60), restante%60)
@@ -237,7 +230,7 @@ local function resumenAutoAzul()
   end
   if not hay then msg = msg .. "(ninguno activo)" end
   trigger.action.outTextForCoalition(side, msg, 10)
-  timer.scheduleFunction(resumenAutoAzul, {}, timer.getTime() + INTERVALO_RESUMEN)
+  timer.scheduleFunction(resumenAutoRojo, {}, timer.getTime() + INTERVALO_RESUMEN)
 end
 
-timer.scheduleFunction(resumenAutoAzul, {}, timer.getTime() + 5)
+timer.scheduleFunction(resumenAutoRojo, {}, timer.getTime() + 5)

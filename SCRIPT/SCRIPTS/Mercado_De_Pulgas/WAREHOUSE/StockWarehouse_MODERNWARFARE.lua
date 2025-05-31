@@ -169,13 +169,33 @@ tipoAviones["AH-64D-2"] = {
 -- ===============================
 tipoAviones["OH-58D-1"] = {
     costo = 26000000,
-    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x 2",
+    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x ",
     avion = { ws = {1, 2, 6, 336}, cantidad = 2 },
+
+    misc = {
+        ["M3P500"]      = {ws = {4, 15, 46, 2607}, cantidad = 2},
+        ["1xBlue Smoke Granade"]      = {ws = {4, 5, 32, 2592}, cantidad = 2},
+        ["1xGreen Smoke Granade"]      = {ws = {4, 5, 32, 2593}, cantidad = 2},
+        ["1xRed Smoke Granade"]      = {ws = {4, 5, 32, 2591}, cantidad = 2},
+        ["1xViolet Smoke Granade"]      = {ws = {4, 5, 32, 2592}, cantidad = 2},
+        ["1xWhite Smoke Granade"]      = {ws = {4, 5, 32, 2596}, cantidad = 2},
+        ["1xYellow Smoke Granade"]      = {ws = {4, 5, 32, 2595}, cantidad = 2}
+    }
 }
 tipoAviones["OH-58D-2"] = {
     costo = 52000000,
-    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x 4",
+    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x ",
     avion = { ws = {1, 2, 6, 336}, cantidad = 4 },
+
+       misc = {
+        ["M3P500"]      = {ws = {4, 15, 46, 2607}, cantidad = 4},
+        ["1xBlue Smoke Granade"]      = {ws = {4, 5, 32, 2592}, cantidad = 4},
+        ["1xGreen Smoke Granade"]      = {ws = {4, 5, 32, 2593}, cantidad = 4},
+        ["1xRed Smoke Granade"]      = {ws = {4, 5, 32, 2591}, cantidad = 4},
+        ["1xViolet Smoke Granade"]      = {ws = {4, 5, 32, 2592}, cantidad = 4},
+        ["1xWhite Smoke Granade"]      = {ws = {4, 5, 32, 2596}, cantidad = 4},
+        ["1xYellow Smoke Granade"]      = {ws = {4, 5, 32, 2595}, cantidad = 4}
+    }
 }
 -- ===============================
 -- CH-47F- Chinook
@@ -184,11 +204,24 @@ tipoAviones["CH-47F-1"] = {
     costo = 170000000,
     nombreAvion = "CH-47F- Chinook - Pack x 2",
     avion = { ws = {1, 2, 5, 329}, cantidad = 2 },
+
+    misc = {
+        ["M240H1"]      = {ws = {4, 5, 46, 2491}, cantidad = 2},
+        ["M240H2"]      = {ws = {4, 5, 46, 2492}, cantidad = 2},
+        ["M240H3"]      = {ws = {4, 5, 46, 2493}, cantidad = 2}
+    }
+    
 }
 tipoAviones["CH-47F-2"] = {
     costo = 340000000,
     nombreAvion = "CH-47F- Chinook - Pack x 4",
     avion = { ws = {1, 2, 5, 329}, cantidad = 4 },
+
+    misc = {
+        ["M240H3"]      = {ws = {4, 5, 46, 2491}, cantidad = 4},
+        ["M240H4"]      = {ws = {4, 5, 46, 2492}, cantidad = 4},
+        ["M240H5"]      = {ws = {4, 5, 46, 2493}, cantidad = 4}
+    }
 }
 -- ===============================
 -- UH-1H - Huey
@@ -197,11 +230,25 @@ tipoAviones["UH-1H-1"] = {
     costo = 9000000,
     nombreAvion = "UH-1H - Huey - Pack x 2",
     avion = { ws = {1, 2, 6, 166}, cantidad = 2 },
+
+    misc = {
+        ["M134 - 6 x 7,62mm MiniGun Left"]      = {ws = {4, 15, 46, 160}, cantidad = 2},
+        ["M134 - 6 x 7,62mm MiniGun right"]      = {ws = {4, 15, 46, 161}, cantidad = 2},
+        ["M134 - 6 x 7,62mm MiniGun Left Door"]      = {ws = {4, 15, 46, 174}, cantidad = 2},
+        ["M134 - 6 x 7,62mm MiniGun right Door"]      = {ws = {4, 15, 46, 175}, cantidad = 2}
+    }
 }
 tipoAviones["UH-1H-2"] = {
     costo = 18000000,
     nombreAvion = "UH-1H - Huey - Pack x 4",
     avion = { ws = {1, 2, 6, 166}, cantidad = 4 },
+
+    misc = {
+        ["M134 - 6 x 7,62mm MiniGun Left"]      = {ws = {4, 15, 46, 160}, cantidad = 4},
+        ["M134 - 6 x 7,62mm MiniGun right"]      = {ws = {4, 15, 46, 161}, cantidad = 4},
+        ["M134 - 6 x 7,62mm MiniGun Left Door"]      = {ws = {4, 15, 46, 174}, cantidad = 4},
+        ["M134 - 6 x 7,62mm MiniGun right Door"]      = {ws = {4, 15, 46, 175}, cantidad = 4}
+    }
 }
 -- ===============================
 -- UH-60L - Blackhawk
@@ -309,11 +356,19 @@ tipoAviones["MI-24P-1"] = {
     costo = 24000000,
     nombreAvion = "MI-24P - Hind - Pack x 2",
     avion = { ws = {1, 2, 6, 296}, cantidad = 2 },
+
+    misc = {
+        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
+    }
 }
 tipoAviones["MI-24P-2"] = {
     costo = 48000000,
     nombreAvion = "MI-24P - Hind - Pack x 4",
     avion = { ws = {1, 2, 6, 296}, cantidad = 4 },
+
+    misc = {
+        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
+    }
 }
 -- ===============================
 -- MI-8MTV2
@@ -365,16 +420,35 @@ tipoAviones["SA342-L-1"] = {
     costo = 3000000,
     nombreAvion = "SA342 - L - Gazelle - Pack x 2",
     avion = { ws = {1, 2, 6, 290}, cantidad = 2 },
+
+    misc = {
+        ["Dipole Antanna (aesthetic)"]      = {ws = {4, 15, 47, 1100}, cantidad = 2},
+        ["IR Deflector"]      = {ws = {4, 15, 47, 680}, cantidad = 2},
+        ["Sand Filter"]      = {ws = {4, 15, 47, 679}, cantidad = 2},
+        ["GIAT M621 (240x SAPHEI)"]      = {ws = {4, 15, 46, 1767}, cantidad = 2}
+    }
 }
 tipoAviones["SA342-M-1"] = {
     costo = 3300000,
     nombreAvion = "SA342 - M - Gazelle - Pack x 2",
     avion = { ws = {1, 2, 6, 289}, cantidad = 2 },
+
+    misc = {
+        ["Dipole Antanna (aesthetic)"]      = {ws = {4, 15, 47, 1100}, cantidad = 2},
+        ["IR Deflector"]      = {ws = {4, 15, 47, 680}, cantidad = 2},
+        ["Sand Filter"]      = {ws = {4, 15, 47, 679}, cantidad = 2}
+    }
 }
 tipoAviones["SA342-Minigun-1"] = {
     costo = 3100000,
     nombreAvion = "SA342 - Minigun - Gazelle - Pack x 2",
     avion = { ws = {1, 2, 6, 292}, cantidad = 2 },
+
+    misc = {
+        ["Dipole Antanna (aesthetic)"]      = {ws = {4, 15, 47, 1100}, cantidad = 2},
+        ["IR Deflector"]      = {ws = {4, 15, 47, 680}, cantidad = 2},
+        ["Sand Filter"]      = {ws = {4, 15, 47, 679}, cantidad = 2}
+    }
 }
 
 

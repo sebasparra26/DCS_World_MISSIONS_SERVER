@@ -44,7 +44,8 @@ ctld.Version = "1.4.0"
 ctld.Debug = false
 ctld.Trace = false
 
-ctld.dontInitialize = false -- if true, ctld.initialize() will not run; instead, you'll have to run it from your own code - it's useful when you want to override some functions/parameters before the initialization takes place
+ctld.dontInitialize = false
+--dofile("l10n/DEFAULT/HookEconomy.lua") -- if true, ctld.initialize() will not run; instead, you'll have to run it from your own code - it's useful when you want to override some functions/parameters before the initialization takes place
 
 -- ***************************************************************
 -- *************** Internationalization (I18N) *******************
@@ -89,33 +90,61 @@ ctld.i18n["en"]["3x - Anti Tank"] = ""
 ctld.i18n["en"]["3x - Mortar Squad"] = ""
 ctld.i18n["en"]["5x - Mortar Squad"] = ""
 ctld.i18n["en"]["Mortar Squad Red"] = ""
-
 --- crates names
 ctld.i18n["en"]["Humvee - MG"] = ""
 ctld.i18n["en"]["Humvee - TOW"] = ""
 ctld.i18n["en"]["Light Tank - MRAP"] = ""
 ctld.i18n["en"]["Med Tank - LAV-25"] = ""
-ctld.i18n["en"]["Heavy Tank - Abrams"] = ""
+------------------------------------TANKS HEAVY
+ctld.i18n["en"]["Abrams M1A2C"] = ""
+ctld.i18n["en"]["Leopard 2A6M"] = ""
+ctld.i18n["en"]["Chieftain MK3"] = ""
+ctld.i18n["en"]["Leclerc"] = ""
+ctld.i18n["en"]["Merkava MK4"] = ""
+ctld.i18n["en"]["T 90"] = ""
+ctld.i18n["en"]["T 80UD"] = ""
+ctld.i18n["en"]["T 72B3"] = ""
+ctld.i18n["en"]["T 72B"] = ""
+
+
+
 ctld.i18n["en"]["BTR-D"] = ""
 ctld.i18n["en"]["BRDM-2"] = ""
-ctld.i18n["en"]["Hummer - JTAC"] = ""
-ctld.i18n["en"]["M-818 Ammo Truck"] = ""
-ctld.i18n["en"]["M-978 Tanker"] = ""
-ctld.i18n["en"]["SKP-11 - JTAC"] = ""
-ctld.i18n["en"]["Ural-375 Ammo Truck"] = ""
-ctld.i18n["en"]["KAMAZ Ammo Truck"] = ""
+--ctld.i18n["en"]["Hummer - JTAC"] = ""
+--ctld.i18n["en"]["M-818 Ammo Truck"] = ""
+ctld.i18n["en"]["M-818 Ammo Truck 2"] = ""
+ctld.i18n["en"]["M-818 Ammo Truck 3"] = ""
+ctld.i18n["en"]["M-818 Ammo Truck 4"] = ""
+--ctld.i18n["en"]["M-978 Tanker"] = ""
+--ctld.i18n["en"]["SKP-11 - JTAC"] = ""
+--ctld.i18n["en"]["Ural-375 Ammo Truck"] = ""
+ctld.i18n["en"]["Ural-375 Ammo Truck 2"] = ""
+ctld.i18n["en"]["Ural-375 Ammo Truck 3"] = ""
+ctld.i18n["en"]["Ural-375 Ammo Truck 4"] = ""
+--ctld.i18n["en"]["KAMAZ Ammo Truck"] = ""
 ctld.i18n["en"]["EWR Radar"] = ""
 ctld.i18n["en"]["FOB Crate - Small"] = ""
-ctld.i18n["en"]["MQ-9 Repear - JTAC"] = ""
-ctld.i18n["en"]["RQ-1A Predator - JTAC"] = ""
-ctld.i18n["en"]["MLRS"] = ""
+ctld.i18n["en"]["MQ-9 Repear - $ 10,000,000"] = ""
+ctld.i18n["en"]["RQ-1A Predator - $ 10,000,000"] = ""
+
+---------------------Artillery
+ctld.i18n["en"]["MLRS Himars"] = ""
 ctld.i18n["en"]["SpGH DANA"] = ""
 ctld.i18n["en"]["T155 Firtina"] = ""
-ctld.i18n["en"]["Howitzer"] = ""
+ctld.i18n["en"]["Paladin"] = ""
 ctld.i18n["en"]["SPH 2S19 Msta"] = ""
+ctld.i18n["en"]["Smerch 300mm CM"] = ""
+ctld.i18n["en"]["Smerch 300mm HE"] = ""
+ctld.i18n["en"]["Uragan BM"] = ""
+ctld.i18n["en"]["Grad URAL"] = ""
+ctld.i18n["en"]["SAU Akatsia"] = ""
+ctld.i18n["en"]["SAU 2C9"] = ""
+
+-------------------------------------------------------
 ctld.i18n["en"]["M1097 Avenger"] = ""
 ctld.i18n["en"]["M48 Chaparral"] = ""
 ctld.i18n["en"]["Roland ADS"] = ""
+ctld.i18n["en"]["Roland Radar"] = ""
 ctld.i18n["en"]["Gepard AAA"] = ""
 ctld.i18n["en"]["LPWS C-RAM"] = ""
 ctld.i18n["en"]["9K33 Osa"] = ""
@@ -123,66 +152,96 @@ ctld.i18n["en"]["9P31 Strela-1"] = ""
 ctld.i18n["en"]["9K35M Strela-10"] = ""
 ctld.i18n["en"]["9K331 Tor"] = ""
 ctld.i18n["en"]["2K22 Tunguska"] = ""
-ctld.i18n["en"]["HAWK Launcher"] = ""
-ctld.i18n["en"]["HAWK Search Radar"] = ""
-ctld.i18n["en"]["HAWK Track Radar"] = ""
-ctld.i18n["en"]["HAWK PCP"] = ""
-ctld.i18n["en"]["HAWK CWAR"] = ""
-ctld.i18n["en"]["HAWK Repair"] = ""
-ctld.i18n["en"]["NASAMS Launcher 120C"] = ""
-ctld.i18n["en"]["NASAMS Search/Track Radar"] = ""
-ctld.i18n["en"]["NASAMS Command Post"] = ""
-ctld.i18n["en"]["NASAMS Repair"] = ""
-ctld.i18n["en"]["KUB Launcher"] = ""
-ctld.i18n["en"]["KUB Radar"] = ""
-ctld.i18n["en"]["KUB Repair"] = ""
-ctld.i18n["en"]["BUK Launcher"] = ""
-ctld.i18n["en"]["BUK Search Radar"] = ""
-ctld.i18n["en"]["BUK CC Radar"] = ""
-ctld.i18n["en"]["BUK Repair"] = ""
-ctld.i18n["en"]["Patriot Launcher"] = ""
-ctld.i18n["en"]["Patriot Radar"] = ""
-ctld.i18n["en"]["Patriot ECS"] = ""
-ctld.i18n["en"]["Patriot ICC"] = ""
-ctld.i18n["en"]["Patriot EPP"] = ""
-ctld.i18n["en"]["Patriot AMG (optional)"] = ""
-ctld.i18n["en"]["Patriot Repair"] = ""
-ctld.i18n["en"]["S-300 Grumble TEL C"] = ""
-ctld.i18n["en"]["S-300 Grumble Flap Lid-A TR"] = ""
-ctld.i18n["en"]["S-300 Grumble Clam Shell SR"] = ""
-ctld.i18n["en"]["S-300 Grumble Big Bird SR"] = ""
-ctld.i18n["en"]["S-300 Grumble C2"] = ""
-ctld.i18n["en"]["S-300 Repair"] = ""
+ctld.i18n["en"]["HAWK Launcher - $ 2,200,000"] = ""
+ctld.i18n["en"]["HAWK Search Radar - $ 3,000,000"] = ""
+ctld.i18n["en"]["HAWK Track Radar - $ 2,500,000"] = ""
+ctld.i18n["en"]["HAWK PCP - $ 1,500,000"] = ""
+ctld.i18n["en"]["HAWK CWAR - $ 2,000,000"] = ""
+ctld.i18n["en"]["HAWK Repair - $ 1,000,000"] = ""
+ctld.i18n["en"]["NASAMS Launcher 120C - $ 3,800,000"] = ""
+ctld.i18n["en"]["NASAMS Search/Track Radar - $ 3,200,000"] = ""
+ctld.i18n["en"]["NASAMS Command Post - $ 2,200,000"] = ""
+ctld.i18n["en"]["NASAMS Repair - $ 1,200,000"] = ""
+ctld.i18n["en"]["KUB Launcher - $ 1,500,000"] = ""
+ctld.i18n["en"]["KUB Radar - $ 2,000,000"] = ""
+ctld.i18n["en"]["KUB Repair - $ 800,000"] = ""
+ctld.i18n["en"]["BUK Launcher - $ 2,800,000"] = ""
+ctld.i18n["en"]["BUK Search Radar - $ 3,500,000"] = ""
+ctld.i18n["en"]["BUK CC Radar - $ 2,800,000"] = ""
+ctld.i18n["en"]["BUK Repair - $ 1,200,000"] = ""
+ctld.i18n["en"]["Patriot Launcher - $ 4,500,000"] = ""
+ctld.i18n["en"]["Patriot Radar - $ 6,000,000"] = ""
+ctld.i18n["en"]["Patriot ECS - $ 3,500,000"] = ""
+ctld.i18n["en"]["Patriot ICC - $ 3,000,000"] = ""
+ctld.i18n["en"]["Patriot EPP - $ 2,500,000"] = ""
+ctld.i18n["en"]["Patriot AMG (optional) - $ 2,000,000"] = ""
+ctld.i18n["en"]["Patriot Repair - $ 1,500,000"] = ""
+ctld.i18n["en"]["S-300 Grumble TEL C - $ 4,200,000"] = ""
+ctld.i18n["en"]["S-300 Grumble Flap Lid-A TR - $ 5,500,000"] = ""
+ctld.i18n["en"]["S-300 Grumble Clam Shell SR - $ 4,000,000"] = ""
+ctld.i18n["en"]["S-300 Grumble Big Bird SR - $ 6,500,000"] = ""
+ctld.i18n["en"]["S-300 Grumble C2 - $ 3,500,000"] = ""
+ctld.i18n["en"]["S-300 Repair - $ 1,800,000"] = ""
+ctld.i18n["en"]["Humvee - MG - All crates"] = ""
 ctld.i18n["en"]["Humvee - TOW - All crates"] = ""
 ctld.i18n["en"]["Light Tank - MRAP - All crates"] = ""
 ctld.i18n["en"]["Med Tank - LAV-25 - All crates"] = ""
-ctld.i18n["en"]["Heavy Tank - Abrams - All crates"] = ""
-ctld.i18n["en"]["Hummer - JTAC - All crates"] = ""
-ctld.i18n["en"]["M-818 Ammo Truck - All crates"] = ""
-ctld.i18n["en"]["M-978 Tanker - All crates"] = ""
-ctld.i18n["en"]["Ural-375 Ammo Truck - All crates"] = ""
-ctld.i18n["en"]["EWR Radar - All crates"] = ""
-ctld.i18n["en"]["MLRS - All crates"] = ""
-ctld.i18n["en"]["SpGH DANA - All crates"] = ""
-ctld.i18n["en"]["T155 Firtina - All crates"] = ""
-ctld.i18n["en"]["Howitzer - All crates"] = ""
-ctld.i18n["en"]["SPH 2S19 Msta - All crates"] = ""
-ctld.i18n["en"]["M1097 Avenger - All crates"] = ""
-ctld.i18n["en"]["M48 Chaparral - All crates"] = ""
-ctld.i18n["en"]["Roland ADS - All crates"] = ""
-ctld.i18n["en"]["Gepard AAA - All crates"] = ""
-ctld.i18n["en"]["LPWS C-RAM - All crates"] = ""
-ctld.i18n["en"]["9K33 Osa - All crates"] = ""
-ctld.i18n["en"]["9P31 Strela-1 - All crates"] = ""
-ctld.i18n["en"]["9K35M Strela-10 - All crates"] = ""
-ctld.i18n["en"]["9K331 Tor - All crates"] = ""
-ctld.i18n["en"]["2K22 Tunguska - All crates"] = ""
-ctld.i18n["en"]["HAWK - All crates"] = ""
-ctld.i18n["en"]["NASAMS - All crates"] = ""
-ctld.i18n["en"]["KUB - All crates"] = ""
-ctld.i18n["en"]["BUK - All crates"] = ""
-ctld.i18n["en"]["Patriot - All crates"] = ""
-ctld.i18n["en"]["Patriot - All crates"] = ""
+------------------------------------TANKS HEAVY
+ctld.i18n["en"]["Abrams M1A2C - $ 6,500,000"] = ""
+ctld.i18n["en"]["Leopard 2A6M - $ 5,000,000"] = ""
+ctld.i18n["en"]["Chieftain MK3 - $ 2,500,000"] = ""    
+ctld.i18n["en"]["Leclerc - $ 9,000,000"] = ""
+ctld.i18n["en"]["Merkava MK4 - $ 4,500,000"] = ""   
+ctld.i18n["en"]["T 90 - $ 2,000,000"] = ""
+ctld.i18n["en"]["T 80UD - $ 1,800,000"] = "" 
+ctld.i18n["en"]["T 72B3 - $ 1,200,000"] = "" 
+ctld.i18n["en"]["T 72B - $ 900,000"] = ""       
+        
+ctld.i18n["en"]["Hummer - JTAC - $ 100,000"] = ""
+ctld.i18n["en"]["M-818 Ammo Truck - $ 100,000"] = ""
+
+ctld.i18n["en"]["M-978 Tanker - $ 100,000"] = ""
+ctld.i18n["en"]["SKP-11 - JTAC - $100,000"] = ""
+ctld.i18n["en"]["Ural-375 Ammo Truck - $ 100,000"] = ""
+ctld.i18n["en"]["KAMAZ Ammo Truck - $ 100,000"] = ""
+ctld.i18n["en"]["EWR Radar - $ 4,000,000"] = ""
+ctld.i18n["en"]["FOB - $ 1,000,000"] = ""
+
+---------------------Artillery
+
+ctld.i18n["en"]["MLRS Himars - $ 5,000,000"] = ""
+ctld.i18n["en"]["SpGH DANA - $ 1,500,000"] = ""
+ctld.i18n["en"]["T155 Firtina - $ 2,200,000"] = ""
+ctld.i18n["en"]["Paladin - $ 1,700,000"] = ""
+ctld.i18n["en"]["SPH 2S19 Msta - $ 2,500,000"] = ""
+ctld.i18n["en"]["Smerch 300mm CM - $ 4,000,000"] = ""
+ctld.i18n["en"]["Smerch 300mm HE - $ 5,000,000"] = ""
+ctld.i18n["en"]["Uragan BM - $ 3,000,000"] = ""
+ctld.i18n["en"]["Grad URAL - $ 700,000"] = ""
+ctld.i18n["en"]["SAU Akatsia - $ 1,200,000"] = ""
+ctld.i18n["en"]["SAU 2C9 - $ 800,000"] = ""
+
+------------------------------------------------------------------------ AAA
+ctld.i18n["en"]["M1097 Avenger - $ 1,000,000"] = ""
+ctld.i18n["en"]["M48 Chaparral - $ 1,200,000"] = ""
+ctld.i18n["en"]["Roland System - $ 4,000,000"] = ""
+ctld.i18n["en"]["Gepard AAA - $ 2,000,000"] = ""
+ctld.i18n["en"]["LPWS C-RAM - $ 3,500,000"] = ""
+ctld.i18n["en"]["9K33 Osa - $ 1,500,000"] = ""
+ctld.i18n["en"]["9P31 Strela-1 - $ 800,000"] = ""
+ctld.i18n["en"]["9K35M Strela-10 - $ 1,000,000"] = ""
+ctld.i18n["en"]["9K331 Tor - $ 3,500,000"] = ""
+ctld.i18n["en"]["2K22 Tunguska - $ 4,000,000"] = ""
+
+-------------------------------------------------------
+
+ctld.i18n["en"]["HAWK Launcher - $ 2,200,000-2"] = ""
+ctld.i18n["en"]["HAWK FULL - $ 17,800,000"] = ""
+ctld.i18n["en"]["NASAMS FULL - $ 21,800,000"] = ""
+ctld.i18n["en"]["KUB FULL - $ 8,000,000"] = ""
+ctld.i18n["en"]["BUK FULL - $ 17,500,000"] = ""
+ctld.i18n["en"]["Patriot FULL - $ 26,000,000"] = ""
+ctld.i18n["en"]["S-300 FULL - $ 32,100,000"] = ""
 
 --- mission design error messages
 ctld.i18n["en"]["CTLD.lua ERROR: Can't find trigger called %1"] = ""
@@ -401,14 +460,14 @@ ctld.hoverPickup = true --  if set to false you can load crates with the F10 men
 ctld.loadCrateFromMenu = true -- if set to true, you can load crates with the F10 menu OR hovering, in case of using choppers and planes for example.
 
 ctld.enableCrates = true -- if false, Helis will not be able to spawn or unpack crates so will be normal CTTS
-ctld.enableAllCrates = false -- if false, the "all crates" menu items will not be displayed
+ctld.enableAllCrates = true -- if false, the "all crates" menu items will not be displayed
 ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by hovering above the crate, simulating slingloading but not the weight...
 -- There are some bug with Sling-loading that can cause crashes, if these occur set slingLoad to false
 -- to use the other method.
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = false -- if false, helis and c-130 will not be able to drop smoke
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
-ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics to allow a loading or spawning operation
+ctld.maximumDistanceLogistic = 20000 -- max distance from vehicle to logistics to allow a loading or spawning operation
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
@@ -437,7 +496,7 @@ ctld.cratesRequiredForFOB = 3 -- The amount of crates required to build a FOB. O
 
 ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a created FOB
 ctld.buildTimeFOB = 120 --time in seconds for the FOB to be built
-ctld.crateWaitTime = 40 -- time in seconds to wait before you can spawn another crate
+ctld.crateWaitTime = 0 -- time in seconds to wait before you can spawn another crate
 ctld.forceCrateToBeMoved = true -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
@@ -454,15 +513,15 @@ ctld.hoverTime = 10 -- Time to hold hover above a crate for loading in seconds
 -- end of Simulated Sling load configuration
 
 -- ***************** AA SYSTEM CONFIG *****************
-ctld.aaLaunchers = 3 -- controls how many launchers to add to the AA systems when its spawned if no amount is specified in the template.
+ctld.aaLaunchers = 6 -- controls how many launchers to add to the AA systems when its spawned if no amount is specified in the template.
 -- Sets a limit on the number of active AA systems that can be built for RED.
 -- A system is counted as Active if its fully functional and has all parts
 -- If a system is partially destroyed, it no longer counts towards the total
 -- When this limit is hit, a player will still be able to get crates for an AA system, just unable
 -- to unpack them
 
-ctld.AASystemLimitRED = 3 -- Red side limit
-ctld.AASystemLimitBLUE = 3 -- Blue side limit
+ctld.AASystemLimitRED = 30 -- Red side limit
+ctld.AASystemLimitBLUE = 30 -- Blue side limit
 
 -- Allows players to create systems using as many crates as they like
 -- Example : an amount X of patriot launcher crates allows for Y launchers to be deployed, if a player brings 2*X+Z crates (Z being lower then X), then deploys the patriot site, 2*Y launchers will be in the group and Z launcher crate will be left over
@@ -505,12 +564,12 @@ ctld.JTAC_allow9Line = true -- if true, allow players to ask for a 9Line (indivi
 -- Flag Number - Optional last field. If set the current number of groups remaining can be obtained from the flag value
 --pickupZones = { "Zone name or Ship Unit Name", "smoke color", "limit (-1 unlimited)", "ACTIVE (yes/no)", "side (0 = Both sides / 1 = Red / 2 = Blue )", flag number (optional) }
 ctld.pickupZones = {
-    { "pickzone1", "blue", -1, "yes", 2 },--TARAWA
-    { "pickzone2", "blue", -1, "yes", 2 },--TARAWA
-    { "pickzone3", "blue", -1, "yes", 2 },--TARAWA
-    { "pickzone4", "red", -1, "yes", 1 },--TARAWA
-    { "pickzone5", "red", -1, "yes", 1 },--TARAWA
-    { "pickzone6", "red", -1, "yes", 1 },--TARAWA
+    { "pickzone1", "none", -1, "yes", 2 },--TARAWA
+    { "pickzone2", "none", -1, "yes", 2 },--TARAWA
+    { "pickzone3", "none", -1, "yes", 2 },--TARAWA
+    { "pickzone4", "none", -1, "yes", 1 },--TARAWA
+    { "pickzone5", "none", -1, "yes", 1 },--TARAWA
+    { "pickzone6", "none", -1, "yes", 1 },--TARAWA
     { "pickzone7", "none", -1, "yes", 2 },--BLUE COMMAND CENTER
     { "pickzone8", "none", -1, "yes", 1 }, --RED COMMAND CENTER
     { "pickzone9", "none", 5, "yes", 1 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
@@ -546,21 +605,22 @@ ctld.dropOffZones = {
 
 --wpZones = { "Zone name", "smoke color",  "ACTIVE (yes/no)", "side (0 = Both sides / 1 = Red / 2 = Blue )", }
 ctld.wpZones = {
-    { "wpzone1", "none","yes", 2 },
-    { "wpzone2", "none","yes", 2 },
-    { "wpzone3", "none","yes", 2 },
-    { "wpzone4", "none","yes", 2 },
-    { "wpzone5", "none","yes", 2 },
-    { "wpzone6", "none","yes", 2 },
-    { "wpzone7", "none","yes", 2 },
-    { "wpzone8", "none","yes", 2 },
-    { "wpzone9", "none","yes", 2 },
-    { "wpzone10", "none","yes", 2 },
-    { "wpzone11", "none","yes", 2 },
-    { "wpzone12", "none","yes", 2 },
-    { "wpzone13", "none","yes", 2 },
-    { "wpzone14", "none","yes", 2 },
-    { "wpzone15", "none","yes", 2 },
+    { "wpzone1", "none","yes", 0 },
+    { "wpzone2", "none","yes", 0 },
+    { "wpzone3", "none","yes", 0 },
+    { "wpzone4", "none","yes", 0 },
+    { "wpzone5", "none","yes", 0 },
+    { "wpzone6", "none","yes", 0 },
+    { "wpzone7", "none","yes", 0 },
+    { "wpzone8", "none","yes", 0 },
+    { "wpzone9", "none","yes", 0 },
+    { "wpzone10", "none","yes", 0 },
+    { "wpzone11", "none","yes", 0 },
+    { "wpzone12", "none","yes", 0 },
+    { "wpzone13", "none","yes", 0 },
+    { "wpzone14", "none","yes", 0 },
+    { "wpzone15", "none","yes", 0 },
+    { "wpzone16", "none","yes", 0 },
 }
 
 -- ******************** Transports names **********************
@@ -785,8 +845,22 @@ ctld.logisticUnits = {
     "logistic6",--TARAWA
     "logistic7", --BLUE COMMAND CENTER
     "logistic8", --RED COMMAND CENTER
-    "logistic9",
-    "logistic10",
+    "logistic9", --Al Ain Intl
+    "logistic10", --Al Maktoum Intl
+    "logistic11", --Al Minhad AFB
+    "logistic12",--Dubai Intl
+    "logistic13",--Sharjah Intl
+    "logistic14",--Ras Al Khaimah Intl
+    "logistic15",--Fujairah Intl
+    "logistic16",--Khasab
+    "logistic17", --Bandar-e-Jask
+    "logistic18", --Sir Abu Nuayr
+    "logistic19", --Abu Musa Island
+    "logistic20", --Sirri Island
+    "logistic21", --Kish Intl
+    "logistic22", --Sir Abu Nuayr
+    "logistic23", --Havadarya
+    "logistic24", --Lar
 }
 
 -- ************** UNITS ABLE TO TRANSPORT VEHICLES ******************
@@ -831,7 +905,7 @@ ctld.unitLoadLimits = {
         ["Mi-8MT"] = 16,
         ["Mi-24P"] = 10,
         ["SA342L"] = 4,
-        --["SA342M"] = 4,
+        ["SA342M"] = 4,
         --["SA342Mistral"] = 4,
         --["SA342Minigun"] = 3,
         ["UH-1H"] = 8,
@@ -877,6 +951,8 @@ ctld.internalCargoLimits = {
     ["UH-1H"]= 1,
     ["Mi-24P"]= 2,
     ["Hercules"] = 20,
+    ["SA342L"]= 0,
+    ["SA342M"]= 0,
 }
 
 
@@ -897,8 +973,8 @@ ctld.unitActions = {
 
     -- Remove the -- below to turn on options
     -- ["SA342Mistral"] = {crates=true, troops=true},
-    -- ["SA342L"] = {crates=false, troops=true},
-    -- ["SA342M"] = {crates=false, troops=true},
+    --["SA342L"] = {crates=false, troops=true},
+    --["SA342M"] = {crates=false, troops=true},
 
     --%%%%% MODS %%%%%
         --["Bronco-OV-10A"] = {crates=true, troops=true},
@@ -988,15 +1064,15 @@ ctld.loadableGroups = {
     {name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
     {name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
     {name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
-    {name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
-    {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
-    {name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
-    {name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
-    {name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
-    {name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
-    {name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
-    {name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
-    {name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
+    --{name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
+   -- {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
+    --{name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
+   -- {name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
+  --  {name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
+   -- {name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
+   -- {name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
+   -- {name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
+   -- {name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
     -- {name = ctld.i18n_translate("Mortar Squad Red"), inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
 }
 
@@ -1006,7 +1082,7 @@ ctld.loadableGroups = {
 --
 ctld.spawnableCrates = {
     -- name of the sub menu on F10 for spawning crates
-    ["Combat Vehicles"] = {
+    ["Vehiculos de Combate"] = {
         --crates you can spawn
         -- weight in KG
         -- Desc is the description on the F10 MENU
@@ -1015,151 +1091,178 @@ ctld.spawnableCrates = {
         -- side is optional but 2 is BLUE and 1 is RED
 
         -- Some descriptions are filtered to determine if JTAC or not!
-
-        --- BLUE
-        { weight = 1000.01, desc = ctld.i18n_translate("Humvee - MG"), unit = "M1043 HMMWV Armament", side = 2 },  --careful with the names as the script matches the desc to JTAC types
-        { weight = 1000.02, desc = ctld.i18n_translate("Humvee - TOW"), unit = "M1045 HMMWV TOW", side = 2, cratesRequired = 2 },
-        --{ multiple = {1000.02, 1000.02}, desc = ctld.i18n_translate("Humvee - TOW - All crates"), side = 2 },
-        { weight = 1000.03, desc = ctld.i18n_translate("Light Tank - MRAP"), unit="MaxxPro_MRAP", side = 2, cratesRequired = 2 },
-        --{ multiple = {1000.03, 1000.03}, desc = ctld.i18n_translate("Light Tank - MRAP - All crates"), side = 2 },
-        { weight = 1000.04, desc = ctld.i18n_translate("Med Tank - LAV-25"), unit="LAV-25", side = 2, cratesRequired = 3 },
-        --{ multiple = {1000.04, 1000.04, 1000.04}, desc = ctld.i18n_translate("Med Tank - LAV-25 - All crates"), side = 2 },
-        { weight = 1000.05, desc = ctld.i18n_translate("Heavy Tank - Abrams"), unit="M1A2C_SEP_V3", side = 2, cratesRequired = 4 },
-        --{ multiple = {1000.05, 1000.05, 1000.05, 1000.05}, desc = ctld.i18n_translate("Heavy Tank - Abrams - All crates"), side = 2 },
-
-        --- RED
-        { weight = 1000.11, desc = ctld.i18n_translate("BTR-D"), unit = "BTR_D", side = 1 },
-        { weight = 1000.12, desc = ctld.i18n_translate("BRDM-2"), unit = "BRDM-2", side = 1 },
-        -- need more redfor!
+        --Heavy Combat BLUE
+        { weight = 1000.05, desc = ctld.i18n_translate("Abrams M1A2C"), unit="M1A2C_SEP_V3", side = 0, cratesRequired = 4 },
+        { multiple = {1000.05, 1000.05, 1000.05, 1000.05}, desc = ctld.i18n_translate("Abrams M1A2C - $ 6,500,000"), side = 2 }, -- Abrams
+        { weight = 1007.01, desc = ctld.i18n_translate("Leopard 2A6M"), unit="Leopard-2", side = 0, cratesRequired = 4 },
+        { multiple = {1007.01, 1007.01, 1007.01, 1007.01}, desc = ctld.i18n_translate("Leopard 2A6M - $ 5,000,000"), side = 2 }, -- Leopard
+        { weight = 1007.02, desc = ctld.i18n_translate("Chieftain MK3"), unit="Chieftain_mk3", side = 0, cratesRequired = 4 },
+        { multiple = {1007.02, 1007.02, 1007.02, 1007.02}, desc = ctld.i18n_translate("Chieftain MK3 - $ 2,500,000"), side = 2 }, -- Chieftain
+        { weight = 1007.03, desc = ctld.i18n_translate("Leclerc"), unit="Leclerc", side = 0, cratesRequired = 4 },
+        { multiple = {1007.03, 1007.03, 1007.03, 1007.03}, desc = ctld.i18n_translate("Leclerc - $ 9,000,000"), side = 2 }, -- Leclerc
+        { weight = 1007.04, desc = ctld.i18n_translate("Merkava MK4"), unit="Merkava_Mk4", side = 0, cratesRequired = 4 },
+        { multiple = {1007.04, 1007.04, 1007.04, 1007.04}, desc = ctld.i18n_translate("Merkava MK4 - $ 4,500,000"), side = 2 }, -- Merkava
+        --Heavy Combat RED
+        { weight = 1007.05, desc = ctld.i18n_translate("T 90"), unit="T-90", side = 0, cratesRequired = 4 },
+        { multiple = {1007.05, 1007.05, 1007.05, 1007.05}, desc = ctld.i18n_translate("T 90 - $ 2,000,000"), side = 1 }, -- T 90
+        { weight = 1007.06, desc = ctld.i18n_translate("T 80UD"), unit="T-80UD", side = 0, cratesRequired = 4 },
+        { multiple = {1007.06, 1007.06, 1007.06, 1007.06}, desc = ctld.i18n_translate("T 80UD - $ 1,800,000"), side = 1 }, -- T 80UD
+        { weight = 1007.07, desc = ctld.i18n_translate("T 72B3"), unit="T-72B3", side = 0, cratesRequired = 4 },
+        { multiple = {1007.07, 1007.07, 1007.07, 1007.07}, desc = ctld.i18n_translate("T 72B3 - $ 1,200,000"), side = 1 }, -- T 72B3
+        { weight = 1007.08, desc = ctld.i18n_translate("T 72B"), unit="T-72B", side = 0, cratesRequired = 4 },
+        { multiple = {1007.08, 1007.08, 1007.08, 1007.08}, desc = ctld.i18n_translate("T 72B - $ 900,000"), side = 1 }, -- T 72B
     },
-    ["Support"] = {
+    ["Soporte Logistico"] = {
         --- BLUE
-        { weight = 1001.01, desc = ctld.i18n_translate("Hummer - JTAC"), unit = "Hummer", side = 2, cratesRequired = 2 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        { multiple = {1001.01, 1001.01}, desc = ctld.i18n_translate("Hummer - JTAC - All crates"), side = 2 },
-        { weight = 1001.02, desc = ctld.i18n_translate("M-818 Ammo Truck"), unit = "M 818", side = 2, cratesRequired = 2 },
-        { multiple = {1001.02, 1001.02}, desc = ctld.i18n_translate("M-818 Ammo Truck - All crates"), side = 2 },
-        { weight = 1001.03, desc = ctld.i18n_translate("M-978 Tanker"), unit = "M978 HEMTT Tanker", side = 2, cratesRequired = 2 },
-        { multiple = {1001.03, 1001.03}, desc = ctld.i18n_translate("M-978 Tanker - All crates"), side = 2 },
+        { weight = 1007.51, desc = ctld.i18n_translate("Hummer - JTAC - $100,000"), unit = "Hummer", side = 2}, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
+    
+        { weight = 1006.56, desc = ctld.i18n_translate("M-818 Ammo Truck - $100,000"), unit = "M 818", side = 2},
+      
+        { weight = 1007.25, desc = ctld.i18n_translate("M-978 Tanker - $100,000"), unit = "M978 HEMTT Tanker", side = 2},
+     
 
          --- RED
-        { weight = 1001.11, desc = ctld.i18n_translate("SKP-11 - JTAC"), unit = "SKP-11", side = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        { weight = 1001.12, desc = ctld.i18n_translate("Ural-375 Ammo Truck"), unit = "Ural-375", side = 1, cratesRequired = 2 },
-        { multiple = {1001.12, 1001.12}, desc = ctld.i18n_translate("Ural-375 Ammo Truck - All crates"), side = 1 },
-        { weight = 1001.13, desc = ctld.i18n_translate("KAMAZ Ammo Truck"), unit = "KAMAZ Truck", side = 1, cratesRequired = 2 },
+        { weight = 1008.51, desc = ctld.i18n_translate("SKP-11 - JTAC - $100,000"), unit = "SKP-11", side = 1}, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
+      
+        { weight = 1008.49, desc = ctld.i18n_translate("Ural-375 Ammo Truck - $100,000"), unit = "Ural-375", side = 1},
+  
+        { weight = 1008.47, desc = ctld.i18n_translate("KAMAZ Ammo Truck - $100,000"), unit = "KAMAZ Truck", side = 1},
+ 
+        
 
         --- Both
         { weight = 1001.21, desc = ctld.i18n_translate("EWR Radar"), unit="FPS-117", cratesRequired = 3 },
-        { multiple = {1001.21, 1001.21, 1001.21}, desc = ctld.i18n_translate("EWR Radar - All crates") },
-        { weight = 1001.22, desc = ctld.i18n_translate("FOB Crate - Small"), unit = "FOB-SMALL" }, -- Builds a FOB! - requires 3 * ctld.cratesRequiredForFOB
+        { multiple = {1001.21, 1001.21, 1001.21}, desc = ctld.i18n_translate("EWR Radar - $ 4,000,000") },
+        { weight = 1001.22, desc = ctld.i18n_translate("FOB Crate - Small"), unit = "FOB-SMALL", cratesRequired = 3 }, -- Builds a FOB! - requires 3 * ctld.cratesRequiredForFOB
+        { multiple = {1001.22, 1001.22, 1001.22}, desc = ctld.i18n_translate("FOB - $ 1,000,000") },
 
     },
-    ["Artillery"] = {
+    ["Artilleria"] = {
         --- BLUE
-        { weight = 1002.01, desc = ctld.i18n_translate("MLRS"), unit = "MLRS", side=2, cratesRequired = 3 },
-        { multiple = {1002.01, 1002.01, 1002.01}, desc = ctld.i18n_translate("MLRS - All crates"), side=2 },
-        { weight = 1002.02, desc = ctld.i18n_translate("SpGH DANA"), unit = "SpGH_Dana", side=2, cratesRequired = 3 },
-        { multiple = {1002.02, 1002.02, 1002.02}, desc = ctld.i18n_translate("SpGH DANA - All crates"), side=2 },
-        { weight = 1002.03, desc = ctld.i18n_translate("T155 Firtina"), unit = "T155_Firtina", side=2, cratesRequired = 3 },
-        { multiple = {1002.03, 1002.03, 1002.03}, desc = ctld.i18n_translate("T155 Firtina - All crates"), side=2 },
-        { weight = 1002.04, desc = ctld.i18n_translate("Howitzer"), unit = "M-109", side=2, cratesRequired = 3 },
-        { multiple = {1002.04, 1002.04, 1002.04}, desc = ctld.i18n_translate("Howitzer - All crates"), side=2 },
+        { weight = 1002.01, desc = ctld.i18n_translate("MLRS Himars"), unit = "MLRS", side=0, cratesRequired = 4 },
+        { multiple = {1002.01, 1002.01, 1002.01}, desc = ctld.i18n_translate("MLRS Himars - $ 5,000,000"), side=2 },
+        { weight = 1002.02, desc = ctld.i18n_translate("SpGH DANA"), unit = "SpGH_Dana", side=0, cratesRequired = 4 },
+        { multiple = {1002.02, 1002.02, 1002.02, 1002.02}, desc = ctld.i18n_translate("SpGH DANA - $ 1,500,000"), side=2 },
+        { weight = 1002.03, desc = ctld.i18n_translate("T155 Firtina"), unit = "T155_Firtina", side=0, cratesRequired = 4 },
+        { multiple = {1002.03, 1002.03, 1002.03, 1002.03}, desc = ctld.i18n_translate("T155 Firtina - $ 2,200,000"), side=2 },
+        { weight = 1002.04, desc = ctld.i18n_translate("Paladin"), unit = "M-109", side=0, cratesRequired = 4 },
+        { multiple = {1002.04, 1002.04, 1002.04, 1002.04}, desc = ctld.i18n_translate("Paladin - $ 1,700,000"), side=2 },
 
         --- RED
-        { weight = 1002.11, desc = ctld.i18n_translate("SPH 2S19 Msta"), unit = "SAU Msta", side = 1, cratesRequired = 3 },
-        { multiple = {1002.11, 1002.11, 1002.11}, desc = ctld.i18n_translate("SPH 2S19 Msta - All crates"), side=1 },
+        { weight = 1002.11, desc = ctld.i18n_translate("SPH 2S19 Msta"), unit = "SAU Msta", side = 0, cratesRequired = 4 },
+        { multiple = {1002.11, 1002.11, 1002.11, 1002.11}, desc = ctld.i18n_translate("SPH 2S19 Msta - $ 2,500,000"), side=1 },
+        { weight = 1002.12, desc = ctld.i18n_translate("Smerch 300mm CM"), unit = "Smerch", side = 0, cratesRequired = 6 },
+        { multiple = {1002.12, 1002.12, 1002.12, 1002.12, 1002.12, 1002.12}, desc = ctld.i18n_translate("Smerch 300mm CM - $ 4,000,000"), side=1 },
+        { weight = 1002.13, desc = ctld.i18n_translate("Smerch 300mm HE"), unit = "Smerch_HE", side = 0, cratesRequired = 6 },
+        { multiple = {1002.13, 1002.13, 1002.13, 1002.13, 1002.13, 1002.13}, desc = ctld.i18n_translate("Smerch 300mm HE - $ 5,000,000"), side=1 },
+        { weight = 1002.14, desc = ctld.i18n_translate("Uragan BM"), unit = "Uragan_BM-27", side = 0, cratesRequired = 4 },
+        { multiple = {1002.14, 1002.14, 1002.14, 1002.14}, desc = ctld.i18n_translate("Uragan BM - $ 3,000,000"), side=1 },
+        { weight = 1002.15, desc = ctld.i18n_translate("Grad URAL"), unit = "Grad-URAL", side = 0, cratesRequired = 2 },
+        { multiple = {1002.15, 1002.15}, desc = ctld.i18n_translate("Grad URAL - $ 700,000"), side=1 },
+        { weight = 1002.16, desc = ctld.i18n_translate("SAU Akatsia"), unit = "SAU Akatsia", side = 0, cratesRequired = 4 },
+        { multiple = {1002.16, 1002.16, 1002.16, 1002.16}, desc = ctld.i18n_translate("SAU Akatsia - $ 1,200,000"), side=1 },
+        { weight = 1002.17, desc = ctld.i18n_translate("SAU 2C9"), unit = "SAU 2-C9", side = 0, cratesRequired = 2 },
+        { multiple = {1002.17, 1002.17}, desc = ctld.i18n_translate("SAU 2C9 - $ 800,000"), side=1 },
 
     },
-    ["SAM short range"] = {
+    ["SAM Corto Alcance"] = {
         --- BLUE
-        { weight = 1003.01, desc = ctld.i18n_translate("M1097 Avenger"), unit = "M1097 Avenger", side = 2, cratesRequired = 3 },
-        { multiple = {1003.01, 1003.01, 1003.01}, desc = ctld.i18n_translate("M1097 Avenger - All crates"), side=2 },
-        { weight = 1003.02, desc = ctld.i18n_translate("M48 Chaparral"), unit = "M48 Chaparral", side = 2, cratesRequired = 2 },
-        { multiple = {1003.02, 1003.02}, desc = ctld.i18n_translate("M48 Chaparral - All crates"), side=2 },
-        { weight = 1003.03, desc = ctld.i18n_translate("Roland ADS"), unit = "Roland ADS", side = 2, cratesRequired = 3 },
-        { multiple = {1003.03, 1003.03, 1003.03}, desc = ctld.i18n_translate("Roland ADS - All crates"), side=2 },
-        { weight = 1003.04, desc = ctld.i18n_translate("Gepard AAA"), unit = "Gepard", side = 2, cratesRequired = 3 },
-        { multiple = {1003.04, 1003.04, 1003.04}, desc = ctld.i18n_translate("Gepard AAA - All crates"), side=2 },
-        { weight = 1003.05, desc = ctld.i18n_translate("LPWS C-RAM"), unit = "HEMTT_C-RAM_Phalanx", side = 2, cratesRequired = 3 },
-        { multiple = {1003.05, 1003.05, 1003.05}, desc = ctld.i18n_translate("LPWS C-RAM - All crates"), side=2 },
+        { weight = 1003.01, desc = ctld.i18n_translate("M1097 Avenger"), unit = "M1097 Avenger", side = 0, cratesRequired = 3 },
+        { multiple = {1003.01, 1003.01, 1003.01}, desc = ctld.i18n_translate("M1097 Avenger - $ 1,000,000"), side=2 },
+        { weight = 1003.02, desc = ctld.i18n_translate("M48 Chaparral"), unit = "M48 Chaparral", side = 0, cratesRequired = 2 },
+        { multiple = {1003.02, 1003.02}, desc = ctld.i18n_translate("M48 Chaparral - $ 1,200,000"), side=2 },
+        { weight = 1003.03, desc = ctld.i18n_translate("Roland ADS"), unit = "Roland ADS", side = 0, cratesRequired = 2 },
+        { weight = 1003.65, desc = ctld.i18n_translate("Roland Radar"), unit = "Roland Radar", side = 0, cratesRequired = 2 },
+        { multiple = {1003.03, 1003.03, 1003.65, 1003.65}, desc = ctld.i18n_translate("Roland System - $ 4,000,000"), side=2 },
+        { weight = 1003.04, desc = ctld.i18n_translate("Gepard AAA"), unit = "Gepard", side = 0, cratesRequired = 3 },
+        { multiple = {1003.04, 1003.04, 1003.04}, desc = ctld.i18n_translate("Gepard AAA - $ 2,000,000"), side=2 },
+        { weight = 1003.05, desc = ctld.i18n_translate("LPWS C-RAM"), unit = "HEMTT_C-RAM_Phalanx", side = 0, cratesRequired = 3 },
+        { multiple = {1003.05, 1003.05, 1003.05}, desc = ctld.i18n_translate("LPWS C-RAM - $ 3,500,000"), side=2 },
 
         --- RED
         { weight = 1003.11, desc = ctld.i18n_translate("9K33 Osa"), unit = "Osa 9A33 ln", side = 1, cratesRequired = 3 },
-        { multiple = {1003.11, 1003.11, 1003.11}, desc = ctld.i18n_translate("9K33 Osa - All crates"), side=1 },
+        { multiple = {1003.11, 1003.11, 1003.11}, desc = ctld.i18n_translate("9K33 Osa - $ 1,500,000"), side=1 },
         { weight = 1003.12, desc = ctld.i18n_translate("9P31 Strela-1"), unit = "Strela-1 9P31", side = 1, cratesRequired = 3 },
-        { multiple = {1003.12, 1003.12, 1003.12}, desc = ctld.i18n_translate("9P31 Strela-1 - All crates"), side=1 },
+        { multiple = {1003.12, 1003.12, 1003.12}, desc = ctld.i18n_translate("9P31 Strela-1 - $ 800,000"), side=1 },
         { weight = 1003.13, desc = ctld.i18n_translate("9K35M Strela-10"), unit = "Strela-10M3", side = 1, cratesRequired = 3 },
-        { multiple = {1003.13, 1003.13, 1003.13}, desc = ctld.i18n_translate("9K35M Strela-10 - All crates"), side=1 },
+        { multiple = {1003.13, 1003.13, 1003.13}, desc = ctld.i18n_translate("9K35M Strela-10 - $ 1,000,000"), side=1 },
         { weight = 1003.14, desc = ctld.i18n_translate("9K331 Tor"), unit = "Tor 9A331", side = 1, cratesRequired = 3 },
-        { multiple = {1003.14, 1003.14, 1003.14}, desc = ctld.i18n_translate("9K331 Tor - All crates"), side=1 },
+        { multiple = {1003.14, 1003.14, 1003.14}, desc = ctld.i18n_translate("9K331 Tor - $ 3,500,000"), side=1 },
         { weight = 1003.15, desc = ctld.i18n_translate("2K22 Tunguska"), unit = "2S6 Tunguska", side = 1, cratesRequired = 3 },
-        { multiple = {1003.15, 1003.15, 1003.15}, desc = ctld.i18n_translate("2K22 Tunguska - All crates"), side=1 },
+        { multiple = {1003.15, 1003.15, 1003.15}, desc = ctld.i18n_translate("2K22 Tunguska - $ 4,000,000"), side=1 },
     },
-    ["SAM mid range"] = {
+    ["SAM Medio Alcance"] = {
         --- BLUE
         -- HAWK System
-        { weight = 1004.01, desc = ctld.i18n_translate("HAWK Launcher"), unit = "Hawk ln", side = 2},
-        { weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar"), unit = "Hawk sr", side = 2 },
-        { weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar"), unit = "Hawk tr", side = 2 },
-        { weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP"), unit = "Hawk pcp" , side = 2 },
-        { weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR"), unit = "Hawk cwar" , side = 2 },
-        { weight = 1004.06, desc = ctld.i18n_translate("HAWK Repair"), unit = "HAWK Repair" , side = 2 },
-        { multiple = {1004.01, 1004.02, 1004.03}, desc = ctld.i18n_translate("HAWK - All crates"), side = 2 },
-        -- End of HAWK
+        { weight = 1009.98, desc = ctld.i18n_translate("M-818 Ammo Truck 2"), unit = "M 818", side = 0},
+        { weight = 1011.89, desc = ctld.i18n_translate("HAWK Launcher - $ 2,200,000"), unit = "Hawk ln", side = 2},
+        { weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar - $ 3,000,000"), unit = "Hawk sr", side = 2 },
+        { weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar - $ 2,500,000"), unit = "Hawk tr", side = 2 },
+        { weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP - $ 1,500,000"), unit = "Hawk pcp" , side = 2 },
+        { weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR - $ 2,000,000"), unit = "Hawk cwar" , side = 2 },
+        { weight = 1004.06, desc = ctld.i18n_translate("HAWK Repair - $ 1,000,000"), unit = "HAWK Repair" , side = 2 },
+        { multiple = {1011.89, 1011.89,1011.89, 1004.02, 1004.03, 1004.04, 1004.05, 1009.98}, desc = ctld.i18n_translate("HAWK FULL - $ 17,800,000"), side = 2 },
+        -- End of HAWK}
 
         -- NASAMS Sysyem
-        { weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C"), unit = "NASAMS_LN_C", side = 2},
-        { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar"), unit = "NASAMS_Radar_MPQ64F1", side = 2 },
-        { weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post"), unit = "NASAMS_Command_Post", side = 2 },
-        { weight = 1004.14, desc = ctld.i18n_translate("NASAMS Repair"), unit = "NASAMS Repair", side = 2 },
-        { multiple = {1004.11, 1004.12, 1004.13}, desc = ctld.i18n_translate("NASAMS - All crates"), side = 2 },
+        { weight = 1009.95, desc = ctld.i18n_translate("M-818 Ammo Truck 3"), unit = "M 818", side = 0},
+        { weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C - $ 3,800,000"), unit = "NASAMS_LN_C", side = 2},
+        { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar - $ 3,200,000"), unit = "NASAMS_Radar_MPQ64F1", side = 2 },
+        { weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post - $ 2,200,000"), unit = "NASAMS_Command_Post", side = 2 },
+        { weight = 1004.14, desc = ctld.i18n_translate("NASAMS Repair - $ 1,200,000"), unit = "NASAMS Repair", side = 2 },
+        { multiple = {1004.11, 1004.11, 1004.11, 1004.11, 1004.12, 1004.13, 1009.95}, desc = ctld.i18n_translate("NASAMS FULL - $ 21,800,000"), side = 2 },
         -- End of NASAMS
 
         --- RED
         -- KUB SYSTEM
-        { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher"), unit = "Kub 2P25 ln", side = 1},
-        { weight = 1004.22, desc = ctld.i18n_translate("KUB Radar"), unit = "Kub 1S91 str", side = 1 },
-        { weight = 1004.23, desc = ctld.i18n_translate("KUB Repair"), unit = "KUB Repair", side = 1},
-        { multiple = {1004.21, 1004.22}, desc = ctld.i18n_translate("KUB - All crates"), side = 1 },
+        { weight = 1007.58, desc = ctld.i18n_translate("Ural-375 Ammo Truck 2"), unit = "Ural-375", side = 0},
+        { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher - $ 1,500,000"), unit = "Kub 2P25 ln", side = 1},
+        { weight = 1004.22, desc = ctld.i18n_translate("KUB Radar - $ 2,000,000"), unit = "Kub 1S91 str", side = 1 },
+        { weight = 1004.23, desc = ctld.i18n_translate("KUB Repair - $ 800,000"), unit = "KUB Repair", side = 1},
+        { multiple = {1004.21, 1004.21, 1004.21, 1004.21, 1004.22, 1007.58}, desc = ctld.i18n_translate("KUB FULL - $ 8,000,000"), side = 1 },
         -- End of KUB
 
         -- BUK System
-        { weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher"), unit = "SA-11 Buk LN 9A310M1", side = 1},
-        { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar"), unit = "SA-11 Buk SR 9S18M1", side = 1},
-        { weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar"), unit = "SA-11 Buk CC 9S470M1", side = 1},
-        { weight = 1004.34, desc = ctld.i18n_translate("BUK Repair"), unit = "BUK Repair", side = 1},
-        { multiple = {1004.31, 1004.32, 1004.33}, desc = ctld.i18n_translate("BUK - All crates"), side = 1 },
+        { weight = 1007.56, desc = ctld.i18n_translate("Ural-375 Ammo Truck 3"), unit = "Ural-375", side = 0},
+        { weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher - $ 2,800,000"), unit = "SA-11 Buk LN 9A310M1", side = 1},
+        { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar - $ 3,500,000"), unit = "SA-11 Buk SR 9S18M1", side = 1},
+        { weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar - $ 2,800,000"), unit = "SA-11 Buk CC 9S470M1", side = 1},
+        { weight = 1004.34, desc = ctld.i18n_translate("BUK Repair - $ 1,200,000"), unit = "BUK Repair", side = 1},
+        { multiple = {1004.31, 1004.31, 1004.31, 1004.31,  1004.32, 1004.33, 1007.56}, desc = ctld.i18n_translate("BUK FULL - $ 17,500,000"), side = 1 },
         -- END of BUK
     },
-    ["SAM long range"] = {
+    ["SAM Largo Alcance"] = {
         --- BLUE
         -- Patriot System
-        { weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher"), unit = "Patriot ln", side = 2 },
-        { weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar"), unit = "Patriot str" , side = 2 },
-        { weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS"), unit = "Patriot ECS", side = 2 },
-        -- { weight = 1005.04, desc = ctld.i18n_translate("Patriot ICC"), unit = "Patriot cp", side = 2 },
-        -- { weight = 1005.05, desc = ctld.i18n_translate("Patriot EPP"), unit = "Patriot EPP", side = 2 },
-        { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional)"), unit = "Patriot AMG" , side = 2 },
-        { weight = 1005.07, desc = ctld.i18n_translate("Patriot Repair"), unit = "Patriot Repair" , side = 2 },
-        { multiple = {1005.01, 1005.02, 1005.03}, desc = ctld.i18n_translate("Patriot - All crates"), side = 2 },
+        { weight = 1009.92, desc = ctld.i18n_translate("M-818 Ammo Truck 4"), unit = "M 818", side = 0},
+        { weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher - $ 4,500,000"), unit = "Patriot ln", side = 2},
+        { weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar - $ 6,000,000"), unit = "Patriot str" , side = 2 },
+        { weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS - $ 3,500,000"), unit = "Patriot ECS", side = 2 },
+        { weight = 1005.04, desc = ctld.i18n_translate("Patriot ICC - $ 3,000,000"), unit = "Patriot cp", side = 2 },
+        { weight = 1005.05, desc = ctld.i18n_translate("Patriot EPP - $ 2,500,000"), unit = "Patriot EPP", side = 2 },
+        { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional) - $ 2,000,000"), unit = "Patriot AMG" , side = 2 },
+        { weight = 1005.07, desc = ctld.i18n_translate("Patriot Repair - $ 1,500,000"), unit = "Patriot Repair" , side = 2 },
+        { multiple = {1005.01, 1005.01, 1005.02, 1005.03, 1005.04, 1005.05, 1005.06, 1009.92}, desc = ctld.i18n_translate("Patriot FULL - $ 26,000,000"), side = 2 },
         -- End of Patriot
 
         -- S-300 SYSTEM
-        { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C"), unit = "S-300PS 5P85C ln", side = 1 },
-        { weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR"), unit = "S-300PS 40B6M tr", side = 1 },
-        { weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR"), unit = "S-300PS 40B6MD sr", side = 1 },
-        { weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR"), unit = "S-300PS 64H6E sr", side = 1 },
-        { weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2"), unit = "S-300PS 54K6 cp", side = 1 },
-        { weight = 1005.16, desc = ctld.i18n_translate("S-300 Repair"), unit = "S-300 Repair", side = 1 },
-        { multiple = {1005.11, 1005.12, 1005.13, 1005.14, 1005.15}, desc = ctld.i18n_translate("Patriot - All crates"), side = 1 },
+        { weight = 1007.24, desc = ctld.i18n_translate("Ural-375 Ammo Truck 4"), unit = "Ural-375", side = 0},
+        { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C - $ 4,200,000"), unit = "S-300PS 5P85C ln", side = 1},
+        { weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR - $ 5,500,000"), unit = "S-300PS 40B6M tr", side = 1 },
+        { weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR - $ 4,000,000"), unit = "S-300PS 40B6MD sr", side = 1 },
+        { weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR - $ 6,500,000"), unit = "S-300PS 64H6E sr", side = 1 },
+        { weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2 - $ 3,500,000"), unit = "S-300PS 54K6 cp", side = 1 },
+        { weight = 1005.16, desc = ctld.i18n_translate("S-300 Repair - $ 1,800,000"), unit = "S-300 Repair", side = 1 },
+        { multiple = {1005.11, 1005.11,1005.11, 1005.12, 1005.13, 1005.14, 1005.15, 1007.24}, desc = ctld.i18n_translate("S-300 FULL - $ 32,100,000"), side = 1 },
         -- End of S-300
     },
-    ["Drone"] = {
+    ["Drones"] = {
         --- BLUE MQ-9 Repear
-        { weight = 1006.01, desc = ctld.i18n_translate("MQ-9 Repear - JTAC"), unit = "MQ-9 Reaper", side = 2 },
+        { weight = 1006.05, desc = ctld.i18n_translate("MQ-9 Repear - $ 10,000,000"), unit = "MQ-9 Reaper", side = 2},
         -- End of BLUE MQ-9 Repear
 
         --- RED MQ-1A Predator
-        { weight = 1006.11, desc = ctld.i18n_translate("MQ-1A Predator - JTAC"), unit = "RQ-1A Predator", side = 1 },
+        { weight = 1006.11, desc = ctld.i18n_translate("RQ-1A Predator - $ 10,000,000"), unit = "RQ-1A Predator", side = 1 },
         -- End of RED MQ-1A Predator
     },
 }
@@ -2320,6 +2423,10 @@ function ctld.spawnCrate(_arguments, bypassCrateWaitTime)
 
     local _status, _err = pcall(function(_args)
 
+         if USAR_ECONOMIA_CTLD and CTLD_ECONOMIA_HOOK then
+            local continuar = CTLD_ECONOMIA_HOOK(_args)
+            if not continuar then return end
+        end
         -- use the cargo weight to guess the type of unit as no way to add description :(
         local _crateType = ctld.crateLookupTable[tostring(_args[2])]
 
@@ -5849,6 +5956,10 @@ function ctld.addTransportF10MenuOptions(_unitName)
                                             if not isJTAC or (isJTAC and ctld.JTAC_dropEnabled) then
                                                 if _crate.side == nil or (_crate.side == _unit:getCoalition()) then
                                                     local _crateRadioMsg = _crate.desc
+
+                                                   -- if USAR_ECONOMIA_CTLD and COSTOS_CRATE[_crate.desc] then
+                                                    -- _crateRadioMsg = _crateRadioMsg .. " – Precio: " .. COSTOS_CRATE[_crate.desc]
+                                                    --end
                                                     --add in the number of crates required to build something
                                                     if _crate.cratesRequired ~= nil and _crate.cratesRequired > 1 then
                                                         _crateRadioMsg = _crateRadioMsg.." (".._crate.cratesRequired..")"

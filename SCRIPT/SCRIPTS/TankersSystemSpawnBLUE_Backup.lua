@@ -108,54 +108,22 @@ local function spawnTankerAzul(tp, p1, p2, hdg)
       callsign = { info.cs[1], info.cs[2], math.random(11, 99) },
       communication = true
     } },
-route = {
-  points = {
-    {
-      x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
+    route = {
+      points = {
+        {
+          x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
+          task = { id = "ComboTask", params = { tasks = { { id = "Tanker", enabled = true } } } }
+        },
+        {
+          x = p2.x, y = p2.y, alt = alt, speed = spd, action = "Turning Point",
+          task = { id = "ComboTask", params = { tasks = {
+            { id = "WrappedAction", params = { action = {
+              id = "SwitchWaypoint", params = { fromWaypointIndex = 2, goToWaypointIndex = 1 } } } },
             { id = "Tanker", enabled = true }
-          }
-        }
-      }
-    },
-    {
-      x = p2.x, y = p2.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
-            { id = "Tanker", enabled = true }
-          }
-        }
-      }
-    },
-    {
-      x = p1.x, y = p1.y, alt = alt, speed = spd, action = "Turning Point",
-      task = {
-        id = "ComboTask",
-        params = {
-          tasks = {
-            {
-              id = "WrappedAction",
-              params = {
-                action = {
-                  id = "SwitchWaypoint",
-                  params = { fromWaypointIndex = 3, goToWaypointIndex = 2 }
-                }
-              }
-            },
-            { id = "Tanker", enabled = true }
-          }
+          } } }
         }
       }
     }
-  }
-}
-
-
   }
 
   coalition.addGroup(defaultCountry, groupData.category, groupData)
@@ -196,7 +164,7 @@ function eventHandlerAzul:onEvent(e)
   if t == "tankerh" or t == "tankerv" then
     local hdg = (t == "tankerh") and math.rad(90) or 0
     local p1 = { x = e.pos.x, y = e.pos.z }
-    local d = 20 * 1852
+    local d = 50 * 1852
     local p2 = { x = p1.x + math.cos(hdg) * d, y = p1.y + math.sin(hdg) * d }
     spawnTankerAzul(_G.__SEL_AZUL, p1, p2, hdg)
     _G.__SEL_AZUL = nil
