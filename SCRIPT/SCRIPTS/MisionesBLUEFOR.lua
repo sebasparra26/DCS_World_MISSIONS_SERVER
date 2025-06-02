@@ -1,6 +1,6 @@
 -- Configuración del spawn
 local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 10     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local spawnEnd = 4     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
 local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
 local spawnZone = "BLUEFOR"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
@@ -166,13 +166,15 @@ local function checkAndSpawn()
         end
 
         -- Retraso antes de activar el siguiente grupo
-        timer.scheduleFunction(function()
-            local groupNumber = math.random(spawnStart, spawnEnd)
-            local groupName = groupNamePrefix .. string.format("%02d", groupNumber)
-            debug("Activando el siguiente grupo después del retardo: " .. groupName)
-            trigger.action.setUserFlag(activationFlag, activationValue)  -- Reafirma la bandera antes de activar
-            spawnGroup(groupName)
-        end, {}, timer.getTime() + deathDelay)
+        -- Retraso antes de activar el siguiente grupo (secuencial)
+timer.scheduleFunction(function()
+    local nextGroupNumber = spawnStart + deadGroupsCount
+    local groupName = groupNamePrefix .. string.format("%02d", nextGroupNumber)
+    debug("Activando el siguiente grupo después del retardo: " .. groupName)
+    trigger.action.setUserFlag(activationFlag, activationValue)
+    spawnGroup(groupName)
+end, {}, timer.getTime() + deathDelay)
+
     else
         debug("El grupo activo sigue vivo: " .. activeGroup)
     end
