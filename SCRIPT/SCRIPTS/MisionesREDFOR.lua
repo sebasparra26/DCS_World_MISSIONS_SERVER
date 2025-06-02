@@ -1,11 +1,23 @@
 -- Configuración del spawn
-local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 10     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local spawnStart = 11    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
+local spawnEnd = 20     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
 local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
-local spawnZone = "BLUEFOR"  -- Zona donde se realizará el spawn
+local spawnZone = "REDFOR"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
 local deathMessage = "Grupo destruido."  -- Mensaje que se muestra cuando un grupo muere
 local activationMessages = {
+    --------------------------------DESDE ACA SON LAS MISIONES DE BLUEFOR
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    --------------------------------DESDE ACA SON LAS MISIONES DE REDFOR
     "Misión: DESCRIPCION --- Ubicación de la mision en F10",
     "Misión: DESCRIPCION --- Ubicación de la mision en F10",
     "Misión: DESCRIPCION --- Ubicación de la mision en F10",
@@ -20,14 +32,14 @@ local activationMessages = {
 local endMessage = "Todos los grupos han muerto. Script finalizado."  -- Mensaje al finalizar
 local spawnInterval = 15  -- Intervalo de tiempo entre activaciones (en segundos)
 local deathDelay = 10  -- Retardo tras la muerte del grupo antes de activar el siguiente (en segundos)
-local activationFlag = 100  -- Número de la bandera de activación
+local activationFlag = 200  -- Número de la bandera de activación
 local activationValue = 1  -- Valor de la bandera de activación22222223
-local deathFlag = 100  -- Número de la bandera de muerte
+local deathFlag = 200  -- Número de la bandera de muerte
 local deathValue = 2  -- Valor de la bandera de muerte
 
 -- Parámetros de configuración para los Draws
-local drawRadius = 4000  -- Radio en metros
-local drawColor = {255, 0, 0}  -- Color en formato RGB (verde en este caso)
+local drawRadius = 8000  -- Radio en metros
+local drawColor = {0, 0, 255}  -- Color en formato RGB (verde en este caso)
 local drawLife = 0  -- Tiempo de vida del marcador (0 significa que no desaparecerá solo)
 local drawVisible = true  -- Si el marcador es visible
 
@@ -43,7 +55,7 @@ end
 local activeGroup = nil  -- Grupo actualmente activo
 local deadGroupsCount = 0  -- Contador de grupos muertos
 local scriptActive = true  -- Bandera para controlar el ciclo
-local drawName = "BLUEFOR"  -- Nombre para el draw
+local drawName = "REDFOR"  -- Nombre para el draw
 local markerId = nil  -- ID del marcador
 
 -- Función para crear una marca en el mapa
@@ -147,7 +159,7 @@ local function checkAndSpawn()
 
         -- Verificar si todos los grupos están muertos para finalizar el script
         if deadGroupsCount >= (spawnEnd - spawnStart + 1) then
-            trigger.action.outText(endMessage, 10)
+            trigger.action.outText(endMessage, 300)
             debug("Todos los grupos han muerto. Script finalizado.")
             scriptActive = false
             return
