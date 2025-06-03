@@ -1,6 +1,19 @@
 -- Configuración del spawn
 local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 4     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local spawnEnd = 10     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+-- Tabla de banderas por grupo (TGT_01 a TGT_10)
+local groupFlags = {
+    ["TGT_01"] = 101,
+    ["TGT_02"] = 102,
+    ["TGT_03"] = 103,
+    ["TGT_04"] = 104,
+    ["TGT_05"] = 105,
+    ["TGT_06"] = 106,
+    ["TGT_07"] = 107,
+    ["TGT_08"] = 108,
+    ["TGT_09"] = 109,
+    ["TGT_10"] = 110,
+}
 local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
 local spawnZone = "BLUEFOR"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
@@ -11,12 +24,12 @@ local activationMessages = {
     "Misión: 2 --- Ubicación de la mision en F10",
     "Misión: 3 --- Ubicación de la mision en F10",
     "Misión: 4 --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
-    "Misión: DESCRIPCION --- Ubicación de la mision en F10",
+    "Misión: 5 --- Ubicación de la mision en F10",
+    "Misión: 6 --- Ubicación de la mision en F10",
+    "Misión: 7 --- Ubicación de la mision en F10",
+    "Misión: 8 --- Ubicación de la mision en F10",
+    "Misión: 9 --- Ubicación de la mision en F10",
+    "Misión: 10 --- Ubicación de la mision en F10",
     --------------------------------DESDE ACA SON LAS MISIONES DE REDFOR
     "Misión: DESCRIPCION --- Ubicación de la mision en F10",
     "Misión: DESCRIPCION --- Ubicación de la mision en F10",
@@ -63,7 +76,7 @@ local function createMarker(text, group)
     if group and group:isExist() then
         local pos = group:getUnit(1):getPoint()
         markerId = group:getID()
-        trigger.action.markToAll(markerId, text, pos, true)
+        trigger.action.markToCoalition(markerId, text, pos, 2, true)
         debug("Marca creada para el grupo " .. group:getName())
     end
 end
@@ -82,7 +95,8 @@ local function createDrawForActiveGroup(group)
             radius = drawRadius,  -- Radio en metros
             color = drawColor,  -- Color del marcador
             life = drawLife,  -- Tiempo de vida del marcador
-            visible = drawVisible  -- Visibilidad del marcador
+            visible = drawVisible,  -- Visibilidad del marcador
+            coalition = 2  -- Solo visible para BLUEFOR
         })
         debug("Draw creado en la posición del grupo " .. group:getName())
     end
@@ -123,6 +137,11 @@ end
 
 -- Función para generar un grupo específico
 local function spawnGroup(groupName)
+    local flagID = groupFlags[groupName]
+if flagID then
+    trigger.action.setUserFlag(flagID, 2)
+    debug("Bandera " .. flagID .. " del grupo " .. groupName .. " seteada en 2 (activo).")
+end
     trigger.action.setUserFlag(activationFlag, activationValue)  -- Establecer la bandera de activación
     debug("Bandera de activación " .. activationFlag .. " establecida en " .. activationValue)
     local group = Group.getByName(groupName)
@@ -149,7 +168,14 @@ local function checkAndSpawn()
         if activeGroup then
             trigger.action.outText(deathMessage, 10)
             debug("Grupo " .. activeGroup .. " destruido.")
-            trigger.action.setUserFlag(deathFlag, deathValue)  -- Establecer la bandera de muerte
+            trigger.action.setUserFlag(deathFlag, deathValue)
+            -- Cambiar bandera del grupo a 1 (muerto)
+local flagID = groupFlags[activeGroup]
+if flagID then
+    trigger.action.setUserFlag(flagID, 1)
+    debug("Bandera " .. flagID .. " del grupo " .. activeGroup .. " seteada en 1 (muerto).")
+end
+  -- Establecer la bandera de muerte
             debug("Bandera de muerte " .. deathFlag .. " establecida en " .. deathValue)
             removeMarker()
             removeDraw()  -- Eliminar el draw cuando el grupo muere
