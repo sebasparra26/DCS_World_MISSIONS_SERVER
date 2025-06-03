@@ -1,7 +1,7 @@
 local spawnStart = 1
 local spawnEnd = 10
 local groupNamePrefix = "TGT_"
-local debugMode = true
+local debugMode = false
 
 local activationMessages = {
     "Mision: 1 OPERACION VOLTA-12 --- Ubicacion de la mision en F10",
@@ -38,10 +38,10 @@ local deathFlag = 600
 local deathValue = 2
 
 local drawName = "BLUEFOR"
-local drawRadius = 8000
-local drawColor = {255, 0, 0}
+local drawRadius = 0
+--local drawColor = {0, 0, 0}
 local drawLife = 0
-local drawVisible = true
+--local drawVisible = true
 
 local spawnInterval = 15
 local deathDelay = 10
@@ -53,7 +53,7 @@ local scriptActive = true
 
 local function debug(msg)
     if debugMode then
-        trigger.action.outText("[DEBUG] " .. msg, 5)
+        trigger.action.outTextForCoalition(2, "[DEBUG] " .. msg, 5)
         env.info("[DEBUG] " .. msg)
     end
 end
@@ -88,14 +88,13 @@ local function createDrawForGroup(group)
     mist.marker.add({
         name = drawName,
         type = "circle",
-        fillColor = {255, 0, 0, 72},
-        lineType = 4,
+        fillColor = {255, 0, 0, 0},
+        --lineType = 4,
         point = {x = pos.x, y = 0, z = pos.z},
         radius = drawRadius,
         color = drawColor,
         life = drawLife,
-        visible = drawVisible,
-        coalition = 2
+        visible = { blue = true, red = false, neutrals = false }
     })
 end
 
@@ -108,7 +107,7 @@ end
 
 local function spawnNextGroup()
     if currentIndex > spawnEnd then
-        trigger.action.outText(endMessage, 30)
+        trigger.action.outTextForCoalition(2, endMessage, 30)
         debug("Script finalizado.")
         scriptActive = false
         return
@@ -132,7 +131,7 @@ end, {}, timer.getTime() + 0.1)
         trigger.action.setUserFlag(600, currentIndex)
 
         local mensaje = activationMessages[currentIndex] or "Mision activada."
-        trigger.action.outText(mensaje, 20)
+        trigger.action.outTextForCoalition(2, mensaje, 20)
         debug("Grupo activado: " .. groupName)
         createMarker(mensaje, group)
         createDrawForGroup(group)
@@ -147,7 +146,7 @@ local function checkAndAdvance()
     if not scriptActive then return end
 
     if activeGroup and isGroupDead(activeGroup) then
-        trigger.action.outText(deathMessage, 10)
+        trigger.action.outTextForCoalition(2, deathMessage, 10)
         debug("Grupo muerto: " .. activeGroup)
 
         -- BANDERAS

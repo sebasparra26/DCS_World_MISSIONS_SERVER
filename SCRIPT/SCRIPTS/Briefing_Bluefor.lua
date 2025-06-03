@@ -5,12 +5,12 @@
 local grupoCoalicion = 2          -- 2 = Blue, 1 = Red
 local spawnStart = 1
 local spawnEnd = 10
-local debugMode = true           -- ← Activa o desactiva todos los mensajes
+local debugMode = false           -- ← Activa o desactiva todos los mensajes
 
 -- Función de salida debug
 local function debug(texto)
     if debugMode then
-        trigger.action.outText("[DEBUG] " .. texto, 5)
+        trigger.action.outTextForCoalition(2, "[DEBUG] " .. texto, 5)
     end
 end
 
