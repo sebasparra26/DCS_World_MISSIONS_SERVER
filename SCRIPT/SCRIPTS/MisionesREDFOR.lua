@@ -117,11 +117,13 @@ end
 
 local function spawnNextGroup()
     if currentIndex > spawnEnd then
-        trigger.action.outTextForCoalition(1, endMessage, 30)
-        debug("Script finalizado.")
-        scriptActive = false
-        return
-    end
+    trigger.action.outTextForCoalition(1, endMessage, 30)
+    debug("Script finalizado.")
+    trigger.action.setUserFlag(900, 2)
+    scriptActive = false
+    return
+end
+
 
     local groupName = groupNamePrefix .. string.format("%02d", currentIndex)
     local group = Group.getByName(groupName)

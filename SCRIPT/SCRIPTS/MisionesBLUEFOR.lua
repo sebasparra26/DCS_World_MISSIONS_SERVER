@@ -106,12 +106,14 @@ local function createMarker(text, group)
 end
 
 local function spawnNextGroup()
-    if currentIndex > spawnEnd then
-        trigger.action.outTextForCoalition(2, endMessage, 30)
-        debug("Script finalizado.")
-        scriptActive = false
-        return
-    end
+   if currentIndex > spawnEnd then
+    trigger.action.outTextForCoalition(2, endMessage, 30)
+    debug("Script finalizado.")
+    trigger.action.setUserFlag(900, 1)
+    scriptActive = false
+    return
+end
+
 
     local groupName = groupNamePrefix .. string.format("%02d", currentIndex)
     local group = Group.getByName(groupName)
