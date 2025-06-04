@@ -408,7 +408,7 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to drop smoke
 ctld.maxExtractDistance = 2000 -- max distance from vehicle to troops to allow a group extraction
-ctld.maximumDistanceLogistic = 10000 -- max distance from vehicle to logistics to allow a loading or spawning operation
+ctld.maximumDistanceLogistic = 15000 -- max distance from vehicle to logistics to allow a loading or spawning operation
 ctld.maximumSearchDistance = 50000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 30000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
@@ -998,20 +998,20 @@ ctld.JTAC_WEIGHT = 15 -- kg
 -- for the side - 2 is BLUE and 1 is RED
 ctld.loadableGroups = {
     {name = ctld.i18n_translate("Standard Group"), inf = 6, mg = 2, at = 2 }, -- will make a loadable group with 6 infantry, 2 MGs and 2 anti-tank for both coalitions
-    {name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
-    {name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
-    {name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
-    {name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
-    {name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
-    {name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
-    {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
-    {name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
-    {name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
-    {name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
-    {name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
-    {name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
-    {name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
-    {name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
+    --{name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
+   -- {name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
+    --{name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
+    --{name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
+   -- {name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
+   -- {name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
+   -- {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
+   -- {name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },
+   -- {name = ctld.i18n_translate("2x - Standard Groups + 2x Mortar"), inf = 12, mg = 4, at = 4, mortar = 12 },
+   -- {name = ctld.i18n_translate("3x - Standard Groups"), inf = 18, mg = 6, at = 6 },
+   -- {name = ctld.i18n_translate("3x - Anti Air"), inf = 6, aa = 9  },
+   -- {name = ctld.i18n_translate("3x - Anti Tank"), inf = 6, at = 18  },
+   -- {name = ctld.i18n_translate("3x - Mortar Squad"), mortar = 18},
+   -- {name = ctld.i18n_translate("5x - Mortar Squad"), mortar = 30},
     -- {name = ctld.i18n_translate("Mortar Squad Red"), inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
 }
 
