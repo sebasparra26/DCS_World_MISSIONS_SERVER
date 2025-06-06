@@ -630,12 +630,12 @@ ctld.aircraftTypeTable = {
         --"Bronco-OV-10A",
         --"Hercules",
         --"SK-60",
-        --"UH-60L",
+        "UH-60L",
         --"T-45",
 
     --%%%%% CHOPPERS %%%%%
         --"Ka-50",
-        --"Ka-50_3",
+        "Ka-50_3",
         "Mi-8MT",
         "Mi-24P",
         "SA342L",
@@ -644,6 +644,8 @@ ctld.aircraftTypeTable = {
         --"SA342Minigun",
         "UH-1H",
         "CH-47Fbl1",
+        "OH58D",
+        "AH-64D_BLK_II",
 
     --%%%%% AIRCRAFTS %%%%%
         --"C-101EB",
@@ -939,6 +941,7 @@ ctld.unitLoadLimits = {
         --["T-45"] = 1,
 
     --%%%%% CHOPPERS %%%%%
+        ["Ka-50_3"]= 1,
         ["Mi-8MT"] = 16,
         ["Mi-24P"] = 10,
         ["SA342L"] = 4,
@@ -947,6 +950,8 @@ ctld.unitLoadLimits = {
         --["SA342Minigun"] = 3,
         ["UH-1H"] = 8,
         ["CH-47Fbl1"] = 33,
+        ["OH58D"] = 1,
+        ["AH-64D_BLK_II"] = 1,
 
     --%%%%% AIRCRAFTS %%%%%
         --["C-101EB"] = 1,
@@ -983,6 +988,7 @@ ctld.unitLoadLimits = {
 ctld.internalCargoLimits = {
 
     -- Remove the -- below to turn on options
+    ["Ka-50_3"]= 1,
     ["Mi-8MT"] = 4,
     ["CH-47Fbl1"] = 8,
     ["UH-1H"]= 1,
@@ -990,6 +996,8 @@ ctld.internalCargoLimits = {
     ["Hercules"] = 20,
     ["SA342L"]= 1,
     ["SA342M"]= 1,
+    ["OH58D"] = 1,
+    ["AH-64D_BLK_II"] = 1,
 }
 
 
@@ -1022,7 +1030,7 @@ ctld.unitActions = {
 
     --%%%%% CHOPPERS %%%%%
         --["Ka-50"] = {crates=true, troops=false},
-        --["Ka-50_3"] = {crates=true, troops=false},
+        ["Ka-50_3"] = {crates=true, troops=true},
         ["Mi-8MT"] = {crates=true, troops=true},
         ["Mi-24P"] = {crates=true, troops=true},
         ["SA342L"] = {crates=true, troops=true},
@@ -1031,6 +1039,8 @@ ctld.unitActions = {
         --["SA342Minigun"] = {crates=false, troops=true},
         ["UH-1H"] = {crates=true, troops=true},
         ["CH-47Fbl1"] = {crates=true, troops=true},
+        ["OH58D"] = {crates=true, troops=true},
+        ["AH-64D_BLK_II"] = {crates=true, troops=true},
 
     --%%%%% AIRCRAFTS %%%%%
         --["C-101EB"] = {crates=true, troops=true},
