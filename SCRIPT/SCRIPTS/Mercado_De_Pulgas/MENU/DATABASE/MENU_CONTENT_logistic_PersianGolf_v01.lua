@@ -89,6 +89,10 @@ tiposAvion = {
         clave = "JF-17_PAYLOAD",
         categoria = "Aviones Importados TEMU"
     },
+     ["J11A"] = {
+        clave = "J11A_PAYLOAD",
+        categoria = "Aviones Importados TEMU"
+    },
     ["AJS-37-Viggen"] = {
         clave = "AJS-37_PAYLOAD",
         categoria = "Aviones Importados TEMU"
@@ -234,6 +238,10 @@ subvariantesAvion = {
         ["MIG-29A - FC - Pack x 2"] = "MIG-29A-1",
         ["MIG-29A - FC - Pack x 4"] = "MIG-29A-2"
     },
+    ["MIG-29S_PAYLOAD"] = {
+        ["MIG-29S - FC - Pack x 2"] = "MIG-29S-1",
+        ["MIG-29S - FC - Pack x 4"] = "MIG-29S-2"
+    },
     ["MIG-21_PAYLOAD"] = {
         ["MIG-21Bis - Pack x 2"] = "MIG-21-1",
         ["MIG-21Bis - Pack x 4"] = "MIG-21-2"
@@ -272,6 +280,10 @@ subvariantesAvion = {
     ["JF-17_PAYLOAD"] = {
         ["JF-17 - Thunder - Pack x 2"] = "JF-17-1",
         ["JF-17 - Thunder - Pack x 4"] = "JF-17-2"
+    },
+    ["J11A_PAYLOAD"] = {
+        ["J-11A - Thunder - Pack x 2"] = "J-11A-1",
+        ["J-11A - Thunder - Pack x 4"] = "J-11A-2"
     },
     ["AJS-37_PAYLOAD"] = {
         ["AJS-37 - Viggen - Pack x 2"] = "AJS-37-1",
@@ -461,6 +473,8 @@ destinosPorSubvariante = {
 
     ["MIG-29A-1"] = destinosBase,
     ["MIG-29A-2"] = destinosBase,
+    ["MIG-29S-1"] = destinosBase,
+    ["MIG-29S-2"] = destinosBase,
     ["MIG-21-1"] = destinosBase,
     ["MIG-21-2"] = destinosBase,
     ["SU-25T-1"] = destinosBase,
@@ -484,6 +498,8 @@ destinosPorSubvariante = {
 
     ["JF-17-1"] = destinosBase,
     ["JF-17-2"] = destinosBase,
+    ["J-11A-1"] = destinosBase,
+    ["J-11A-2"] = destinosBase,
     ["AJS-37-1"] = destinosBase,
     ["AJS-37-2"] = destinosBase,
     
@@ -621,6 +637,8 @@ nombresSubvariantes = {
 
     ["MIG-29A-1"] = "MIG-29A - FC - Pack x 2",
     ["MIG-29A-2"] = "MIG-29A - FC - Pack x 4",
+    ["MIG-29S-1"] = "MIG-29S - FC - Pack x 2",
+    ["MIG-29S-2"] = "MIG-29S - FC - Pack x 4",
     ["MIG-21-1"] = "MIG-21Bis - FC - Pack x 2",
     ["MIG-21-2"] = "MIG-21Bis - FC - Pack x 4",
     ["SU-25T-1"] = "SU-25T - Frogfoot - Pack x 2",
@@ -645,6 +663,8 @@ nombresSubvariantes = {
 
     ["JF-17-1"] = "JF-17 - Thunder - Pack x 2",
     ["JF-17-2"] = "JF-17 - Thunder - Pack x 4",
+    ["J-11A-1"] = "J-11A - Thunder - Pack x 2",
+    ["J-11A-2"] = "J-11A - Thunder - Pack x 4",
     ["AJS-37-1"] = "AJS-37 - Viggen - Pack x 2",
     ["AJS-37-2"] = "AJS-37 - Viggen - Pack x 4",
 

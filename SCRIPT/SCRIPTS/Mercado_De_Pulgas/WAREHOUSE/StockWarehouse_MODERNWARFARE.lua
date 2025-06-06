@@ -9,91 +9,91 @@ tipoAviones = tipoAviones or {}
 -- A-10C II - Tank Killer
 -- ===============================
 tipoAviones["A-10C-2-1"] = {
-    costo = 36000000,
-    nombreAvion = "A-10C II - Tank Killer - Pack x 2",
+    costo = 60000000,
+    nombreAvion = "A-10C II - Tank Killer - Pack ",
     avion = { ws = {1, 1, 6, 264}, cantidad = 2 },
 }
 tipoAviones["A-10C-2-2"] = {
-    costo = 72000000,
-    nombreAvion = "A-10C II - Tank Killer - Pack x 4",
+    costo = 120000000,
+    nombreAvion = "A-10C II - Tank Killer - Pack ",
     avion = { ws = {1, 1, 6, 264}, cantidad = 4 },
 }
 -- ===============================
 -- F/A-18C - Hornet
 -- ===============================
 tipoAviones["FA-18C-1"] = {
-    costo = 124000000,
-    nombreAvion = "FA-18C_hornet - Pack x 2",
+    costo = 140000000,
+    nombreAvion = "FA-18C_hornet - Pack ",
     avion = { ws = {1, 1, 1, 280}, cantidad = 2 },
 }
 tipoAviones["FA-18C-2"] = {
-    costo = 248000000,
-    nombreAvion = "FA-18C_hornet - Pack x 4",
+    costo = 280000000,
+    nombreAvion = "FA-18C_hornet - Pack ",
     avion = { ws = {1, 1, 1, 280}, cantidad = 4 },
 }
 -- ===============================
 -- F-16CM bl.50 - Viper
 -- ===============================
 tipoAviones["F-16CM-1"] = {
-    costo = 130000000,
-    nombreAvion = "F-16CM bl.50 - Viper - Pack x 2",
+    costo = 110000000,
+    nombreAvion = "F-16CM bl.50 - Viper - Pack ",
     avion = { ws = {1, 1, 1, 275}, cantidad = 2 },
 }
 tipoAviones["F-16CM-2"] = {
-    costo = 260000000,
-    nombreAvion = "F-16CM bl.50 - Viper - Pack x 4",
+    costo = 220000000,
+    nombreAvion = "F-16CM bl.50 - Viper - Pack ",
     avion = { ws = {1, 1, 1, 275}, cantidad = 4 },
 }
 -- ===============================
 -- F-15E S4
 -- ===============================
 tipoAviones["F-15E-S4-1"] = {
-    costo = 62200000,
-    nombreAvion = "F-15E S4 - Eagle Strike -  Pack x 2",
+    costo = 130000000,
+    nombreAvion = "F-15E S4 - Eagle Strike -  Pack ",
     avion = { ws = {1, 1, 1, 275}, cantidad = 2 },
 }
 tipoAviones["F-15E-S4-2"] = {
-    costo = 124400000,
-    nombreAvion = "F-15E S4 - Eagle Strike -  Pack x 4",
+    costo = 260000000,
+    nombreAvion = "F-15E S4 - Eagle Strike -  Pack ",
     avion = { ws = {1, 1, 1, 275}, cantidad = 4 },
 }
 -- ===============================
 -- F-14A-135-GR - Tomcat
 -- ===============================
 tipoAviones["F-14A-1"] = {
-    costo = 76000000,
-    nombreAvion = "F-14A-135-GR - Tomcat -  Pack x 2",
+    costo = 97000000,
+    nombreAvion = "F-14A-135-GR - Tomcat -  Pack ",
     avion = { ws = {1, 1, 1, 279}, cantidad = 2 },
 }
 tipoAviones["F-14A-2"] = {
-    costo = 152000000,
-    nombreAvion = "F-14A-135-GR - Tomcat -  Pack x 4",
+    costo = 194000000,
+    nombreAvion = "F-14A-135-GR - Tomcat -  Pack ",
     avion = { ws = {1, 1, 1, 279}, cantidad = 4 },
 }
 -- ===============================
 -- F-14B - Tomcat
 -- ===============================
 tipoAviones["F-14B-1"] = {
-    costo = 84000000,
-    nombreAvion = "F-14B - Tomcat - Pack x 2",
+    costo = 100000000,
+    nombreAvion = "F-14B - Tomcat - Pack ",
     avion = { ws = {1, 1, 1, 278}, cantidad = 2 },
 }
 tipoAviones["F-14B-2"] = {
-    costo = 168000000,
-    nombreAvion = "F-14B - Tomcat - Pack x 4",
+    costo = 200000000,
+    nombreAvion = "F-14B - Tomcat - Pack ",
     avion = { ws = {1, 1, 1, 278}, cantidad = 4 },
 }
 -- ===============================
 -- F-4E-45MC - Phantom
 -- ===============================
 tipoAviones["F-4-1"] = {
-    costo = 50000000,
-    nombreAvion = "F-4E-45MC - Phantom - Pack x 2",
+    costo = 68000000,
+    nombreAvion = "F-4E-45MC - Phantom - Pack ",
     avion = { ws = {1, 1, 1, 328}, cantidad = 2 },
 }
 tipoAviones["F-4-2"] = {
-    costo = 100000000,
-    nombreAvion = "F-4E-45MC - Phantom - Pack x 4",
+    costo = 136000000,
+    nombreAvion = "F-4E-45MC - Phantom - Pack ",
     avion = { ws = {1, 1, 1, 328}, cantidad = 4 },
 }
 -- ===============================
@@ -101,12 +101,12 @@ tipoAviones["F-4-2"] = {
 -- ===============================
 tipoAviones["F-5-1"] = {
     costo = 30000000,
-    nombreAvion = "F-5E-3 - Tiger - Pack x 2",
+    nombreAvion = "F-5E-3 - Tiger - Pack ",
     avion = { ws = {1, 1, 1, 276}, cantidad = 2 },
 }
 tipoAviones["F-5-2"] = {
     costo = 60000000,
-    nombreAvion = "F-5E-3 - Tiger - Pack x 4",
+    nombreAvion = "F-5E-3 - Tiger - Pack ",
     avion = { ws = {1, 1, 1, 276}, cantidad = 4 },
 }
 -- ===============================
@@ -114,12 +114,12 @@ tipoAviones["F-5-2"] = {
 -- ===============================
 tipoAviones["A-4E-C-1"] = {
     costo = 20000000,
-    nombreAvion = "A-4E-C - Skyhawk - Pack x 2",
+    nombreAvion = "A-4E-C - Skyhawk - Pack ",
     avion = { ws = {1, 1, 1, 337}, cantidad = 2 },
 }
 tipoAviones["A-4E-C-2"] = {
-    costo = 20000000,
-    nombreAvion = "A-4E-C - Skyhawk - Pack x 4",
+    costo = 40000000,
+    nombreAvion = "A-4E-C - Skyhawk - Pack ",
     avion = { ws = {1, 1, 1, 337}, cantidad = 4 },
 }
 -- ===============================
@@ -127,12 +127,12 @@ tipoAviones["A-4E-C-2"] = {
 -- ===============================
 tipoAviones["C130-1"] = {
     costo = 30000000,
-    nombreAvion = "C130 - Hercules - Pack x 1",
+    nombreAvion = "C130 - Hercules - Pack ",
     avion = { ws = {1, 1, 5, 347}, cantidad = 1 },
 }
 tipoAviones["C130-2"] = {
     costo = 60000000,
-    nombreAvion = "C130 - Hercules - Pack x 2",
+    nombreAvion = "C130 - Hercules - Pack ",
     avion = { ws = {1, 1, 5, 347}, cantidad = 2 },
 }
 -- ===============================
@@ -140,12 +140,12 @@ tipoAviones["C130-2"] = {
 -- ===============================
 tipoAviones["AV-8B-1"] = {
     costo = 60000000,
-    nombreAvion = "AV-8B - Night Attack - Pack x 2",
+    nombreAvion = "AV-8B - Night Attack - Pack ",
     avion = { ws = {1, 1, 1, 266}, cantidad = 2 },
 }
 tipoAviones["AV-8B-2"] = {
     costo = 120000000,
-    nombreAvion = "AV-8B - Night Attack - Pack x 4",
+    nombreAvion = "AV-8B - Night Attack - Pack ",
     avion = { ws = {1, 1, 1, 266}, cantidad = 4 },
 }
 
@@ -155,12 +155,12 @@ tipoAviones["AV-8B-2"] = {
 -- AH-64D BLK. II - Apache
 -- ===============================
 tipoAviones["AH-64D-1"] = {
-    costo = 273000000,
+    costo = 44000000,
     nombreAvion = "AH-64D BLK. II - Apache - Pack x 2",
     avion = { ws = {1, 2, 6, 300}, cantidad = 2 },
 }
 tipoAviones["AH-64D-2"] = {
-    costo = 547200000,
+    costo = 88000000,
     nombreAvion = "AH-64D BLK. II - Apache - Pack x 4",
     avion = { ws = {1, 2, 6, 300}, cantidad = 4 },
 }
@@ -168,8 +168,8 @@ tipoAviones["AH-64D-2"] = {
 -- OH-58D (R) - Kiowa Warrior
 -- ===============================
 tipoAviones["OH-58D-1"] = {
-    costo = 26000000,
-    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x ",
+    costo = 28000000,
+    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack ",
     avion = { ws = {1, 2, 6, 336}, cantidad = 2 },
 
     misc = {
@@ -183,8 +183,8 @@ tipoAviones["OH-58D-1"] = {
     }
 }
 tipoAviones["OH-58D-2"] = {
-    costo = 52000000,
-    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack x ",
+    costo = 56000000,
+    nombreAvion = "OH-58D (R) - Kiowa Warrior - Pack ",
     avion = { ws = {1, 2, 6, 336}, cantidad = 4 },
 
        misc = {
@@ -201,8 +201,8 @@ tipoAviones["OH-58D-2"] = {
 -- CH-47F- Chinook
 -- ===============================
 tipoAviones["CH-47F-1"] = {
-    costo = 170000000,
-    nombreAvion = "CH-47F- Chinook - Pack x 2",
+    costo = 13000000,
+    nombreAvion = "CH-47F- Chinook - Pack ",
     avion = { ws = {1, 2, 5, 329}, cantidad = 2 },
 
     misc = {
@@ -213,8 +213,8 @@ tipoAviones["CH-47F-1"] = {
     
 }
 tipoAviones["CH-47F-2"] = {
-    costo = 340000000,
-    nombreAvion = "CH-47F- Chinook - Pack x 4",
+    costo = 26000000,
+    nombreAvion = "CH-47F- Chinook - Pack ",
     avion = { ws = {1, 2, 5, 329}, cantidad = 4 },
 
     misc = {
@@ -227,8 +227,8 @@ tipoAviones["CH-47F-2"] = {
 -- UH-1H - Huey
 -- ===============================
 tipoAviones["UH-1H-1"] = {
-    costo = 9000000,
-    nombreAvion = "UH-1H - Huey - Pack x 2",
+    costo = 3000000,
+    nombreAvion = "UH-1H - Huey - Pack ",
     avion = { ws = {1, 2, 6, 166}, cantidad = 2 },
 
     misc = {
@@ -239,8 +239,8 @@ tipoAviones["UH-1H-1"] = {
     }
 }
 tipoAviones["UH-1H-2"] = {
-    costo = 18000000,
-    nombreAvion = "UH-1H - Huey - Pack x 4",
+    costo = 6000000,
+    nombreAvion = "UH-1H - Huey - Pack ",
     avion = { ws = {1, 2, 6, 166}, cantidad = 4 },
 
     misc = {
@@ -254,13 +254,13 @@ tipoAviones["UH-1H-2"] = {
 -- UH-60L - Blackhawk
 -- ===============================
 tipoAviones["UH-60L-1"] = {
-    costo = 42000000,
-    nombreAvion = "UH-60L - Blackhawk - Pack x 2",
+    costo = 6000000,
+    nombreAvion = "UH-60L - Blackhawk - Pack ",
     avion = { ws = {1, 2, 6, 348}, cantidad = 2 },
 }
 tipoAviones["UH-60L-2"] = {
-    costo = 84000000,
-    nombreAvion = "UH-60L - Blackhawk - Pack x 4",
+    costo = 12000000,
+    nombreAvion = "UH-60L - Blackhawk - Pack ",
     avion = { ws = {1, 2, 6, 348}, cantidad = 4 },
 }
 
@@ -272,65 +272,78 @@ tipoAviones["UH-60L-2"] = {
 -- MIG-29A - FC
 -- ===============================
 tipoAviones["MIG-29A-1"] = {
-    costo = 48000000,
-    nombreAvion = "MIG-29A - FC - Pack x 2",
+    costo = 71000000,
+    nombreAvion = "MIG-29A - FC - Pack ",
     avion = { ws = {1, 1, 1, 2}, cantidad = 2 },
 }
 tipoAviones["MIG-29A-2"] = {
-    costo = 96000000,
-    nombreAvion = "MIG-29A - FC - Pack x 4",
+    costo = 142000000,
+    nombreAvion = "MIG-29A - FC - Pack ",
     avion = { ws = {1, 1, 1, 2}, cantidad = 4 },
+}
+-- ===============================
+-- MIG-29S - FC
+-- ===============================
+tipoAviones["MIG-29S-1"] = {
+    costo = 79000000,
+    nombreAvion = "MIG-29S - FC - Pack ",
+    avion = { ws = {1, 1, 1, 50}, cantidad = 2 },
+}
+tipoAviones["MIG-29S-2"] = {
+    costo = 158000000,
+    nombreAvion = "MIG-29S - FC - Pack ",
+    avion = { ws = {1, 1, 1, 50}, cantidad = 4 },
 }
 -- ===============================
 -- MIG-21Bis
 -- ===============================
 tipoAviones["MIG-21-1"] = {
-    costo = 16000000,
-    nombreAvion = "MIG-21Bis - Pack x 2",
+    costo = 34000000,
+    nombreAvion = "MIG-21Bis - Pack ",
     avion = { ws = {1, 1, 1, 288}, cantidad = 2 },
 }
 tipoAviones["MIG-21-2"] = {
-    costo = 32000000,
-    nombreAvion = "MIG-21Bis - Pack x 4",
+    costo = 68000000,
+    nombreAvion = "MIG-21Bis - Pack ",
     avion = { ws = {1, 1, 1, 288}, cantidad = 4 },
 }
 -- ===============================
 -- SU-25T -  Frogfoot
 -- ===============================
 tipoAviones["SU-25T-1"] = {
-    costo = 22000000,
-    nombreAvion = "SU-25T - Frogfoot - Pack x 2",
+    costo = 51000000,
+    nombreAvion = "SU-25T - Frogfoot - Pack ",
     avion = { ws = {1, 1, 6, 54}, cantidad = 2 },
 }
 tipoAviones["SU-25T-2"] = {
-    costo = 44000000,
-    nombreAvion = "SU-25T - Frogfoot - Pack x 4",
+    costo = 102000000,
+    nombreAvion = "SU-25T - Frogfoot - Pack ",
     avion = { ws = {1, 1, 6, 54}, cantidad = 4 },
 }
 -- ===============================
 -- SU-27 - Flanker
 -- ===============================
 tipoAviones["SU-27-1"] = {
-    costo = 60000000,
-    nombreAvion = "SU-27 - Flanker - Pack x 2",
+    costo = 76000000,
+    nombreAvion = "SU-27 - Flanker - Pack ",
     avion = { ws = {1, 1, 1, 3}, cantidad = 2 },
 }
 tipoAviones["SU-27-2"] = {
-    costo = 120000000,
-    nombreAvion = "SU-27 - Flanker - Pack x 4",
+    costo = 152000000,
+    nombreAvion = "SU-27 - Flanker - Pack ",
     avion = { ws = {1, 1, 1, 3}, cantidad = 4 },
 }
 -- ===============================
 -- SU-33 - Flanker
 -- ===============================
 tipoAviones["SU-33-1"] = {
-    costo = 70000000,
-    nombreAvion = "SU-33 - Flanker D - Pack x 2",
+    costo = 78000000,
+    nombreAvion = "SU-33 - Flanker D - Pack ",
     avion = { ws = {1, 1, 1, 4}, cantidad = 2 },
 }
 tipoAviones["SU-33-2"] = {
-    costo = 140000000,
-    nombreAvion = "SU-33 - Flanker D - Pack x 4",
+    costo = 156000000,
+    nombreAvion = "SU-33 - Flanker D - Pack ",
     avion = { ws = {1, 1, 1, 4}, cantidad = 4 },
 }
 
@@ -340,21 +353,21 @@ tipoAviones["SU-33-2"] = {
 -- KA-50 III -  Black Shark 3
 -- ===============================
 tipoAviones["KA-50-1"] = {
-    costo = 32000000,
-    nombreAvion = "KA-50 III -  Black Shark 3 - Pack x 2",
+    costo = 33000000,
+    nombreAvion = "KA-50 III -  Black Shark 3 - Pack ",
     avion = { ws = {1, 2, 6, 326}, cantidad = 2 },
 }
 tipoAviones["KA-50-2"] = {
-    costo = 64000000,
-    nombreAvion = "KA-50 III -  Black Shark 3 - Pack x 4",
+    costo = 66000000,
+    nombreAvion = "KA-50 III -  Black Shark 3 - Pack ",
     avion = { ws = {1, 2, 6, 326}, cantidad = 4 },
 }
 -- ===============================
 -- MI-24P - Hind
 -- ===============================
 tipoAviones["MI-24P-1"] = {
-    costo = 24000000,
-    nombreAvion = "MI-24P - Hind - Pack x 2",
+    costo = 26000000,
+    nombreAvion = "MI-24P - Hind - Pack ",
     avion = { ws = {1, 2, 6, 296}, cantidad = 2 },
 
     misc = {
@@ -362,8 +375,8 @@ tipoAviones["MI-24P-1"] = {
     }
 }
 tipoAviones["MI-24P-2"] = {
-    costo = 48000000,
-    nombreAvion = "MI-24P - Hind - Pack x 4",
+    costo = 52000000,
+    nombreAvion = "MI-24P - Hind - Pack ",
     avion = { ws = {1, 2, 6, 296}, cantidad = 4 },
 
     misc = {
@@ -374,14 +387,22 @@ tipoAviones["MI-24P-2"] = {
 -- MI-8MTV2
 -- ===============================
 tipoAviones["MI-8MTV2-1"] = {
-    costo = 19000000,
-    nombreAvion = "MI-8MTV2 - Pack x 2",
+    costo = 9000000,
+    nombreAvion = "MI-8MTV2 - Pack ",
     avion = { ws = {1, 2, 6, 151}, cantidad = 2 },
+
+    misc = {
+        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
+    }
 }
 tipoAviones["MI-8MTV2-2"] = {
-    costo = 19000000,
-    nombreAvion = "MI-8MTV2 - Pack x 4",
+    costo = 18000000,
+    nombreAvion = "MI-8MTV2 - Pack ",
     avion = { ws = {1, 2, 6, 151}, cantidad = 4 },
+
+    misc = {
+        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
+    }
 }
 
 
@@ -391,26 +412,26 @@ tipoAviones["MI-8MTV2-2"] = {
 -- Mirage M-2000 C 
 -- ===============================
 tipoAviones["M-2000-1"] = {
-    costo = 46000000,
-    nombreAvion = "Mirage M-2000 C  - Pack x 2",
+    costo = 73000000,
+    nombreAvion = "Mirage M-2000 C  - Pack ",
     avion = { ws = {1, 1, 1, 284}, cantidad = 2 },
 }
 tipoAviones["M-2000-2"] = {
-    costo = 92000000,
-    nombreAvion = "Mirage M-2000 C  - Pack x 4",
+    costo = 146000000,
+    nombreAvion = "Mirage M-2000 C  - Pack ",
     avion = { ws = {1, 1, 1, 284}, cantidad = 4 },
 }
 -- ===============================
 -- Mirage F1 EE 
 -- ===============================
 tipoAviones["F1-EE-1"] = {
-    costo = 41000000,
-    nombreAvion = "Mirage F1 EE  - Pack x 2",
+    costo = 46000000,
+    nombreAvion = "Mirage F1 EE  - Pack ",
     avion = { ws = {1, 1, 1, 303}, cantidad = 2 },
 }
 tipoAviones["F1-EE-2"] = {
-    costo = 82000000,
-    nombreAvion = "Mirage F1 EE  - Pack x 4",
+    costo = 92000000,
+    nombreAvion = "Mirage F1 EE  - Pack ",
     avion = { ws = {1, 1, 1, 303}, cantidad = 4 },
 }
 -- ===============================
@@ -418,7 +439,7 @@ tipoAviones["F1-EE-2"] = {
 -- ===============================
 tipoAviones["SA342-L-1"] = {
     costo = 3000000,
-    nombreAvion = "SA342 - L - Gazelle - Pack x 2",
+    nombreAvion = "SA342 - L - Gazelle - Pack ",
     avion = { ws = {1, 2, 6, 290}, cantidad = 2 },
 
     misc = {
@@ -429,8 +450,8 @@ tipoAviones["SA342-L-1"] = {
     }
 }
 tipoAviones["SA342-M-1"] = {
-    costo = 3300000,
-    nombreAvion = "SA342 - M - Gazelle - Pack x 2",
+    costo = 5000000,
+    nombreAvion = "SA342 - M - Gazelle - Pack ",
     avion = { ws = {1, 2, 6, 289}, cantidad = 2 },
 
     misc = {
@@ -440,8 +461,8 @@ tipoAviones["SA342-M-1"] = {
     }
 }
 tipoAviones["SA342-Minigun-1"] = {
-    costo = 3100000,
-    nombreAvion = "SA342 - Minigun - Gazelle - Pack x 2",
+    costo = 4000000,
+    nombreAvion = "SA342 - Minigun - Gazelle - Pack ",
     avion = { ws = {1, 2, 6, 292}, cantidad = 2 },
 
     misc = {
@@ -457,25 +478,38 @@ tipoAviones["SA342-Minigun-1"] = {
 -- JF-17 - Thunder
 -- ===============================
 tipoAviones["JF-17-1"] = {
-    costo = 62000000,
-    nombreAvion = "JF-17 - Thunder - Pack x 2",
+    costo = 91000000,
+    nombreAvion = "JF-17 - Thunder - Pack ",
     avion = { ws = {1, 1, 1, 271}, cantidad = 2 },
 }
 tipoAviones["JF-17-2"] = {
-    costo = 124000000,
-    nombreAvion = "JF-17 - Thunder - Pack x 4",
+    costo = 182000000,
+    nombreAvion = "JF-17 - Thunder - Pack ",
     avion = { ws = {1, 1, 1, 271}, cantidad = 4 },
+}
+-- ===============================
+-- J11A FC
+-- ===============================
+tipoAviones["J-11A-1"] = {
+    costo = 83000000,
+    nombreAvion = "J-11A - Thunder - Pack ",
+    avion = { ws = {1, 1, 1, 66}, cantidad = 2 },
+}
+tipoAviones["J-11A-2"] = {
+    costo = 166000000,
+    nombreAvion = "J-11A - Thunder - Pack ",
+    avion = { ws = {1, 1, 1, 66}, cantidad = 4 },
 }
 -- ===============================
 -- AJS-37 - Viggen
 -- ===============================
 tipoAviones["AJS-37-1"] = {
-    costo = 16000000,
+    costo = 65000000,
     nombreAvion = "AJS-37 - Viggen - Pack x 2",
     avion = { ws = {1, 1, 1, 265}, cantidad = 2 },
 }
 tipoAviones["AJS-37-2"] = {
-    costo = 32000000,
+    costo = 130000000,
     nombreAvion = "AJS-37 - Viggen - Pack x 4",
     avion = { ws = {1, 1, 1, 265}, cantidad = 4 },
 }
