@@ -28,21 +28,16 @@ end
 for i = 1, 4 do
     local node = Unit.getByName('RED-NODE-SAM-SA-11-' .. i)
     redIADS:getSAMSiteByGroupName('RED-SAM-SA-11-' .. i):addConnectionNode(node)
+    redIADS:getSAMSiteByGroupName('RED-SAM-SA-11-' .. i):setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DARK)
 end
 
--- RED: NODOS para SA-5
-for i = 1, 2 do
-    local node = Unit.getByName('RED-NODE-SAM-SA-5-' .. i)
-    redIADS:getSAMSiteByGroupName('RED-SAM-SA-5-' .. i):addConnectionNode(node)
-end
-
--- RED: SA-15 protege SA-10
+-- BLUE: NODOS para PATRIOT
 for i = 1, 4 do
-    local sa15 = redIADS:getSAMSiteByGroupName('RED-SAM-SA-15-DEF-' .. i)
-    redIADS:getSAMSiteByGroupName('RED-SAM-SA-10-' .. i):addPointDefence(sa15):setHARMDetectionChance(100)
+    local node = Unit.getByName('BLUE-NODE-SAM-PATRIOT-' .. i)
+    redIADS:getSAMSiteByGroupName('RED-SAM-SA-10-' .. i):addConnectionNode(node)
 end
 
--- RED: Configuración especial
+-- RED: SA-10 siempre como EW
 redIADS:getSAMSitesByNatoName('SA-10'):setActAsEW(true)
 
 
@@ -55,17 +50,19 @@ local blueIADS = SkynetIADS:create('Blue IADS')
 blueIADS:addEarlyWarningRadarsByPrefix('BLUE-EWR-')
 blueIADS:addSAMSitesByPrefix('BLUE-SAM-')
 
-local debugBLUE = blueIADS:getDebugSettings()
-debugBLUE.IADSStatus = false
-debugBLUE.radarWentDark = false
-debugBLUE.radarWentLive = false
-debugBLUE.contacts = false
-debugBLUE.samSiteStatusEnvOutput = false
-debugBLUE.earlyWarningRadarStatusEnvOutput = false
-debugBLUE.commandCenterStatusEnvOutput = false
-debugBLUE.harmDefence = false
+-- BLUE: Command Center
+blueIADS:addCommandCenter(StaticObject.getByName('BLUE-COMMAND-CENTER'))
 
--- BLUE: POWER y NODOS para EWRs
+local debugBLUE = blueIADS:getDebugSettings()
+debugBLUE.IADSStatus = true
+debugBLUE.radarWentDark = true
+debugBLUE.radarWentLive = true
+debugBLUE.contacts = true
+debugBLUE.samSiteStatusEnvOutput = true
+debugBLUE.earlyWarningRadarStatusEnvOutput = true
+debugBLUE.commandCenterStatusEnvOutput = true
+debugBLUE.harmDefence = true
+
 for i = 1, 4 do
     local power = StaticObject.getByName('BLUE-POWER-EWR-' .. i)
     local node = StaticObject.getByName('BLUE-NODE-EWR-' .. i)
@@ -78,21 +75,15 @@ for i = 1, 4 do
     blueIADS:getSAMSiteByGroupName('BLUE-SAM-NASAMS-' .. i):addConnectionNode(node)
 end
 
--- BLUE: NODOS para HAWKS
+-- BLUE: NODOS para PATRIOT
 for i = 1, 4 do
-    local node = Unit.getByName('BLUE-NODE-SAM-HAWK-' .. i)
-    blueIADS:getSAMSiteByGroupName('BLUE-SAM-HAWK-' .. i):addConnectionNode(node)
+    local node = Unit.getByName('BLUE-NODE-SAM-PATRIOT-' .. i)
+    blueIADS:getSAMSiteByGroupName('BLUE-SAM-PATRIOT-' .. i):addConnectionNode(node)
 end
 
-
--- BLUE: SA-15 protege PATRIOT
-for i = 1, 4 do
-    local sa15 = blueIADS:getSAMSiteByGroupName('BLUE-SAM-SA-15-DEF-' .. i)
-    blueIADS:getSAMSiteByGroupName('BLUE-SAM-PATRIOT-' .. i):addPointDefence(sa15):setHARMDetectionChance(100)
-end
-
--- BLUE: Configuración especial
+-- BLUE: PATRIOT como EW
 blueIADS:getSAMSitesByNatoName('PATRIOT'):setActAsEW(true)
+
 
 -- BLUE: Activar IADS
 --blueIADS:addRadioMenu()

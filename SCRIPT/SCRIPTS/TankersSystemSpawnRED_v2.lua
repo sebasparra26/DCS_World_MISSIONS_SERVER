@@ -21,26 +21,34 @@ local function formatearDolaresLegible(valor)
 end
 
 local MAX_TANKERS_POR_TIPO = {
-  ["KC-135"] = 2, ["KC-135 MPRS"] = 2,
-  ["KC130J"] = 2, ["S-3B Tanker"] = 2
+  ["KC-135"] = 2,
+  ["KC-135 low"] = 2,
+  ["KC-135 MPRS"] = 2,
+  ["KC130J"] = 2,
+  ["S-3B Tanker"] = 2
 }
 
 local PARAMETROS_TANKER = {
   ["KC-135"] = { alt = 7620, spd = 222 },
+  ["KC-135 low"] = { alt = 5000, spd = 210 },
   ["KC-135 MPRS"] = { alt = 8230, spd = 220 },
   ["KC130J"] = { alt = 5800, spd = 380 },
   ["S-3B Tanker"] = { alt = 5200, spd = 190 }
 }
 
 local COSTOS_TANKER = {
-  ["KC-135"] = 1000000, ["KC-135 MPRS"] = 1000000,
-  ["KC130J"] = 800000, ["S-3B Tanker"] = 250000
+  ["KC-135"] = 1000000,
+  ["KC-135 low"] = 1000000,
+  ["KC-135 MPRS"] = 1000000,
+  ["KC130J"] = 800000,
+  ["S-3B Tanker"] = 250000
 }
 
 local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = true, true, true
 
 local tankerTypes = {
   ["KC-135"] = { type = "KC-135", cs = {1, 1, 0}, tac = "RSL" },
+  ["KC-135 low"] = { type = "KC-135", cs = {1, 1, 0}, tac = "LSL" },
   ["KC-135 MPRS"] = { type = "KC135MPRS", cs = {2, 1, 0}, tac = "RAR" },
   ["KC130J"] = { type = "KC130J", cs = {3, 1, 0}, tac = "REX" },
   ["S-3B Tanker"] = { type = "S-3B Tanker", cs = {3, 1, 0}, tac = "S3R" }

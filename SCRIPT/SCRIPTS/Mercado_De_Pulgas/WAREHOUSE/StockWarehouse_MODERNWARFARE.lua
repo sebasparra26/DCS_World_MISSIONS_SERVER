@@ -57,6 +57,16 @@ tipoAviones["F-15E-S4-2"] = {
     nombreAvion = "F-15E S4 - Eagle Strike -  Pack ",
     avion = { ws = {1, 1, 1, 275}, cantidad = 4 },
 }
+tipoAviones["F-15C-1"] = {
+    costo = 79000000,
+    nombreAvion = "F-15C -  Pack ",
+    avion = { ws = {1, 1, 1, 6}, cantidad = 2 },
+}
+tipoAviones["F-15C-2"] = {
+    costo = 158000000,
+    nombreAvion = "F-15C -  Pack ",
+    avion = { ws = {1, 1, 1, 6}, cantidad = 4 },
+}
 -- ===============================
 -- F-14A-135-GR - Tomcat
 -- ===============================
