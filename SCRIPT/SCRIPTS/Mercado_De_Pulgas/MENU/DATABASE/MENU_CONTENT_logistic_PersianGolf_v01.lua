@@ -180,7 +180,7 @@ tiposAvion = {
         clave = "COHETES",
         categoria = "Armamento"
     },
-     ["09:OTROS"] = {
+     ["09:SEÑUELOS"] = {
         clave = "OTROS",
         categoria = "Armamento"
     }
@@ -379,7 +379,8 @@ subvariantesAvion = {
         ["SAMP 250kg"] = "SAMPB",
         ["GB-6 / HE"] = "GB-6",
         ["LS-6 250/500"] = "LS6",
-        ["DURANDAL"] = "DURAN"
+        ["DURANDAL"] = "DURAN",
+        ["WALLEYE I/II"] = "WALLEYE"
     },
     ["PRECISION"] = {
         ["AGM-84 D/H SLAM-ER"] = "AGM-84",
@@ -410,7 +411,7 @@ subvariantesAvion = {
     },
     --OTROS"
     ["OTROS"] = {
-        ["ADM-141A TALD"] = "SENUELOS"
+        ["ADM-141A TALD - Pack "] = "SENUELOS"
     }
     
 }
@@ -582,6 +583,7 @@ destinosPorSubvariante = {
     ["GB-6"] = destinosBase,
     ["LS6"] = destinosBase,
     ["DURAN"] = destinosBase,
+    ["WALLEYE"] = destinosBase,
     --PRECISIÓN
     ["AGM-84"] = destinosBase,
     ["KH01"] = destinosBase,
@@ -767,7 +769,7 @@ nombresSubvariantes = {
     ["COHETES04"] = "SNEB Type 251",
     ["COHETES05"] = "BRM-1_90MM",
     --OTROS
-    ["SENUELOS"] = "ADM-141A TALD"
+    ["SENUELOS"] = "ADM-141A TALD - Pack "
   
     
 }

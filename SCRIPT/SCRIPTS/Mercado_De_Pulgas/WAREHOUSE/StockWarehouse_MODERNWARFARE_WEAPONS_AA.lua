@@ -75,7 +75,7 @@ tipoAviones["FOX02PACK_04"] = {
     }
 }
 tipoAviones["FOX02PACK_05"] = {
-    costo = 3100000,
+    costo = 3420000,
 
     misiles = {
         ["R-550-M2"]  = {ws = {4, 4, 7, 368}, cantidad = 20},

@@ -82,6 +82,14 @@ tipoAviones["MK82"] = {
         ["Mk-82 - Snakeeye 500lb GP Bomb HD   "]  = {ws = {4, 5, 8, 79}, cantidad = 10}
        }
 }
+tipoAviones["WALLEYE"] = {
+    costo = 2000000,
+
+    bombas_guiadas = {
+        ["AGM-62 Walleye I"]  = {ws = {4, 5, 36, 459}, cantidad = 10},
+        ["AGM-62 Walleye II"]  = {ws = {4, 5, 36, 47}, cantidad = 5}
+       }
+}
 tipoAviones["GBUL"] = {
     costo = 617000,
 
