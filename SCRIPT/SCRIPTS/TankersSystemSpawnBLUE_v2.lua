@@ -6,7 +6,7 @@ local defaultCountry = country.id.USA
 
 local USAR_ECONOMIA = true
 local AUTO_DELETE_SECONDS = 3600
-local INTERVALO_RESUMEN = 60
+local INTERVALO_RESUMEN = 300
 
 local function formatearDolaresLegible(valor)
   if type(valor) ~= "number" then return "$0" end

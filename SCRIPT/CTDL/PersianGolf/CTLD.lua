@@ -75,6 +75,11 @@ local lang="en";env.info(string.format("I - CTLD.i18n_translate: Loading %s lang
 
 --- groups names
 ctld.i18n["en"]["Standard Group"] = ""
+ctld.i18n["en"]["Standard Group x 33"] = ""
+ctld.i18n["en"]["Standard Group x 30"] = ""
+ctld.i18n["en"]["Standard Group x 16"] = ""
+ctld.i18n["en"]["Standard Group x 8"] = ""
+ctld.i18n["en"]["Standard Group x 1"] = ""
 ctld.i18n["en"]["Anti Air"] = ""
 ctld.i18n["en"]["Anti Tank"] = ""
 ctld.i18n["en"]["Mortar Squad"] = ""
@@ -1105,12 +1110,17 @@ ctld.JTAC_WEIGHT = 15 -- kg
 -- You can also add an optional coalition side to limit the group to one side
 -- for the side - 2 is BLUE and 1 is RED
 ctld.loadableGroups = {
-    {name = ctld.i18n_translate("Standard Group"), inf = 6, mg = 2, at = 2 }, -- will make a loadable group with 6 infantry, 2 MGs and 2 anti-tank for both coalitions
-    {name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
-    {name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
-    {name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
-    {name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
-    {name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
+    {name = ctld.i18n_translate("Standard Group x 33"), inf = 10, mg = 10, at = 10, aa = 3 }, -- CHINOOK
+    {name = ctld.i18n_translate("Standard Group x 30"), inf = 10, mg = 10, at = 10, aa = 3 }, -- Hercules
+    {name = ctld.i18n_translate("Standard Group x 16"), inf = 8, mg = 2, at = 2, aa = 4 }, -- MI8
+    {name = ctld.i18n_translate("Standard Group x 10"), inf = 4, mg = 2, at = 2, aa = 2 }, -- MI24
+    {name = ctld.i18n_translate("Standard Group x 8"), inf = 2, mg = 2, at = 2, aa = 2 }, -- HUEY
+    {name = ctld.i18n_translate("Standard Group x 1"), inf = 1}, -- Others
+    --{name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
+    --{name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
+    --{name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
+    --{name = ctld.i18n_translate("JTAC Group"), inf = 4, jtac = 1 }, -- will make a loadable group with 4 infantry and a JTAC soldier for both coalitions
+    --{name = ctld.i18n_translate("Single JTAC"), jtac = 1 }, -- will make a loadable group witha single JTAC soldier for both coalitions
     --{name = ctld.i18n_translate("2x - Standard Groups"), inf = 12, mg = 4, at = 4 },
    -- {name = ctld.i18n_translate("2x - Anti Air"), inf = 4, aa = 6  },
     --{name = ctld.i18n_translate("2x - Anti Tank"), inf = 4, at = 12  },

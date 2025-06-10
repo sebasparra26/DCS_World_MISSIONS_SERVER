@@ -229,5 +229,5 @@ debugBLUE.commandCenterStatusEnvOutput = false
 debugBLUE.harmDefence = false
 
 -- Activar IADS
-blueIADS:addRadioMenu()  
+--blueIADS:addRadioMenu()  
 blueIADS:activate()
