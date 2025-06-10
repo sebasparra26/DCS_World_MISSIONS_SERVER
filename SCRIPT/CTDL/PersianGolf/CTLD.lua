@@ -475,13 +475,13 @@ ctld.numberOfTroops = 33 -- default number of troops to load on a transport heli
                          -- also works as maximum size of group that'll fit into a helicopter unless overridden
 ctld.enableFastRopeInsertion = true -- allows you to drop troops by fast rope
 ctld.fastRopeMaximumHeight = 18.28 -- in meters which is 60 ft max fast rope (not rappell) safe height
-ctld.vehiclesForTransportRED = { "BRDM-2", "BTR_D" } -- vehicles to load onto Il-76 - Alternatives {"Strela-1 9P31","BMP-1"}
-ctld.vehiclesForTransportBLUE = { "M1045 HMMWV TOW", "M1043 HMMWV Armament" } -- vehicles to load onto c130 - Alternatives {"M1128 Stryker MGS","M1097 Avenger"}
+ctld.vehiclesForTransportRED = { "T-90", "Strela-10M3" } -- vehicles to load onto Il-76 - Alternatives {"Strela-1 9P31","BMP-1"}
+ctld.vehiclesForTransportBLUE = { "M1A2C_SEP_V3", "M1097 Avenger" } -- vehicles to load onto c130 - Alternatives {"M1128 Stryker MGS","M1097 Avenger"}
 ctld.vehiclesWeight = {
-    ["BRDM-2"] = 7000,
-    ["BTR_D"] = 8000,
-    ["M1045 HMMWV TOW"] = 3220,
-    ["M1043 HMMWV Armament"] = 2500
+    ["T-90"] = 7000,
+    ["Strela-10M3"] = 5000,
+    ["M1A2C_SEP_V3"] = 7000,
+    ["M1097 Avenger"] = 5000
 }
 
 ctld.spawnRPGWithCoalition = true --spawns a friendly RPG unit with Coalition forces
