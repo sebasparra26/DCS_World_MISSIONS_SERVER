@@ -628,7 +628,7 @@ ctld.wpZones = {
 ctld.aircraftTypeTable = {
     --%%%%% MODS %%%%%
         --"Bronco-OV-10A",
-        --"Hercules",
+        "Hercules",
         --"SK-60",
         "UH-60L",
         --"T-45",
@@ -935,7 +935,7 @@ ctld.unitLoadLimits = {
 
     --%%%%% MODS %%%%%
         --["Bronco-OV-10A"] = 4,
-        ["Hercules"] = 30,
+        ["Hercules"] = 33,
         --["SK-60"] = 1,
         ["UH-60L"] = 12,
         --["T-45"] = 1,
