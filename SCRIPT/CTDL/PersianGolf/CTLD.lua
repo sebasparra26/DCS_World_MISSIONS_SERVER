@@ -471,7 +471,7 @@ ctld.maximumDistanceLogistic = 2200 -- max distance from vehicle to logistics to
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
-ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130
+ctld.numberOfTroops = 33 -- default number of troops to load on a transport heli or C-130
                          -- also works as maximum size of group that'll fit into a helicopter unless overridden
 ctld.enableFastRopeInsertion = true -- allows you to drop troops by fast rope
 ctld.fastRopeMaximumHeight = 18.28 -- in meters which is 60 ft max fast rope (not rappell) safe height
@@ -916,7 +916,7 @@ ctld.vehicleTransportEnabled = {
 -- Units listed here will spawn a cargo static that can be loaded with the standard DCS cargo system
 -- We will also use this to make modifications to the menu and other checks and messages
 ctld.dynamicCargoUnits = {
-    "CH-47Fbl1",
+    --"CH-47Fbl1",
 }
 
 -- ************** Maximum Units SETUP for UNITS ******************
