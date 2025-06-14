@@ -200,5 +200,5 @@ debugRED.commandCenterStatusEnvOutput = false
 debugRED.harmDefence = false
 
 -- Activar IADS
---redIADS:addRadioMenu()
+redIADS:addRadioMenu()
 redIADS:activate()

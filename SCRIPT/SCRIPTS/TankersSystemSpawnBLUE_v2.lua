@@ -4,7 +4,7 @@ local nombrePuntos = "PuntosAZUL"
 local side = coalicion
 local defaultCountry = country.id.USA
 
-local USAR_ECONOMIA = true
+local USAR_ECONOMIA = false
 local AUTO_DELETE_SECONDS = 3600
 local INTERVALO_RESUMEN = 300
 

@@ -29,7 +29,7 @@ local PARAMETROS_AWACS = {
 }
 
 local COSTOS_AWACS = {
-  ["A-50"] = 20000000
+  ["A-50"] = 200000000
 }
 
 local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = true, true, true

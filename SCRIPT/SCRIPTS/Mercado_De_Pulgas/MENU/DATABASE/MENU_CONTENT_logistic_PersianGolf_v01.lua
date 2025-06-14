@@ -441,7 +441,7 @@ local destinosBase = {
 --"Lavan Island",
 "Qeshm Island",
 "Havadarya",
---"Bandar Abbas intl",
+--"Bandar Abbas Intl",
 "Lar",
 --"Jiroft",
 --"Shiraz Intl",
@@ -810,7 +810,7 @@ plantillasLogisticaB = {
     --["Lavan Island"] = { template = "SuppliesBLUEToLavan", bandera = 121 },
     ["Qeshm Island"] = { template = "SuppliesBLUEToQeshm", bandera = 122},
     ["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123 },
-    --["Bandar Abbas intl"] = { template = "SuppliesBLUEToAbbas", bandera = 124 },
+    --["Bandar Abbas Intl"] = { template = "SuppliesBLUEToAbbas", bandera = 124 },
     ["Lar"] = { template = "SuppliesBLUEToLar", bandera = 125 },
     --["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126 },
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
@@ -843,7 +843,7 @@ recargoAeropuertoB = {
     --["Lavan Island"] = 1.92,
     ["Qeshm Island"] = 1.8,
     ["Havadarya"] = 1.9,
-    --["Bandar Abbas intl"] = 1.9,
+    --["Bandar Abbas Intl"] = 1.9,
     ["Lar"] = 2.5,
     --["Jiroft"] = 3.5,
     --["Shiraz Intl"] = 1.0,
@@ -875,7 +875,7 @@ multiplicadorTiempoB = {
     --["Lavan Island"] = 1.0,
     ["Qeshm Island"] = 1.0,
     ["Havadarya"] = 1.0,
-    --["Bandar Abbas intl"] = 1.0,
+    --["Bandar Abbas Intl"] = 1.0,
     ["Lar"] = 1.0,
     --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
@@ -907,7 +907,7 @@ coordenadasAerodromosB = {
     --["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
     ["Qeshm Island"] = {x = 64762, y = 0, z = -33452},                         --24- Metric: X+00064762 Z-00033452   high
     ["Havadarya"] = {x = 109331, y = 0, z = -6369},                          --25- Metric: X+00109336 Z-00006364   Small
-    --["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
+    --["Bandar Abbas Intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
     ["Lar"] = {x = 168884, y = 0, z = -182473},                       --27- Metric: X+00168884 Z-00182473   Medium
     --["Jiroft"] = {x = 282634, y = 0, z = 141649},                            --28- Metric: X+00282634 Z+00141649   Medium
     --["Shiraz Intl"] = {x = 380994, y = 0, z = -351952},                         --29- Metric: X+00380994 Z-00351952   high
@@ -950,7 +950,7 @@ plantillasLogisticaR = {
     --["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121 },
     ["Qeshm Island"] = { template = "SuppliesREDToQeshm", bandera = 122},
     ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123 },
-    --["Bandar Abbas intl"] = { template = "SuppliesREDToAbbas", bandera = 124 },
+    --["Bandar Abbas Intl"] = { template = "SuppliesREDToAbbas", bandera = 124 },
     ["Lar"] = { template = "SuppliesREDToLar", bandera = 125 },
     --["Jiroft"] = { template = "SuppliesREDToJiroft", bandera = 126 },
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
@@ -983,7 +983,7 @@ recargoAeropuertoR = {
     --["Lavan Island"] = 1.4,
     ["Qeshm Island"] = 1.15,
     ["Havadarya"] = 1.2,
-    --["Bandar Abbas intl"] = 1.0,
+    --["Bandar Abbas Intl"] = 1.0,
     ["Lar"] = 1.2,
    --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
@@ -1015,11 +1015,11 @@ multiplicadorTiempoR = {
     --["Lavan Island"] = 1.0,
     ["Qeshm Island"] = 1.0,
     ["Havadarya"] = 1.0,
-    --["Bandar Abbas intl"] = 1.0,
+    --["Bandar Abbas Intl"] = 1.0,
     ["Lar"] = 1.0,
     --["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
-    ["Kerman"] = 300
+    ["Kerman"] = 1.0
 }
 
 coordenadasAerodromosR = {
@@ -1047,7 +1047,7 @@ coordenadasAerodromosR = {
     --["Lavan Island"] = {x = 75789, y = 0, z = -286794},                          --23-- X+00075789 Z-00286794   Small
     ["Qeshm Island"] = {x = 64762, y = 0, z = -33452},                         --24- Metric: X+00064762 Z-00033452   high
     ["Havadarya"] = {x = 109331, y = 0, z = -6369},                          --25- Metric: X+00109336 Z-00006364   Small
-    --["Bandar Abbas intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
+    ["Bandar Abbas Intl"] = {x = 115847, y = 0, z = 14156},                      --26- Metric: X+00115847 Z+00014156   Medium
     ["Lar"] = {x = 168884, y = 0, z = -182473},                         --27- Metric: X+00168884 Z-00182473   Medium
     --["Jiroft"] = {x = 282634, y = 0, z = 141649},                            --28- Metric: X+00282634 Z+00141649   Medium
     --["Shiraz Intl"] = {x = 380994, y = 0, z = -351952},                         --29- Metric: X+00380994 Z-00351952   high

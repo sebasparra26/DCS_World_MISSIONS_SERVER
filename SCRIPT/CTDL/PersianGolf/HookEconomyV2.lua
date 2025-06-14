@@ -110,6 +110,12 @@ function CTLD_ECONOMIA_HOOK(_args)
     local heli = ctld.getTransportUnit(_args[1])
     if not heli then return true end  -- dejar pasar si no puede identificar
 
+    ---------------new--------------------------------------------------
+    if not ctld.inLogisticsZone(heli) then
+        ctld.displayMessageToGroup(heli, "Estás fuera de la zona logística para solicitar este crate.", 10)
+        return false
+    end
+
     local coalicion = heli:getCoalition()
     local saldo = obtenerPuntosCoalicion(coalicion)
     local flag = (coalicion == 1 and "PuntosROJO" or "PuntosAZUL")

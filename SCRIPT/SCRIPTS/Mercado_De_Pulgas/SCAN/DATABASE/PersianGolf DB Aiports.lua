@@ -18,7 +18,7 @@ estadoBanderasAeropuertos = {
     ["Sir Abu Nuayr"] = { bandera = 114, valor = nil },
     ["Abu Musa Island"] = { bandera = 115, valor = nil },
     ["Sirri Island"] = { bandera = 116, valor = nil },
-    --["Tunb Kochak"] = { bandera = 117, valor = nil },
+    --["Tunb Kochak"] = { bandera = 117, valor = nil },12
     --["Tunb Island AFB"] = { bandera = 118, valor = nil },
     --["Bandar Lengeh"] = { bandera = 119, valor = nil },
     ["Kish Intl"] = { bandera = 120, valor = nil },

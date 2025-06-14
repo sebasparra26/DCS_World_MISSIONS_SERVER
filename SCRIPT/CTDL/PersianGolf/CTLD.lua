@@ -472,7 +472,7 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = false -- if false, helis and c-130 will not be able to drop smoke
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
-ctld.maximumDistanceLogistic = 2200 -- max distance from vehicle to logistics to allow a loading or spawning operation
+ctld.maximumDistanceLogistic = 300 -- max distance from vehicle to logistics to allow a loading or spawning operation
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
@@ -575,23 +575,27 @@ ctld.pickupZones = {
     { "pickzone4", "none", -1, "yes", 1 },--TARAWA
     { "pickzone5", "none", -1, "yes", 1 },--TARAWA
     { "pickzone6", "none", -1, "yes", 1 },--TARAWA
-    { "pickzone7", "none", -1, "yes", 2 },--BLUE COMMAND CENTER
-    { "pickzone8", "none", -1, "yes", 1 }, --RED COMMAND CENTER
-    { "pickzone9", "none", 5, "yes", 1 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
-    { "pickzone10", "none", 10, "yes", 2 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
+    { "pickzone7", "white", -1, "yes", 2 },--BLUE COMMAND CENTER
+    { "pickzone8", "white", -1, "yes", 1 }, --RED COMMAND CENTER
+    { "pickzone9", "white", -1, "yes", 0 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
+    { "pickzone10", "white", -1, "yes", 0 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
 
-    { "pickzone11", "blue", 20, "no", 2 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
-    { "pickzone12", "red", 20, "no", 1 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
-    { "pickzone13", "none", -1, "yes", 0 },
-    { "pickzone14", "none", -1, "yes", 0 },
-    { "pickzone15", "none", -1, "yes", 0 },
-    { "pickzone16", "none", -1, "yes", 0 },
-    { "pickzone17", "none", -1, "yes", 0 },
-    { "pickzone18", "none", -1, "yes", 0 },
-    { "pickzone19", "none", 5, "yes", 0 },
-    { "pickzone20", "none", 10, "yes", 0, 1000 }, -- optional extra flag number to store the current number of groups available in
-
-    { "USA Carrier", "blue", 10, "yes", 0, 1001 }, -- instead of a Zone Name you can also use the UNIT NAME of a ship
+    { "pickzone11", "white", -1, "yes", 0 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
+    { "pickzone12", "white", -1, "yes", 0 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
+    { "pickzone13", "white", -1, "yes", 0 },
+    { "pickzone14", "white", -1, "yes", 0 },
+    { "pickzone15", "white", -1, "yes", 0 },
+    { "pickzone16", "white", -1, "yes", 0 },
+    { "pickzone17", "white", -1, "yes", 0 },
+    { "pickzone18", "white", -1, "yes", 0 },
+    { "pickzone19", "white", -1, "yes", 0 },
+    { "pickzone20", "white", -1, "yes", 0 },
+    { "pickzone21", "white", -1, "yes", 0 },
+    { "pickzone22", "white", -1, "yes", 0 },
+    { "pickzone23", "white", -1, "yes", 0 },
+    { "pickzone24", "white", -1, "yes", 0 },
+    { "pickzone25", "white", -1, "yes", 0 },
+  
 }
 
 -- dropOffZones = {"name","smoke colour",0,side 1 = Red or 2 = Blue or 0 = Both sides}
@@ -626,6 +630,7 @@ ctld.wpZones = {
     { "wpzone14", "none","yes", 0 },
     { "wpzone15", "none","yes", 0 },
     { "wpzone16", "none","yes", 0 },
+    { "wpzone17", "none","yes", 0 },
 }
 
 -- ******************** Transports names **********************
@@ -870,41 +875,44 @@ ctld.logisticUnits = {
     "logistic24", --Lar
     -------------------------------------
     "logistic30",
-"logistic31",
-"logistic32",
-"logistic33",
-"logistic34",
-"logistic35",
-"logistic36",
-"logistic37",
-"logistic38",
-"logistic39",
-"logistic40",
-"logistic41",
-"logistic42",
-"logistic43",
-"logistic44",
-"logistic45",
-"logistic46",
-"logistic47",
-"logistic48",
-"logistic49",
-"logistic50",
-"logistic51",
-"logistic52",
-"logistic53",
-"logistic54",
-"logistic55",
-"logistic56",
-"logistic57",
-"logistic58",
-"logistic59",
-"logistic60",
-"logistic61",
-"logistic62",
-"logistic63",
-"logistic64",
-"logistic65",
+    "logistic31",
+    "logistic32",
+    "logistic33",
+    "logistic34",
+    "logistic35",
+    "logistic36",
+    "logistic37",
+    "logistic38",
+    "logistic39",
+    "logistic40",
+    "logistic41",
+    "logistic42",
+    "logistic43",
+    "logistic44",
+    "logistic45",
+    "logistic46",
+    "logistic47",
+    "logistic48",
+    "logistic49",
+    "logistic50",
+    "logistic51",
+    "logistic52",
+    "logistic53",
+    "logistic54",
+    "logistic55",
+    "logistic56",
+    "logistic57",
+    "logistic58",
+    "logistic59",
+    "logistic60",
+    "logistic61",
+    "logistic62",
+    "logistic63",
+    "logistic64",
+    "logistic65",
+     "logistic66",
+    "logistic67",
+    "logistic68",
 }
 
 -- ************** UNITS ABLE TO TRANSPORT VEHICLES ******************

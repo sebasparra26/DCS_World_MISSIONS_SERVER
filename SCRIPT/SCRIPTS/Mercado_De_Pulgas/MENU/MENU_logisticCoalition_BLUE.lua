@@ -1,7 +1,7 @@
 
 MercadoSetuptimerB = MercadoSetuptimerB or {
-    Total = 138.88,
-    Intervalo = 200
+    Total = 500,
+    Intervalo = 20
 }
 paginasPorAvion = {}
 comandosPorSubID = {}
