@@ -21,11 +21,11 @@ local function formatearDolaresLegible(valor)
 end
 
 local MAX_TANKERS_POR_TIPO = {
-  ["KC-135"] = 2,
-  ["KC-135 low"] = 2,
-  ["KC-135 MPRS"] = 2,
-  ["KC130J"] = 2,
-  ["S-3B Tanker"] = 2
+  ["KC-135"] = 5,
+  ["KC-135 low"] = 5,
+  ["KC-135 MPRS"] = 5,
+  ["KC130J"] = 5,
+  ["S-3B Tanker"] = 5
 }
 
 local PARAMETROS_TANKER = {
