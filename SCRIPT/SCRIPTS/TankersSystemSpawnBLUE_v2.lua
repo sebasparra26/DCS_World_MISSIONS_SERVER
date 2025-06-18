@@ -4,7 +4,7 @@ local nombrePuntos = "PuntosAZUL"
 local side = coalicion
 local defaultCountry = country.id.USA
 
-local USAR_ECONOMIA = false
+local USAR_ECONOMIA = true
 local AUTO_DELETE_SECONDS = 3600
 local INTERVALO_RESUMEN = 300
 
@@ -21,16 +21,16 @@ local function formatearDolaresLegible(valor)
 end
 
 local MAX_TANKERS_POR_TIPO = {
-  ["KC-135"] = 5,
-  ["KC-135 low"] = 5,
-  ["KC-135 MPRS"] = 5,
-  ["KC130J"] = 5,
-  ["S-3B Tanker"] = 5
+  ["KC-135"] = 2,
+  ["KC-135 low"] = 2,
+  ["KC-135 MPRS"] = 2,
+  ["KC130J"] = 2,
+  ["S-3B Tanker"] = 2
 }
 
 local PARAMETROS_TANKER = {
   ["KC-135"] = { alt = 7620, spd = 222 },
-  ["KC-135 low"] = { alt = 5000, spd = 195 },
+  ["KC-135 low"] = { alt = 5000, spd = 182 },
   ["KC-135 MPRS"] = { alt = 8230, spd = 220 },
   ["KC130J"] = { alt = 5800, spd = 380 },
   ["S-3B Tanker"] = { alt = 5200, spd = 190 }

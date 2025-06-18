@@ -1,7 +1,7 @@
 ---------------------------BAZTIAN---------------------------------------------------------------------------
 
 
-puntosCoalicion = { PuntosAZUL = 2000000000, PuntosROJO = 2000000000 }
+puntosCoalicion = { PuntosAZUL = 1640508720, PuntosROJO = 2368091132 }
 configuracionEntregaB = configuracionEntregaB or {
     origen = { x = -189594, y = 0, z = -176119 },
     velocidad = 138.88
@@ -10,7 +10,7 @@ menuCooldownsB = menuCooldownsB or {}
 activeDeliveriesB = activeDeliveriesB or {}
 tipoAviones = tipoAviones or {}
 
-local cooldownTiempo = 5 -- segundos
+local cooldownTiempo = 120 -- segundos
 
 function formatearDolaresB(numero)
     if type(numero) ~= "number" then return "$0" end
@@ -64,7 +64,7 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
     end
 
     if menuCooldownsB[aeropuerto] and timer.getTime() < menuCooldownsB[aeropuerto] then
-        trigger.action.outTextForCoalition(2, "Ya pediste a " .. aeropuerto .. ", espera el cooldown.", 10)
+        trigger.action.outTextForCoalition(2, "Ya pediste a este " .. aeropuerto .. ", Espera 2 Minutos antes de volver a Comprar.", 10)
         return
     end
 
