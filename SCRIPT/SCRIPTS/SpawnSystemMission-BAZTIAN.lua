@@ -22,8 +22,8 @@ local deathFlag = 500  -- Número de la bandera de muerte
 local deathValue = 2  -- Valor de la bandera de muerte
 
 -- Parámetros de configuración para los Draws
-local drawRadius = 9000  -- Radio en metros
-local drawColor = {255, 0, 0}  -- Color en formato RGB (verde en este caso)
+local drawRadius = 4000  -- Radio en metros
+local drawColor = {255, 255, 255}  -- Color en formato RGB (verde en este caso)
 local drawLife = 0  -- Tiempo de vida del marcador (0 significa que no desaparecerá solo)
 local drawVisible = true  -- Si el marcador es visible
 
@@ -60,7 +60,7 @@ local function createDrawForActiveGroup(group)
         mist.marker.add({
             name = drawName,
             type = 'circle',  -- Tipo de marcador: puede ser 'circle', 'ellipse', etc.
-            fillColor = {0, 255, 84, 72},
+            fillColor = {255, 0, 156, 50},
             lineType = 4,
             point = {x = pos.x, y = 0, z = pos.z},  -- Coordenadas del grupo (X, Z)
             radius = drawRadius,  -- Radio en metros

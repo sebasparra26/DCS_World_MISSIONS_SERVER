@@ -1,33 +1,50 @@
 -- Configuración del spawn
-local spawnStart = 1    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
-local spawnEnd = 15     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
+local spawnStart = 16    -- Número de inicio del grupo (por ejemplo, 1 para TGT_01)
+local spawnEnd = 30     -- Número de fin del grupo (por ejemplo, 6 para TGT_06)
 local groupNamePrefix = "TGT_"  -- Prefijo común de los grupos
 local spawnZone = "Zone_Helis_01"  -- Zona donde se realizará el spawn
 local debugMode = false  -- Activar/Desactivar mensajes de depuración
 local deathMessage = "Grupo destruido."  -- Mensaje que se muestra cuando un grupo muere
 local activationMessages = {
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10",
-    "Misión LIBERA EL PUEBLO DE LOS JAPOS. --- Ubicación de la mision en F10"
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10",
+    "Misión Destruye el CONVOY. --- Ubicación de la mision en F10"
+ 
+  
 }  -- Mensajes de activación personalizados
 local endMessage = "Todos los grupos han muerto. Script finalizado."  -- Mensaje al finalizar
 local spawnInterval = 15  -- Intervalo de tiempo entre activaciones (en segundos)
 local deathDelay = 10  -- Retardo tras la muerte del grupo antes de activar el siguiente (en segundos)
-local activationFlag = 100  -- Número de la bandera de activación
+local activationFlag = 200  -- Número de la bandera de activación
 local activationValue = 1  -- Valor de la bandera de activación
-local deathFlag = 100  -- Número de la bandera de muerte
+local deathFlag = 200  -- Número de la bandera de muerte
 local deathValue = 2  -- Valor de la bandera de muerte
 
 -- Parámetros de configuración para los Draws
@@ -48,7 +65,7 @@ end
 local activeGroup = nil  -- Grupo actualmente activo
 local deadGroupsCount = 0  -- Contador de grupos muertos
 local scriptActive = true  -- Bandera para controlar el ciclo
-local drawName = "TestCircle"  -- Nombre para el draw
+local drawName = "TestCircle2"  -- Nombre para el draw
 local markerId = nil  -- ID del marcador
 
 -- Función para crear una marca en el mapa
@@ -69,7 +86,7 @@ local function createDrawForActiveGroup(group)
         mist.marker.add({
             name = drawName,
             type = 'circle',  -- Tipo de marcador: puede ser 'circle', 'ellipse', etc.
-            fillColor = {222, 255, 0, 50},
+            fillColor = {255, 0, 156, 50},
             lineType = 4,
             point = {x = pos.x, y = 0, z = pos.z},  -- Coordenadas del grupo (X, Z)
             radius = drawRadius,  -- Radio en metros
