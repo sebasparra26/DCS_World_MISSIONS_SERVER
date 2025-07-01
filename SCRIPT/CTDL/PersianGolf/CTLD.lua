@@ -123,7 +123,7 @@ ctld.i18n["en"]["M-818 Ammo Truck 4"] = ""
 --ctld.i18n["en"]["M-978 Tanker"] = ""
 --ctld.i18n["en"]["SKP-11 - JTAC"] = ""
 --ctld.i18n["en"]["Ural-375 Ammo Truck"] = ""
-ctld.i18n["en"]["Ural-375 Ammo Truck 2"] = ""
+ctld.i18n["en"]["KAMAZ Truck 2"] = ""
 ctld.i18n["en"]["Ural-375 Ammo Truck 3"] = ""
 ctld.i18n["en"]["Ural-375 Ammo Truck 4"] = ""
 --ctld.i18n["en"]["KAMAZ Ammo Truck"] = ""
@@ -182,6 +182,7 @@ ctld.i18n["en"]["Patriot EPP - $ 2,500,000"] = ""
 ctld.i18n["en"]["Patriot AMG (optional) - $ 2,000,000"] = ""
 ctld.i18n["en"]["Patriot Repair - $ 1,500,000"] = ""
 ctld.i18n["en"]["S-300 Grumble TEL C - $ 4,200,000"] = ""
+ctld.i18n["en"]["S-300 Grumble TEL D - $ 4,200,000"] = ""
 ctld.i18n["en"]["S-300 Grumble Flap Lid-A TR - $ 5,500,000"] = ""
 ctld.i18n["en"]["S-300 Grumble Clam Shell SR - $ 4,000,000"] = ""
 ctld.i18n["en"]["S-300 Grumble Big Bird SR - $ 6,500,000"] = ""
@@ -1260,66 +1261,67 @@ ctld.spawnableCrates = {
     ["SAM Medio Alcance"] = {
         --- BLUE
         -- HAWK System
-        { weight = 1009.98, desc = ctld.i18n_translate("M-818 Ammo Truck 2"), unit = "M 818", side = 0},
-        { weight = 1011.89, desc = ctld.i18n_translate("HAWK Launcher - $ 2,200,000"), unit = "Hawk ln", side = 2},
-        { weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar - $ 3,000,000"), unit = "Hawk sr", side = 2 },
-        { weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar - $ 2,500,000"), unit = "Hawk tr", side = 2 },
-        { weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP - $ 1,500,000"), unit = "Hawk pcp" , side = 2 },
-        { weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR - $ 2,000,000"), unit = "Hawk cwar" , side = 2 },
+        { weight = 1009.98, desc = ctld.i18n_translate("M-818 Ammo Truck 2"), unit = "M 818", side = 0, cratesRequired = 3},
+        { weight = 1011.89, desc = ctld.i18n_translate("HAWK Launcher - $ 2,200,000"), unit = "Hawk ln", side = 0},
+        { weight = 1004.02, desc = ctld.i18n_translate("HAWK Search Radar - $ 3,000,000"), unit = "Hawk sr", side = 0 },
+        { weight = 1004.03, desc = ctld.i18n_translate("HAWK Track Radar - $ 2,500,000"), unit = "Hawk tr", side = 0 },
+        { weight = 1004.04, desc = ctld.i18n_translate("HAWK PCP - $ 1,500,000"), unit = "Hawk pcp" , side = 0 },
+        { weight = 1004.05, desc = ctld.i18n_translate("HAWK CWAR - $ 2,000,000"), unit = "Hawk cwar" , side = 0 },
         { weight = 1004.06, desc = ctld.i18n_translate("HAWK Repair - $ 1,000,000"), unit = "HAWK Repair" , side = 2 },
-        { multiple = {1011.89, 1011.89,1011.89, 1004.02, 1004.03, 1004.04, 1004.05, 1009.98}, desc = ctld.i18n_translate("HAWK FULL - $ 17,800,000"), side = 2 },
+        { multiple = {1011.89, 1004.02, 1004.03, 1004.04, 1004.05, 1009.98, 1009.98, 1009.98}, desc = ctld.i18n_translate("HAWK FULL - $ 17,800,000"), side = 2 },
         -- End of HAWK}
 
         -- NASAMS Sysyem
-        { weight = 1009.95, desc = ctld.i18n_translate("M-818 Ammo Truck 3"), unit = "M 818", side = 0},
-        { weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C - $ 3,800,000"), unit = "NASAMS_LN_C", side = 2},
-        { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar - $ 3,200,000"), unit = "NASAMS_Radar_MPQ64F1", side = 2 },
-        { weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post - $ 2,200,000"), unit = "NASAMS_Command_Post", side = 2 },
+        { weight = 1009.95, desc = ctld.i18n_translate("M-818 Ammo Truck 3"), unit = "M 818", side = 0, cratesRequired = 4},
+        { weight = 1004.11, desc = ctld.i18n_translate("NASAMS Launcher 120C - $ 3,800,000"), unit = "NASAMS_LN_C", side = 0},
+        { weight = 1004.12, desc = ctld.i18n_translate("NASAMS Search/Track Radar - $ 3,200,000"), unit = "NASAMS_Radar_MPQ64F1", side = 0 },
+        { weight = 1004.13, desc = ctld.i18n_translate("NASAMS Command Post - $ 2,200,000"), unit = "NASAMS_Command_Post", side = 0 },
         { weight = 1004.14, desc = ctld.i18n_translate("NASAMS Repair - $ 1,200,000"), unit = "NASAMS Repair", side = 2 },
-        { multiple = {1004.11, 1004.11, 1004.11, 1004.11, 1004.12, 1004.13, 1009.95}, desc = ctld.i18n_translate("NASAMS FULL - $ 21,800,000"), side = 2 },
+        { multiple = {1004.11, 1004.12, 1004.13, 1009.95, 1009.95, 1009.95, 1009.95}, desc = ctld.i18n_translate("NASAMS FULL - $ 21,800,000"), side = 2 },
         -- End of NASAMS
 
         --- RED
         -- KUB SYSTEM
-        { weight = 1007.58, desc = ctld.i18n_translate("Ural-375 Ammo Truck 2"), unit = "Ural-375", side = 0},
-        { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher - $ 1,500,000"), unit = "Kub 2P25 ln", side = 1},
-        { weight = 1004.22, desc = ctld.i18n_translate("KUB Radar - $ 2,000,000"), unit = "Kub 1S91 str", side = 1 },
+        { weight = 1007.58, desc = ctld.i18n_translate("KAMAZ Truck 2"), unit = "KAMAZ Truck", side = 0, cratesRequired = 4},
+        { weight = 1004.21, desc = ctld.i18n_translate("KUB Launcher - $ 1,500,000"), unit = "Kub 2P25 ln", side = 0},
+        { weight = 1004.22, desc = ctld.i18n_translate("KUB Radar - $ 2,000,000"), unit = "Kub 1S91 str", side = 0 },
         { weight = 1004.23, desc = ctld.i18n_translate("KUB Repair - $ 800,000"), unit = "KUB Repair", side = 1},
-        { multiple = {1004.21, 1004.21, 1004.21, 1004.21, 1004.22, 1007.58}, desc = ctld.i18n_translate("KUB FULL - $ 8,000,000"), side = 1 },
+        { multiple = {1004.21, 1004.22, 1007.58, 1007.58, 1007.58, 1007.58}, desc = ctld.i18n_translate("KUB FULL - $ 8,000,000"), side = 1 },
         -- End of KUB
 
         -- BUK System
-        { weight = 1007.56, desc = ctld.i18n_translate("Ural-375 Ammo Truck 3"), unit = "Ural-375", side = 0},
-        { weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher - $ 2,800,000"), unit = "SA-11 Buk LN 9A310M1", side = 1},
-        { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar - $ 3,500,000"), unit = "SA-11 Buk SR 9S18M1", side = 1},
-        { weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar - $ 2,800,000"), unit = "SA-11 Buk CC 9S470M1", side = 1},
+        { weight = 1007.56, desc = ctld.i18n_translate("Ural-375 Ammo Truck 3"), unit = "Ural-375", side = 0, cratesRequired = 4},
+        { weight = 1004.31, desc = ctld.i18n_translate("BUK Launcher - $ 2,800,000"), unit = "SA-11 Buk LN 9A310M1", side = 0},
+        { weight = 1004.32, desc = ctld.i18n_translate("BUK Search Radar - $ 3,500,000"), unit = "SA-11 Buk SR 9S18M1", side = 0},
+        { weight = 1004.33, desc = ctld.i18n_translate("BUK CC Radar - $ 2,800,000"), unit = "SA-11 Buk CC 9S470M1", side = 0},
         { weight = 1004.34, desc = ctld.i18n_translate("BUK Repair - $ 1,200,000"), unit = "BUK Repair", side = 1},
-        { multiple = {1004.31, 1004.31, 1004.31, 1004.31,  1004.32, 1004.33, 1007.56}, desc = ctld.i18n_translate("BUK FULL - $ 17,500,000"), side = 1 },
+        { multiple = {1004.31, 1004.32, 1004.33, 1007.56, 1007.56, 1007.56, 1007.56}, desc = ctld.i18n_translate("BUK FULL - $ 17,500,000"), side = 1 },
         -- END of BUK
     },
     ["SAM Largo Alcance"] = {
         --- BLUE
         -- Patriot System
-        { weight = 1009.92, desc = ctld.i18n_translate("M-818 Ammo Truck 4"), unit = "M 818", side = 0},
-        { weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher - $ 4,500,000"), unit = "Patriot ln", side = 2},
-        { weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar - $ 6,000,000"), unit = "Patriot str" , side = 2 },
-        { weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS - $ 3,500,000"), unit = "Patriot ECS", side = 2 },
-        { weight = 1005.04, desc = ctld.i18n_translate("Patriot ICC - $ 3,000,000"), unit = "Patriot cp", side = 2 },
-        { weight = 1005.05, desc = ctld.i18n_translate("Patriot EPP - $ 2,500,000"), unit = "Patriot EPP", side = 2 },
-        { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional) - $ 2,000,000"), unit = "Patriot AMG" , side = 2 },
+        { weight = 1009.92, desc = ctld.i18n_translate("M-818 Ammo Truck 4"), unit = "M 818", side = 0, cratesRequired = 2},
+        { weight = 1005.01, desc = ctld.i18n_translate("Patriot Launcher - $ 4,500,000"), unit = "Patriot ln", side = 0},
+        { weight = 1005.02, desc = ctld.i18n_translate("Patriot Radar - $ 6,000,000"), unit = "Patriot str" , side = 0 },
+        { weight = 1005.03, desc = ctld.i18n_translate("Patriot ECS - $ 3,500,000"), unit = "Patriot ECS", side = 0 },
+        { weight = 1005.04, desc = ctld.i18n_translate("Patriot ICC - $ 3,000,000"), unit = "Patriot cp", side = 0 },
+        { weight = 1005.05, desc = ctld.i18n_translate("Patriot EPP - $ 2,500,000"), unit = "Patriot EPP", side = 0 },
+        { weight = 1005.06, desc = ctld.i18n_translate("Patriot AMG (optional) - $ 2,000,000"), unit = "Patriot AMG" , side = 0 },
         { weight = 1005.07, desc = ctld.i18n_translate("Patriot Repair - $ 1,500,000"), unit = "Patriot Repair" , side = 2 },
-        { multiple = {1005.01, 1005.01, 1005.02, 1005.03, 1005.04, 1005.05, 1005.06, 1009.92}, desc = ctld.i18n_translate("Patriot FULL - $ 26,000,000"), side = 2 },
+        { multiple = {1005.01, 1005.02, 1005.03, 1005.04, 1005.05, 1005.06, 1009.92, 1009.92}, desc = ctld.i18n_translate("Patriot FULL - $ 26,000,000"), side = 2 },
         -- End of Patriot
 
         -- S-300 SYSTEM
-        { weight = 1007.24, desc = ctld.i18n_translate("Ural-375 Ammo Truck 4"), unit = "Ural-375", side = 0},
-        { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C - $ 4,200,000"), unit = "S-300PS 5P85C ln", side = 1},
-        { weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR - $ 5,500,000"), unit = "S-300PS 40B6M tr", side = 1 },
-        { weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR - $ 4,000,000"), unit = "S-300PS 40B6MD sr", side = 1 },
-        { weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR - $ 6,500,000"), unit = "S-300PS 64H6E sr", side = 1 },
-        { weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2 - $ 3,500,000"), unit = "S-300PS 54K6 cp", side = 1 },
+        { weight = 1007.24, desc = ctld.i18n_translate("Ural-375 Ammo Truck 4"), unit = "Ural-375", side = 0, cratesRequired = 3},
+        { weight = 1005.11, desc = ctld.i18n_translate("S-300 Grumble TEL C - $ 4,200,000"), unit = "S-300PS 5P85C ln", side = 0},
+        --{ weight = 1005.22, desc = ctld.i18n_translate("S-300 Grumble TEL D - $ 4,200,000"), unit = "S-300PS 5P85D ln", side = 0},
+        { weight = 1005.12, desc = ctld.i18n_translate("S-300 Grumble Flap Lid-A TR - $ 5,500,000"), unit = "S-300PS 40B6M tr", side = 0 },
+        { weight = 1005.13, desc = ctld.i18n_translate("S-300 Grumble Clam Shell SR - $ 4,000,000"), unit = "S-300PS 40B6MD sr", side = 0 },
+        { weight = 1005.14, desc = ctld.i18n_translate("S-300 Grumble Big Bird SR - $ 6,500,000"), unit = "S-300PS 64H6E sr", side = 0 },
+        { weight = 1005.15, desc = ctld.i18n_translate("S-300 Grumble C2 - $ 3,500,000"), unit = "S-300PS 54K6 cp", side = 0 },
         { weight = 1005.16, desc = ctld.i18n_translate("S-300 Repair - $ 1,800,000"), unit = "S-300 Repair", side = 1 },
-        { multiple = {1005.11, 1005.11,1005.11, 1005.12, 1005.13, 1005.14, 1005.15, 1007.24}, desc = ctld.i18n_translate("S-300 FULL - $ 32,100,000"), side = 1 },
+        { multiple = {1005.11, 1005.12, 1005.13, 1005.14, 1005.15, 1007.24, 1007.24, 1007.24}, desc = ctld.i18n_translate("S-300 FULL - $ 32,100,000"), side = 1 },
         -- End of S-300
     },
     ["Drones"] = {
@@ -2149,24 +2151,27 @@ ctld.AASystemTemplate = {
         name = "HAWK AA System",
         count = 5,
         parts = {
+            
             {name = "Hawk ln", desc = "HAWK Launcher", launcher = true},
             {name = "Hawk tr", desc = "HAWK Track Radar", amount = 2},
             {name = "Hawk sr", desc = "HAWK Search Radar", amount = 2},
-            {name = "Hawk pcp", desc = "HAWK PCP", NoCrate = true},
-            {name = "Hawk cwar", desc = "HAWK CWAR", amount = 2, NoCrate = true},
+            {name = "Hawk pcp", desc = "HAWK PCP"},
+            {name = "Hawk cwar", desc = "HAWK CWAR", amount = 2},
         },
         repair = "HAWK Repair",
     },
     {
         name = "Patriot AA System",
-        count = 4,
+        count = 6,
         parts = {
-            {name = "Patriot ln", desc = "Patriot Launcher", launcher = true, amount = 8},
+            
+            {name = "Patriot ln", desc = "Patriot Launcher", launcher = true, amount = 5},
             {name = "Patriot ECS", desc = "Patriot Control Unit"},
             {name = "Patriot str", desc = "Patriot Search and Track Radar", amount = 2},
-            --{name = "Patriot cp", desc = "Patriot ICC", NoCrate = true},
-            --{name = "Patriot EPP", desc = "Patriot EPP", NoCrate = true},
-            {name = "Patriot AMG", desc = "Patriot AMG DL relay", NoCrate = true},
+            {name = "Patriot cp", desc = "Patriot ICC"},
+            {name = "Patriot EPP", desc = "Patriot EPP"},
+            {name = "Patriot AMG", desc = "Patriot AMG DL relay"},
+            
         },
         repair = "Patriot Repair",
     },
@@ -2174,9 +2179,11 @@ ctld.AASystemTemplate = {
         name = "NASAMS AA System",
         count = 3,
         parts = {
+            
             {name = "NASAMS_LN_C", desc = "NASAMS Launcher 120C", launcher = true},
             {name = "NASAMS_Radar_MPQ64F1", desc = "NASAMS Search/Track Radar"},
             {name = "NASAMS_Command_Post", desc = "NASAMS Command Post"},
+            
         },
         repair = "NASAMS Repair",
     },
@@ -2184,6 +2191,7 @@ ctld.AASystemTemplate = {
         name = "BUK AA System",
         count = 3,
         parts = {
+            
             {name = "SA-11 Buk LN 9A310M1", desc = "BUK Launcher" , launcher = true},
             {name = "SA-11 Buk CC 9S470M1", desc = "BUK CC Radar"},
             {name = "SA-11 Buk SR 9S18M1", desc = "BUK Search Radar"},
@@ -2196,15 +2204,18 @@ ctld.AASystemTemplate = {
         parts = {
             {name = "Kub 2P25 ln", desc = "KUB Launcher", launcher = true},
             {name = "Kub 1S91 str", desc = "KUB Radar"},
+            
+            
         },
         repair = "KUB Repair",
     },
     {
         name = "S-300 AA System",
-        count = 6,
+        count = 5,
         parts = {
-            { desc = "S-300 Grumble TEL C", name = "S-300PS 5P85C ln", launcher = true, amount = 1 },
-            { desc = "S-300 Grumble TEL D", name = "S-300PS 5P85D ln", NoCrate = true, amount = 2 },
+            
+            { desc = "S-300 Grumble TEL C", name = "S-300PS 5P85C ln", launcher = true, amount = 5 },
+            --{ desc = "S-300 Grumble TEL D", name = "S-300PS 5P85D ln", launcher = true, amount = 2 },
             { desc = "S-300 Grumble Flap Lid-A TR", name = "S-300PS 40B6M tr"},
             { desc = "S-300 Grumble Clam Shell SR", name = "S-300PS 40B6MD sr"},
             { desc = "S-300 Grumble Big Bird SR", name = "S-300PS 64H6E sr"},
