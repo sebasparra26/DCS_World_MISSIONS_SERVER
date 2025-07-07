@@ -7,9 +7,9 @@ local redIADS = SkynetIADS:create('Red IADS')
 redIADS:addSAMSitesByPrefix('R-SAM-')
 redIADS:addEarlyWarningRadarsByPrefix('R-EWR-')
 ----------------------------------------------------------- COMMAND CENTER
-local commandCenter = StaticObject.getByName("CCRED01")
-local comPowerSource = StaticObject.getByName("RED-POWER-CENTER")
-local comNodeSource = StaticObject.getByName("RED-NODE-CENTER-1")
+local commandCenter = StaticObject.getByName("CC")
+local comPowerSource = StaticObject.getByName("RED-POWER-CENTER-100")
+local comNodeSource = StaticObject.getByName("RED-NODE-CENTER-11")
 redIADS:addCommandCenter(commandCenter)
         :addPowerSource(comPowerSource)
         :addConnectionNode(comNodeSource)     
@@ -35,7 +35,7 @@ local nodeS300 = Unit.getByName('RED-NODE-SAM-S300-1')
 redIADS:getSAMSiteByGroupName('R-SAM-S300-1')
         :addConnectionNode(nodeS300)
         :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
          :setCanEngageAirWeapons(false)
         :setCanEngageHARM(false)
         :setHARMDetectionChance(100)
@@ -46,7 +46,7 @@ local nodeS300 = Unit.getByName('RED-NODE-SAM-S300-2')
 redIADS:getSAMSiteByGroupName('R-SAM-S300-2')
         :addConnectionNode(nodeS300)
         :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
          :setCanEngageAirWeapons(false)
         :setCanEngageHARM(false)
         :setHARMDetectionChance(100)
@@ -58,7 +58,7 @@ local nodeS300 = Unit.getByName('RED-NODE-SAM-SA5-1')
 redIADS:getSAMSiteByGroupName('R-SAM-SA5-1')
         :addConnectionNode(nodeS300)
         :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
          :setCanEngageAirWeapons(false)
         :setCanEngageHARM(false)
         :setHARMDetectionChance(100)
@@ -69,7 +69,7 @@ local nodeS300 = Unit.getByName('RED-NODE-SAM-SA5-2')
 redIADS:getSAMSiteByGroupName('R-SAM-SA5-2')
         :addConnectionNode(nodeS300)
         :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
          :setCanEngageAirWeapons(false)
         :setCanEngageHARM(false)
         :setHARMDetectionChance(100)
@@ -80,7 +80,7 @@ local nodeS300 = Unit.getByName('RED-NODE-SAM-SA5-3')
 redIADS:getSAMSiteByGroupName('R-SAM-SA5-3')
         :addConnectionNode(nodeS300)
         :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
          :setCanEngageAirWeapons(false)
         :setCanEngageHARM(false)
         :setHARMDetectionChance(100)
@@ -89,17 +89,7 @@ end
 
 
 ----------------------------------------------------------- Conexiones del SAM SA3
-do
-local nodeS300 = Unit.getByName('RED-NODE-SAM-SA3-1')
-redIADS:getSAMSiteByGroupName('R-SAM-SA3-1')
-        :addConnectionNode(nodeS300)
-        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_KILL_ZONE)
-         :setCanEngageAirWeapons(false)
-        :setCanEngageHARM(false)
-        :setHARMDetectionChance(100)
-        :setActAsEW(true)
-end
+
 ----------------------------------------------------------- Conexiones de DEFENCE SA15
 do
 local defence = redIADS:getSAMSiteByGroupName('R-SAM-DEFENCE-1')
@@ -121,10 +111,7 @@ do
 local defence = redIADS:getSAMSiteByGroupName('R-SAM-DEFENCE-6')
 redIADS:getSAMSiteByGroupName('R-SAM-SA5-3'):addPointDefence(defence):setHARMDetectionChance(100)
 end
-do
-local defence = redIADS:getSAMSiteByGroupName('R-SAM-DEFENCE-5')
-redIADS:getSAMSiteByGroupName('R-SAM-SA3-1'):addPointDefence(defence):setHARMDetectionChance(100)
-end
+
 ----------------------------------------------------------- Debug
 local debugRED = redIADS:getDebugSettings()
 debugRED.IADSStatus = false
