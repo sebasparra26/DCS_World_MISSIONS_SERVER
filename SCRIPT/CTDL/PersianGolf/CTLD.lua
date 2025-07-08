@@ -570,12 +570,12 @@ ctld.JTAC_allow9Line = true -- if true, allow players to ask for a 9Line (indivi
 -- Flag Number - Optional last field. If set the current number of groups remaining can be obtained from the flag value
 --pickupZones = { "Zone name or Ship Unit Name", "smoke color", "limit (-1 unlimited)", "ACTIVE (yes/no)", "side (0 = Both sides / 1 = Red / 2 = Blue )", flag number (optional) }
 ctld.pickupZones = {
-    { "pickzone1", "none", -1, "yes", 2 },--TARAWA
-    { "pickzone2", "none", -1, "yes", 2 },--TARAWA
-    { "pickzone3", "none", -1, "yes", 2 },--TARAWA
-    { "pickzone4", "none", -1, "yes", 1 },--TARAWA
-    { "pickzone5", "none", -1, "yes", 1 },--TARAWA
-    { "pickzone6", "none", -1, "yes", 1 },--TARAWA
+    { "pickzone1", "white", -1, "yes", 2 },--TARAWA
+    { "pickzone2", "white", -1, "yes", 2 },--TARAWA
+    { "pickzone3", "white", -1, "yes", 2 },--TARAWA
+    { "pickzone4", "white", -1, "yes", 1 },--TARAWA
+    { "pickzone5", "white", -1, "yes", 1 },--TARAWA
+    { "pickzone6", "white", -1, "yes", 1 },--TARAWA
     { "pickzone7", "white", -1, "yes", 2 },--BLUE COMMAND CENTER
     { "pickzone8", "white", -1, "yes", 1 }, --RED COMMAND CENTER
     { "pickzone9", "white", -1, "yes", 0 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
