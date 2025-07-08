@@ -153,7 +153,7 @@ csar.redmash = {
 } -- The unit that serves as MASH for the red side
 
 
-csar.csarMode = 0
+csar.csarMode = 3
 
 --      0 - No Limit - NO Aircraft disabling
 --      1 - Disable Aircraft when its down - Timeout to reenable aircraft
