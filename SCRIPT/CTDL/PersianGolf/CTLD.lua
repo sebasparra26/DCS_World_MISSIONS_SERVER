@@ -211,7 +211,7 @@ ctld.i18n["en"]["SKP-11 - JTAC - $100,000"] = ""
 ctld.i18n["en"]["Ural-375 Ammo Truck - $ 100,000"] = ""
 ctld.i18n["en"]["KAMAZ Ammo Truck - $ 100,000"] = ""
 ctld.i18n["en"]["EWR Radar - $ 4,000,000"] = ""
-ctld.i18n["en"]["FOB - $ 1,000,000"] = ""
+ctld.i18n["en"]["FOB - $ 2,000,000"] = ""
 
 ---------------------Artillery
 
@@ -495,7 +495,7 @@ ctld.spawnStinger = true -- spawns a stinger / igla soldier with a group of 6 or
 ctld.enabledFOBBuilding = true  -- if true, you can load a crate INTO a C-130 than when unpacked creates a Forward Operating Base (FOB) which is a new place to spawn (crates) and carry crates from
                                 -- In future i'd like it to be a FARP but so far that seems impossible...
                                 -- You can also enable troop Pickup at FOBS
-ctld.cratesRequiredForFOB = 3 -- The amount of crates required to build a FOB. Once built, helis can spawn crates at this outpost to be carried and deployed in another area.
+ctld.cratesRequiredForFOB = 2 -- The amount of crates required to build a FOB. Once built, helis can spawn crates at this outpost to be carried and deployed in another area.
 -- The large crates can only be loaded and dropped by large aircraft, like the C-130 and listed in ctld.vehicleTransportEnabled
 -- Small FOB crates can be moved by helicopter. The FOB will require ctld.cratesRequiredForFOB larges crates and small crates are 1/3 of a large fob crate
 -- To build the FOB entirely out of small crates you will need ctld.cratesRequiredForFOB * 3
@@ -1200,8 +1200,8 @@ ctld.spawnableCrates = {
         --- Both
         { weight = 1001.21, desc = ctld.i18n_translate("EWR Radar"), unit="FPS-117", cratesRequired = 3 },
         { multiple = {1001.21, 1001.21, 1001.21}, desc = ctld.i18n_translate("EWR Radar - $ 4,000,000") },
-        { weight = 1001.22, desc = ctld.i18n_translate("FOB Crate - Small"), unit = "FOB-SMALL", cratesRequired = 3 }, -- Builds a FOB! - requires 3 * ctld.cratesRequiredForFOB
-        { multiple = {1001.22, 1001.22, 1001.22}, desc = ctld.i18n_translate("FOB - $ 1,000,000") },
+        { weight = 1001.22, desc = ctld.i18n_translate("FOB Crate - Small"), unit = "FOB-SMALL", side = 0 ,cratesRequired = 3 }, -- Builds a FOB! - requires 3 * ctld.cratesRequiredForFOB
+        { multiple = {1001.22, 1001.22, 1001.22, 1001.22, 1001.22, 1001.22}, desc = ctld.i18n_translate("FOB - $ 2,000,000") },
 
     },
     ["Artilleria"] = {
