@@ -78,7 +78,8 @@ tipoAviones["MK82"] = {
     costo = 44000,
 
     bombas = {
-        ["Mk-82 - 500lb GP Bomb LD "]  = {ws = {4, 5, 8, 31}, cantidad = 20},
+        ["Mk-82 - 500lb GP Bomb LD "]  = {ws = {4, 5, 9, 31}, cantidad = 20},
+        ["Mk-82 - 500lb GP Bomb LD2 "]  = {ws = {4, 5, 32, 31}, cantidad = 20},
         ["Mk-82 - Snakeeye 500lb GP Bomb HD   "]  = {ws = {4, 5, 8, 79}, cantidad = 10}
        }
 }
@@ -294,6 +295,30 @@ tipoAviones["SENUELOS"] = {
         ["ADM-141A TALD"]  = {ws = {4, 4, 8, 289}, cantidad = 60}
        }
 }
+tipoAviones["M71"] = {
+    costo = 208000,
+
+    bombas = {
+        ["M/71 HE - BOMB W CHUTE"]  = {ws = {4, 5, 9, 11033}, cantidad = 20},
+        ["M/71 HE - BOMB"]  = {ws = {4, 5, 9, 11034}, cantidad = 20}
+       }
+}
+tipoAviones["BK90"] = {
+    costo = 1800000,
+
+    misiles = {
+        ["BK90 MJ1 - MJ2"]  = {ws = {4, 4, 8, 11031}, cantidad = 4}
+       }
+}
+tipoAviones["RB15"] = {
+    costo = 2200000,
+
+    misiles = {
+        ["RB-15F"]  = {ws = {4, 4, 8, 11093}, cantidad = 2}
+       }
+}
+
+
 
 
 

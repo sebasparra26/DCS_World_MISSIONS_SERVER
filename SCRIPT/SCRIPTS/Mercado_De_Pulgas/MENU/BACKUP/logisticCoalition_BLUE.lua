@@ -1,7 +1,7 @@
 ---------------------------BAZTIAN---------------------------------------------------------------------------
 
 
-puntosCoalicion = { PuntosAZUL = 750000000, PuntosROJO = 750000000 }
+puntosCoalicion = { PuntosAZUL = 824938810, PuntosROJO = 1149145176 }
 configuracionEntregaB = configuracionEntregaB or {
     origen = { x = -189594, y = 0, z = -176119 },
     velocidad = 138.88
@@ -89,15 +89,15 @@ function ejecutarEntregaB(aeropuerto, data, tipoAvion)
         --velocidad = 180
    -- }
 
-    local origen = data.origen or configuracionEntregaB.origen
+    local origen = { x = configuracionEntregaB.origen.x, y = configuracionEntregaB.origen.y, z = configuracionEntregaB.origen.z }
     local destino = coordenadasAerodromosB[aeropuerto] or { x = 0, z = 0 }
     local dx, dz = destino.x - origen.x, destino.z - origen.z
     local distancia = math.sqrt(dx * dx + dz * dz)
-    local velocidad = data.velocidad or configuracionEntregaB.velocidad
+    local velocidad = configuracionEntregaB.velocidad -----------------------EN DO SCRIPT PRECARGADO
     local tiempoEst = math.floor((distancia / velocidad) * (multiplicadorTiempoB[aeropuerto] or 1))
     local minutos, segundos = math.floor(tiempoEst / 60), tiempoEst % 60
 
-    trigger.action.outTextForCoalition(2, "Compra confirmada. Enviando a " .. aeropuerto, 20)
+    trigger.action.outTextForCoalition(2, "Compra confirmada. Enviando a " .. aeropuerto, 10)
     trigger.action.outTextForCoalition(2, "Llegada estimada: " .. minutos .. " min " .. segundos .. " seg", 20)
 
     local nombresAntes = {}

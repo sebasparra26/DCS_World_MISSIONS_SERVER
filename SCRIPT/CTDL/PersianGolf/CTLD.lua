@@ -526,8 +526,8 @@ ctld.aaLaunchers = 6 -- controls how many launchers to add to the AA systems whe
 -- When this limit is hit, a player will still be able to get crates for an AA system, just unable
 -- to unpack them
 
-ctld.AASystemLimitRED = 30 -- Red side limit
-ctld.AASystemLimitBLUE = 30 -- Blue side limit
+ctld.AASystemLimitRED = 6 -- Red side limit
+ctld.AASystemLimitBLUE = 6 -- Blue side limit
 
 -- Allows players to create systems using as many crates as they like
 -- Example : an amount X of patriot launcher crates allows for Y launchers to be deployed, if a player brings 2*X+Z crates (Z being lower then X), then deploys the patriot site, 2*Y launchers will be in the group and Z launcher crate will be left over
@@ -596,6 +596,11 @@ ctld.pickupZones = {
     { "pickzone23", "white", -1, "yes", 0 },
     { "pickzone24", "white", -1, "yes", 0 },
     { "pickzone25", "white", -1, "yes", 0 },
+    { "pickzone26", "white", -1, "yes", 0 },
+    { "pickzone27", "white", -1, "yes", 0 },
+    { "pickzone28", "white", -1, "yes", 0 },
+    { "pickzone29", "white", -1, "yes", 0 },
+    { "pickzone30", "white", -1, "yes", 0 }, --
   
 }
 
@@ -631,7 +636,12 @@ ctld.wpZones = {
     { "wpzone14", "none","yes", 0 },
     { "wpzone15", "none","yes", 0 },
     { "wpzone16", "none","yes", 0 },
-    { "wpzone17", "none","yes", 0 },
+    { "wpzone17", "none","yes", 0 },--
+    { "wpzone18", "none","yes", 0 },--
+    { "wpzone19", "none","yes", 0 },--
+    { "wpzone20", "none","yes", 0 },--
+    { "wpzone21", "none","yes", 0 },--
+    { "wpzone22", "none","yes", 0 },--
 }
 
 -- ******************** Transports names **********************
@@ -911,9 +921,20 @@ ctld.logisticUnits = {
     "logistic63",
     "logistic64",
     "logistic65",
-     "logistic66",
+    "logistic66",
     "logistic67",
     "logistic68",
+    "logistic69",
+    "logistic70",
+    "logistic71",
+    "logistic72",
+    "logistic73",
+    "logistic74",
+    "logistic75",
+    "logistic76",
+    "logistic77",
+    "logistic78",
+    "logistic79",
 }
 
 -- ************** UNITS ABLE TO TRANSPORT VEHICLES ******************

@@ -36,18 +36,20 @@ tipoAviones["FOX01PACK_03"] = {
 -- FOX 2
 -- ==============================
 tipoAviones["FOX02PACK_01"] = {
-    costo = 820000,
+    costo = 1360000,
 
     misiles = {
         ["AIM-9B"]  = {ws = {4, 4, 7, 265}, cantidad = 20},
+        ["RB-24"]  = {ws = {4, 4, 7, 11037}, cantidad = 20},
         ["AIM-9J"]  = {ws = {4, 4, 7, 371}, cantidad = 10}
     }
 }
 tipoAviones["FOX02PACK_02"] = {
-    costo = 3700000,
+    costo = 4800000,
 
     misiles = {
         ["AIM-9P"]  = {ws = {4, 4, 7, 135}, cantidad = 20},
+        ["RB-24J"]  = {ws = {4, 4, 7, 11038}, cantidad = 10},
         ["AIM-9P3"]  = {ws = {4, 4, 7, 412}, cantidad = 10}
     }
 }
@@ -110,6 +112,14 @@ tipoAviones["FOX02PACK_09"] = {
 
     misiles = {
         ["Mistral"]  = {ws = {4, 4, 34, 291}, cantidad = 30}
+       }
+}
+tipoAviones["FOX02PACK_11"] = {
+    costo = 1950000,
+
+    misiles = {
+        ["RB-24"]  = {ws = {4, 4, 7, 11037}, cantidad = 20},
+        ["RB-24J"]  = {ws = {4, 4, 7, 11038}, cantidad = 10}
        }
 }
 -- ===============================

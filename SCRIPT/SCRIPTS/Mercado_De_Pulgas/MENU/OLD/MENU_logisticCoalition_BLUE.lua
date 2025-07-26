@@ -3,7 +3,7 @@ MercadoSetuptimerB = MercadoSetuptimerB or {
     Total = 500,
     Intervalo = 20
 }
-paginasPorAvionB = {}
+paginasPorAvion = {}
 comandosPorSubID = {}
 
 
@@ -40,17 +40,17 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
     local totalPaginas = math.ceil(#entradas / porPagina)
     if totalPaginas == 0 then totalPaginas = 1 end
 
-    paginasPorAvionB[claveSubVar] = paginasPorAvionB[claveSubVar] or {}
+    paginasPorAvion[claveSubVar] = paginasPorAvion[claveSubVar] or {}
 
     for pagina = 1, totalPaginas do
         local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Aeropuerto Pag " .. pagina
 
-        if not paginasPorAvionB[claveSubVar][pagina] then
+        if not paginasPorAvion[claveSubVar][pagina] then
             local subID = missionCommands.addSubMenuForCoalition(2, nombreSubmenu, menuAvion)
-            paginasPorAvionB[claveSubVar][pagina] = subID
+            paginasPorAvion[claveSubVar][pagina] = subID
         end
 
-        local subID = paginasPorAvionB[claveSubVar][pagina]
+        local subID = paginasPorAvion[claveSubVar][pagina]
         local dummy = missionCommands.addCommandForCoalition(2, "_clear", subID, function() end)
         missionCommands.removeItem(dummy)
 
@@ -112,7 +112,7 @@ function actualizarTemporizadorMercadoB()
 
     if tiempoRestante <= 0 then
         -- Cerrar todos los submenús
-        for _, paginas in pairs(paginasPorAvionB) do
+        for _, paginas in pairs(paginasPorAvion) do
             for _, subID in pairs(paginas) do
                 if subID then missionCommands.removeItem(subID) end
             end

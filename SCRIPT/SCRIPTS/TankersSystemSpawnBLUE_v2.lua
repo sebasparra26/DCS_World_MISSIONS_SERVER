@@ -148,6 +148,7 @@ local function spawnTankerAzul(tp, p1, p2, hdg)
     hidden = HIDE_ON_MAP,
     hiddenOnPlanner = HIDE_ON_PLANNER,
     hiddenOnMFD = HIDE_ON_MFD,
+    groupControl = "gameMaster",
     task = { id = "ComboTask", params = { tasks = { { id = "Tanker", enabled = true } } } },
     units = { {
       type = info.type, name = "U" .. math.random(1000, 9999), skill = "High",

@@ -2,10 +2,10 @@
 
 estadoBanderasAeropuertos = {
     ["Liwa AFB"] = { bandera = 100, valor = nil },
-    ["Al Dhafra AFB"] = { bandera = 101, valor = nil },
-    ["Al-Bateen"] = { bandera = 102, valor = nil },
-    ["Sas Al Nakheel"] = { bandera = 103, valor = nil },
-    ["Abu Dhabi Intl"] = { bandera = 104, valor = nil },
+    --["Al Dhafra AFB"] = { bandera = 101, valor = nil },
+    --["Al-Bateen"] = { bandera = 102, valor = nil },
+    --["Sas Al Nakheel"] = { bandera = 103, valor = nil },
+    --["Abu Dhabi Intl"] = { bandera = 104, valor = nil },
     ["Al Ain Intl"] = { bandera = 105, valor = nil },
     ["Al Maktoum Intl"] = { bandera = 106, valor = nil },
     ["Al Minhad AFB"] = { bandera = 107, valor = nil },
@@ -28,16 +28,16 @@ estadoBanderasAeropuertos = {
     ["Bandar Abbas Intl"] = { bandera = 124, valor = nil },
     ["Lar"] = { bandera = 125, valor = nil },
     ["Jiroft"] = { bandera = 126, valor = nil },
-    ["Shiraz Intl"] = { bandera = 127, valor = nil },
+    --["Shiraz Intl"] = { bandera = 127, valor = nil },
     ["Kerman"] = { bandera = 128, valor = nil }
 }
 
 aeropuertos = {
      ["Liwa AFB"] = { position = {x = -275733, y = 0, z = -248186}, radius = 60000 },                            --1-- Metric: X-00275733 Z-00248186    high
-    ["Al Dhafra AFB"] = { position = {x = -211657, y = 0, z = -173058}, radius = 12000 },                       --2-- Metric: X-00211657 Z-00173058    High
-    ["Al-Bateen"] = { position = {x = -190948, y = 0, z = -181927}, radius = 12000},                             --3-- Metric: X-00190948 Z-00181927    Medium
-    ["Sas Al Nakheel"] = { position = {x = -189610, y = 0, z = -175974}, radius = 2000},                        --4-- Metric: X-00189610 Z-00175974    Medium
-    ["Abu Dhabi Intl"] = { position = {x = -189658, y = 0, z = -162399}, radius = 12000 },                      --5-- Metric: X-00189658 Z-00162399    high
+    --["Al Dhafra AFB"] = { position = {x = -211657, y = 0, z = -173058}, radius = 12000 },                       --2-- Metric: X-00211657 Z-00173058    High
+    --["Al-Bateen"] = { position = {x = -190948, y = 0, z = -181927}, radius = 12000},                             --3-- Metric: X-00190948 Z-00181927    Medium
+    --["Sas Al Nakheel"] = { position = {x = -189610, y = 0, z = -175974}, radius = 2000},                        --4-- Metric: X-00189610 Z-00175974    Medium
+    --["Abu Dhabi Intl"] = { position = {x = -189658, y = 0, z = -162399}, radius = 12000 },                      --5-- Metric: X-00189658 Z-00162399    high
     ["Al Ain Intl"] = { position = {x = -211063, y = 0, z = -65171}, radius = 12000 },                          --6-- Metric: X-00211063 Z-00065171    high
     ["Al Maktoum Intl"] = { position = {x = -140840, y = 0, z = -109920}, radius = 12000 },                     --7-- Metric: X-00140840 Z-00109920    high
     ["Al Minhad AFB"] = { position = {x = -126104, y = 0, z = -89108}, radius = 12000 },                        --8-- Metric: X-00126104 Z-00089108    high
@@ -59,7 +59,7 @@ aeropuertos = {
     ["Havadarya"] = { position = {x = 109331, y = 0, z = -6369}, radius = 12000 },                               --25- Metric: X+00109331 Z-00006369 Small
     ["Bandar Abbas Intl"] = { position = {x = 115847, y = 0, z = 14156}, radius = 12000 },                       --26- Metric: X+00115847 Z+00014156   Medium
     ["Lar"] = { position = {x = 168884, y = 0, z = -182473}, radius = 12000 },                                  --27- Metric: X+00168884 Z-00182473   Medium
-    ["Jiroft"] = { position = {x = 282634, y = 0, z = 141649}, radius = 10000 },                                --28- Metric: X+00282634 Z+00141649   Medium
+    --["Jiroft"] = { position = {x = 282634, y = 0, z = 141649}, radius = 10000 },                                --28- Metric: X+00282634 Z+00141649   Medium
     ["Shiraz Intl"] = { position = {x = 380994, y = 0, z = -351952}, radius = 20000 },                          --29- Metric: X+00380994 Z-00351952   high
     ["Kerman"] = { position = {x = 454327, y = 0, z = 71866}, radius = 60000 }   
 }

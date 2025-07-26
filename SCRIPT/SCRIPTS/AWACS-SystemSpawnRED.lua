@@ -132,6 +132,7 @@ local function spawnAwacsRojo(tp, p1, p2, hdg)
     hidden = HIDE_ON_MAP,
     hiddenOnPlanner = HIDE_ON_PLANNER,
     hiddenOnMFD = HIDE_ON_MFD,
+    groupControl = "gameMaster",
     task = { id = "ComboTask", params = { tasks = { { id = "AWACS", enabled = true } } } },
     units = { {
       type = info.type, name = "U" .. math.random(1000, 9999), skill = "High",
@@ -154,6 +155,12 @@ local function spawnAwacsRojo(tp, p1, p2, hdg)
       callsign = info.tac, bearing = true, AA = true
     }
   })
+  ctl:setCommand({
+  id = 'EPLRS',
+  params = {
+    value = true
+  }
+})
 
   activeAwacsRojo[gName] = {
     freq = freqHz, chan = chan, mode = "X", cs = info.tac,

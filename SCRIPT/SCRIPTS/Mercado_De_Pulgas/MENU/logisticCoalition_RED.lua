@@ -1,7 +1,7 @@
 ---------------------------BAZTIAN---------------------------------------------------------------------------
 
 
-puntosCoalicion = { PuntosAZUL = 824938810, PuntosROJO = 1149145176 }
+puntosCoalicion = { PuntosAZUL = 750000000, PuntosROJO = 750000000 }
 configuracionEntregaR = configuracionEntregaR or {
     origen = { x = -189594, y = 0, z = -176119 },
     velocidad = 138.88
@@ -80,15 +80,16 @@ function ejecutarEntregaR(aeropuerto, data, tipoAvion)
         return
     end
 
-    local origen = { x = configuracionEntregaR.origen.x, y = configuracionEntregaR.origen.y, z = configuracionEntregaR.origen.z }
+    local origen = data.origen or configuracionEntregaR.origen
     local destino = coordenadasAerodromosR[aeropuerto] or { x = 0, z = 0 }
     local dx, dz = destino.x - origen.x, destino.z - origen.z
     local distancia = math.sqrt(dx * dx + dz * dz)
-    local velocidad = configuracionEntregaR.velocidad -----------------------EN DO SCRIPT PRECARGADO
+    local velocidad = data.velocidad or configuracionEntregaR.velocidad
+ -----------------------EN DO SCRIPT PRECARGADO
     local tiempoEst = math.floor((distancia / velocidad) * (multiplicadorTiempoR[aeropuerto] or 1))
     local minutos, segundos = math.floor(tiempoEst / 60), tiempoEst % 60
 
-    trigger.action.outTextForCoalition(1, "Compra confirmada. Enviando a " .. aeropuerto, 10)
+    trigger.action.outTextForCoalition(1, "Compra confirmada. Enviando a " .. aeropuerto, 20)
     trigger.action.outTextForCoalition(1, "Llegada estimada: " .. minutos .. " min " .. segundos .. " seg", 20)
 
     local nombresAntes = {}
@@ -185,7 +186,7 @@ function verificarAterrizajesR()
                             if grupoParaEliminar and grupoParaEliminar:isExist() then
                                 grupoParaEliminar:destroy()
                             end
-                        end, {}, timer.getTime() + 60)
+                        end, {}, timer.getTime() + 20)
                     end
                 end
             end

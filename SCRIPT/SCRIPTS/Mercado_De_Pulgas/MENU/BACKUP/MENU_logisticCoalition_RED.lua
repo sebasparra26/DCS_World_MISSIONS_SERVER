@@ -1,21 +1,19 @@
-
-MercadoSetuptimerB = MercadoSetuptimerB or {
-    Total = 500,
-    Intervalo = 20
+MercadoSetuptimerR = MercadoSetuptimerR or {
+    Total = 138.88,
+    Intervalo = 200
 }
-paginasPorAvionB = {}
+paginasPorAvion = {}
 comandosPorSubID = {}
 
 
-
-function crearMenuLogisticoAzul()
-    local menuRaiz = missionCommands.addSubMenuForCoalition(2, "MARKETPLACE")
+function crearMenuLogisticoRojo()
+    local menuRaiz = missionCommands.addSubMenuForCoalition(1, "MARKETPLACE")
     local menuCategorias = {}
 
     for nombreAvion, datos in pairs(tiposAvion) do
         local categoria = datos.categoria or "Sin Clasificar"
         if not menuCategorias[categoria] then
-            menuCategorias[categoria] = missionCommands.addSubMenuForCoalition(2, categoria, menuRaiz)
+            menuCategorias[categoria] = missionCommands.addSubMenuForCoalition(1, categoria, menuRaiz)
         end
     end
 
@@ -23,11 +21,11 @@ function crearMenuLogisticoAzul()
         local claveTipo = datos.clave
         local categoria = datos.categoria
         local menuCat = menuCategorias[categoria]
-        local menuAvion = missionCommands.addSubMenuForCoalition(2, nombreAvion, menuCat)
+        local menuAvion = missionCommands.addSubMenuForCoalition(1, nombreAvion, menuCat)
 
         if subvariantesAvion[claveTipo] then
             for nombreSub, claveSub in pairs(subvariantesAvion[claveTipo]) do
-                local menuSub = missionCommands.addSubMenuForCoalition(2, nombreSub, menuAvion)
+                local menuSub = missionCommands.addSubMenuForCoalition(1, nombreSub, menuAvion)
                 actualizarOpcionesParaAvion(menuSub, claveSub)
             end
         end
@@ -40,32 +38,32 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
     local totalPaginas = math.ceil(#entradas / porPagina)
     if totalPaginas == 0 then totalPaginas = 1 end
 
-    paginasPorAvionB[claveSubVar] = paginasPorAvionB[claveSubVar] or {}
+    paginasPorAvion[claveSubVar] = paginasPorAvion[claveSubVar] or {}
 
     for pagina = 1, totalPaginas do
-        local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Aeropuerto Pag " .. pagina
+        local nombreSubmenu = totalPaginas == 1 and "Opciones" or "Página " .. pagina
 
-        if not paginasPorAvionB[claveSubVar][pagina] then
-            local subID = missionCommands.addSubMenuForCoalition(2, nombreSubmenu, menuAvion)
-            paginasPorAvionB[claveSubVar][pagina] = subID
+        if not paginasPorAvion[claveSubVar][pagina] then
+            local subID = missionCommands.addSubMenuForCoalition(1, nombreSubmenu, menuAvion)
+            paginasPorAvion[claveSubVar][pagina] = subID
         end
 
-        local subID = paginasPorAvionB[claveSubVar][pagina]
-        local dummy = missionCommands.addCommandForCoalition(2, "_clear", subID, function() end)
+        local subID = paginasPorAvion[claveSubVar][pagina]
+        local dummy = missionCommands.addCommandForCoalition(1, "_clear", subID, function() end)
         missionCommands.removeItem(dummy)
 
         for i = 1, porPagina do
             local idx = (pagina - 1) * porPagina + i
             local aeropuerto = entradas[idx]
             if aeropuerto then
-                local data = plantillasLogisticaB[aeropuerto]
+                local data = plantillasLogisticaR[aeropuerto]
                 if data then
                     local tipo = claveSubVar
                     local costoBase = tipoAviones[tipo] and tipoAviones[tipo].costo or 0
-                    local recargo = recargoAeropuertoB[aeropuerto] or 1
+                    local recargo = recargoAeropuertoR[aeropuerto] or 1
                     local costoFinal = math.floor(costoBase * recargo)
 
-                    local function formatearDolaresLegibleB(valor)
+                    local function formatearDolaresLegibleR(valor)
                         if type(valor) ~= "number" then return "$0" end
                         local entero, decimal = math.modf(valor)
                         local partes = {}
@@ -77,13 +75,13 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
                         return "$" .. table.concat(partes, ".")
                     end
 
-                    local textoMenu = "Comprar y Enviar a: " .. aeropuerto .. " (" .. formatearDolaresLegibleB(costoFinal) .. ")"
+                    local textoMenu = "Comprar y Enviar a: " .. aeropuerto .. " (" .. formatearDolaresLegibleR(costoFinal) .. ")"
 
 
-                    local cmd = missionCommands.addCommandForCoalition(2, textoMenu, subID, function()
+                    local cmd = missionCommands.addCommandForCoalition(1, textoMenu, subID, function()
                         local bandera = trigger.misc.getUserFlag(data.bandera)
-                        if bandera == 1 then
-                            ejecutarEntregaB(aeropuerto, data, claveSubVar)
+                        if bandera == 3 then
+                            ejecutarEntregaR(aeropuerto, data, claveSubVar)
                         else
                             trigger.action.outText("Este aeródromo no está disponible mientras este NEUTRAL. para comprar y enviar, El Aeropuerto debe ser de su COALICIÓN", 5)
                         end
@@ -96,23 +94,23 @@ function actualizarOpcionesParaAvion(menuAvion, claveSubVar)
     end
 end
 
-crearMenuLogisticoAzul()
+crearMenuLogisticoRojo()
 
 ------------------------------------------------------------
 -- FUNCIONALIDAD NUEVA: CIERRE AUTOMÁTICO DEL MERCADO
 ------------------------------------------------------------
 
-duracionMercadoSegundosB = MercadoSetuptimerB.Total         -- Duración total del mercado (2h)
-intervaloAnuncioMercadoB = MercadoSetuptimerB.Intervalo         -- Intervalo de mensaje (15min)
-tiempoInicioMercadoB = timer.getTime()  -- Tiempo de inicio real
+duracionMercadoSegundosR = MercadoSetuptimerR.Total         -- Duración total del mercado (2h)
+intervaloAnuncioMercadoR = MercadoSetuptimerR.Intervalo           -- Intervalo de mensaje (15min)
+tiempoInicioMercadoR = timer.getTime()  -- Tiempo de inicio real
 
-function actualizarTemporizadorMercadoB()
+function actualizarTemporizadorMercadoR()
     local tiempoActual = timer.getTime()
-    local tiempoRestante = math.max(0, (tiempoInicioMercadoB + duracionMercadoSegundosB) - tiempoActual)
+    local tiempoRestante = math.max(0, (tiempoInicioMercadoR + duracionMercadoSegundosR) - tiempoActual)
 
     if tiempoRestante <= 0 then
         -- Cerrar todos los submenús
-        for _, paginas in pairs(paginasPorAvionB) do
+        for _, paginas in pairs(paginasPorAvion) do
             for _, subID in pairs(paginas) do
                 if subID then missionCommands.removeItem(subID) end
             end
@@ -124,10 +122,10 @@ function actualizarTemporizadorMercadoB()
     local minutos = math.floor(tiempoRestante / 60)
     local segundos = math.floor(tiempoRestante % 60)
 
-    trigger.action.outTextForCoalition(2, "El mercado se cerrará en: " .. minutos .. " min " .. segundos .. " seg", 10)
-    mist.scheduleFunction(actualizarTemporizadorMercadoB, {}, timer.getTime() + intervaloAnuncioMercadoB)
+    trigger.action.outTextForCoalition(1, "El mercado se cerrará en: " .. minutos .. " min " .. segundos .. " seg", 10)
+    mist.scheduleFunction(actualizarTemporizadorMercadoR, {}, timer.getTime() + intervaloAnuncioMercadoR)
 end
 
 -- Iniciar temporizador
-mist.scheduleFunction(actualizarTemporizadorMercadoB, {}, timer.getTime() + intervaloAnuncioMercadoB)
+mist.scheduleFunction(actualizarTemporizadorMercadoR, {}, timer.getTime() + intervaloAnuncioMercadoR)
 
