@@ -21,13 +21,6 @@ redIADS:getEarlyWarningRadarByUnitName('R-EWR-UNIT-1')
         :addPowerSource(powerEWR)
         :addConnectionNode(nodeEWR)
 end
-do     
-local powerEWR = StaticObject.getByName('RED-POWER-EWR-2')
-local nodeEWR = StaticObject.getByName('RED-NODE-EWR-2')
-redIADS:getEarlyWarningRadarByUnitName('R-EWR-UNIT-2')
-        :addPowerSource(powerEWR)
-        :addConnectionNode(nodeEWR)
-end      
 
 ----------------------------------------------------------- Conexiones del SAM S300
 do
