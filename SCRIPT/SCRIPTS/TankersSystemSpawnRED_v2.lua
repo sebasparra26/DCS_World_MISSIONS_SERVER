@@ -171,6 +171,7 @@ local function spawnTankerRojo(tp, p1, p2, hdg)
       callsign = info.tac, bearing = true, AA = true
     }
   })
+  ctl:setOption(8, true)  -- 8 = UNLIMITED_FUEL
 
   activeRed[gName] = {
     freq = freqHz, chan = chan, mode = "X", cs = info.tac,
@@ -199,7 +200,7 @@ function eventHandlerRojo:onEvent(e)
   if t == "tankerh" or t == "tankerv" then
     local hdg = (t == "tankerh") and math.rad(90) or 0
     local p1 = { x = e.pos.x, y = e.pos.z }
-    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 65, y = p1.y + math.sin(hdg) * 1852 * 65 }
+    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 80, y = p1.y + math.sin(hdg) * 1852 * 80 }
     spawnTankerRojo(_G.__SEL_ROJO, p1, p2, hdg)
     _G.__SEL_ROJO = nil
   end
