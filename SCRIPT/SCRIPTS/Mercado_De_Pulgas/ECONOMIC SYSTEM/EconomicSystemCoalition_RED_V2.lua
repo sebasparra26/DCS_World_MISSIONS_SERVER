@@ -35,7 +35,7 @@ function verificarPuntos()
             local distancia = ((pos.x - zona.point.x)^2 + (pos.z - zona.point.z)^2)^0.5
 
             if distancia <= zona.radius then
-                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 15000
+                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 46296
                 debugInfo = debugInfo .. "\n[DEBUG] Unidad " .. nombreUnidad .. " generó 15000 puntos. Total actual: " .. puntosCoalicion[nombrePuntos]
             else
                 debugInfo = debugInfo .. "\n[DEBUG] Unidad " .. nombreUnidad .. " está fuera de la zona"
