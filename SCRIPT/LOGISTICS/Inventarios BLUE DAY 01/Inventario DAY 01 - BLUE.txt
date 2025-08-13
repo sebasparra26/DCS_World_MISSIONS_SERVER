@@ -1,0 +1,144 @@
+AL KHAIMAH INTL
+
+4 x AH64D
+2 x CH47F
+
+40 x AGM-114L
+20 x AGM-114K
+------------------------------------------------
+FUJAIRAH INTL
+
+2 x CH47F
+1 x F15E
+1 x HERCULES
+
+28 x AIM 120C
+28 x AIM 120B
+20 x GBU-38(v)1/B
+20 x GBU-31(v)1/B
+
+Tanques de Combustible
+
+------------------------------------------------
+SHARJAH INTL
+
+1 x F16B50
+
+6 x AIM 120C
+
+2 x Fuel Tank 370 Gal
+1 x Fuel Tank 300 Gal
+------------------------------------------------
+DUBAI INT
+
+1 x A10CII
+1 x F14B
+5 x F16B50
+1 x F18
+1 x JF17
+
+FOX 2 y 3
+45 x AIM 120C
+15 x AIM 120B
+4 x AIM-9X
+4 x AIM-9
+4 x SD-10A AAM
+2 x PL-5EII
+
+AG MISSILES
+
+21 x HE APKWS
+21 x MPP APKWS
+10 x AGM-88C
+6 x AGM-65D
+4 x AGM-154A
+2 x AMG-154C
+
+AG BOMB GUIDED
+
+2 x GBU-38(V)1/B
+
+Tanques de Combustible
+------------------------------------------------
+AL MAKTOUM INTL
+
+20 x GBU-38(v)1/B
+4 x GBU-31(v)1/B
+2 x GBU-31(v)3/B
+
+------------------------------------------------
+AL AIN INTL
+
+20 x MK-82 (20 USA/20 FRANCE)
+
+------------------------------------------------
+KISH INT
+
+1 x CH47F
+1 x HERCULES
+------------------------------------------------
+TUNB ISLAND AFB
+
+2 x CH47F
+1 x HERCULES
+------------------------------------------------
+TUNB ISLAND AFB
+
+3 x CH47F
+------------------------------------------------
+SIRRI ISLAND
+
+4 x CH47F
+1 x F16B50
+
+26 x AIM 120C
+10 x AIM 120B
+
+2 x Fuel Tank 370 Gal
+1 x Fuel Tank 300 Gal
+
+------------------------------------------------
+LIWA AFB (BASE PRINCIPAL)
+
+1 x A10CII
+4 x CH47F
+1 x F14B
+1 x F15E
+1 x F16B50
+1 x F18
+4 x HERCULES
+1 x JF17
+2 x MI8
+
+21 x HE APKWS
+21 x MPP APKWS
+8 x AMG-154C
+6 x AGM-65D
+2 x AGM-84H
+
+FOX 2 y 3
+6 x AIM 120C
+6 x AIM 120B
+4 x AIM-9X
+4 x AIM-9
+4 x SD-10A AAM
+2 x PL-5EII0
+6 x AIM-54C-MK60
+
+22 x GBU-38(v)1/B
+4 x GBU-31(v)1/B
+2 x GBU-31(v)3/B
+
+
+5 x ALQ-184 Long - ECM Pod
+5 x AN/AAQ-33 - Advance Targeting Pod
+1 x AN/AAQ-28 - LITENING - Targeting Pod
+1 x AA/AAQ-14 - LANTIRN TGT Pod
+1 x AA/AAQ-13 - LANTIRN NAV Pod
+1 x AWW-13 DATALINK POD
+1 x AN/ASQ-213 HTS - HARM Targeting Pod
+
+Tanques de Combustible
+
+
+

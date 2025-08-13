@@ -1,7 +1,7 @@
 ---------------------------BAZTIAN---------------------------------------------------------------------------
 
 
-puntosCoalicion = { PuntosAZUL = 1000000000, PuntosROJO = 1000000000 }
+puntosCoalicion = { PuntosAZUL = 42419830, PuntosROJO = 57638923 }
 configuracionEntregaB = configuracionEntregaB or {
     origen = { x = -189594, y = 0, z = -176119 },
     velocidad = 138.88

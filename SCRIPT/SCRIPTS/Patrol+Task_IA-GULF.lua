@@ -733,7 +733,7 @@ do
     local templates = { "Patrol_IA_USA_1", "Patrol_IA_USA_2", "Patrol_IA_USA_3", "Patrol_IA_USA_4" }
     local prefijo = "USA air "
     local rangoDeteccion = 70 * 1852
-    local rangoEnganche = 60 * 1852
+    local rangoEnganche = 40 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {
@@ -914,7 +914,7 @@ do
     local templates = { "Patrol_IA_CANADA_1", "Patrol_IA_CANADA_2", "Patrol_IA_CANADA_3", "Patrol_IA_CANADA_4" }
     local prefijo = "CANADA air "
     local rangoDeteccion = 70 * 1852
-    local rangoEnganche = 60 * 1852
+    local rangoEnganche = 45 * 1852
     local debugMensajes = false
 
     local categoriasPermitidas = {

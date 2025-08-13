@@ -369,7 +369,8 @@ subvariantesAvion = {
         ["FUEL-TANKS"] = "FUEL-TANK-PACK",
         ["ECM-&-DATA"] = "ECM-DATALINK-PACK",
         ["COUNTER-MEASURES"] = "COUNTERMEASURES",
-        ["TARGET PODS"] = "TARGETING"
+        ["TARGET PODS"] = "TARGETING",
+        ["AN/AAQ-33-ADVANCE-TARGETING-POD"] = "SNIPER_POD"
     },
     ["BOMBASGP/GUIADAS"] = {
         ["MK-82/MK-82-SNAKEYE"] = "MK82",
@@ -577,6 +578,7 @@ destinosPorSubvariante = {
     ["ECM-DATALINK-PACK"] = destinosBase,
     ["COUNTERMEASURES"] = destinosBase,
     ["TARGETING"] = destinosBase,
+    ["SNIPER_POD"] = destinosBase,
 --Bombas GP y GUIADAS
      ["MK82"] = destinosBase,
     ["GBUL"] = destinosBase,
@@ -743,6 +745,8 @@ nombresSubvariantes = {
     ["ECM-DATALINK-PACK"] = "FUEL-TANKS",
     ["COUNTERMEASURES"] = "COUNTER-MEASURES",
     ["TARGETING"] = "TARGET PODS",
+    ["SNIPER_POD"] = "AN/AAQ-33-ADVANCE-TARGETING-POD",
+
 
 --BOMBAS GP Y bombas_guiadas
     ["MK82"] = "MK-82/MK-82-SNAKEYE",
@@ -1034,7 +1038,7 @@ multiplicadorTiempoR = {
     ["Lar"] = 1.0,
     ["Jiroft"] = 1.0,
     --["Shiraz Intl"] = 1.0,
-    ["Kerman"] = 150
+    ["Kerman"] = 1.0
 }
 
 coordenadasAerodromosR = {

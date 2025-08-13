@@ -1,7 +1,7 @@
 -- Variables principales
 local coalicion = 2  -- 1 = Rojo, 2 = Azul (ajustar según necesidad)
 local nombrePuntos = (coalicion == 1) and "PuntosROJO" or "PuntosAZUL"
-puntosCoalicion = puntosCoalicion or { PuntosROJO = 0, PuntosAZUL = 0 }
+puntosCoalicion = { PuntosROJO = 0, PuntosAZUL = 0 }
 
 local zonaDeteccion = 'EconomicZoneBLUE'
 
@@ -35,7 +35,7 @@ function verificarPuntos()
             local distancia = ((pos.x - zona.point.x)^2 + (pos.z - zona.point.z)^2)^0.5
 
             if distancia <= zona.radius then
-                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 46296
+                puntosCoalicion[nombrePuntos] = puntosCoalicion[nombrePuntos] + 18518
                 debugInfo = debugInfo .. "\n[DEBUG] Unidad " .. nombreUnidad .. " generó 15000 puntos. Total actual: " .. puntosCoalicion[nombrePuntos]
             else
                 debugInfo = debugInfo .. "\n[DEBUG] Unidad " .. nombreUnidad .. " está fuera de la zona"

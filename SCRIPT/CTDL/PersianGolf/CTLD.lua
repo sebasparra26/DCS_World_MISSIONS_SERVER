@@ -1184,7 +1184,7 @@ ctld.spawnableCrates = {
         { multiple = {1000.05, 1000.05, 1000.05, 1000.05}, desc = ctld.i18n_translate("Abrams M1A2C - $ 6,500,000"), side = 2 }, -- Abrams
         { weight = 1007.01, desc = ctld.i18n_translate("Leopard 2A6M"), unit="Leopard-2", side = 0, cratesRequired = 4 },
         { multiple = {1007.01, 1007.01, 1007.01, 1007.01}, desc = ctld.i18n_translate("Leopard 2A6M - $ 5,000,000"), side = 2 }, -- Leopard
-        { weight = 1007.02, desc = ctld.i18n_translate("Chieftain MK3"), unit="Chieftain_mk3", side = 0, cratesRequired = 4 },
+        { weight = 1007.02, desc = ctld.i18n_translate("Chieftain MK3"), unit="Challenger2", side = 0, cratesRequired = 4 },
         { multiple = {1007.02, 1007.02, 1007.02, 1007.02}, desc = ctld.i18n_translate("Chieftain MK3 - $ 2,500,000"), side = 2 }, -- Chieftain
         { weight = 1007.03, desc = ctld.i18n_translate("Leclerc"), unit="Leclerc", side = 0, cratesRequired = 4 },
         { multiple = {1007.03, 1007.03, 1007.03, 1007.03}, desc = ctld.i18n_translate("Leclerc - $ 9,000,000"), side = 2 }, -- Leclerc

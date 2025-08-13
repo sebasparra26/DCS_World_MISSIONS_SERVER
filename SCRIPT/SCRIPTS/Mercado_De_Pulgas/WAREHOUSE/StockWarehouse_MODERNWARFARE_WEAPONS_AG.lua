@@ -62,7 +62,7 @@ tipoAviones["TARGETING"] = {
     costo = 31130000,
 
     misc = {
-        ["AN/AAQ-28 LITENING - Targeting Pod"]  = {ws = {4, 15, 44, 425}, cantidad = 4},
+        ["AN/AAQ-28 LITENING - Targeting Pod"]  = {ws = {4, 15, 44, 101}, cantidad = 4},
         ["AN/AAQ-14 LANTIRN TGT Pod"]  = {ws = {4, 15, 44, 1718}, cantidad = 2},
         ["AN/AVQ-23 Pave Spike - Targeting Pod Rack"]  = {ws = {4, 15, 44, 2148}, cantidad = 1},
         ["AVIC WMD7 FLIR/LDT POD"]  = {ws = {4, 15, 44, 463}, cantidad = 1},
@@ -317,6 +317,15 @@ tipoAviones["RB15"] = {
         ["RB-15F"]  = {ws = {4, 4, 8, 11093}, cantidad = 2}
        }
 }
+tipoAviones["SNIPER_POD"] = {
+    costo = 7000000,
+
+    misc = {
+        ["AN/AAQ-33-ADVANCE-TARGETING-POD"]  = {ws = {4, 15, 44, 2723}, cantidad = 1}
+       }
+}
+
+
 
 
 
