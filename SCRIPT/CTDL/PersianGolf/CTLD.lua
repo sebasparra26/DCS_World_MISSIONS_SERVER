@@ -1032,6 +1032,7 @@ ctld.internalCargoLimits = {
     ["SA342L"]= 1,
     ["SA342M"]= 1,
     ["OH58D"] = 1,
+    ["UH-60L"] = 4,
     ["AH-64D_BLK_II"] = 1,
 }
 
