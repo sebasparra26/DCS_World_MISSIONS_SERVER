@@ -42,22 +42,22 @@ end
 --blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-1'):addPointDefence(defencePAT01):setHARMDetectionChance(100)
 --end
 --Patriot 02 ---------------------------------------------------------------------------------------------
-do
-local nodePatriot02 = Unit.getByName('BLUE-NODE-SAM-PATRIOT-2')
-blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-2')
-        :addConnectionNode(nodePatriot02)
-        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
-         :setCanEngageAirWeapons(false)
-        :setCanEngageHARM(false)
-        :setHARMDetectionChance(100)
-        :setActAsEW(true)
-end
+--do
+--local nodePatriot02 = Unit.getByName('BLUE-NODE-SAM-PATRIOT-2')
+--blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-2')
+        --:addConnectionNode(nodePatriot02)
+        --:setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        --:setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+        -- :setCanEngageAirWeapons(false)
+        --:setCanEngageHARM(false)
+        --:setHARMDetectionChance(100)
+        --:setActAsEW(true)
+--end
 -- PATRIOT DEFENCE 02
-do
-local defencePAT02 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-2')
-blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-2'):addPointDefence(defencePAT02):setHARMDetectionChance(100)
-end
+--do
+--local defencePAT02 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-2')
+--blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-2'):addPointDefence(defencePAT02):setHARMDetectionChance(100)
+--end
 --Patriot 03 ---------------------------------------------------------------------------------------------
 do
 local nodePatriot03 = Unit.getByName('BLUE-NODE-SAM-PATRIOT-3')
@@ -178,22 +178,22 @@ local defencePAT09 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-9')
 blueIADS:getSAMSiteByGroupName('B-SAM-PATRIOT-9'):addPointDefence(defencePAT09):setHARMDetectionChance(100)
 end
 --NASSAM 01 ---------------------------------------------------------------------------------------------
-do
-local nodeNAS01 = Unit.getByName('BLUE-NODE-SAM-NAS-1')
-blueIADS:getSAMSiteByGroupName('B-SAM-NAS-1')
-        :addConnectionNode(nodeNAS01)
-        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
-        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
-         :setCanEngageAirWeapons(false)
-        :setCanEngageHARM(false)
-        :setHARMDetectionChance(100)
-        :setActAsEW(true)
-end
+--do
+--local nodeNAS01 = Unit.getByName('BLUE-NODE-SAM-NAS-1')
+--blueIADS:getSAMSiteByGroupName('B-SAM-NAS-1')
+        --:addConnectionNode(nodeNAS01)
+        --:setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        --:setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+         --:setCanEngageAirWeapons(false)
+        --:setCanEngageHARM(false)
+        --:setHARMDetectionChance(100)
+        --:setActAsEW(true)
+--end
 -- NASSAM DEFENCE 01
-do
-local defenceNAS01 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-NAS-1')
-blueIADS:getSAMSiteByGroupName('B-SAM-NAS-1'):addPointDefence(defenceNAS01):setHARMDetectionChance(100)
-end
+--do
+--local defenceNAS01 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-NAS-1')
+--blueIADS:getSAMSiteByGroupName('B-SAM-NAS-1'):addPointDefence(defenceNAS01):setHARMDetectionChance(100)
+--end
 --NASSAM 02 ---------------------------------------------------------------------------------------------
 do
 local nodeNAS02 = Unit.getByName('BLUE-NODE-SAM-NAS-2')
