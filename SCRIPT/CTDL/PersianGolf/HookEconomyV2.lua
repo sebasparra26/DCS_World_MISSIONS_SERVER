@@ -18,6 +18,8 @@ COSTOS_CRATE = { ---------------------------Costes x Caja
     ["T 72B"] = 225000,--0.9 Millones / 4
     --------------------------------------
     ["MLRS Himars"] = 1250000,--5 Millones / 4
+    ["Himars GMLRS CM"] = 437500,--3.5 Millones / 8
+    ["Himars GMLRS HE"] = 437500,--3.5 Millones / 8
     ["SpGH DANA"] = 375000,--1.5 Millones / 4
     ["T155 Firtina"] = 550000,--2.2 Millones / 4
     ["Paladin"] = 425000,--1.7 Millones / 4

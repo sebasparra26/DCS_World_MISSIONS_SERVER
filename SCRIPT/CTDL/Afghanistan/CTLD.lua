@@ -134,6 +134,8 @@ ctld.i18n["en"]["RQ-1A Predator - $ 10,000,000"] = ""
 
 ---------------------Artillery
 ctld.i18n["en"]["MLRS Himars"] = ""
+ctld.i18n["en"]["Himars GMLRS CM"] = ""
+ctld.i18n["en"]["Himars GMLRS HE"] = ""
 ctld.i18n["en"]["SpGH DANA"] = ""
 ctld.i18n["en"]["T155 Firtina"] = ""
 ctld.i18n["en"]["Paladin"] = ""
@@ -216,6 +218,8 @@ ctld.i18n["en"]["FOB - $ 2,000,000"] = ""
 ---------------------Artillery
 
 ctld.i18n["en"]["MLRS Himars - $ 5,000,000"] = ""
+ctld.i18n["en"]["Himars GMLRS CM - $ 3,500,000"] = ""
+ctld.i18n["en"]["Himars GMLRS HE - $ 3,500,000"] = ""
 ctld.i18n["en"]["SpGH DANA - $ 1,500,000"] = ""
 ctld.i18n["en"]["T155 Firtina - $ 2,200,000"] = ""
 ctld.i18n["en"]["Paladin - $ 1,700,000"] = ""
@@ -1228,8 +1232,12 @@ ctld.spawnableCrates = {
     },
     ["Artilleria"] = {
         --- BLUE
-        { weight = 1002.01, desc = ctld.i18n_translate("MLRS Himars"), unit = "MLRS", side=0, cratesRequired = 4 },
-        { multiple = {1002.01, 1002.01, 1002.01}, desc = ctld.i18n_translate("MLRS Himars - $ 5,000,000"), side=2 },
+        --{ weight = 1002.01, desc = ctld.i18n_translate("MLRS Himars"), unit = "MLRS", side=0, cratesRequired = 4 },
+        --{ multiple = {1002.01, 1002.01, 1002.01}, desc = ctld.i18n_translate("MLRS Himars - $ 5,000,000"), side=2 },
+        { weight = 1002.01, desc = ctld.i18n_translate("Himars GMLRS CM"), unit = "CHAP-M142_GMLRS_M30", side=0, cratesRequired = 8 },
+        { multiple = {1002.01, 1002.01, 1002.01, 1002.01, 1002.01, 1002.01, 1002.01, 1002.01}, desc = ctld.i18n_translate("Himars GMLRS CM - $ 3,500,000"), side=2 },
+        { weight = 1002.56, desc = ctld.i18n_translate("Himars GMLRS HE"), unit = "CHAP-M142_GMLRS_M31", side=0, cratesRequired = 8 },
+        { multiple = {1002.56, 1002.56, 1002.56, 1002.56, 1002.56, 1002.56, 1002.56, 1002.56}, desc = ctld.i18n_translate("Himars GMLRS HE - $ 3,500,000"), side=2 },
         { weight = 1002.02, desc = ctld.i18n_translate("SpGH DANA"), unit = "SpGH_Dana", side=0, cratesRequired = 4 },
         { multiple = {1002.02, 1002.02, 1002.02, 1002.02}, desc = ctld.i18n_translate("SpGH DANA - $ 1,500,000"), side=2 },
         { weight = 1002.03, desc = ctld.i18n_translate("T155 Firtina"), unit = "T155_Firtina", side=0, cratesRequired = 4 },
