@@ -30,7 +30,7 @@ local MAX_TANKERS_POR_TIPO = {
 
 local PARAMETROS_TANKER = {
   ["KC-135"] = { alt = 7620, spd = 222 },
-  ["KC-135 low"] = { alt = 4500, spd = 140 },
+  ["KC-135 low"] = { alt = 4500, spd = 137 },
   ["KC-135 MPRS"] = { alt = 8230, spd = 220 },
   ["KC130J"] = { alt = 5800, spd = 380 },
   ["S-3B Tanker"] = { alt = 5200, spd = 190 }
@@ -200,7 +200,7 @@ function eventHandlerRojo:onEvent(e)
   if t == "tankerh" or t == "tankerv" then
     local hdg = (t == "tankerh") and math.rad(90) or 0
     local p1 = { x = e.pos.x, y = e.pos.z }
-    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 80, y = p1.y + math.sin(hdg) * 1852 * 80 }
+    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 60, y = p1.y + math.sin(hdg) * 1852 * 60 }
     spawnTankerRojo(_G.__SEL_ROJO, p1, p2, hdg)
     _G.__SEL_ROJO = nil
   end
