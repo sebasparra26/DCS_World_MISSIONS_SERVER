@@ -190,86 +190,105 @@ tiposAvion = {
 subvariantesAvion = {
     --USA PLANES
     ["FA-18C_PAYLOAD"] = {
-        ["FA-18C_hornet - Pack x 2"] = "FA-18C-1",
-        ["FA-18C_hornet - Pack x 4"] = "FA-18C-2"
+        ["FA-18C_hornet - Pack x 1"] = "FA-18C-1",
+        ["FA-18C_hornet - Pack x 2"] = "FA-18C-2",
+        ["FA-18C_hornet - Pack x 4"] = "FA-18C-3"
     },
     ["F-16CM_PAYLOAD"] = {
-        ["F-16CM bl.50 - Viper - Pack x 2"] = "F-16CM-1",
-        ["F-16CM bl.50 - Viper - Pack x 4"] = "F-16CM-2"
+        ["F-16CM bl.50 - Viper - Pack x 1"] = "F-16CM-1",
+        ["F-16CM bl.50 - Viper - Pack x 2"] = "F-16CM-2",
+        ["F-16CM bl.50 - Viper - Pack x 4"] = "F-16CM-3"
     },
     ["A-10C_PAYLOAD"] = {
-        ["A-10C II - Tank Killer - Pack x 2"] = "A-10C-2-1",
-        ["A-10C II - Tank Killer - Pack x 4"] = "A-10C-2-2"
+        ["A-10C II - Tank Killer - Pack x 1"] = "A-10C-2-1",
+        ["A-10C II - Tank Killer - Pack x 2"] = "A-10C-2-2",
+        ["A-10C II - Tank Killer - Pack x 4"] = "A-10C-2-3"
     },
     ["F-15_PAYLOAD"] = {
-        ["F-15E S4 - Eagle Strike -  Pack x 2"] = "F-15E-S4-1",
-        ["F-15E S4 - Eagle Strike -  Pack x 4"] = "F-15E-S4-2",
-        ["F-15C  Pack x 2"] = "F-15C-1",
-        ["F-15C Pack x 4"] = "F-15C-2"
+        ["F-15E S4 - Eagle Strike -  Pack x 1"] = "F-15E-S4-1",
+        ["F-15E S4 - Eagle Strike -  Pack x 2"] = "F-15E-S4-2",
+        ["F-15E S4 - Eagle Strike -  Pack x 4"] = "F-15E-S4-3",
+        ["F-15C  Pack x 1"] = "F-15C-1",
+        ["F-15C  Pack x 2"] = "F-15C-2",
+        ["F-15C Pack x 4"] = "F-15C-3"
     },
     ["F-14_PAYLOAD"] = {
-        ["F-14A-135-GR - Tomcat -  Pack x 2"] = "F-14A-1",
-        ["F-14A-135-GR - Tomcat -  Pack x 4"] = "F-14A-2",
-        ["F-14B - Tomcat -  Pack x 2"] = "F-14B-1",
-        ["F-14B - Tomcat -  Pack x 4"] = "F-14B-2"
+        ["F-14A-135-GR - Tomcat -  Pack x 1"] = "F-14A-1",
+        ["F-14A-135-GR - Tomcat -  Pack x 2"] = "F-14A-2",
+        ["F-14A-135-GR - Tomcat -  Pack x 4"] = "F-14A-3",
+        ["F-14B - Tomcat -  Pack x 1"] = "F-14B-1",
+        ["F-14B - Tomcat -  Pack x 2"] = "F-14B-2",
+        ["F-14B - Tomcat -  Pack x 4"] = "F-14B-3"
     },
     ["F-4_PAYLOAD"] = {
-        ["F-4E-45MC - Phantom -  Pack x 2"] = "F-4-1",
-        ["F-4E-45MC - Phantom -  Pack x 4"] = "F-4-2"
+        ["F-4E-45MC - Phantom -  Pack x 1"] = "F-4-1",
+        ["F-4E-45MC - Phantom -  Pack x 2"] = "F-4-2",
+        ["F-4E-45MC - Phantom -  Pack x 4"] = "F-4-3"
     },
     ["F-5_PAYLOAD"] = {
-        ["F-5E-3 - Tiger  -  Pack x 2"] = "F-5-1",
-        ["F-5E-3 - Tiger  -  Pack x 4"] = "F-5-2"
+        ["F-5E-3 - Tiger  -  Pack x 1"] = "F-5-1",
+        ["F-5E-3 - Tiger  -  Pack x 2"] = "F-5-2",
+        ["F-5E-3 - Tiger  -  Pack x 4"] = "F-5-3"
     },
     ["A-4E_PAYLOAD"] = {
-        ["A-4E-C - Skyhawk - Pack x 2"] = "A-4E-C-1",
-        ["A-4E-C - Skyhawk - Pack x 4"] = "A-4E-C-2"
+        ["A-4E-C - Skyhawk - Pack x 1"] = "A-4E-C-1",
+        ["A-4E-C - Skyhawk - Pack x 2"] = "A-4E-C-2",
+        ["A-4E-C - Skyhawk - Pack x 4"] = "A-4E-C-3"
     },
     ["C130_PAYLOAD"] = {
         ["C130 - Hercules - Pack x 1"] = "C130-1",
         ["C130 - Hercules - Pack x 2"] = "C130-2"
     },
     ["AV-8B_PAYLOAD"] = {
-        ["AV-8B - Night Attack - Pack x 2"] = "AV-8B-1",
-        ["AV-8B - Night Attack - Pack x 4"] = "AV-8B-2"
+        ["AV-8B - Night Attack - Pack x 1"] = "AV-8B-1",
+        ["AV-8B - Night Attack - Pack x 2"] = "AV-8B-2",
+        ["AV-8B - Night Attack - Pack x 4"] = "AV-8B-3"
     },
 
     --RUSIA PLANES
 
     ["MIG-29A_PAYLOAD"] = {
-        ["MIG-29A - FC - Pack x 2"] = "MIG-29A-1",
-        ["MIG-29A - FC - Pack x 4"] = "MIG-29A-2"
+        ["MIG-29A - FC - Pack x 1"] = "MIG-29A-1",
+        ["MIG-29A - FC - Pack x 2"] = "MIG-29A-2",
+        ["MIG-29A - FC - Pack x 4"] = "MIG-29A-3"
     },
     ["MIG-29S_PAYLOAD"] = {
-        ["MIG-29S - FC - Pack x 2"] = "MIG-29S-1",
-        ["MIG-29S - FC - Pack x 4"] = "MIG-29S-2"
+        ["MIG-29S - FC - Pack x 1"] = "MIG-29S-1",
+        ["MIG-29S - FC - Pack x 2"] = "MIG-29S-2",
+        ["MIG-29S - FC - Pack x 4"] = "MIG-29S-3"
     },
     ["MIG-21_PAYLOAD"] = {
-        ["MIG-21Bis - Pack x 2"] = "MIG-21-1",
-        ["MIG-21Bis - Pack x 4"] = "MIG-21-2"
+        ["MIG-21Bis - Pack x 1"] = "MIG-21-1",
+        ["MIG-21Bis - Pack x 2"] = "MIG-21-2",
+        ["MIG-21Bis - Pack x 4"] = "MIG-21-3"
     },
     ["SU-25T_PAYLOAD"] = {
-        ["SU-25T - Frogfoot - Pack x 2"] = "SU-25T-1",
-        ["SU-25T - Frogfoot - Pack x 4"] = "SU-25T-2"
+        ["SU-25T - Frogfoot - Pack x 1"] = "SU-25T-1",
+        ["SU-25T - Frogfoot - Pack x 2"] = "SU-25T-2",
+        ["SU-25T - Frogfoot - Pack x 4"] = "SU-25T-3"
     },
     ["SU-27_PAYLOAD"] = {
-        ["SU-27 - Flanker - Pack x 2"] = "SU-27-1",
-        ["SU-27 - Flanker - Pack x 4"] = "SU-27-2"
+        ["SU-27 - Flanker - Pack x 1"] = "SU-27-1",
+        ["SU-27 - Flanker - Pack x 2"] = "SU-27-2",
+        ["SU-27 - Flanker - Pack x 4"] = "SU-27-3"
     },
     ["SU-33_PAYLOAD"] = {
-        ["SU-33 - Flanker D - Pack x 2"] = "SU-33-1",
-        ["SU-33 - Flanker D - Pack x 4"] = "SU-33-2"
+        ["SU-33 - Flanker D - Pack x 1"] = "SU-33-1",
+        ["SU-33 - Flanker D - Pack x 2"] = "SU-33-2",
+        ["SU-33 - Flanker D - Pack x 4"] = "SU-33-3"
     },
 
     --FRANCE PLANES
 
     ["M-2000_PAYLOAD"] = {
-        ["Mirage M-2000 C  - Pack x 2"] = "M-2000-1",
-        ["Mirage M-2000 C  - Pack x 4"] = "M-2000-2"
+        ["Mirage M-2000 C  - Pack x 1"] = "M-2000-1",
+        ["Mirage M-2000 C  - Pack x 2"] = "M-2000-2",
+        ["Mirage M-2000 C  - Pack x 4"] = "M-2000-3"
     },
     ["F1-EE-PAYLOAD"] = {
-        ["Mirage F1 EE  - Pack x 2"] = "F1-EE-1",
-        ["Mirage F1 EE  - Pack x 4"] = "F1-EE-2"
+        ["Mirage F1 EE  - Pack x 1"] = "F1-EE-1",
+        ["Mirage F1 EE  - Pack x 2"] = "F1-EE-2",
+        ["Mirage F1 EE  - Pack x 4"] = "F1-EE-3"
     },
     ["SA342_PAYLOAD"] = {
         ["SA342 - L - Gazelle - Pack x 2"] = "SA342-L-1",
@@ -280,37 +299,45 @@ subvariantesAvion = {
     --TEMU PLANES
 
     ["JF-17_PAYLOAD"] = {
-        ["JF-17 - Thunder - Pack x 2"] = "JF-17-1",
-        ["JF-17 - Thunder - Pack x 4"] = "JF-17-2"
+        ["JF-17 - Thunder - Pack x 1"] = "JF-17-1",
+        ["JF-17 - Thunder - Pack x 2"] = "JF-17-2",
+        ["JF-17 - Thunder - Pack x 4"] = "JF-17-3"
     },
     ["J11A_PAYLOAD"] = {
-        ["J-11A - Thunder - Pack x 2"] = "J-11A-1",
-        ["J-11A - Thunder - Pack x 4"] = "J-11A-2"
+        ["J-11A - Thunder - Pack x 1"] = "J-11A-1",
+        ["J-11A - Thunder - Pack x 2"] = "J-11A-2",
+        ["J-11A - Thunder - Pack x 4"] = "J-11A-3"
     },
     ["AJS-37_PAYLOAD"] = {
-        ["AJS-37 - Viggen - Pack x 2"] = "AJS-37-1",
-        ["AJS-37 - Viggen - Pack x 4"] = "AJS-37-2"
+        ["AJS-37 - Viggen - Pack x 1"] = "AJS-37-1",
+        ["AJS-37 - Viggen - Pack x 2"] = "AJS-37-2",
+        ["AJS-37 - Viggen - Pack x 4"] = "AJS-37-3"
     },
 
     --USA HELIS
 
     ["AH-64D_PAYLOAD"] = {
-        ["AH-64D BLK. II - Apache - Pack x 2"] = "AH-64D-1",
-        ["AH-64D BLK. II - Apache - Pack x 4"] = "AH-64D-2"
+        ["AH-64D BLK. II - Apache - Pack x 1"] = "AH-64D-1",
+        ["AH-64D BLK. II - Apache - Pack x 2"] = "AH-64D-2",
+        ["AH-64D BLK. II - Apache - Pack x 4"] = "AH-64D-3"
     },
     ["OH-58D_PAYLOAD"] = {
+        ["OH-58D (R) - Kiowa Warrior - Pack x 1"] = "OH-58D-3",
         ["OH-58D (R) - Kiowa Warrior - Pack x 2"] = "OH-58D-1",
         ["OH-58D (R) - Kiowa Warrior - Pack x 4"] = "OH-58D-2"
     },
     ["CH-47F_PAYLOAD"] = {
+        ["CH-47F- Chinook - Pack x 1"] = "CH-47F-3",
         ["CH-47F- Chinook - Pack x 2"] = "CH-47F-1",
         ["CH-47F- Chinook - Pack x 4"] = "CH-47F-2"
     },
     ["UH-1H_PAYLOAD"] = {
+        ["UH-1H - Huey - Pack x 1"] = "UH-1H-3",
         ["UH-1H - Huey - Pack x 2"] = "UH-1H-1",
         ["UH-1H - Huey - Pack x 4"] = "UH-1H-2"
     },
     ["UH-60L_PAYLOAD"] = {
+        ["UH-60L - Blackhawk - Pack x 1"] = "UH-60L-3",
         ["UH-60L - Blackhawk - Pack x 2"] = "UH-60L-1",
         ["UH-60L - Blackhawk - Pack x 4"] = "UH-60L-2"
     },
@@ -318,16 +345,19 @@ subvariantesAvion = {
     --RUSIA HELIS
 
     ["KA-50_PAYLOAD"] = {
-        ["KA-50 III -  Black Shark 3 - Pack x 2"] = "KA-50-1",
+        ["KA-50 III -  Black Shark 3 - Pack x 1"] = "KA-50-1",
+        ["KA-50 III -  Black Shark 3 - Pack x 2"] = "KA-50-2",
         ["KA-50 III -  Black Shark 3 - Pack x 4"] = "KA-50-2"
     },
     ["MI-24P_PAYLOAD"] = {
-        ["MI-24P - Hind - Pack x 2"] = "MI-24P-1",
-        ["MI-24P - Hind - Pack x 4"] = "MI-24P-2"
+        ["MI-24P - Hind - Pack x 1"] = "MI-24P-1",
+        ["MI-24P - Hind - Pack x 2"] = "MI-24P-2",
+        ["MI-24P - Hind - Pack x 4"] = "MI-24P-3"
     },
     ["MI-8MTV2_PAYLOAD"] = {
-        ["MI-8MTV2 - Pack x 2"] = "MI-8MTV2-1",
-        ["MI-8MTV2 - Pack x 4"] = "MI-8MTV2-2"
+        ["MI-8MTV2 - Pack x 1"] = "MI-8MTV2-1",
+        ["MI-8MTV2 - Pack x 2"] = "MI-8MTV2-2",
+        ["MI-8MTV2 - Pack x 4"] = "MI-8MTV2-4"
     },
 
     --AWACS
@@ -457,50 +487,69 @@ destinosPorSubvariante = {
     --USA PLANES
     ["FA-18C-1"] = destinosBase,
     ["FA-18C-2"] = destinosBase,
+    ["FA-18C-3"] = destinosBase,
     ["F-16CM-1"] = destinosBase,
     ["F-16CM-2"] = destinosBase,
+    ["F-16CM-3"] = destinosBase,
     ["A-10C-2-1"] = destinosBase,
     ["A-10C-2-2"] = destinosBase,
+    ["A-10C-2-3"] = destinosBase,
     ["F-15E-S4-1"] = destinosBase,
     ["F-15E-S4-2"] = destinosBase,
+    ["F-15E-S4-3"] = destinosBase,
     ["F-15C-1"] = destinosBase,
     ["F-15C-2"] = destinosBase,
+    ["F-15C-3"] = destinosBase,
     ["F-14A-1"] = destinosBase,
     ["F-14A-2"] = destinosBase,
+    ["F-14A-3"] = destinosBase,
     ["F-14B-1"] = destinosBase,
     ["F-14B-2"] = destinosBase,
+    ["F-14B-3"] = destinosBase,
     ["F-4-1"] = destinosBase,
     ["F-4-2"] = destinosBase,
+    ["F-4-3"] = destinosBase,
     ["F-5-1"] = destinosBase,
     ["F-5-2"] = destinosBase,
+    ["F-5-3"] = destinosBase,
     ["A-4E-C-1"] = destinosBase,
     ["A-4E-C-2"] = destinosBase,
+    ["A-4E-C-3"] = destinosBase,
     ["C130-1"] = destinosBase,
     ["C130-2"] = destinosBase,
     ["AV-8B-1"] = destinosBase,
     ["AV-8B-2"] = destinosBase,
+    ["AV-8B-3"] = destinosBase,
 
     --RUSIA PLANES
 
     ["MIG-29A-1"] = destinosBase,
     ["MIG-29A-2"] = destinosBase,
+    ["MIG-29A-3"] = destinosBase,
     ["MIG-29S-1"] = destinosBase,
     ["MIG-29S-2"] = destinosBase,
+    ["MIG-29S-3"] = destinosBase,
     ["MIG-21-1"] = destinosBase,
     ["MIG-21-2"] = destinosBase,
+    ["MIG-21-3"] = destinosBase,
     ["SU-25T-1"] = destinosBase,
     ["SU-25T-2"] = destinosBase,
+    ["SU-25T-3"] = destinosBase,
     ["SU-27-1"] = destinosBase,
     ["SU-27-2"] = destinosBase,
+    ["SU-27-3"] = destinosBase,
     ["SU-33-1"] = destinosBase,
     ["SU-33-2"] = destinosBase,
+    ["SU-33-3"] = destinosBase,
 
     --FRANCIA PLANES
 
     ["M-2000-1"] = destinosBase,
     ["M-2000-2"] = destinosBase,
+    ["M-2000-3"] = destinosBase,
     ["F1-EE-1"] = destinosBase,
     ["F1-EE-2"] = destinosBase,
+    ["F1-EE-3"] = destinosBase,
     ["SA342-L-1"] = destinosBase,
     ["SA342-M-1"] = destinosBase,
     ["SA342-Minigun-1"] = destinosBase,
@@ -509,10 +558,13 @@ destinosPorSubvariante = {
 
     ["JF-17-1"] = destinosBase,
     ["JF-17-2"] = destinosBase,
+    ["JF-17-3"] = destinosBase,
     ["J-11A-1"] = destinosBase,
     ["J-11A-2"] = destinosBase,
+    ["J-11A-3"] = destinosBase,
     ["AJS-37-1"] = destinosBase,
     ["AJS-37-2"] = destinosBase,
+    ["AJS-37-3"] = destinosBase,
     
   
 
@@ -520,14 +572,19 @@ destinosPorSubvariante = {
 
     ["AH-64D-1"] = destinosBase,
     ["AH-64D-2"] = destinosBase,
+    ["AH-64D-3"] = destinosBase,
     ["OH-58D-1"] = destinosBase,
     ["OH-58D-2"] = destinosBase,
+    ["OH-58D-3"] = destinosBase,
     ["CH-47F-1"] = destinosBase,
     ["CH-47F-2"] = destinosBase,
+    ["CH-47F-3"] = destinosBase,
     ["UH-1H-1"] = destinosBase,
     ["UH-1H-2"] = destinosBase,
+    ["UH-1H-3"] = destinosBase,
     ["UH-60L-1"] = destinosBase,
     ["UH-60L-2"] = destinosBase,
+    ["UH-60L-3"] = destinosBase,
 
 
 
@@ -535,10 +592,13 @@ destinosPorSubvariante = {
 
     ["KA-50-1"] = destinosBase,
     ["KA-50-2"] = destinosBase,
+    ["KA-50-3"] = destinosBase,
     ["MI-24P-1"] = destinosBase,
     ["MI-24P-2"] = destinosBase,
+    ["MI-24P-3"] = destinosBase,
     ["MI-8MTV2-1"] = destinosBase,
     ["MI-8MTV2-2"] = destinosBase,
+    ["MI-8MTV2-3"] = destinosBase,
     
     --AWACS
 
@@ -626,53 +686,72 @@ destinosPorSubvariante = {
 nombresSubvariantes = {
 
     --USA PLANES
-    ["FA-18C-1"] = "FA-18C_hornet - Pack x 2",
-    ["FA-18C-2"] = "FA-18C_hornet - Pack x 4",
-    ["F-16CM-1"] = "F-16CM bl.50 - Viper - Pack x 2",
-    ["F-16CM-2"] = "F-16CM bl.50 - Viper - Pack x 4",
-    ["A-10C-2-1"] = "A-10C II - Tank Killer - Pack x 2",
-    ["A-10C-2-2"] = "A-10C II - Tank Killer - Pack x 4",
-    ["F-15E-S4-1"] = "F-15E S4 - Eagle Strike -  Pack x 2",
-    ["F-15E-S4-2"] = "F-15E S4 - Eagle Strike -  Pack x 4",
-    ["F-15C-1"] = "F-15C  Pack x 2",
-    ["F-15C-2"] = "F-15C  Pack x 4",
-    ["F-14A-1"] = "F-14A-135-GR - Tomcat -  Pack x 2",
-    ["F-14A-2"] = "F-14A-135-GR - Tomcat -  Pack x 4",
-    ["F-14B-1"] = "F-14B - Tomcat -  Pack x 2",
+    ["FA-18C-1"] = "FA-18C_hornet - Pack x 1",
+    ["FA-18C-2"] = "FA-18C_hornet - Pack x 2",
+    ["FA-18C-3"] = "FA-18C_hornet - Pack x 4",
+    ["F-16CM-1"] = "F-16CM bl.50 - Viper - Pack x 1",
+    ["F-16CM-2"] = "F-16CM bl.50 - Viper - Pack x 2",
+    ["F-16CM-3"] = "F-16CM bl.50 - Viper - Pack x 4",
+    ["A-10C-2-1"] = "A-10C II - Tank Killer - Pack x 1",
+    ["A-10C-2-2"] = "A-10C II - Tank Killer - Pack x 2",
+    ["A-10C-2-3"] = "A-10C II - Tank Killer - Pack x 4",
+    ["F-15E-S4-1"] = "F-15E S4 - Eagle Strike -  Pack x 1",
+    ["F-15E-S4-2"] = "F-15E S4 - Eagle Strike -  Pack x 2",
+    ["F-15E-S4-3"] = "F-15E S4 - Eagle Strike -  Pack x 4",
+    ["F-15C-1"] = "F-15C  Pack x 1",
+    ["F-15C-2"] = "F-15C  Pack x 2",
+    ["F-15C-3"] = "F-15C  Pack x 4",
+    ["F-14A-1"] = "F-14A-135-GR - Tomcat -  Pack x 1",
+    ["F-14A-2"] = "F-14A-135-GR - Tomcat -  Pack x 2",
+    ["F-14A-3"] = "F-14A-135-GR - Tomcat -  Pack x 4",
+    ["F-14B-1"] = "F-14B - Tomcat -  Pack x 1",
     ["F-14B-2"] = "F-14B - Tomcat -  Pack x 2",
-    ["F-4-1"] = "F-4E-45MC - Phantom -  Pack x 2",
-    ["F-4-2"] = "F-4E-45MC - Phantom -  Pack x 4",
-    ["F-5-1"] = "F-5E-3 - Tiger  -  Pack x 2",
-    ["F-5-2"] = "F-5E-3 - Tiger  -  Pack x 4",
+    ["F-14B-3"] = "F-14B - Tomcat -  Pack x 4",
+    ["F-4-1"] = "F-4E-45MC - Phantom -  Pack x 1",
+    ["F-4-2"] = "F-4E-45MC - Phantom -  Pack x 2",
+    ["F-4-3"] = "F-4E-45MC - Phantom -  Pack x 4",
+    ["F-5-1"] = "F-5E-3 - Tiger  -  Pack x 1",
+    ["F-5-2"] = "F-5E-3 - Tiger  -  Pack x 2",
+    ["F-5-3"] = "F-5E-3 - Tiger  -  Pack x 4",
     ["C130-1"] = "C130 - Hercules - Pack x 1",
     ["C130-2"] = "C130 - Hercules - Pack x 2",
-    ["A-4E-C-1"] = "A-4E-C - Skyhawk - Pack x 2",
-    ["A-4E-C-2"] = "A-4E-C - Skyhawk - Pack x 4",
-    ["AV-8B-1"] = "AV-8B - Night Attack - Pack x 2",
-    ["AV-8B-2"] = "AV-8B - Night Attack - Pack x 4",
+    ["A-4E-C-1"] = "A-4E-C - Skyhawk - Pack x 1",
+    ["A-4E-C-2"] = "A-4E-C - Skyhawk - Pack x 2",
+    ["A-4E-C-3"] = "A-4E-C - Skyhawk - Pack x 4",
+    ["AV-8B-1"] = "AV-8B - Night Attack - Pack x 1",
+    ["AV-8B-2"] = "AV-8B - Night Attack - Pack x 2",
+    ["AV-8B-3"] = "AV-8B - Night Attack - Pack x 4",
 
 
     --RUSIA PLANES
 
     ["MIG-29A-1"] = "MIG-29A - FC - Pack x 2",
-    ["MIG-29A-2"] = "MIG-29A - FC - Pack x 4",
-    ["MIG-29S-1"] = "MIG-29S - FC - Pack x 2",
-    ["MIG-29S-2"] = "MIG-29S - FC - Pack x 4",
-    ["MIG-21-1"] = "MIG-21Bis - FC - Pack x 2",
-    ["MIG-21-2"] = "MIG-21Bis - FC - Pack x 4",
-    ["SU-25T-1"] = "SU-25T - Frogfoot - Pack x 2",
-    ["SU-25T-2"] = "SU-25T - Frogfoot - Pack x 4",
-    ["SU-27-1"] = "SU-27 - Flanker - Pack x 2",
-    ["SU-27-2"] = "SU-27 - Flanker - Pack x 4",
-    ["SU-33-1"] = "SU-33 - Flanker D - Pack x 2",
-    ["SU-33-2"] = "SU-33 - Flanker D - Pack x 4",
+    ["MIG-29A-2"] = "MIG-29A - FC - Pack x 3",
+    ["MIG-29A-3"] = "MIG-29A - FC - Pack x 4",
+    ["MIG-29S-1"] = "MIG-29S - FC - Pack x 1",
+    ["MIG-29S-2"] = "MIG-29S - FC - Pack x 2",
+    ["MIG-29S-3"] = "MIG-29S - FC - Pack x 4",
+    ["MIG-21-1"] = "MIG-21Bis - FC - Pack x 1",
+    ["MIG-21-2"] = "MIG-21Bis - FC - Pack x 2",
+    ["MIG-21-3"] = "MIG-21Bis - FC - Pack x 4",
+    ["SU-25T-1"] = "SU-25T - Frogfoot - Pack x 1",
+    ["SU-25T-2"] = "SU-25T - Frogfoot - Pack x 2",
+    ["SU-25T-3"] = "SU-25T - Frogfoot - Pack x 4",
+    ["SU-27-1"] = "SU-27 - Flanker - Pack x 1",
+    ["SU-27-2"] = "SU-27 - Flanker - Pack x 2",
+    ["SU-27-3"] = "SU-27 - Flanker - Pack x 4",
+    ["SU-33-1"] = "SU-33 - Flanker D - Pack x 1",
+    ["SU-33-2"] = "SU-33 - Flanker D - Pack x 2",
+    ["SU-33-3"] = "SU-33 - Flanker D - Pack x 4",
 
     --FRANCIA PLANES
 
-    ["M-2000-1"] = "Mirage M-2000 C  - Pack x 2",
-    ["M-2000-2"] = "Mirage M-2000 C  - Pack x 4",
-    ["F1-EE-1"] = "Mirage F1 EE  - Pack x 2",
-    ["F1-EE-2"] = "Mirage F1 EE  - Pack x 4",
+    ["M-2000-1"] = "Mirage M-2000 C  - Pack x 1",
+    ["M-2000-2"] = "Mirage M-2000 C  - Pack x 2",
+    ["M-2000-3"] = "Mirage M-2000 C  - Pack x 4",
+    ["F1-EE-1"] = "Mirage F1 EE  - Pack x 1",
+    ["F1-EE-2"] = "Mirage F1 EE  - Pack x 2",
+    ["F1-EE-3"] = "Mirage F1 EE  - Pack x 4",
     ["SA342-L-1"] = "SA342 - L - Gazelle - Pack x 2",
     ["SA342-M-1"] = "SA342 - M - Gazelle - Pack x 2",
     ["SA342-Minigun-1"] = "SA342 - Minigun - Gazelle - Pack x 2",
@@ -680,34 +759,45 @@ nombresSubvariantes = {
 
     --TEMU HELIS
 
-    ["JF-17-1"] = "JF-17 - Thunder - Pack x 2",
-    ["JF-17-2"] = "JF-17 - Thunder - Pack x 4",
-    ["J-11A-1"] = "J-11A - Thunder - Pack x 2",
-    ["J-11A-2"] = "J-11A - Thunder - Pack x 4",
-    ["AJS-37-1"] = "AJS-37 - Viggen - Pack x 2",
-    ["AJS-37-2"] = "AJS-37 - Viggen - Pack x 4",
+    ["JF-17-1"] = "JF-17 - Thunder - Pack x 1",
+    ["JF-17-2"] = "JF-17 - Thunder - Pack x 2",
+    ["JF-17-3"] = "JF-17 - Thunder - Pack x 4",
+    ["J-11A-1"] = "J-11A - Thunder - Pack x 1",
+    ["J-11A-2"] = "J-11A - Thunder - Pack x 2",
+    ["J-11A-3"] = "J-11A - Thunder - Pack x 4",
+    ["AJS-37-1"] = "AJS-37 - Viggen - Pack x 1",
+    ["AJS-37-2"] = "AJS-37 - Viggen - Pack x 2",
+    ["AJS-37-3"] = "AJS-37 - Viggen - Pack x 4",
 
     --USA HELIS
 
-    ["AH-64D-1"] = "AH-64D BLK. II - Apache - Pack x 2",
-    ["AH-64D-2"] = "AH-64D BLK. II - Apache - Pack x 4",
-    ["OH-58D-1"] = "OH-58D (R) - Kiowa Warrior - Pack x 2",
-    ["OH-58D-2"] = "OH-58D (R) - Kiowa Warrior - Pack x 4",
-    ["CH-47F-1"] = "CH-47F- Chinook - Pack x 2",
-    ["CH-47F-2"] = "CH-47F- Chinook - Pack x 4",
-    ["UH-1H-1"] = "UH-1H - Huey - Pack x 2",
-    ["UH-1H-2"] = "UH-1H - Huey - Pack x 4",
-    ["UH-60L-1"] = "UH-60L - Blackhawk - Pack x 2",
-    ["UH-60L-2"] = "UH-60L - Blackhawk - Pack x 4",
+    ["AH-64D-1"] = "AH-64D BLK. II - Apache - Pack x 1",
+    ["AH-64D-2"] = "AH-64D BLK. II - Apache - Pack x 2",
+    ["AH-64D-3"] = "AH-64D BLK. II - Apache - Pack x 3",
+    ["OH-58D-1"] = "OH-58D (R) - Kiowa Warrior - Pack x 1",
+    ["OH-58D-2"] = "OH-58D (R) - Kiowa Warrior - Pack x 2",
+    ["OH-58D-3"] = "OH-58D (R) - Kiowa Warrior - Pack x 4",
+    ["CH-47F-1"] = "CH-47F- Chinook - Pack x 1",
+    ["CH-47F-2"] = "CH-47F- Chinook - Pack x 2",
+    ["CH-47F-3"] = "CH-47F- Chinook - Pack x 4",
+    ["UH-1H-1"] = "UH-1H - Huey - Pack x 1",
+    ["UH-1H-2"] = "UH-1H - Huey - Pack x 2",
+    ["UH-1H-3"] = "UH-1H - Huey - Pack x 4",
+    ["UH-60L-1"] = "UH-60L - Blackhawk - Pack x 1",
+    ["UH-60L-2"] = "UH-60L - Blackhawk - Pack x 2",
+    ["UH-60L-3"] = "UH-60L - Blackhawk - Pack x 4",
     
     --RUSIA HELIS
 
-    ["KA-50-1"] = "KA-50 III -  Black Shark 3 - Pack x 2",
-    ["KA-50-2"] = "KA-50 III -  Black Shark 3 - Pack x 4",
-    ["MI-24P-1"] = "MI-24P - Hind - Pack x 2",
-    ["MI-24P-2"] = "MI-24P - Hind - Pack x 4",
-    ["MI-8MTV2-1"] = "MI-8MTV2 - Pack x 2",
-    ["MI-8MTV2-2"] = "MI-8MTV2 - Pack x 4",
+    ["KA-50-1"] = "KA-50 III -  Black Shark 3 - Pack x 1",
+    ["KA-50-2"] = "KA-50 III -  Black Shark 3 - Pack x 2",
+    ["KA-50-3"] = "KA-50 III -  Black Shark 3 - Pack x 4",
+    ["MI-24P-1"] = "MI-24P - Hind - Pack x 1",
+    ["MI-24P-2"] = "MI-24P - Hind - Pack x 2",
+    ["MI-24P-3"] = "MI-24P - Hind - Pack x 4",
+    ["MI-8MTV2-1"] = "MI-8MTV2 - Pack x 1",
+    ["MI-8MTV2-2"] = "MI-8MTV2 - Pack x 2",
+    ["MI-8MTV2-3"] = "MI-8MTV2 - Pack x 4",
 
     --AWACKS.
 
