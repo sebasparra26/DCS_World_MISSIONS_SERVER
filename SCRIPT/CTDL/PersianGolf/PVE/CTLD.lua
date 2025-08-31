@@ -1144,7 +1144,7 @@ ctld.loadableGroups = {
     --{name = ctld.i18n_translate("Standard Group x 33"), inf = 10, mg = 10, at = 10, aa = 3 }, -- CHINOOK
     --{name = ctld.i18n_translate("Standard Group x 30"), inf = 10, mg = 10, at = 10, aa = 3 }, -- Hercules
     --{name = ctld.i18n_translate("Standard Group x 16"), inf = 8, mg = 2, at = 2, aa = 4 }, -- MI8
-    --{name = ctld.i18n_translate("Standard Group x 10"), inf = 4, mg = 2, at = 2, aa = 2 }, -- MI24
+    {name = ctld.i18n_translate("Standard Group x 10"), inf = 4, mg = 2, at = 2, aa = 2 }, -- MI24
     {name = ctld.i18n_translate("Standard Group x 2"), mg = 1,  aa = 1 }, -- HUEY
     --{name = ctld.i18n_translate("Standard Group x 4"), inf = 1, mg = 1, at = 1, aa = 1 }, -- HUEY
     {name = ctld.i18n_translate("Standard Group x 1"), mg = 1}, -- Others
