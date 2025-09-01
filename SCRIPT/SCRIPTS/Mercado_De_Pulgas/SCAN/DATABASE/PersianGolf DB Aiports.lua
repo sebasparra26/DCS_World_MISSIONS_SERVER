@@ -25,7 +25,7 @@ estadoBanderasAeropuertos = {
     ["Lavan Island"] = { bandera = 121, valor = nil },
     ["Qeshm Island"] = { bandera = 122, valor = nil },
     ["Havadarya"] = { bandera = 123, valor = nil },
-    ["Bandar Abbas Intl"] = { bandera = 124, valor = nil },
+    --["Bandar Abbas Intl"] = { bandera = 124, valor = nil },
     ["Lar"] = { bandera = 125, valor = nil },
     ["Jiroft"] = { bandera = 126, valor = nil },
     --["Shiraz Intl"] = { bandera = 127, valor = nil },
@@ -57,7 +57,7 @@ aeropuertos = {
     ["Lavan Island"] = { position = {x = 75789, y = 0, z = -286794}, radius = 4200 },                           --23-- X+00075789 Z-00286794   Small
     ["Qeshm Island"] = { position = {x = 64762, y = 0, z = -33452}, radius = 12000 },                           --24- Metric: X+00064762 Z-00033452   high
     ["Havadarya"] = { position = {x = 109331, y = 0, z = -6369}, radius = 12000 },                               --25- Metric: X+00109331 Z-00006369 Small
-    ["Bandar Abbas Intl"] = { position = {x = 115847, y = 0, z = 14156}, radius = 12000 },                       --26- Metric: X+00115847 Z+00014156   Medium
+    --["Bandar Abbas Intl"] = { position = {x = 115847, y = 0, z = 14156}, radius = 12000 },                       --26- Metric: X+00115847 Z+00014156   Medium
     ["Lar"] = { position = {x = 168884, y = 0, z = -182473}, radius = 12000 },                                  --27- Metric: X+00168884 Z-00182473   Medium
     --["Jiroft"] = { position = {x = 282634, y = 0, z = 141649}, radius = 10000 },                                --28- Metric: X+00282634 Z+00141649   Medium
     ["Shiraz Intl"] = { position = {x = 380994, y = 0, z = -351952}, radius = 20000 },                          --29- Metric: X+00380994 Z-00351952   high
