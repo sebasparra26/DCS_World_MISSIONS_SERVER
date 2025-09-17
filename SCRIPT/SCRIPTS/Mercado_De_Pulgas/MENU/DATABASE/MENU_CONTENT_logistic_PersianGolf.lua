@@ -336,11 +336,11 @@ subvariantesAvion = {
         ["UH-1H - Huey - Pack x 2"] = "UH-1H-1",
         ["UH-1H - Huey - Pack x 4"] = "UH-1H-2"
     },
-    ["UH-60L_PAYLOAD"] = {
-        ["UH-60L - Blackhawk - Pack x 1"] = "UH-60L-3",
-        ["UH-60L - Blackhawk - Pack x 2"] = "UH-60L-1",
-        ["UH-60L - Blackhawk - Pack x 4"] = "UH-60L-2"
-    },
+    --["UH-60L_PAYLOAD"] = {
+        --["UH-60L - Blackhawk - Pack x 1"] = "UH-60L-3",
+        --["UH-60L - Blackhawk - Pack x 2"] = "UH-60L-1",
+        --["UH-60L - Blackhawk - Pack x 4"] = "UH-60L-2"
+    --},
 
     --RUSIA HELIS
 
@@ -582,9 +582,9 @@ destinosPorSubvariante = {
     ["UH-1H-1"] = destinosBase,
     ["UH-1H-2"] = destinosBase,
     ["UH-1H-3"] = destinosBase,
-    ["UH-60L-1"] = destinosBase,
-    ["UH-60L-2"] = destinosBase,
-    ["UH-60L-3"] = destinosBase,
+    --["UH-60L-1"] = destinosBase,
+    --["UH-60L-2"] = destinosBase,
+    --["UH-60L-3"] = destinosBase,
 
 
 
@@ -783,9 +783,9 @@ nombresSubvariantes = {
     ["UH-1H-1"] = "UH-1H - Huey - Pack x 1",
     ["UH-1H-2"] = "UH-1H - Huey - Pack x 2",
     ["UH-1H-3"] = "UH-1H - Huey - Pack x 4",
-    ["UH-60L-1"] = "UH-60L - Blackhawk - Pack x 1",
-    ["UH-60L-2"] = "UH-60L - Blackhawk - Pack x 2",
-    ["UH-60L-3"] = "UH-60L - Blackhawk - Pack x 4",
+    --["UH-60L-1"] = "UH-60L - Blackhawk - Pack x 1",
+    --["UH-60L-2"] = "UH-60L - Blackhawk - Pack x 2",
+    --["UH-60L-3"] = "UH-60L - Blackhawk - Pack x 4",
     
     --RUSIA HELIS
 
@@ -1058,7 +1058,7 @@ plantillasLogisticaR = {
     ["Kish Intl"] = { template = "SuppliesREDToKish", bandera = 120, origen = { x = 425933, y = 0, z = -43227 }, velocidad = 145},
     ["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121,  origen = { x = 543434, y = 0, z = 68236 }, velocidad = 256},
     ["Qeshm Island"] = { template = "SuppliesREDToQeshm", bandera = 122, origen = { x = 543870, y = 0, z = 67495 }, velocidad = 145},
-    ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123, origen = { x = 454130, y = 0, z = 70911 }, velocidad = 77.16},
+    ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123, origen = { x = 155216, y = 0, z = 64368 }, velocidad = 77.16},
     --["Bandar Abbas Intl"] = { template = "SuppliesREDToAbbas", bandera = 124, origen = { x = 313427, y = 0, z = 33203 }, velocidad = 77.16},
     ["Lar"] = { template = "SuppliesREDToLar", bandera = 125, origen = { x = 543551, y = 0, z = 52245 }, velocidad = 145},
     ["Jiroft"] = { template = "SuppliesREDToJiroft", bandera = 126,  origen = { x = 543616, y = 0, z = 55348 }, velocidad = 256},

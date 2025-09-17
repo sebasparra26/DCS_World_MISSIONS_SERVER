@@ -388,17 +388,17 @@ tipoAviones["UH-60L-3"] = {
 tipoAviones["MIG-29A-1"] = {
     costo = 35000000,
     nombreAvion = "MIG-29A - FC - Pack ",
-    avion = { ws = {1, 1, 1, 2}, cantidad = 1 },
+    avion = { ws = {1, 1, 1, 343}, cantidad = 1 },
 }
 tipoAviones["MIG-29A-2"] = {
     costo = 71000000,
     nombreAvion = "MIG-29A - FC - Pack ",
-    avion = { ws = {1, 1, 1, 2}, cantidad = 2 },
+    avion = { ws = {1, 1, 1, 343}, cantidad = 2 },
 }
 tipoAviones["MIG-29A-3"] = {
     costo = 142000000,
     nombreAvion = "MIG-29A - FC - Pack ",
-    avion = { ws = {1, 1, 1, 2}, cantidad = 4 },
+    avion = { ws = {1, 1, 1, 343}, cantidad = 4 },
 }
 -- ===============================
 -- MIG-29S - FC

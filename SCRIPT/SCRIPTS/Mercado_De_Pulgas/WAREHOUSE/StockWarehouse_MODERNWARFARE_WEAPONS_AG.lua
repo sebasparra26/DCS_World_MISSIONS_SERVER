@@ -28,6 +28,7 @@ tipoAviones["FUEL-TANK-PACK"] = {
         ["Sargent Fletcher Fuel Tank 600 Gallons"]  = {ws = {1, 3, 43, 2146}, cantidad = 20},
         ["Sargent Fletcher Fuel Tank 370 Gallons"]  = {ws = {1, 3, 43, 2144}, cantidad = 20},
         ["800L Tank"]  = {ws = {1, 3, 43, 465}, cantidad = 6},
+        ["Fuel Tank 1400L"]  = {ws = {1, 3, 43, 2894}, cantidad = 10},
         ["Fuel Tank 230 Gal"]  = {ws = {1, 3, 43, 1056}, cantidad = 8},
         ["Fuel tank PTB-450"]  = {ws = {1, 3, 43, 855}, cantidad = 4}
     }
