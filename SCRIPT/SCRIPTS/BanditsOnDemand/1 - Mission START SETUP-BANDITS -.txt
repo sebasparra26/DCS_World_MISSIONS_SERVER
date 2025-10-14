@@ -1,0 +1,27 @@
+1 - Mission START "SETUP-BANDITS" - // - Do Script File "SETUP BANDITS"
+
+2 - Once "LOAD MIST" - TIME SINCE FLAG " "1", "2" " - FLAG ON "2"
+						    - DO SCRIPT FILE "MIST LUA"
+						    - Message To All 
+
+"This mission is designed to test your piloting skill in BVR and BFM.
+
+You and your opponents will be armed with cannons or missiles. 
+
+You will start at angels 20. Spawn bandits with VoiceAttack or F10 comms menu."
+
+						    - X:START WAIT USER RESPONSE "21", "999"
+
+3 - ONCE "SPAWN BANDINTS" - TIME SINCE FLAG "2", "3" - X: STOP WAIT USER RESPONSE ""
+			  - OR                       - DO SCRIPT FILE "BANDITS ON DEMAND"
+			  - TIME SINCE FLAG "21", "1"- X: STAR WAIT USER RESPONDE "2", "999"
+
+4 - ONCE "CANCEL HELP"    - TIME SINCE FLAG "3", "1" - SOUND STOP ""
+
+5 - ONCE "RESTART"        - FLAG IS TRUE "3003"      - MESSAGE TO ALL "...reloading..."
+					             - LOAD MISSION "ESCOJER LA MISION A RESETEAR"
+
+
+6 - SWITCH CONDITION      - 1 FLAG IS TRUE "3005"    - AI TASK PUSH - GROUP SELECTED : ROE = WEAPON FREE
+
+		          - 2 FLAG IS FALSE "3005"    - AI TASK PUSH - GROUP SELECTED : ROE = WEAPON HOLD

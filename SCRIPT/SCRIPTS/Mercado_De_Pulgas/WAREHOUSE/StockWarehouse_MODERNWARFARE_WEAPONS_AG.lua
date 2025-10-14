@@ -24,9 +24,11 @@ tipoAviones["FUEL-TANK-PACK"] = {
         ["RPL 541 2000 Liters Fuel Tank"]  = {ws = {1, 3, 43, 604}, cantidad = 4},
         ["RPL 522 1300 Liters Fuel Tank"]  = {ws = {1, 3, 43, 605}, cantidad = 4},
         ["Fuel Tank 800 L (21)"]  = {ws = {1, 3, 43, 14}, cantidad = 4},
+        ["Fuel Tank 800 L WING"]  = {ws = {1, 3, 43, 54}, cantidad = 8},
         ["RPL201 Pylon Fuel Tank (2310 / Usable)"]  = {ws = {1, 3, 43, 1470}, cantidad = 2},
         ["Sargent Fletcher Fuel Tank 600 Gallons"]  = {ws = {1, 3, 43, 2146}, cantidad = 20},
-        ["Sargent Fletcher Fuel Tank 370 Gallons"]  = {ws = {1, 3, 43, 2144}, cantidad = 20},
+        ["Sargent Fletcher Fuel Tank 370 GallonsL"]  = {ws = {1, 3, 43, 2144}, cantidad = 20},
+        ["Sargent Fletcher Fuel Tank 370 GallonsR"]  = {ws = {1, 3, 43, 2145}, cantidad = 20},
         ["800L Tank"]  = {ws = {1, 3, 43, 465}, cantidad = 6},
         ["Fuel Tank 1400L"]  = {ws = {1, 3, 43, 2894}, cantidad = 10},
         ["Fuel Tank 230 Gal"]  = {ws = {1, 3, 43, 1056}, cantidad = 8},
@@ -81,7 +83,7 @@ tipoAviones["MK82"] = {
     bombas = {
         ["Mk-82 - 500lb GP Bomb LD "]  = {ws = {4, 5, 9, 31}, cantidad = 20},
         ["Mk-82 - 500lb GP Bomb LD2 "]  = {ws = {4, 5, 32, 31}, cantidad = 20},
-        ["Mk-82 - Snakeeye 500lb GP Bomb HD   "]  = {ws = {4, 5, 8, 79}, cantidad = 10}
+        ["Mk-82 - Snakeeye 500lb GP Bomb HD   "]  = {ws = {4, 5, 9, 79}, cantidad = 10}
        }
 }
 tipoAviones["WALLEYE"] = {

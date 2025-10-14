@@ -144,6 +144,79 @@ do
 local defence07 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-7')
 blueIADS:getSAMSiteByGroupName('B-SAM-PAT-3'):addPointDefence(defence07):setHARMDetectionChance(100)
 end
+----------------------------------------------------------- Conexiones del Pat 4
+
+do
+local nodePAT04 = Unit.getByName('BLUE-NODE-SAM-PAT-4')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-4')
+        :addConnectionNode(nodePAT04)
+        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+        :setCanEngageAirWeapons(false)
+        :setCanEngageHARM(false)
+        :setHARMDetectionChance(100)
+        :setActAsEW(true)
+end
+----------------------------------------------------------- Conexiones del DEFENDER
+do
+local defence08 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-8')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-4'):addPointDefence(defence08):setHARMDetectionChance(100)
+end
+
+----------------------------------------------------------- Conexiones del Pat 5
+
+do
+local nodePAT05 = Unit.getByName('BLUE-NODE-SAM-PAT-5')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-5')
+        :addConnectionNode(nodePAT05)
+        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+        :setCanEngageAirWeapons(false)
+        :setCanEngageHARM(false)
+        :setHARMDetectionChance(100)
+        :setActAsEW(true)
+end
+----------------------------------------------------------- Conexiones del DEFENDER
+do
+local defence09 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-9')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-5'):addPointDefence(defence09):setHARMDetectionChance(100)
+end
+----------------------------------------------------------- Conexiones del Pat 6
+
+do
+local nodePAT06 = Unit.getByName('BLUE-NODE-SAM-PAT-6')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-6')
+        :addConnectionNode(nodePAT06)
+        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+        :setCanEngageAirWeapons(false)
+        :setCanEngageHARM(false)
+        :setHARMDetectionChance(100)
+        :setActAsEW(true)
+end
+----------------------------------------------------------- Conexiones del DEFENDER
+do
+local defence10 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-10')
+blueIADS:getSAMSiteByGroupName('B-SAM-PAT-6'):addPointDefence(defence10):setHARMDetectionChance(100)
+end
+
+----------------------------------------------------------- Conexiones del SAM PATRIOT
+do
+local nodeNAS05 = Unit.getByName('BLUE-NODE-SAM-NAS-5')
+blueIADS:getSAMSiteByGroupName('B-SAM-NAS-5')
+        :addConnectionNode(nodeNAS05)
+        :setAutonomousBehaviour(SkynetIADSAbstractRadarElement.AUTONOMOUS_STATE_DCS_AI) 
+        :setEngagementZone(SkynetIADSAbstractRadarElement.GO_LIVE_WHEN_IN_SEARCH_RANGE)
+        :setCanEngageAirWeapons(false)
+        :setCanEngageHARM(false)
+        :setHARMDetectionChance(100)
+        :setActAsEW(true)
+end
+----------------------------------------------------------- Conexiones del DEFENDER
+do
+local defence11 = blueIADS:getSAMSiteByGroupName('B-SAM-DEFENCE-11')
+blueIADS:getSAMSiteByGroupName('B-SAM-NAS-5'):addPointDefence(defence11):setHARMDetectionChance(100)
+end
 
 -----
 ----------------------------------------------------------- Debug

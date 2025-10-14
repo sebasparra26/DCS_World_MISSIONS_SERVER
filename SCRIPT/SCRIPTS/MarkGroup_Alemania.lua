@@ -1,6 +1,6 @@
-local grupoObjetivo = "USSR_CONVOY_01"  -- Cambia esto por el grupo que quieras seguir
+local grupoObjetivo = "01"  -- Cambia esto por el grupo que quieras seguir
 local zonaNombre = "DETECT"
-local tiempoActualizacion = 20  -- segundos
+local tiempoActualizacion = 5  -- segundos
 
 -- Colores personalizados
 local colorSet = {
@@ -60,7 +60,7 @@ local function actualizarMarcador()
         name = "Marker_" .. grupoObjetivo,
         type = "circle",
         point = pos,
-        radius = 3000, -- puedes ajustar
+        radius = 1000, -- puedes ajustar
         color = colorSet.contorno,
         fillColor = colorSet.relleno,
         lineType = 0,

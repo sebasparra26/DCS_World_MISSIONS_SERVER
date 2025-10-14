@@ -1,4 +1,4 @@
-local grupoObjetivo = "TR_CONVOY_01"  -- Cambia esto por el grupo que quieras seguir
+local grupoObjetivo = "01"  -- Cambia esto por el grupo que quieras seguir
 local zonaNombre = "DETECT"
 local tiempoActualizacion = 20  -- segundos
 

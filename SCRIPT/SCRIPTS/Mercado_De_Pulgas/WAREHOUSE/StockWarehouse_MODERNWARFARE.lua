@@ -291,9 +291,12 @@ tipoAviones["CH-47F-1"] = {
     avion = { ws = {1, 2, 5, 329}, cantidad = 1 },
 
     misc = {
-        ["M240H1"]      = {ws = {4, 5, 46, 2491}, cantidad = 1},
-        ["M240H2"]      = {ws = {4, 5, 46, 2492}, cantidad = 1},
-        ["M240H3"]      = {ws = {4, 5, 46, 2493}, cantidad = 1}
+        ["M240H1"]      = {ws = {4, 15, 46, 2491}, cantidad = 1},
+        ["M240H2"]      = {ws = {4, 15, 46, 2492}, cantidad = 1},
+        ["M240H3"]      = {ws = {4, 15, 46, 2493}, cantidad = 1},
+        ["M60D 01"]      = {ws = {4, 15, 46, 2489}, cantidad = 1},
+        ["M60D 02"]      = {ws = {4, 15, 46, 2488}, cantidad = 1},
+        ["M60D 03"]      = {ws = {4, 15, 46, 2490}, cantidad = 1}
     }
     
 }
@@ -303,9 +306,12 @@ tipoAviones["CH-47F-2"] = {
     avion = { ws = {1, 2, 5, 329}, cantidad = 2 },
 
     misc = {
-        ["M240H1"]      = {ws = {4, 5, 46, 2491}, cantidad = 2},
-        ["M240H2"]      = {ws = {4, 5, 46, 2492}, cantidad = 2},
-        ["M240H3"]      = {ws = {4, 5, 46, 2493}, cantidad = 2}
+        ["M240H1"]      = {ws = {4, 15, 46, 2491}, cantidad = 2},
+        ["M240H2"]      = {ws = {4, 15, 46, 2492}, cantidad = 2},
+        ["M240H3"]      = {ws = {4, 15, 46, 2493}, cantidad = 2},
+        ["M60D 01"]      = {ws = {4, 15, 46, 2489}, cantidad = 2},
+        ["M60D 02"]      = {ws = {4, 15, 46, 2488}, cantidad = 2},
+        ["M60D 03"]      = {ws = {4, 15, 46, 2490}, cantidad = 2}
     }
     
 }
@@ -315,9 +321,12 @@ tipoAviones["CH-47F-3"] = {
     avion = { ws = {1, 2, 5, 329}, cantidad = 4 },
 
     misc = {
-        ["M240H3"]      = {ws = {4, 5, 46, 2491}, cantidad = 4},
-        ["M240H4"]      = {ws = {4, 5, 46, 2492}, cantidad = 4},
-        ["M240H5"]      = {ws = {4, 5, 46, 2493}, cantidad = 4}
+        ["M240H1"]      = {ws = {4, 15, 46, 2491}, cantidad = 4},
+        ["M240H2"]      = {ws = {4, 15, 46, 2492}, cantidad = 4},
+        ["M240H3"]      = {ws = {4, 15, 46, 2493}, cantidad = 4},
+        ["M60D 01"]      = {ws = {4, 15, 46, 2489}, cantidad = 4},
+        ["M60D 02"]      = {ws = {4, 15, 46, 2488}, cantidad = 4},
+        ["M60D 03"]      = {ws = {4, 15, 46, 2490}, cantidad = 4}
     }
 }
 -- ===============================
@@ -370,7 +379,7 @@ tipoAviones["UH-60L-1"] = {
 tipoAviones["UH-60L-2"] = {
     costo = 6000000,
     nombreAvion = "UH-60L - Blackhawk - Pack ",
-    avion = { ws = {1, 2, 6, 348}, cantidad = 2 },
+    avion = { ws = {1, 2, 6, 363}, cantidad = 2 },
 }
 tipoAviones["UH-60L-3"] = {
     costo = 12000000,
@@ -520,7 +529,9 @@ tipoAviones["MI-24P-1"] = {
     avion = { ws = {1, 2, 6, 296}, cantidad = 1 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 1}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 1},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 1},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 1}
     }
 }
 tipoAviones["MI-24P-2"] = {
@@ -529,7 +540,9 @@ tipoAviones["MI-24P-2"] = {
     avion = { ws = {1, 2, 6, 296}, cantidad = 2 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 2},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 2},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
     }
 }
 tipoAviones["MI-24P-3"] = {
@@ -538,7 +551,9 @@ tipoAviones["MI-24P-3"] = {
     avion = { ws = {1, 2, 6, 296}, cantidad = 4 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 4},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 4},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
     }
 }
 -- ===============================
@@ -550,7 +565,9 @@ tipoAviones["MI-8MTV2-1"] = {
     avion = { ws = {1, 2, 6, 151}, cantidad = 1 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 1}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 1},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 1},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 1}
     }
 }
 tipoAviones["MI-8MTV2-2"] = {
@@ -559,7 +576,9 @@ tipoAviones["MI-8MTV2-2"] = {
     avion = { ws = {1, 2, 6, 151}, cantidad = 2 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 2},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 2},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 2}
     }
 }
 tipoAviones["MI-8MTV2-3"] = {
@@ -568,7 +587,9 @@ tipoAviones["MI-8MTV2-3"] = {
     avion = { ws = {1, 2, 6, 151}, cantidad = 4 },
 
     misc = {
-        ["Kord 12,7mm  HMG"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
+        ["Kord 12,7mm  HMG 01"]      = {ws = {4, 15, 46, 183}, cantidad = 4},
+        ["Kord 12,7mm  HMG 02"]      = {ws = {4, 15, 46, 1295}, cantidad = 4},
+        ["Kord 12,7mm  HMG 03"]      = {ws = {4, 15, 46, 1294}, cantidad = 4}
     }
 }
 

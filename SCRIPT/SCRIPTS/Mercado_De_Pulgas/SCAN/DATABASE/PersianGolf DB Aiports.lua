@@ -59,7 +59,7 @@ aeropuertos = {
     ["Havadarya"] = { position = {x = 109331, y = 0, z = -6369}, radius = 12000 },                               --25- Metric: X+00109331 Z-00006369 Small
     --["Bandar Abbas Intl"] = { position = {x = 115847, y = 0, z = 14156}, radius = 12000 },                       --26- Metric: X+00115847 Z+00014156   Medium
     ["Lar"] = { position = {x = 168884, y = 0, z = -182473}, radius = 12000 },                                  --27- Metric: X+00168884 Z-00182473   Medium
-    --["Jiroft"] = { position = {x = 282634, y = 0, z = 141649}, radius = 10000 },                                --28- Metric: X+00282634 Z+00141649   Medium
-    ["Shiraz Intl"] = { position = {x = 380994, y = 0, z = -351952}, radius = 20000 },                          --29- Metric: X+00380994 Z-00351952   high
+    ["Jiroft"] = { position = {x = 282634, y = 0, z = 141649}, radius = 10000 },                                --28- Metric: X+00282634 Z+00141649   Medium
+    --["Shiraz Intl"] = { position = {x = 380994, y = 0, z = -351952}, radius = 20000 },                          --29- Metric: X+00380994 Z-00351952   high
     ["Kerman"] = { position = {x = 454327, y = 0, z = 71866}, radius = 60000 }   
 }

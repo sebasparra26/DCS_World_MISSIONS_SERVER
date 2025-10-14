@@ -639,7 +639,7 @@ explTable = {
     ["M_117"] = { explosive = 201 },
     ["AN_M30A1"] = { explosive = 45 },
     ["AN_M57"] = { explosive = 100 },
-    ["AN_M64"] = { explosive = 121 },
+    ["AN_M64"] = { explosive = 400 },
     ["AN_M65"] = { explosive = 400 },
     ["AN_M66"] = { explosive = 800 },
     ["AN-M66A2"] = { explosive = 536 },

@@ -28,7 +28,7 @@
 
     Send beers (or kind messages) to Ciribob [on Discord](https://discordapp.com/users/204712384747536384), he's the reason we have CTLD ^^
  ]]
-
+-- 
 if not ctld then -- should be defined first by CTLD-i18n.lua, but just in case it's an old mission, let's keep it here
     trigger.action.outText("\n\n** HEY MISSION-DESIGNER! **\n\nCTLD-i18n has not been loaded!\n\nMake sure CTLD-i18n is loaded\n*before* running this script!\n\nIt contains all the translations!\n", 10)
     ctld = {} -- DONT REMOVE!
@@ -652,6 +652,7 @@ ctld.aircraftTypeTable = {
         "Hercules",
         --"SK-60",
         "UH-60L",
+        "UH-60L_DAP",
         --"T-45",
 
     --%%%%% CHOPPERS %%%%%
@@ -973,6 +974,7 @@ ctld.unitLoadLimits = {
         ["Hercules"] = 33,
         --["SK-60"] = 1,
         ["UH-60L"] = 12,
+        ["UH-60L_DAP"] = 12,
         --["T-45"] = 1,
 
     --%%%%% CHOPPERS %%%%%
@@ -1033,6 +1035,7 @@ ctld.internalCargoLimits = {
     ["SA342M"]= 1,
     ["OH58D"] = 1,
     ["UH-60L"] = 4,
+    ["UH-60L_DAP"] = 4,
     ["AH-64D_BLK_II"] = 1,
 }
 
@@ -1062,6 +1065,8 @@ ctld.unitActions = {
         ["Hercules"] = {crates=true, troops=true},
         ["SK-60"] = {crates=true, troops=true},
         ["UH-60L"] = {crates=true, troops=true},
+        ["UH-60L_DAP"] = {crates=true, troops=true},
+        
         --["T-45"] = {crates=true, troops=true},
 
     --%%%%% CHOPPERS %%%%%

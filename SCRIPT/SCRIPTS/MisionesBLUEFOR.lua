@@ -4,13 +4,13 @@ local groupNamePrefix = "TGT_"
 local debugMode = false
 
 local activationMessages = {
-    "Mision: 1 OPERACION VOLTA-12 --- Ubicacion de la mision en F10",
-    "Mision: 2 OPERACION LEVIATAN --- Ubicacion de la mision en F10",
-    "Mision: 3 OPERACION CAZA TITANES --- Ubicacion de la mision en F10",
-    "Mision: 4 OPERACION CAZA DEL LOBO --- Ubicacion de la mision en F10",
-    "Mision: 5 OPERACION GUARDIANES DEL CAOS --- Ubicacion de la mision en F10",
-    "Mision: 6 OPERACION FANTASMAS DE PRIEDRA --- Ubicacion de la mision en F10",
-    "Mision: 7 OPERACION BLACK GOLD --- Ubicacion de la mision en F10",
+    "Mision: 1 OPERACION CAZA DEL LOBO --- Ubicacion de la mision en F10",
+    "Mision: 2 OPERACION BLACK GOLD --- Ubicacion de la mision en F10",
+    "Mision: 3 OPERACION GUARDIANES DEL CAOS --- Ubicacion de la mision en F10",
+    "Mision: 4 OPERACION VOLTA-12 --- Ubicacion de la mision en F10",
+    "Mision: 5 OPERACION CAZA TITANES --- Ubicacion de la mision en F10",
+    "Mision: 6 OPERACION FANTASMAS DE PIEDRA --- Ubicacion de la mision en F10",
+    "Mision: 7 OPERACION LEVIATAN --- Ubicacion de la mision en F10",
     "Mision: 8 OPERACION IRON TRASH --- Ubicacion de la mision en F10",
     "Mision: 9 OPERACION ARMAS --- Ubicacion de la mision en F10",
     "Mision: 10 OPERACION TAKE THE CONTROL --- Ubicacion de la mision en F10"

@@ -36,10 +36,10 @@ tiposAvion = {
         clave = "AV-8B_PAYLOAD",
         categoria = "Aviones Importados USA"
     },
-    ["A-4E-C-Skyhawk"] = {
-        clave = "A-4E_PAYLOAD",
-        categoria = "Aviones Importados USA"
-    },
+    --["A-4E-C-Skyhawk"] = {
+        --clave = "A-4E_PAYLOAD",
+        --categoria = "Aviones Importados USA"
+    --},
     ["C130-Hercules"] = {
         clave = "C130_PAYLOAD",
         categoria = "Aviones Importados USA"
@@ -117,10 +117,10 @@ tiposAvion = {
         clave = "UH-1H_PAYLOAD",
         categoria = "Helicopteros Importados USA"
     },
-    ["UH-60L-Blackhawk"] = {
-        clave = "UH-60L_PAYLOAD",
-        categoria = "Helicopteros Importados USA"
-    },
+    --["UH-60L-Blackhawk"] = {
+        --clave = "UH-60L_PAYLOAD",
+        --categoria = "Helicopteros Importados USA"
+    --},
 
      --RUSIA HELIS
 
@@ -336,11 +336,11 @@ subvariantesAvion = {
         ["UH-1H - Huey - Pack x 2"] = "UH-1H-1",
         ["UH-1H - Huey - Pack x 4"] = "UH-1H-2"
     },
-    --["UH-60L_PAYLOAD"] = {
-        --["UH-60L - Blackhawk - Pack x 1"] = "UH-60L-3",
-        --["UH-60L - Blackhawk - Pack x 2"] = "UH-60L-1",
-        --["UH-60L - Blackhawk - Pack x 4"] = "UH-60L-2"
-    --},
+    ["UH-60L_PAYLOAD"] = {
+        ["UH-60L - Blackhawk - Pack x 1"] = "UH-60L-1",
+        ["UH-60L - Blackhawk - Pack x 2"] = "UH-60L-2",
+        ["UH-60L - Blackhawk - Pack x 4"] = "UH-60L-3"
+    },
 
     --RUSIA HELIS
 
