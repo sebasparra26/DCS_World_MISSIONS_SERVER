@@ -893,33 +893,33 @@ end
 
 
 plantillasLogisticaB = {
-    ["Liwa AFB"] = { template = "SuppliesBLUEToliwa", bandera = 100, origen = { x = -379974, y = 0, z = -239255 }, velocidad = 236},
+    ["Liwa AFB"] = { template = "SuppliesBLUEToliwa", bandera = 100, origen = { x = -292108, y = 0, z = -267517 }, velocidad = 42}, --
     --["Al Dhafra AFB"] = { template = "SuppliesBLUEToDhafra", bandera = 101 },
     --["Al-Bateen"] = { template = "SuppliesBLUEToBateen", bandera = 102 },
     --["Sas Al Nakheel"] = { template = "SuppliesBLUEToNakheel", bandera = 103 },
     --["Abu Dhabi Intl"] = { template = "SuppliesBLUEToDhabi", bandera = 104 },
-    ["Al Ain Intl"] = { template = "SuppliesBLUEToAin", bandera = 105, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Al Maktoum Intl"] = { template = "SuppliesBLUEToMaktoum", bandera = 106, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Al Minhad AFB"] = { template = "SuppliesBLUEToMinhad", bandera = 107,  origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Dubai Intl"] = { template = "SuppliesBLUEToDubai", bandera = 108, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Sharjah Intl"] = { template = "SuppliesBLUEToSharjah", bandera = 109, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Fujairah Intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Ras Al Khaimah Intl"] = { template = "SuppliesBLUEToKhaimah", bandera = 111, origen = { x = -379974, y = 0, z = -257351 }, velocidad = 236},
-    ["Khasab"] = { template = "SuppliesBLUEToKhasab", bandera = 112, origen = { x = -177236, y = 0, z = -64449 }, velocidad = 77.16},
-    ["Bandar-e-Jask"] = {template = "SuppliesBLUEToJask", bandera = 113, origen = { x = -216624, y = 0, z = 59161 }, velocidad = 77.16},
-    ["Sir Abu Nuayr"] = { template = "SuppliesBLUEToNauyr", bandera = 114, origen = { x = -275886, y = 0, z = -248317 }, velocidad = 77.16},
-    ["Abu Musa Island"] = { template = "SuppliesBLUEToAbuMusa", bandera = 115, origen = { x = -275886, y = 0, z = -248317 }, velocidad = 77.16},
-    ["Sirri Island"] = { template = "SuppliesBLUEToSirri", bandera = 116, origen = { x = -275886, y = 0, z = -248317 }, velocidad = 77.16},
-    ["Tunb Kochak"] = { template = "SuppliesBLUEToKochak", bandera = 117,  origen = { x = -379974, y = 0, z = -239255 }, velocidad = 256},
-    ["Tunb Island AFB"] = { template = "SuppliesBLUEToTunbIsland", bandera = 118,  origen = { x = -379974, y = 0, z = -239255 }, velocidad = 256},
-    ["Bandar Lengeh"] = { template = "SuppliesBLUEToLenge", bandera = 119,  origen = { x = -379974, y = 0, z = -257351 }, velocidad = 256},
-    ["Kish Intl"] = { template = "SuppliesBLUEToKish", bandera = 120, origen = { x = -378983, y = 0, z = -250838 }, velocidad = 145},
-    ["Lavan Island"] = { template = "SuppliesBLUEToLavan", bandera = 121,  origen = { x = -379974, y = 0, z = -257351 }, velocidad = 256},
-    ["Qeshm Island"] = { template = "SuppliesBLUEToQeshm", bandera = 122, origen = { x = -378983, y = 0, z = -250838 }, velocidad = 145},
-    ["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123, origen = { x = -275797, y = 0, z = -248317 }, velocidad = 77.16},
+    ["Al Ain Intl"] = { template = "SuppliesBLUEToAin", bandera = 105, origen = { x = -237028, y = 0, z = -69065 }, velocidad = 42}, --
+    ["Al Maktoum Intl"] = { template = "SuppliesBLUEToMaktoum", bandera = 106, origen = { x = -161199, y = 0, z = -124194 }, velocidad = 42}, --
+    ["Al Minhad AFB"] = { template = "SuppliesBLUEToMinhad", bandera = 107,  origen = { x = -151271, y = 0, z = -89080 }, velocidad = 42}, --
+    ["Dubai Intl"] = { template = "SuppliesBLUEToDubai", bandera = 108, origen = { x = -122001, y = 0, z = -103538 }, velocidad = 42}, --
+    ["Sharjah Intl"] = { template = "SuppliesBLUEToSharjah", bandera = 109, origen = { x = -113342, y = 0, z = -88171 }, velocidad = 42}, --
+    ["Fujairah Intl"] = { template = "SuppliesBLUEToFujairah", bandera = 110, origen = { x = -141648, y = 0, z = 15623 }, velocidad = 42}, --
+    ["Ras Al Khaimah Intl"] = { template = "SuppliesBLUEToKhaimah", bandera = 111, origen = { x = -78712, y = 0, z = -48476 }, velocidad = 42}, --
+    ["Khasab"] = { template = "SuppliesBLUEToKhasab", bandera = 112, origen = { x = 22685, y = 0, z = 6123 }, velocidad = 42},  --
+    ["Bandar-e-Jask"] = {template = "SuppliesBLUEToJask", bandera = 113, origen = { x = -71572, y = 0, z = 133869 }, velocidad = 42}, --
+    ["Sir Abu Nuayr"] = { template = "SuppliesBLUEToNauyr", bandera = 114, origen = { x = -126058, y = 0, z = -214038 }, velocidad = 42}, --
+    ["Abu Musa Island"] = { template = "SuppliesBLUEToAbuMusa", bandera = 115, origen = { x = -54209, y = 0, z = -132921 }, velocidad = 42}, --
+    ["Sirri Island"] = { template = "SuppliesBLUEToSirri", bandera = 116, origen = { x = -45991, y = 0, z = -186560}, velocidad = 42}, --
+    ["Tunb Kochak"] = { template = "SuppliesBLUEToKochak", bandera = 117,  origen = { x = -6688, y = 0, z = -111395 }, velocidad = 42}, --
+    ["Tunb Island AFB"] = { template = "SuppliesBLUEToTunbIsland", bandera = 118,  origen = { x = -6612, y = 0, z = -111493 }, velocidad = 42}, --
+    ["Bandar Lengeh"] = { template = "SuppliesBLUEToLenge", bandera = 119,  origen = { x = 16546, y = 0, z = -139014 }, velocidad = 42}, --
+    ["Kish Intl"] = { template = "SuppliesBLUEToKish", bandera = 120, origen = { x = 18623, y = 0, z = -225613 }, velocidad = 42}, --
+    ["Lavan Island"] = { template = "SuppliesBLUEToLavan", bandera = 121,  origen = { x = 51027, y = 0, z = -292618 }, velocidad = 42}, --
+    ["Qeshm Island"] = { template = "SuppliesBLUEToQeshm", bandera = 122, origen = { x = 40757, y = 0, z = -38587 }, velocidad = 42}, -- 
+    ["Havadarya"] = { template = "SuppliesBLUEToHavadarya", bandera = 123, origen = { x = 92152, y = 0, z = 11190 }, velocidad = 42}, -- 
     --["Bandar Abbas Intl"] = { template = "SuppliesBLUEToAbbas", bandera = 124, origen = { x = -86323, y = 0, z = -51317 }, velocidad = 77.16},
-    ["Lar"] = { template = "SuppliesBLUEToLar", bandera = 125, origen = { x = -379974, y = 0, z = -239255 }, velocidad = 145},
-    ["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126,  origen = { x = -113550, y = 0, z = 470061 }, velocidad = 256}, -------PENDIENTE
+    ["Lar"] = { template = "SuppliesBLUEToLar", bandera = 125, origen = { x = 169184, y = 0, z = -158391 }, velocidad = 42}, --
+    ["Jiroft"] = { template = "SuppliesBLUEToJiroft", bandera = 126,  origen = { x = 259782, y = 0, z = 151489 }, velocidad = 42},  --
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
     --["Kerman"] = { template = "SuppliesBLUEToKerman", bandera = 128 }
 
@@ -1040,30 +1040,30 @@ plantillasLogisticaR = {
     --["Al-Bateen"] = { template = "SuppliesREDToBateen", bandera = 102 },
     --["Sas Al Nakheel"] = { template = "SuppliesBLUEToNakheel", bandera = 103 },
     --["Abu Dhabi Intl"] = { template = "SuppliesBLUEToDhabi", bandera = 104 },
-    ["Al Ain Intl"] = { template = "SuppliesREDToAin", bandera = 105, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Al Maktoum Intl"] = { template = "SuppliesREDToMaktoum", bandera = 106, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Al Minhad AFB"] = { template = "SuppliesREDToMinhad", bandera = 107, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Dubai Intl"] = { template = "SuppliesREDToDubai", bandera = 108, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Sharjah Intl"] = { template = "SuppliesREDToSharjah", bandera = 109, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Fujairah Intl"] = { template = "SuppliesREDToFujairah", bandera = 110, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Ras Al Khaimah Intl"] = { template = "SuppliesREDToKhaimah", bandera = 111, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236},
-    ["Khasab"] = { template = "SuppliesREDToKhasab", bandera = 112, origen = { x = 125587, y = 0, z = 46694 }, velocidad = 77.16},
-    ["Bandar-e-Jask"] = {template = "SuppliesREDToJask", bandera = 113, origen = { x = 125587, y = 0, z = 46694 }, velocidad = 77.16},
-    ["Sir Abu Nuayr"] = { template = "SuppliesREDToNauyr", bandera = 114, origen = { x = 84907, y = 0, z = -108137 }, velocidad = 77.16},
-    ["Abu Musa Island"] = { template = "SuppliesREDToAbuMusa", bandera = 115, origen = { x = 225572, y = 0, z = -45054 }, velocidad = 77.16},
-    ["Sirri Island"] = { template = "SuppliesREDToSirri", bandera = 116, origen = { x = 214139, y = 0, z = -57459 }, velocidad = 77.16},
-    ["Tunb Kochak"] = { template = "SuppliesREDToKochak", bandera = 117,  origen = { x = 543434, y = 0, z = 68236 }, velocidad = 256},
-    ["Tunb Island AFB"] = { template = "SuppliesREDToTunbIsland", bandera = 118,  origen = { x = 543434, y = 0, z = 68236 }, velocidad = 256},
-    ["Bandar Lengeh"] = { template = "SuppliesREDToLenge", bandera = 119,  origen = { x = 543434, y = 0, z = 68236 }, velocidad = 256},
-    ["Kish Intl"] = { template = "SuppliesREDToKish", bandera = 120, origen = { x = 425933, y = 0, z = -43227 }, velocidad = 145},
-    ["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121,  origen = { x = 543434, y = 0, z = 68236 }, velocidad = 256},
-    ["Qeshm Island"] = { template = "SuppliesREDToQeshm", bandera = 122, origen = { x = 543870, y = 0, z = 67495 }, velocidad = 145},
-    ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123, origen = { x = 155216, y = 0, z = 64368 }, velocidad = 77.16},
+    ["Al Ain Intl"] = { template = "SuppliesREDToAin", bandera = 105, origen = { x = -185780, y = 0, z = -62064 }, velocidad = 42}, --
+    ["Al Maktoum Intl"] = { template = "SuppliesREDToMaktoum", bandera = 106, origen = { x = -119941, y = 0, z = -95385 }, velocidad = 42}, --
+    ["Al Minhad AFB"] = { template = "SuppliesREDToMinhad", bandera = 107, origen = { x = -105416, y = 0, z = -79762 }, velocidad = 42}, --
+    ["Dubai Intl"] = { template = "SuppliesREDToDubai", bandera = 108, origen = { x = -79783, y = 0, z = -73766 }, velocidad = 42}, --
+    ["Sharjah Intl"] = { template = "SuppliesREDToSharjah", bandera = 109, origen = { x = -71284, y = 0, z = -59367 }, velocidad = 42}, --
+    ["Fujairah Intl"] = { template = "SuppliesREDToFujairah", bandera = 110, origen = { x = 92336, y = 0, z = 13558 }, velocidad = 42}, --
+    ["Ras Al Khaimah Intl"] = { template = "SuppliesREDToKhaimah", bandera = 111, origen = { x = -39523, y = 0, z = -18521 }, velocidad = 42}, --
+    ["Khasab"] = { template = "SuppliesREDToKhasab", bandera = 112, origen = { x = 22685, y = 0, z = 6123 }, velocidad = 42},--
+    ["Bandar-e-Jask"] = {template = "SuppliesREDToJask", bandera = 113, origen = { x = -45867, y = 0, z = 133862 }, velocidad = 42},--
+    ["Sir Abu Nuayr"] = { template = "SuppliesREDToNauyr", bandera = 114, origen = { x = -80086, y = 0, z = -192387 }, velocidad = 42}, --
+    ["Abu Musa Island"] = { template = "SuppliesREDToAbuMusa", bandera = 115, origen = { x = -12067, y = 0, z = -105666 }, velocidad = 42}, --
+    ["Sirri Island"] = { template = "SuppliesREDToSirri", bandera = 116, origen = { x = -8716, y = 0, z = -153913 }, velocidad = 42}, --
+    ["Tunb Kochak"] = { template = "SuppliesREDToKochak", bandera = 117,  origen = { x = 30344, y = 0, z = -121930 }, velocidad = 42}, --
+    ["Tunb Island AFB"] = { template = "SuppliesREDToTunbIsland", bandera = 118,  origen = { x = 32187, y = 0, z = -81803 }, velocidad = 42}, --
+    ["Bandar Lengeh"] = { template = "SuppliesREDToLenge", bandera = 119,  origen = { x = 58832, y = 0, z = -123088 }, velocidad = 42}, --
+    ["Kish Intl"] = { template = "SuppliesREDToKish", bandera = 120, origen = { x = 55954, y = 0, z = -203673 }, velocidad = 42}, --
+    ["Lavan Island"] = { template = "SuppliesREDToLavan", bandera = 121,  origen = { x = 91528, y = 0, z = -267415 }, velocidad = 42}, --
+    ["Qeshm Island"] = { template = "SuppliesREDToQeshm", bandera = 122, origen = { x = 88518, y = 0, z = -23244 }, velocidad = 42}, -- 
+    ["Havadarya"] = { template = "SuppliesREDToHavadarya", bandera = 123, origen = { x = 124533, y = 0, z = 12048 }, velocidad = 42}, --
     --["Bandar Abbas Intl"] = { template = "SuppliesREDToAbbas", bandera = 124, origen = { x = 313427, y = 0, z = 33203 }, velocidad = 77.16},
-    ["Lar"] = { template = "SuppliesREDToLar", bandera = 125, origen = { x = 543551, y = 0, z = 52245 }, velocidad = 145},
-    ["Jiroft"] = { template = "SuppliesREDToJiroft", bandera = 126,  origen = { x = 543616, y = 0, z = 55348 }, velocidad = 256},
+    ["Lar"] = { template = "SuppliesREDToLar", bandera = 125, origen = { x = 169184, y = 0, z = -158391 }, velocidad = 42}, --
+    ["Jiroft"] = { template = "SuppliesREDToJiroft", bandera = 126,  origen = { x = 301185, y = 0, z = 125295 }, velocidad = 42}, --- 
     --["Shiraz Intl"] = { template = "SuppliesBLUEToShiraz", bandera = 127 },
-    ["Kerman"] = { template = "SuppliesREDToKerman", bandera = 128, origen = { x = 543434, y = 0, z = 68236 }, velocidad = 236}
+    ["Kerman"] = { template = "SuppliesREDToKerman", bandera = 128, origen = { x = 476997, y = 0, z = 62584 }, velocidad = 42} --
 
 }
 
