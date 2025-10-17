@@ -39,7 +39,7 @@ SkillDesc = {
     High = "B+",
     Good = "C+",
     Average = "D+",
-    Random = "RND",
+    Random = "RND", 
 }
 
 _skill = SkillLevels.EXEL
@@ -92,6 +92,19 @@ EnemyTypes = {
     FW190A = 33,
     FW190D = 34,
     
+
+
+    --------------------------------------Helis--------------------------------------------------------- 
+
+    UH1H = 35,
+    OH58D = 36,
+    AH1W = 37,
+    AH64D = 38,
+    KA50 = 39,
+    MI24P = 40,
+    MI28N = 41,
+    SA34L = 42,
+
 
 
 }
@@ -294,6 +307,49 @@ EnemyGroups = {
         guns_id = "Red-FW-190D",
         missiles_id = "Red-FW-190D",
     },
+ --------------------------------------Helis------------------------------------------------------------  
+
+    [EnemyKeys[35]] = {
+        description = "UH1H's",
+        guns_id = "Red-UH1H",
+        missiles_id = "Red-UH1H",
+    },
+    [EnemyKeys[36]] = {
+        description = "OH58D's",
+        guns_id = "Red-OH58D",
+        missiles_id = "Red-OH58D-M",
+    },
+    [EnemyKeys[37]] = {
+        description = "UH1W's",
+        guns_id = "Red-UH1W",
+        missiles_id = "Red-UH1W-M",
+    },
+    [EnemyKeys[38]] = {
+        description = "AH64D's",
+        guns_id = "Red-AH64D",
+        missiles_id = "Red-AH64D-M",
+    },
+    [EnemyKeys[39]] = {
+        description = "KA50's",
+        guns_id = "Red-KA50",
+        missiles_id = "Red-KA50-M",
+    },
+    [EnemyKeys[40]] = {
+        description = "MI24P's",
+        guns_id = "Red-MI24P",
+        missiles_id = "Red-MI24P-M",
+    },
+    [EnemyKeys[41]] = {
+        description = "MI28N's",
+        guns_id = "Red-MI28N",
+        missiles_id = "Red-MI28N-M",
+    },
+    [EnemyKeys[42]] = {
+        description = "SA342L's",
+        guns_id = "Red-SA342L",
+        missiles_id = "Red-SA342L-M",
+    },
+
 }
 
 function ctl.send_message(text, displayTime)
@@ -573,99 +629,112 @@ end
 
 
 function ctl.initializeF10Menu()
-    --number of enemies
-    local countMenu = missionCommands.addSubMenu("Enemy Count")
-    local Cmd1 = missionCommands.addCommand("1× bandit", countMenu, ctl.setNumEnemies, 1)
-    local Cmd2 = missionCommands.addCommand("2× bandits", countMenu, ctl.setNumEnemies, 2)
-    local Cmd3 = missionCommands.addCommand("3× bandits", countMenu, ctl.setNumEnemies, 3)
-    local Cmd4 = missionCommands.addCommand("4× bandits", countMenu, ctl.setNumEnemies, 4)
-    local Cmd5 = missionCommands.addCommand("5× bandits", countMenu, ctl.setNumEnemies, 5)
-    local Cmd6 = missionCommands.addCommand("6× bandits", countMenu, ctl.setNumEnemies, 6)
-    local Cmd7 = missionCommands.addCommand("7× bandits", countMenu, ctl.setNumEnemies, 7)
-    local Cmd8 = missionCommands.addCommand("8× bandits", countMenu, ctl.setNumEnemies, 8)
-    
-    --enemy type
-    local enemiesMenu = missionCommands.addSubMenu("Enemy Type")
+    -- Raíz: F10 / Other / Bandits on Demand
+    local mainMenu = missionCommands.addSubMenu("Bandits on Demand", nil)
+
+    -- Enemy Count
+    local countMenu = missionCommands.addSubMenu("Enemy Count", mainMenu)
+    missionCommands.addCommand("1x bandit",  countMenu, ctl.setNumEnemies, 1)
+    missionCommands.addCommand("2x bandits", countMenu, ctl.setNumEnemies, 2)
+    missionCommands.addCommand("3x bandits", countMenu, ctl.setNumEnemies, 3)
+    missionCommands.addCommand("4x bandits", countMenu, ctl.setNumEnemies, 4)
+    missionCommands.addCommand("5x bandits", countMenu, ctl.setNumEnemies, 5)
+    missionCommands.addCommand("6x bandits", countMenu, ctl.setNumEnemies, 6)
+    missionCommands.addCommand("7x bandits", countMenu, ctl.setNumEnemies, 7)
+    missionCommands.addCommand("8x bandits", countMenu, ctl.setNumEnemies, 8)
+
+    -- Enemy Type (-> Modern / Coldwar / Warbirds / Helicopters)
+    local enemiesMenu = missionCommands.addSubMenu("Enemy Type", mainMenu)
+
     local modernMenu = missionCommands.addSubMenu("Modern", enemiesMenu)
-    local f14aCmd = missionCommands.addCommand("F-14A GR Tomcat", modernMenu, ctl.setEnemyType, "F14A")
-    local f14bCmd = missionCommands.addCommand("F-14B Tomcat", modernMenu, ctl.setEnemyType, "F14B")
-    local f15cCmd = missionCommands.addCommand("F-15C Eagle", modernMenu, ctl.setEnemyType, "F15C")
-    local f15ECmd = missionCommands.addCommand("F-15E Strike Eagle", modernMenu, ctl.setEnemyType, "F15E")
-    local f16cmd = missionCommands.addCommand("F-16C Viper", modernMenu, ctl.setEnemyType, "F16")
-    local f18Cmd = missionCommands.addCommand("F-18C Hornet", modernMenu, ctl.setEnemyType, "F18")
-    local av8bCmd = missionCommands.addCommand("AV-8B Harrier", modernMenu, ctl.setEnemyType, "AV8B")
-    local j11Cmd = missionCommands.addCommand("J-11-A", modernMenu, ctl.setEnemyType, "J11A")
-    local m29Cmd = missionCommands.addCommand("JF-17 Thunder", modernMenu, ctl.setEnemyType, "JF17")
-    local m31Cmd = missionCommands.addCommand("MiG-31 Foxhound", modernMenu, ctl.setEnemyType, "MiG31")
-    local su27Cmd = missionCommands.addCommand("SU-27 Flanker", modernMenu, ctl.setEnemyType, "SU27")
-    local su30Cmd = missionCommands.addCommand("SU-30 Flanker C", modernMenu, ctl.setEnemyType, "SU30")
-    local su33Cmd = missionCommands.addCommand("SU-33 Flanker D", modernMenu, ctl.setEnemyType, "SU33")
+    missionCommands.addCommand("F-14A Tomcat",       modernMenu, ctl.setEnemyType, "F14A")
+    missionCommands.addCommand("F-14B Tomcat",       modernMenu, ctl.setEnemyType, "F14B")
+    missionCommands.addCommand("F-15C Eagle",        modernMenu, ctl.setEnemyType, "F15C")
+    missionCommands.addCommand("F-15E Strike Eagle", modernMenu, ctl.setEnemyType, "F15E")
+    missionCommands.addCommand("F-16C Viper",        modernMenu, ctl.setEnemyType, "F16CM")
+    missionCommands.addCommand("F/A-18C Hornet",     modernMenu, ctl.setEnemyType, "F18C")
+    missionCommands.addCommand("AV-8B Harrier",      modernMenu, ctl.setEnemyType, "AV8B")
+    missionCommands.addCommand("J-11A",              modernMenu, ctl.setEnemyType, "J11A")
+    missionCommands.addCommand("JF-17 Thunder",      modernMenu, ctl.setEnemyType, "JF17")
+    missionCommands.addCommand("MiG-31 Foxhound",    modernMenu, ctl.setEnemyType, "MIG31")
+    missionCommands.addCommand("Su-27 Flanker",      modernMenu, ctl.setEnemyType, "SU27")
+    missionCommands.addCommand("Su-30 Flanker C",    modernMenu, ctl.setEnemyType, "SU30")
+    missionCommands.addCommand("Su-33 Flanker D",    modernMenu, ctl.setEnemyType, "SU33")
 
-    local ColdwarMenu = missionCommands.addSubMenu("Coldwar", enemiesMenu)
-    local f86fCmd = missionCommands.addCommand("F-86F Sabre", ColdwarMenu, ctl.setEnemyType, "F86F")
-    local f5eCmd = missionCommands.addCommand("F-5E Tiger", ColdwarMenu, ctl.setEnemyType, "F5E")
-    local a10cCmd = missionCommands.addCommand("A-10C-II Tank Killer", ColdwarMenu, ctl.setEnemyType, "A10C")
-    local f4eCmd = missionCommands.addCommand("F-4E Phantom", ColdwarMenu, ctl.setEnemyType, "F4E")
-    local mig15Cmd = missionCommands.addCommand("Mig-15 Fagot", ColdwarMenu, ctl.setEnemyType, "MIG15")
-    local mig19Cmd = missionCommands.addCommand("Mig-19 Farmer", ColdwarMenu, ctl.setEnemyType, "MIG19")
-    local mig21Cmd = missionCommands.addCommand("Mig-21 Fishbed", ColdwarMenu, ctl.setEnemyType, "MIG21")
-    local mig23Cmd = missionCommands.addCommand("Mig-23 Flogger", ColdwarMenu, ctl.setEnemyType, "MIG23")
-    local mig29Cmd = missionCommands.addCommand("Mig-29 Fulcrum", ColdwarMenu, ctl.setEnemyType, "MIG29")
-    local m2000cCmd = missionCommands.addCommand("Mirage-2000 C", ColdwarMenu, ctl.setEnemyType, "M2000C")
-    local mf1eeCmd = missionCommands.addCommand("Mirage-F1 Echo Echo", ColdwarMenu, ctl.setEnemyType, "MF1EE")
-    local ajs37Cmd = missionCommands.addCommand("AJS-37 Viggen", ColdwarMenu, ctl.setEnemyType, "AJS37")
+    local coldwarMenu = missionCommands.addSubMenu("Coldwar", enemiesMenu)
+    missionCommands.addCommand("F-86F Sabre",           coldwarMenu, ctl.setEnemyType, "F86F")
+    missionCommands.addCommand("F-5E Tiger II",         coldwarMenu, ctl.setEnemyType, "F5E")
+    missionCommands.addCommand("A-10C II Tank Killer",  coldwarMenu, ctl.setEnemyType, "A10C")
+    missionCommands.addCommand("F-4E Phantom II",       coldwarMenu, ctl.setEnemyType, "F4E")
+    missionCommands.addCommand("MiG-15bis",             coldwarMenu, ctl.setEnemyType, "MIG15")
+    missionCommands.addCommand("MiG-19P Farmer",        coldwarMenu, ctl.setEnemyType, "MIG19")
+    missionCommands.addCommand("MiG-21bis Fishbed",     coldwarMenu, ctl.setEnemyType, "MIG21")
+    missionCommands.addCommand("MiG-23MLA Flogger",     coldwarMenu, ctl.setEnemyType, "MIG23")
+    missionCommands.addCommand("MiG-29 Fulcrum",        coldwarMenu, ctl.setEnemyType, "MIG29")
+    missionCommands.addCommand("Mirage 2000C",          coldwarMenu, ctl.setEnemyType, "M2000C")
+    missionCommands.addCommand("Mirage F1EE",           coldwarMenu, ctl.setEnemyType, "MF1EE")
+    missionCommands.addCommand("AJS-37 Viggen",         coldwarMenu, ctl.setEnemyType, "AJS37")
 
-    local WarbirdsMenu = missionCommands.addSubMenu("Warbirds", enemiesMenu)
-    local f4uCmd = missionCommands.addCommand("F-4U Corsair", WarbirdsMenu, ctl.setEnemyType, "F4U")
-    local p47Cmd = missionCommands.addCommand("P-47  Thunderbolt", WarbirdsMenu, ctl.setEnemyType, "P47")
-    local p51Cmd = missionCommands.addCommand("P-51 Mustang", WarbirdsMenu, ctl.setEnemyType, "P51")
-    local spitCmd = missionCommands.addCommand("Spitfire-LF Supermarine", WarbirdsMenu, ctl.setEnemyType, "SPIT")
-    local I16Cmd = missionCommands.addCommand("Mosquito-FB Havilland", WarbirdsMenu, ctl.setEnemyType, "MOS")
-    local i16Cmd = missionCommands.addCommand("I-16 Polikarpov", WarbirdsMenu, ctl.setEnemyType, "I16")
-    local bf109Cmd = missionCommands.addCommand("BF-109 Messerschmitt", WarbirdsMenu, ctl.setEnemyType, "BF109")
-    local fw190aCmd = missionCommands.addCommand("FW-190-A", WarbirdsMenu, ctl.setEnemyType, "FW190A")
-    local fw190dCmd = missionCommands.addCommand("FW-190-8 DORA", WarbirdsMenu, ctl.setEnemyType, "FW190D")
-    
-   
+    local warbirdsMenu = missionCommands.addSubMenu("Warbirds", enemiesMenu)
+    missionCommands.addCommand("F4U Corsair",           warbirdsMenu, ctl.setEnemyType, "F4U")
+    missionCommands.addCommand("P-47 Thunderbolt",      warbirdsMenu, ctl.setEnemyType, "P47")
+    missionCommands.addCommand("P-51 Mustang",          warbirdsMenu, ctl.setEnemyType, "P51")
+    missionCommands.addCommand("Spitfire LF Mk.IX",     warbirdsMenu, ctl.setEnemyType, "SPITFIRE")
+    missionCommands.addCommand("Mosquito FB Mk.VI",     warbirdsMenu, ctl.setEnemyType, "MOSQUITO")
+    missionCommands.addCommand("I-16",                  warbirdsMenu, ctl.setEnemyType, "I16")
+    missionCommands.addCommand("Bf 109 K-4",            warbirdsMenu, ctl.setEnemyType, "BF109")
+    missionCommands.addCommand("Fw 190 A-8",            warbirdsMenu, ctl.setEnemyType, "FW190A")
+    missionCommands.addCommand("Fw 190 D-9",            warbirdsMenu, ctl.setEnemyType, "FW190D")
 
-    --distance
-    local distanceMenu = missionCommands.addSubMenu("Spawn Distance")
-    local cmdBehind  = missionCommands.addCommand("behind me", distanceMenu, ctl.setDistance, -1)
-    local cmd1  = missionCommands.addCommand("1 mile", distanceMenu, ctl.setDistance, 1)
-    local cmd5  = missionCommands.addCommand("5 miles", distanceMenu, ctl.setDistance, 5)
-    local cmd10 = missionCommands.addCommand("10 miles", distanceMenu, ctl.setDistance, 10)
-    local cmd25 = missionCommands.addCommand("25 miles", distanceMenu, ctl.setDistance, 25)
-    local cmd50 = missionCommands.addCommand("50 miles", distanceMenu, ctl.setDistance, 50)
-    local cmd50 = missionCommands.addCommand("75 miles", distanceMenu, ctl.setDistance, 75)
-    local cmd75 = missionCommands.addCommand("100 miles", distanceMenu, ctl.setDistance, 100)
-    local cmd100 = missionCommands.addCommand("150 miles", distanceMenu, ctl.setDistance, 150)
+    local helisMenu = missionCommands.addSubMenu("Helicopters", enemiesMenu)
+    missionCommands.addCommand("UH-1H Huey",        helisMenu, ctl.setEnemyType, "UH1H")
+    missionCommands.addCommand("OH-58D Kiowa",      helisMenu, ctl.setEnemyType, "OH58D")
+    missionCommands.addCommand("AH-1W Super Cobra", helisMenu, ctl.setEnemyType, "AH1W")
+    missionCommands.addCommand("AH-64D Apache",     helisMenu, ctl.setEnemyType, "AH64D")
+    missionCommands.addCommand("Ka-50 Black Shark", helisMenu, ctl.setEnemyType, "KA50")
+    missionCommands.addCommand("Mi-24P Hind",       helisMenu, ctl.setEnemyType, "MI24P")
+    missionCommands.addCommand("Mi-28N Havoc",      helisMenu, ctl.setEnemyType, "MI28N")
+    missionCommands.addCommand("SA342L Gazelle",    helisMenu, ctl.setEnemyType, "SA34L")
 
-    --angels / altitude
-    local angelsMenu = missionCommands.addSubMenu("Altitude")
-    local cmdMyAlt  = missionCommands.addCommand("my altitude", angelsMenu, ctl.setAngels, -1)
-    local cmd1  = missionCommands.addCommand("1,000 feet", angelsMenu, ctl.setAngels, 1)
-    local cmd5  = missionCommands.addCommand("5,000 feet", angelsMenu, ctl.setAngels, 5)
-    local cmd10 = missionCommands.addCommand("10k feet", angelsMenu, ctl.setAngels, 10)
-    local cmd15 = missionCommands.addCommand("15k feet", angelsMenu, ctl.setAngels, 15)
-    local cmd20 = missionCommands.addCommand("20k feet", angelsMenu, ctl.setAngels, 20)
-    local cmd25 = missionCommands.addCommand("25k feet", angelsMenu, ctl.setAngels, 25)
-    local cmd30 = missionCommands.addCommand("30k feet", angelsMenu, ctl.setAngels, 30)
-    local cmd40 = missionCommands.addCommand("40k feet", angelsMenu, ctl.setAngels, 40)
-    local cmd50 = missionCommands.addCommand("50k feet", angelsMenu, ctl.setAngels, 50)
+    -- Spawn Distance
+    local distanceMenu = missionCommands.addSubMenu("Spawn Distance", mainMenu)
+    missionCommands.addCommand("behind me", distanceMenu, ctl.setDistance, -1)
+    missionCommands.addCommand("1 mile",    distanceMenu, ctl.setDistance, 1)
+    missionCommands.addCommand("5 miles",   distanceMenu, ctl.setDistance, 5)
+    missionCommands.addCommand("10 miles",  distanceMenu, ctl.setDistance, 10)
+    missionCommands.addCommand("25 miles",  distanceMenu, ctl.setDistance, 25)
+    missionCommands.addCommand("50 miles",  distanceMenu, ctl.setDistance, 50)
+    missionCommands.addCommand("75 miles",  distanceMenu, ctl.setDistance, 75)
+    missionCommands.addCommand("100 miles", distanceMenu, ctl.setDistance, 100)
+    missionCommands.addCommand("150 miles", distanceMenu, ctl.setDistance, 150)
 
-    --enemy skill
-    local skillMenu = missionCommands.addSubMenu("Enemy Skill")
-    local AvrgCmd = missionCommands.addCommand(SkillLevels.AVRG .. ' (' .. ctl.getSkillDesc(SkillLevels.AVRG) .. ')', skillMenu, ctl.setSkillLevel, SkillLevels.AVRG)
-    local GoodCmd = missionCommands.addCommand(SkillLevels.GOOD .. ' (' .. ctl.getSkillDesc(SkillLevels.GOOD) .. ')', skillMenu, ctl.setSkillLevel, SkillLevels.GOOD)
-    local HighCmd = missionCommands.addCommand(SkillLevels.HIGH .. ' (' .. ctl.getSkillDesc(SkillLevels.HIGH) .. ')', skillMenu, ctl.setSkillLevel, SkillLevels.HIGH)
-    local ExelCmd = missionCommands.addCommand(SkillLevels.EXEL .. ' (' .. ctl.getSkillDesc(SkillLevels.EXEL) .. ')', skillMenu, ctl.setSkillLevel, SkillLevels.EXEL)
-    local RandCmd = missionCommands.addCommand(SkillLevels.RAND .. ' (' .. ctl.getSkillDesc(SkillLevels.RAND) .. ')', skillMenu, ctl.setSkillLevel, SkillLevels.RAND)
+    -- Altitude
+    local angelsMenu = missionCommands.addSubMenu("Altitude", mainMenu)
+    missionCommands.addCommand("my altitude", angelsMenu, ctl.setAngels, -1)
+    missionCommands.addCommand("1,000 feet",  angelsMenu, ctl.setAngels, 1)
+    missionCommands.addCommand("5,000 feet",  angelsMenu, ctl.setAngels, 5)
+    missionCommands.addCommand("10k feet",    angelsMenu, ctl.setAngels, 10)
+    missionCommands.addCommand("15k feet",    angelsMenu, ctl.setAngels, 15)
+    missionCommands.addCommand("20k feet",    angelsMenu, ctl.setAngels, 20)
+    missionCommands.addCommand("25k feet",    angelsMenu, ctl.setAngels, 25)
+    missionCommands.addCommand("30k feet",    angelsMenu, ctl.setAngels, 30)
+    missionCommands.addCommand("40k feet",    angelsMenu, ctl.setAngels, 40)
+    missionCommands.addCommand("50k feet",    angelsMenu, ctl.setAngels, 50)
 
-    -- commands
-    commandMenu = missionCommands.addSubMenu("Commands")
+    -- Enemy Skill
+    local skillMenu = missionCommands.addSubMenu("Enemy Skill", mainMenu)
+    missionCommands.addCommand(SkillLevels.AVRG .. " (" .. ctl.getSkillDesc(SkillLevels.AVRG) .. ")", skillMenu, ctl.setSkillLevel, SkillLevels.AVRG)
+    missionCommands.addCommand(SkillLevels.GOOD .. " (" .. ctl.getSkillDesc(SkillLevels.GOOD) .. ")", skillMenu, ctl.setSkillLevel, SkillLevels.GOOD)
+    missionCommands.addCommand(SkillLevels.HIGH .. " (" .. ctl.getSkillDesc(SkillLevels.HIGH) .. ")", skillMenu, ctl.setSkillLevel, SkillLevels.HIGH)
+    missionCommands.addCommand(SkillLevels.EXEL .. " (" .. ctl.getSkillDesc(SkillLevels.EXEL) .. ")", skillMenu, ctl.setSkillLevel, SkillLevels.EXEL)
+    missionCommands.addCommand(SkillLevels.RAND .. " (" .. ctl.getSkillDesc(SkillLevels.RAND) .. ")", skillMenu, ctl.setSkillLevel, SkillLevels.RAND)
+
+    -- Commands (todo dentro de mainMenu)
+    commandMenu = missionCommands.addSubMenu("Commands", mainMenu)
     ctl.updateCommandMenu()
-    
-    ctl.send_message(
+
+    ctl.send_message("Bandits on Demand listo en F10 -> Other -> Bandits on Demand", 5)
+      ctl.send_message(
         "Use F10 Menu or VoiceAttack\n" ..
         "=======================\n" ..
         "1. Select number of bandits\n" ..
@@ -679,6 +748,10 @@ function ctl.initializeF10Menu()
         5
     )
 end
+
+    
+  
+
 
 function ctl.updateCommandMenu()
     -- Remove previous commands
@@ -713,7 +786,7 @@ end
 
 -- set defaults
 ctl.setNumEnemies(2, true)
-ctl.setEnemyType("MiG21", true)
+ctl.setEnemyType("F4E", true)
 ctl.setDistance(10, true)
 
 -- setup menu items in F10
