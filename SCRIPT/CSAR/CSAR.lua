@@ -1684,7 +1684,7 @@ function csar.signalFlare(_unitName)
 
     local _closet = csar.getClosetDownedPilot(_heli)
 
-    if _closet ~= nil and _closet.pilot ~= nil and _closet.distance < 8000.0 then
+    if _closet ~= nil and _closet.pilot ~= nil and _closet.distance < 16000.0 then
 
         local _clockDir = csar.getClockDirection(_heli, _closet.pilot)
 
@@ -1693,7 +1693,7 @@ function csar.signalFlare(_unitName)
 
         trigger.action.signalFlare(_closet.pilot:getPoint(), 1, 0)
     else
-        csar.displayMessageToSAR(_heli, "No Pilots within 8KM", 20)
+        csar.displayMessageToSAR(_heli, "No Pilots within 16KM", 20)
     end
 end
 
@@ -1722,7 +1722,7 @@ function csar.reqsmoke( _unitName )
 
     local _closet = csar.getClosetDownedPilot(_heli)
 
-    if _closet ~= nil and _closet.pilot ~= nil and _closet.distance < 8000.0 then
+    if _closet ~= nil and _closet.pilot ~= nil and _closet.distance < 16000.0 then
 
         local _clockDir = csar.getClockDirection(_heli, _closet.pilot)
 
@@ -1739,7 +1739,7 @@ function csar.reqsmoke( _unitName )
          trigger.action.smoke(_closet.pilot:getPoint(), _smokecolor)
   
     else
-        csar.displayMessageToSAR(_heli, "No Pilots within 8KM", 20)
+        csar.displayMessageToSAR(_heli, "No Pilots within 16KM", 20)
     end
 
 end
