@@ -36,8 +36,12 @@ local CFG = {
     blue = {
 
       -- AVIONES -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      --A10C Tank Killer - COLD WAR
+      { name = "A10-Template-01-B", prob = 0.4 },
+      { name = "A10-Template-02-B", prob = 0.2 },
+      { name = "A10C-Template-03-B", prob = 0.1 },
 
-      --A10 Tank Killer 
+      --A10CII Tank Killer - MODERN
       { name = "A10II-Template-01-B", prob = 0.4 },
       { name = "A10II-Template-02-B", prob = 0.2 },
       { name = "A10II-Template-03-B", prob = 0.1 },
@@ -83,6 +87,11 @@ local CFG = {
   }
 }
 
+ --red = {
+    --  { name = "CajaR_Template_1", prob = 0.40 },
+   --   { name = "CajaR_Template_2", prob = 0.35 },
+    --  { name = "CajaR_Template_3", prob = 0.25 },
+   -- }
 --=============================================================
 -- Utilidades
 --=============================================================
