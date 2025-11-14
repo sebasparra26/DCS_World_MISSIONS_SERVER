@@ -23,6 +23,8 @@ local CFG = {
   -- Campos válidos por zona: name (obligatorio), side ("blue"/"red"), cantidad (override).
   zonas = {
     { name = "cajasB", side = "blue", cantidad = 250 },
+    { name = "cajasB1", side = "blue", cantidad = 150 },
+    { name = "cajasB2", side = "blue", cantidad = 150 },
     --{ name = "cajasR", side = "red",  cantidad = 0   },
     -- "otra_zona",
   },
