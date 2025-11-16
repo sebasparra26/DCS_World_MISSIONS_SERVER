@@ -14,6 +14,7 @@ StateFlags = {
     totalEnemies =      3004, -- total existing
     sam =               3005, -- SAMs on/off
     missiles =          3006, -- Missiles on/off
+    alliesAttack = 3007, -- Allies Attack ON/OFF
 }
 
 local ctl = {}
@@ -123,6 +124,8 @@ Menus = {
     autoRestartCmd = nil,
     MissilesCmdOn = nil,
     MissilesCmdOff = nil,
+    AlliesAtkCmdOn = nil,
+    AlliesAtkCmdOff = nil,
 }
 
 
@@ -602,6 +605,17 @@ function ctl.toggleMissiles(bool)
     ctl.updateCommandMenu()
 end
 
+function ctl.toggleAlliesAttack(bool)
+    if bool == false then
+        ctl.send_message("Allies Attack: OFF", 2)
+        trigger.action.setUserFlag(StateFlags.alliesAttack, 0)
+    else
+        ctl.send_message("Allies Attack: ON", 2)
+        trigger.action.setUserFlag(StateFlags.alliesAttack, 1)
+    end
+    ctl.updateCommandMenu()
+end
+
 function ctl.getGroupName()
     local missiles = trigger.misc.getUserFlag(StateFlags.missiles)
     local enemyType = ctl.getEnemyType()
@@ -744,6 +758,7 @@ function ctl.initializeF10Menu()
         "    Default Bandits: " .. ctl.getSettings() .. "\n" ..
         "    Default SAM sites: OFF\n" ..
         "    Default Missiles: OFF\n" ..
+        "    Default Aliess: OFF\n" ..
         "=======================\n",
         5
     )
@@ -762,6 +777,8 @@ function ctl.updateCommandMenu()
     if (Menus.SAMsCmdOff) then missionCommands.removeItem(Menus.SAMsCmdOff) end
     if (Menus.MissilesCmdOff) then missionCommands.removeItem(Menus.MissilesCmdOff) end
     if (Menus.MissilesCmdOn) then missionCommands.removeItem(Menus.MissilesCmdOn) end
+     if (Menus.AlliesAtkCmdOff) then missionCommands.removeItem(Menus.AlliesAtkCmdOff) end
+    if (Menus.AlliesAtkCmdOn) then missionCommands.removeItem(Menus.AlliesAtkCmdOn) end
 
     -- Add new commands
     Menus.startCmd = missionCommands.addCommand("Spawn " .. ctl.getSettings(), commandMenu, ctl.spawnGroup, {})
@@ -782,6 +799,15 @@ function ctl.updateCommandMenu()
     if sam == 0 then txt1 = "◀" else txt2 = "◀" end
     Menus.SAMsCmdOff = missionCommands.addCommand("Turn SAM OFF" .. txt1, commandMenu, ctl.toggleSAMs, false)
     Menus.SAMsCmdOn = missionCommands.addCommand("Turn SAM ON" .. txt2, commandMenu, ctl.toggleSAMs, true)
+
+        -- Allies Attack ON / OFF
+    txt1 = ""
+    txt2 = ""
+    local atk = trigger.misc.getUserFlag(StateFlags.alliesAttack)
+    if atk == 0 then txt1 = "◀" else txt2 = "◀" end
+
+    Menus.AlliesAtkCmdOff = missionCommands.addCommand("Allies Attack OFF" .. txt1, commandMenu, ctl.toggleAlliesAttack, false)
+    Menus.AlliesAtkCmdOn = missionCommands.addCommand("Allies Attack ON" .. txt2, commandMenu, ctl.toggleAlliesAttack, true)
 end
 
 -- set defaults
