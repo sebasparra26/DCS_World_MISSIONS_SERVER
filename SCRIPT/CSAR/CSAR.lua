@@ -906,9 +906,9 @@ csar.addBeaconToGroup = function(_woundedGroupName, _freq)
 
     local _sound = "l10n/DEFAULT/" .. csar.radioSound
 
-    trigger.action.radioTransmission(_sound, _group:getUnit(1):getPoint(), 0, false, _freq, 1000)
+    trigger.action.radioTransmission(_sound, _group:getUnit(1):getPoint(), 0, true, _freq, 10000)
 
-    timer.scheduleFunction(csar.refreshRadioBeacon, { _woundedGroupName, _freq }, timer.getTime() + 30)
+    --timer.scheduleFunction(csar.refreshRadioBeacon, { _woundedGroupName, _freq }, timer.getTime() + 30)
 end
 
 csar.refreshRadioBeacon = function(_args)
@@ -2001,10 +2001,10 @@ function csar.generateVHFrequencies()
     csar.freeVHFFrequencies = {}
     csar.usedVHFFrequencies = {}
 
-    local _start = 200000
+    local _start = 500000
 
     -- first range
-    while _start < 400000 do
+    while _start < 900000 do
 
         -- skip existing NDB frequencies
         local _found = false
@@ -2023,7 +2023,7 @@ function csar.generateVHFrequencies()
         _start = _start + 10000
     end
 
-    _start = 400000
+    _start = 900001
     -- second range
     while _start < 850000 do
 
@@ -2043,7 +2043,7 @@ function csar.generateVHFrequencies()
         _start = _start + 10000
     end
 
-    _start = 850000
+    _start = 1250001
     -- third range
     while _start <= 1250000 do
 

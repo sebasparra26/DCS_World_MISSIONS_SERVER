@@ -6,7 +6,7 @@ local defaultCountry = country.id.USA
 
 local USAR_ECONOMIA = false
 local AUTO_DELETE_SECONDS = 3600
-local INTERVALO_RESUMEN = 300
+local INTERVALO_RESUMEN = 200
 
 local function formatearDolaresLegible(valor)
   if type(valor) ~= "number" then return "$0" end
@@ -44,7 +44,7 @@ local COSTOS_TANKER = {
   ["S-3B Tanker"] = 250000
 }
 
-local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = true, true, true
+local HIDE_ON_MAP, HIDE_ON_PLANNER, HIDE_ON_MFD = false, false, false
 
 local tankerTypes = {
   ["KC-135"] = { type = "KC-135", cs = {1, 1, 0}, tac = "BSL" },
@@ -200,7 +200,7 @@ function eventHandlerAzul:onEvent(e)
   if t == "tankerh" or t == "tankerv" then
     local hdg = (t == "tankerh") and math.rad(90) or 0
     local p1 = { x = e.pos.x, y = e.pos.z }
-    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 60, y = p1.y + math.sin(hdg) * 1852 * 60 }
+    local p2 = { x = p1.x + math.cos(hdg) * 1852 * 80, y = p1.y + math.sin(hdg) * 1852 * 80 }
     spawnTankerAzul(_G.__SEL_AZUL, p1, p2, hdg)
     _G.__SEL_AZUL = nil
   end

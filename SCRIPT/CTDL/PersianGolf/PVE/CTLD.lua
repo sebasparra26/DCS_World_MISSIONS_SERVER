@@ -577,9 +577,9 @@ ctld.pickupZones = {
     { "pickzone5", "white", -1, "yes", 0 },--TARAWA
     { "pickzone6", "white", -1, "yes", 0 },--TARAWA
     { "pickzone7", "white", -1, "yes", 0 },--BLUE COMMAND CENTER
-    { "pickzone8", "white", -1, "yes", 0 }, --RED COMMAND CENTER
-    { "pickzone9", "white", -1, "yes", 0 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
-    { "pickzone10", "white", -1, "yes", 0 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
+    { "pickzone8", "none", -1, "yes", 0 }, --RED COMMAND CENTER
+    { "pickzone9", "none", -1, "yes", 0 }, -- limits pickup zone 9 to 5 groups of soldiers or vehicles, only red can pick up
+    { "pickzone10", "none", -1, "yes", 0 },  -- limits pickup zone 10 to 10 groups of soldiers or vehicles, only blue can pick up
 
     { "pickzone11", "white", -1, "yes", 0 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
     { "pickzone12", "white", -1, "yes", 0 },  -- limits pickup zone 11 to 20 groups of soldiers or vehicles, only blue can pick up. Zone starts inactive!
@@ -1148,10 +1148,10 @@ ctld.loadableGroups = {
     --{name = ctld.i18n_translate("Standard Group x 33"), inf = 10, mg = 10, at = 10, aa = 3 }, -- CHINOOK
     --{name = ctld.i18n_translate("Standard Group x 30"), inf = 10, mg = 10, at = 10, aa = 3 }, -- Hercules
     --{name = ctld.i18n_translate("Standard Group x 16"), inf = 8, mg = 2, at = 2, aa = 4 }, -- MI8
-    {name = ctld.i18n_translate("Standard Group x 10"), inf = 4, mg = 2, at = 2, aa = 2 }, -- MI24
-    {name = ctld.i18n_translate("Standard Group x 2"), mg = 1,  aa = 1 }, -- HUEY
+    --{name = ctld.i18n_translate("Standard Group x 10"), inf = 4, mg = 2, at = 2, aa = 2 }, -- MI24
+    {name = ctld.i18n_translate("Standard Group x 8"), inf = 2, mg = 2, at = 2, aa = 2 }, -- HUEY
     --{name = ctld.i18n_translate("Standard Group x 4"), inf = 1, mg = 1, at = 1, aa = 1 }, -- HUEY
-    {name = ctld.i18n_translate("Standard Group x 1"), mg = 1}, -- Others
+    --{name = ctld.i18n_translate("Standard Group x 1"), mg = 1}, -- Others
     --{name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
     --{name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
     --{name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
