@@ -29,7 +29,7 @@ CARGO_ZONES = {
 }
 
 --=============================================================
--- TIPOS DE CARGA - MAPA PERSIAN GULF
+-- TIPOS DE CARGA - MAPA SYRIA
 --=============================================================
 
 CARGO_TYPES = {

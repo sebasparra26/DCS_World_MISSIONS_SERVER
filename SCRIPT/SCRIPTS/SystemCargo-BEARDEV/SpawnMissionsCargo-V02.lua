@@ -55,17 +55,8 @@ local CFG = {
   smokeColorDrop   = "ORANGE",
 
 
-  --===========================================================
-  -- TIPOS DE CARGA
-  --===========================================================
-  cargoTypes = {
-    --{ label = "Carga Pesada",    template = "CARGO_TEMPLATE_01", qty = { mode = "fixed", value = 1 } },
-    { label = "Carga Liviana (CDS BARRILES)",    template = "CARGO_TEMPLATE_01", qty = { mode = "random", min = 1, max = 10 }  },
-    { label = "Carga Liviana (CDS CAJAS)",  template = "CARGO_TEMPLATE_02", qty = { mode = "random", min = 1, max = 5 } },
-    { label = "Carga Pesada (CONTENEDOR LIVIANO)",    template = "CARGO_TEMPLATE_04", qty = { mode = "random", min = 1, max = 3 }  },
-    { label = "Carga Pesada (CONTENEDOR PESADO)",    template = "CARGO_TEMPLATE_04", qty = { mode = "fixed", value = 1 } },
-    -- { label = "Suministros",  template = "CARGO_TEMPLATE_03", qty = { mode = "random", min = 4, max = 10 } },
-  },
+
+
 
   -- Spawn
   cargoMinSep = 8,
