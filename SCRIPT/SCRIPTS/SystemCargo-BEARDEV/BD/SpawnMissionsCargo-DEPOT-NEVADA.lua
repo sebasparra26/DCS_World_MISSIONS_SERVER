@@ -61,9 +61,15 @@ CARGO_TYPES = {
   },
     {
     label = "Carga Liviana (AMMO BOX)",
-    aircraft = { "MI24" }, -- permitido en estos
+    aircraft = { "HUEY", "MI24" }, -- permitido en estos
     template = "CARGO_TEMPLATE_14",
     qty = { mode = "fixed", value = 1  }
+  },
+     {
+    label = "Carga Liviana (AMMO BOX)",
+    aircraft = { "CHINOOK", "MI8" }, -- permitido en estos
+    template = "CARGO_TEMPLATE_14",
+    qty = { mode = "random", min = 1, max = 4  }
   },
   {
     label = "Carga Liviana (CDS CAJAS)",
