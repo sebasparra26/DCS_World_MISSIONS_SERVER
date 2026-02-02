@@ -30,7 +30,7 @@ do
     local rules = {
         -- EJEMPLO 1: (3000 AND 3001) -> pulso 3002 durante 5s, one-shot
         {
-            name = "Regla_3000_3001_a_3002",
+            name = "01",
             inputs = { 3000, 3001 },
             out = 3002,
             pulse = 5,
@@ -41,9 +41,18 @@ do
         -- EJEMPLO 2: (3500 AND 3600 AND 3700) -> pulso 3800 durante 5s
         -- (cambia 3800 por la X bandera que quieras)
         {
-            name = "Regla_3500_3600_3700_a_3800",
-            inputs = { 3500, 3600, 3700 },
-            out = 3800,
+            name = "02",
+            inputs = { 3003, 3004 },
+            out = 3005,
+            pulse = 5,
+            interval = 1,
+            oneShot = true,
+        },
+
+        {
+            name = "03",
+            inputs = { 3006, 3007 },
+            out = 3008,
             pulse = 5,
             interval = 1,
             oneShot = true,
