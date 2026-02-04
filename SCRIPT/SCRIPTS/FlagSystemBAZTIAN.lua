@@ -53,7 +53,7 @@ do
             name = "03",
             inputs = { 3006, 3007 },
             out = 3008,
-            pulse = 5,
+            pulse = 7,
             interval = 1,
             oneShot = true,
         },
