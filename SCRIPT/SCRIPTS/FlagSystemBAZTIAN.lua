@@ -57,6 +57,14 @@ do
             interval = 1,
             oneShot = true,
         },
+         {
+            name = "04",
+            inputs = { 3013, 3014, 3015 },
+            out = 3016,
+            pulse = 7,
+            interval = 1,
+            oneShot = true,
+        },
     }
 
     -- Estado interno de reglas (no toca tus flags de input)
