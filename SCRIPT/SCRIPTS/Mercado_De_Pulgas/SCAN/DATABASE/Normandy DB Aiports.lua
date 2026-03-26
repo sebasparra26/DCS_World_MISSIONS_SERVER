@@ -16,7 +16,10 @@ estadoBanderasAeropuertos = {
     ["Saint-Aubin"] = { bandera = 112, valor = nil },
     ["Beauvais-Tille"] = { bandera = 113, valor = nil },
     ["Amiens-Glisy"] = { bandera = 114, valor = nil },
-    ["Abbeville Drucat"] = { bandera = 115, valor = nil }
+    ["Abbeville Drucat"] = { bandera = 115, valor = nil },
+    ["Alderney"] = { bandera = 116, valor = nil },
+    ["Guernsey"] = { bandera = 117, valor = nil },
+    ["Jersey"] = { bandera = 118, valor = nil }
 }
 
 aeropuertos = {
@@ -35,5 +38,8 @@ aeropuertos = {
     ["Saint-Aubin"] = { position = {x = 48979, y = 0, z = 97582}, radius = 4000 },
     ["Beauvais-Tille"] = { position = {x = 6070, y = 0, z = 175169}, radius = 5000 },
     ["Amiens-Glisy"] = { position = {x = 53411, y = 0, z = 191760}, radius = 5000 },
-    ["Abbeville Drucat"] = { position = {x = 81026, y = 0, z = 150752}, radius = 5000 }
+    ["Abbeville Drucat"] = { position = {x = 81026, y = 0, z = 150752}, radius = 5000 },
+    ["Alderney"] = { position = {x = 21466, y = 0, z = -138963}, radius = 7000 },
+    ["Guernsey"] = { position = {x = -8954, y = 0, z = -166274}, radius = 7000 },
+    ["Jersey"] = { position = {x = -34041, y = 0, z = -137217}, radius = 7000 }
 }

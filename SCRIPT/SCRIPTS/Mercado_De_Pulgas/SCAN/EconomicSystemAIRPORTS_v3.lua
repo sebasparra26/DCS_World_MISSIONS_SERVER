@@ -1,5 +1,5 @@
 -- Activar o desactivar debug
-local debugActivo = true
+local debugActivo = false
 
 -- Colores para el marcador
 local coloresPorCoalicion = {
@@ -17,7 +17,7 @@ local function actualizarMarcador(nombre, posicion, radio, nuevaCoalicion)
     coalicionPorBase[nombre] = nuevaCoalicion
     controlAeropuertos[nombre] = nuevaCoalicion  -- << Actualiza variable global
 
-    local valor = (nuevaCoalicion == 2 and 1) or (nuevaCoalicion == 0 and 2) or 3
+    local valor = nuevaCoalicion
     local info = estadoBanderasAeropuertos[nombre]
 
     if info and info.valor ~= valor then
@@ -25,7 +25,7 @@ local function actualizarMarcador(nombre, posicion, radio, nuevaCoalicion)
         trigger.action.setUserFlag(info.bandera, valor)
 
         local banderaLeida = trigger.misc.getUserFlag(info.bandera)
-        local nombreCoalicion = (valor == 1 and "AZUL") or (valor == 2 and "NEUTRAL") or "ROJO"
+        local nombreCoalicion = (valor == 0 and "NEUTRAL") or (valor == 1 and "ROJO") or "AZUL"
         local mensaje = nombre .. " → (Bandera: " .. info.bandera .. ", Valor: " .. valor .. ") - " .. nombreCoalicion .. " | Leído: " .. banderaLeida
 
         trigger.action.outText(mensaje, 10)
