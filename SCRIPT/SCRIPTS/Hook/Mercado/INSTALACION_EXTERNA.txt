@@ -1,0 +1,62 @@
+INSTALACION DEL LOADER EXTERNO HDEV
+===================================
+
+1) CARPETA RECOMENDADA
+Copia TODO el contenido de esta carpeta en:
+
+Saved Games\DCS.openbeta\Scripts\HorizontDev\MarketSystem\
+
+o en servidor dedicado:
+
+Saved Games\DCS.openbeta_server\Scripts\HorizontDev\MarketSystem\
+
+Si tu rama no es openbeta, usa la carpeta real de tu instalacion.
+
+2) JSON DEL DINERO
+Debe existir este archivo:
+
+Saved Games\DCS...\Config\HorizontDev\money.json
+
+Puedes usar el money.json incluido como ejemplo base.
+
+3) MISSION EDITOR
+Opcion recomendada:
+
+Trigger 1
+- Tipo: MISSION START
+- Accion: DO SCRIPT FILE -> mist.lua
+
+Trigger 2
+- Tipo: ONCE
+- Condicion: TIME MORE (1)
+- Accion: DO SCRIPT FILE -> Saved Games\DCS...\Scripts\HorizontDev\MarketSystem\load.lua
+
+4) SI QUIERES QUE EL LOADER CARGUE MIST SOLO
+Edita load.lua y en HDEV_LoaderConfig define:
+
+mistRelativePath = "mist.lua"
+
+si copias tambien mist.lua dentro de la misma carpeta del sistema.
+
+5) PARAMETROS IMPORTANTES EN load.lua
+- jsonRelativePath
+- marketBlue.Total
+- marketBlue.Intervalo
+- marketRed.Total
+- marketRed.Intervalo
+- walletEnabled
+- walletAutoInterval
+- debugLoader
+- debugEconomy
+- debugMarketplace
+
+6) FLUJO DEL money.json
+- Al iniciar, el sistema lee money.json
+- Espera 30 segundos (o el valor que pongas)
+- Luego DCS toma el control
+- Desde ese momento exporta el dinero actualizado al JSON
+
+7) IMPORTANTE
+- Este paquete ya incluye las DB fuente sin tocarlas
+- Los wrappers V4 ya quedaron ajustados para usar la configuracion global del loader
+- El wallet V2 ya fue corregido
