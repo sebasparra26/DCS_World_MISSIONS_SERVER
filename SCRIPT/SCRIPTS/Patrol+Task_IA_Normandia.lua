@@ -1,6 +1,9 @@
 -- ========================================
 -- SISTEMA DE PATRULLAS IA
--- Refactor comun para reducir duplicacion y carga en vivo
+-- Corregido:
+-- 0 = NEUTRAL
+-- 1 = ROJO
+-- 2 = AZUL
 -- ========================================
 
 local NM_TO_METERS = 1852
@@ -63,14 +66,14 @@ local PATROL_DEFINITIONS = {
         templates = { "Patrol_IA_BULGARIA_01", "Patrol_IA_BULGARIA_02" },
         clonePrefix = "BULGARIA air ",
         activationFlag = 103,
-        activationValue = 1, -- 1 = AZUL, 2 = NEUTRAL, 3 = ROJO
+        activationValue = 1, -- 0 = NEUTRAL, 1 = ROJO, 2 = AZUL
         ownCoalition = coalition.side.RED,
         enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 2,
-        enemyUnitIndex = 2,
-        monitorUnitIndex = 2,
-        detectionRange = 70 * NM_TO_METERS,
-        engageRange = 80 * NM_TO_METERS,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 80 * NM_TO_METERS,
+        engageRange = 70 * NM_TO_METERS,
         altitudeArm = DEFAULT_ALTITUDE_ARM,
         stopSpeed = DEFAULT_STOP_SPEED,
         allowedCategories = CATEGORY_SETS.AIR_AND_GROUND,
@@ -81,12 +84,12 @@ local PATROL_DEFINITIONS = {
         templates = { "Patrol_IA_CJTF_RED_01", "Patrol_IA_CJTF_RED_02" },
         clonePrefix = "CJTF_RED air ",
         activationFlag = 107,
-        activationValue = 1,
+        activationValue = 1, -- 0 = NEUTRAL, 1 = ROJO, 2 = AZUL
         ownCoalition = coalition.side.RED,
         enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 2,
-        enemyUnitIndex = 2,
-        monitorUnitIndex = 2,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
         detectionRange = 80 * NM_TO_METERS,
         engageRange = 70 * NM_TO_METERS,
         altitudeArm = DEFAULT_ALTITUDE_ARM,
@@ -99,32 +102,50 @@ local PATROL_DEFINITIONS = {
         templates = { "Patrol_IA_TR_01", "Patrol_IA_TR_02", "Patrol_IA_TR_03" },
         clonePrefix = "THIRDREICH air ",
         activationFlag = 110,
-        activationValue = 1,
+        activationValue = 1, -- 0 = NEUTRAL, 1 = ROJO, 2 = AZUL
         ownCoalition = coalition.side.RED,
         enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 2,
-        enemyUnitIndex = 2,
-        monitorUnitIndex = 2,
-        detectionRange = 100 * NM_TO_METERS,
-        engageRange = 120 * NM_TO_METERS,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 80 * NM_TO_METERS,
+        engageRange = 70 * NM_TO_METERS,
         altitudeArm = DEFAULT_ALTITUDE_ARM,
         stopSpeed = DEFAULT_STOP_SPEED,
         allowedCategories = CATEGORY_SETS.AIR_ONLY,
         debug = DEFAULT_DEBUG
     },
-       {
+    {
         name = "PATRULLA_GERMANY-01",
-        templates = { "Patrol_IA_GERMANY-1", "Patrol_IA_GERMANY-2", "Patrol_IA_GERMANY-3" },
+        templates = { "Patrol_IA_GERMANY-1", "Patrol_IA_GERMANY-2"},
         clonePrefix = "GERMANY air ",
         activationFlag = 111,
-        activationValue = 1,
+        activationValue = 1, -- 0 = NEUTRAL, 1 = ROJO, 2 = AZUL
         ownCoalition = coalition.side.RED,
         enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 2,
-        enemyUnitIndex = 2,
-        monitorUnitIndex = 2,
-        detectionRange = 100 * NM_TO_METERS,
-        engageRange = 120 * NM_TO_METERS,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 80 * NM_TO_METERS,
+        engageRange = 70 * NM_TO_METERS,
+        altitudeArm = DEFAULT_ALTITUDE_ARM,
+        stopSpeed = DEFAULT_STOP_SPEED,
+        allowedCategories = CATEGORY_SETS.AIR_ONLY,
+        debug = DEFAULT_DEBUG
+    },
+    {
+        name = "PATRULLA_HUNGARY",
+        templates = { "Patrol_IA_HUNGARY-1", "Patrol_IA_HUNGARY-2" },
+        clonePrefix = "HUNGARY air ",
+        activationFlag = 104,
+        activationValue = 1, -- 0 = NEUTRAL, 1 = ROJO, 2 = AZUL
+        ownCoalition = coalition.side.RED,
+        enemyCoalition = coalition.side.BLUE,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 80 * NM_TO_METERS,
+        engageRange = 70 * NM_TO_METERS,
         altitudeArm = DEFAULT_ALTITUDE_ARM,
         stopSpeed = DEFAULT_STOP_SPEED,
         allowedCategories = CATEGORY_SETS.AIR_ONLY,
@@ -227,6 +248,21 @@ local function isPatrolActivationAllowed(config)
     return trigger.misc.getUserFlag(config.activationFlag) == config.activationValue
 end
 
+local function setPatrolEngagementBlocked(group, blocked)
+    if not group or not group:isExist() then
+        return
+    end
+
+    local controller = group:getController()
+    if not controller then
+        return
+    end
+
+    pcall(function()
+        controller:setOption(9, blocked)
+    end)
+end
+
 local function disablePatrolIfNeeded(config, state)
     if isPatrolActivationAllowed(config) then
         return false
@@ -295,6 +331,12 @@ local function scheduleCloneConfirmation(config, state)
 
         state.groupName = clonedName
         resetPatrolState(state)
+
+        local clonedGroup = getActiveGroup(clonedName)
+        if clonedGroup then
+            setPatrolEngagementBlocked(clonedGroup, true)
+        end
+
         debugMessage(config, "Grupo clonado: " .. clonedName)
     end
 
@@ -315,7 +357,6 @@ local function attemptClone(config, state)
             state.reportedMissingMist = true
             trigger.action.outText("[" .. config.name .. "] MIST no esta disponible. No se puede clonar la patrulla.", 10)
         end
-
         return
     end
 
@@ -370,12 +411,18 @@ local function engageClosestEnemy(config, state, group, now, coalitionGroupsCach
         return
     end
 
+    local controller = group:getController()
+    if not controller then
+        return
+    end
+
     local enemyGroups = coalitionGroupsCache[config.enemyCoalition] or {}
     local enemyGroup, distance = findClosestEnemyGroup(config, ownUnit, enemyGroups)
 
     if not enemyGroup then
         state.lastEngagedGroupId = nil
         state.nextEngageRefreshAt = 0
+        setPatrolEngagementBlocked(group, true)
         debugMessage(config, "Zona despejada")
         return
     end
@@ -383,6 +430,7 @@ local function engageClosestEnemy(config, state, group, now, coalitionGroupsCach
     if distance > config.engageRange then
         state.lastEngagedGroupId = nil
         state.nextEngageRefreshAt = 0
+        setPatrolEngagementBlocked(group, true)
         debugMessage(config, "Amenaza detectada pero fuera de rango")
         return
     end
@@ -392,10 +440,7 @@ local function engageClosestEnemy(config, state, group, now, coalitionGroupsCach
         return
     end
 
-    local controller = group:getController()
-    if not controller then
-        return
-    end
+    setPatrolEngagementBlocked(group, false)
 
     controller:pushTask({
         id = "EngageGroup",

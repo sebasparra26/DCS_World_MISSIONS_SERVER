@@ -392,7 +392,7 @@ end
 -- ************************************************************************
 ctld.staticBugWorkaround = false --  DCS had a bug where destroying statics would cause a crash. If this happens again, set this to TRUE
 
-ctld.disableAllSmoke = false -- if true, all smoke is diabled at pickup and drop off zones regardless of settings below. Leave false to respect settings below
+ctld.disableAllSmoke = true -- if true, all smoke is diabled at pickup and drop off zones regardless of settings below. Leave false to respect settings below
 
 -- Allow units to CTLD by aircraft type and not by pilot name - this is done everytime a player enters a new unit
 ctld.addPlayerAircraftByType = true
@@ -408,7 +408,7 @@ ctld.slingLoad = false -- if false, crates can be used WITHOUT slingloading, by 
 -- Set staticBugFix  to FALSE if use set ctld.slingLoad to TRUE
 ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to drop smoke
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
-ctld.maximumDistanceLogistic = 300 -- max distance from vehicle to logistics to allow a loading or spawning operation
+ctld.maximumDistanceLogistic = 500 -- max distance from vehicle to logistics to allow a loading or spawning operation
 ctld.maximumSearchDistance = 10000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 10000 -- max distance for troops to move from drop point if no enemy is nearby
 ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
@@ -421,8 +421,8 @@ ctld.vehiclesForTransportBLUE = { "M4_Tractor", "M8_Greyhound" } -- vehicles to 
 ctld.vehiclesWeight = {
     ["BRDM-2"] = 7000,
     ["BTR_D"] = 8000,
-    ["M4_Tractor"] = 20,
-    ["M8_Greyhound"] = 30
+    ["M4_Tractor"] = 10,
+    ["M8_Greyhound"] = 20
 }
 
 ctld.spawnRPGWithCoalition = true --spawns a friendly RPG unit with Coalition forces
@@ -806,18 +806,18 @@ ctld.logisticUnits = {
 -- units db has all the names or you can extract a mission.miz file by making it a zip and looking
 -- in the contained mission file
 ctld.vehicleTransportEnabled = {
-    "76MD",
-    "F4U-1D_CW",
-    "Bf-109K-4",
+    --"76MD",
+    --"F4U-1D_CW",
+    --"Bf-109K-4",
     "FW-190A8",
     "FW-190D9",
-    "I-16",
+    --"I-16",
     "MosquitoFBMkVI",
     "P-47D-30",
     "P-47D-30bl1",
     "P-47D-40",
-    "SpitfireLFMkCW",
-    "SpitfireLFMkIX",
+    --"SpitfireLFMkCW",
+    --"SpitfireLFMkIX",
     "TF-51D",
     "P-51D",
     "P-51D-30-NA",
@@ -884,7 +884,7 @@ ctld.unitLoadLimits = {
         --["Fw 190A8"] = 1,
         --["FW-190D9"] = 1,
         --["I-16"] = 1,
-        --["MosquitoFBMkVI"] = 6,
+        ["MosquitoFBMkVI"] = 2,
         --["P-47D-30"] = 1,
         --["P-47D-40"] = 1,
         --["P-51D"] = 1,
@@ -903,7 +903,7 @@ ctld.internalCargoLimits = {
    -- ["CH-47Fbl1"] = 10,
     --["UH-1H"] = 2,
    -- ["Mi-24P"] = 4,
-    --["MosquitoFBMkVI"] = 10,
+    ["MosquitoFBMkVI"] = 2,
     --["C-47"] = 60,
 }
 
@@ -968,14 +968,14 @@ ctld.unitActions = {
         --["Fw 190A8"] = {crates=true, troops=false},
         --["FW-190D9"] = {crates=true, troops=false},
         --["I-16"] = {crates=true, troops=false},
-        --["MosquitoFBMkVI"] = {crates=true, troops=true},
-        --["P-47D-30"] = {crates=true, troops=false},
-        --["P-47D-40"] = {crates=true, troops=false},
-        --["P-51D"] = {crates=true, troops=false},
-        --["P-51D-30-NA"] = {crates=true, troops=false},
+        ["MosquitoFBMkVI"] = {crates=true, troops=true},
+        ["P-47D-30"] = {crates=true, troops=false},
+        ["P-47D-40"] = {crates=true, troops=false},
+        ["P-51D"] = {crates=true, troops=false},
+        ["P-51D-30-NA"] = {crates=true, troops=false},
         --["SpitfireLFMkIX"] = {crates=true, troops=false},
         --["SpitfireLFMkIXCW"] = {crates=true, troops=false},
-        --["TF-51D"] = {crates=true, troops=true},
+        ["TF-51D"] = {crates=true, troops=true},
         --["C-47"] = {crates=true, troops=true},
 }
 
@@ -1011,7 +1011,7 @@ ctld.JTAC_WEIGHT = 15 -- kg
 -- You can also add an optional coalition side to limit the group to one side
 -- for the side - 2 is BLUE and 1 is RED
 ctld.loadableGroups = {
-    --{name = ctld.i18n_translate("Standard Group"), inf = 6, mg = 2, at = 2 }, -- will make a loadable group with 6 infantry, 2 MGs and 2 anti-tank for both coalitions
+    {name = ctld.i18n_translate("Standard Group"), inf = 2, mg = 0, at = 0 }, -- will make a loadable group with 6 infantry, 2 MGs and 2 anti-tank for both coalitions
     --{name = ctld.i18n_translate("Anti Air"), inf = 2, aa = 3  },
    -- {name = ctld.i18n_translate("Anti Tank"), inf = 2, at = 6  },
     --{name = ctld.i18n_translate("Mortar Squad"), mortar = 6 },
@@ -1046,7 +1046,7 @@ ctld.spawnableCrates = {
         -- Some descriptions are filtered to determine if JTAC or not!
 
         --- BLUE
-        --{ weight = 1000.01, desc = ctld.i18n_translate("Humvee - MG"), unit = "M8_Greyhound", side = 0 },  --careful with the names as the script matches the desc to JTAC types
+        --{ weight = 1000.01, desc = ctld.i18n_translate("Humvee - MG"), unit = "M8_Greyhound", side = 0 },  --careful with the naumes as the script matches the desc to JTAC types
         --{ weight = 1000.02, desc = ctld.i18n_translate("Humvee - TOW"), unit = "M4_Tractor", side = 2, cratesRequired = 2 },
         --{ multiple = {1000.02, 1000.02}, desc = ctld.i18n_translate("Humvee - TOW - All crates"), side = 2 },
         --{ weight = 1000.03, desc = ctld.i18n_translate("Light Tank - MRAP"), unit="MaxxPro_MRAP", side = 2, cratesRequired = 2 },
