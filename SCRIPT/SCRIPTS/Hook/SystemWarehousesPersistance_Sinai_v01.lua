@@ -1,5 +1,5 @@
 local WHSYNC = {
-    DEBUG = false,
+    DEBUG = true,
 
     FILE_PATH = lfs.writedir() .. "Config\\HorizontDev\\SistemWarehousePersistanceSinai.json",
 

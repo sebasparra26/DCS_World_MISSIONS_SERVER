@@ -11,7 +11,7 @@ SistemAirbasePersistance.config = {
     reactivarAutoCaptureDespuesDeAplicar = true,
     retrasoReactivarAutoCapture = 2,
     bloquearSincronizacionDuranteInyeccion = true,
-    duracionBloqueoPostInyeccion = 80,
+    duracionBloqueoPostInyeccion = 30,
 
     debugLog = false,
     debugPantalla = false,

@@ -62,7 +62,7 @@ aeropuertos = {
     ["Difarsuwar Airfield"] = { position = {x = 40535, y = 0, z = 105394}, radius = 4000 }, --Metric: X+00040535 Z+00105394
     ["Abu Suwayr"] = { position = {x = 57268, y = 0, z = 82588}, radius = 8000 }, --Metric: X+00057268 Z+00082588
     ["As Salihiyah"] = { position = {x = 81927, y = 0, z = 77753}, radius = 8000 }, --Metric: X+00081927 Z+00077753
-    ["Al Ismailiyah"] = { position = {x = 59989, y = 0, z = 95963}, radius = 8000 }, --Metric: X+00059989 Z+00095963
+    ["Ai Ismailiyah"] = { position = {x = 59989, y = 0, z = 95963}, radius = 8000 }, --Metric: X+00059989 Z+00095963
     ["Melez"] = { position = {x = 39273, y = 0, z = 183913}, radius = 8000 }, --Metric: X+00039273 Z+00183913
     ["Fayed"] = { position = {x = 30305, y = 0, z = 99003}, radius = 2400 }, --Metric: X+00030305 Z+00099003
     ["Hatzerim"] = { position = {x = 131531, y = 0, z = 327458}, radius = 2500 }, --Metric: X+00131531 Z+00327458

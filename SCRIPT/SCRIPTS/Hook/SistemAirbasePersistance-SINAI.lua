@@ -62,17 +62,17 @@ SistemAirbasePersistance.config = {
     "Sharm El Sheikh International Airport",
     "Wadi Abu Rish",
     "Al Bahr al Ahmar",
-    "Sinai Airbase ID 45",
-    "Sinai Airbase ID 46",
-    "Sinai Airbase ID 47",
-    "Sinai Airbase ID 48",
-    "Sinai Airbase ID 49",
-    "Sinai Airbase ID 50",
-    "Sinai Airbase ID 51",
-    "Sinai Airbase ID 52",
-    "Sinai Airbase ID 53",
-    "Sinai Airbase ID 54",
-    "Sinai Airbase ID 55"
+    "Quwaysina",
+    "Rafic Hariri Intl",
+    "Tabuk",
+    "Damascus Intl",
+    "Mezzeh Air Base",
+    "Ramat David",
+    "Megiddo",
+    "Ein Shamer",
+    "Taba International Airport",
+    "King Feisal Air Base",
+    "Khalkhalah Air Base"
 }
 }
 
