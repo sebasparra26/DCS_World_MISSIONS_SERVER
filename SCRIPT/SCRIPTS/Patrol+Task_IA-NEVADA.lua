@@ -1,1094 +1,441 @@
 -- ========================================
--- PATRULLA USA
+-- SISTEMA DE PATRULLAS IA
+-- Corregido:
+-- 0 = NEUTRAL
+-- 1 = ROJO
+-- 2 = AZUL
 -- ========================================
-do
-    local nombre = "PATRULLA_USA_AIR"
-    local templates = { "Patrol_IA_USA_1", "Patrol_IA_USA_2", "Patrol_IA_USA_3", "Patrol_IA_USA_4"}
-    local prefijo = "USA air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
 
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = false,
-        [Unit.Category.GROUND_UNIT] = false
-    }
-
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
-
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
-    end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 200 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
-end
--- ========================================
--- PATRULLA CVANADA
--- ========================================
-do
-    local nombre = "PATRULLA_USA_AIR"
-    local templates = { "Patrol_IA_CAN_1", "Patrol_IA_CAN_2", "Patrol_IA_CAN_3", "Patrol_IA_CAN_4"}
-    local prefijo = "CANADA air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
-
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = false,
-        [Unit.Category.GROUND_UNIT] = false
-    }
-
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
-
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
-    end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 200 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
-end
--- ========================================
--- PATRULLA GERMANY
--- ========================================
-do
-    local nombre = "PATRULLA_GER_AIR"
-    local templates = { "Patrol_IA_GER_1", "Patrol_IA_GER_2"}
-    local prefijo = "GERMANY air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
-
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = false,
-        [Unit.Category.GROUND_UNIT] = false
-    }
-
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
-
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
-    end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 200 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
-end
-
--- ========================================
--- PATRULLA GERMANY
--- ========================================
-do
-    local nombre = "PATRULLA_CJTF_AIR"
-    local templates = { "Patrol_IA_CJTF_1", "Patrol_IA_CJTF_2", "Patrol_IA_CJTF_3", "Patrol_IA_CJTF_4"}
-    local prefijo = "CJTF_BLUE air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
-
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = false,
-        [Unit.Category.GROUND_UNIT] = false
-    }
-
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
-
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
-    end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 200 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
-end
-
-
-
-
-
--- ========================================
--- PATRULLA USA HELIS
--- ========================================
-do
-    local nombre = "PATRULLA_USA_HELIS_AIR"
-    local templates = { "Patrol_IA_hel_USA_1", "Patrol_IA_hel_USA_2", "Patrol_IA_hel_USA_3"}
-    local prefijo = "USA hel "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
-
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = true,
+local NM_TO_METERS = 1852
+local HEARTBEAT_SECONDS = 10
+local CLONE_CONFIRM_DELAY_SECONDS = 1
+local ENGAGE_REFRESH_SECONDS = 30
+local DEFAULT_ALTITUDE_ARM = 914.4
+local DEFAULT_STOP_SPEED = 2
+local DEFAULT_DEBUG = false
+
+local CATEGORY_SETS = {
+    AIR_ONLY = {
+        [Unit.Category.AIRPLANE] = true
+    },
+    AIR_AND_GROUND = {
+        [Unit.Category.AIRPLANE] = true,
         [Unit.Category.GROUND_UNIT] = true
     }
+}
 
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
+local PATROL_DEFINITIONS = {
+    {
+        name = "PATRULLA_USA",
+        templates = { "Patrol_IA_USA_1", "Patrol_IA_USA_2", "Patrol_IA_USA_3", "Patrol_IA_USA_4" },
+        clonePrefix = "USA air ",
+        activationFlag = nil,
+        activationValue = nil,
+        ownCoalition = coalition.side.BLUE,
+        enemyCoalition = coalition.side.RED,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 30 * NM_TO_METERS,
+        engageRange = 20 * NM_TO_METERS,
+        altitudeArm = DEFAULT_ALTITUDE_ARM,
+        stopSpeed = DEFAULT_STOP_SPEED,
+        allowedCategories = CATEGORY_SETS.AIR_ONLY,
+        debug = DEFAULT_DEBUG
+    }
+    
+}
 
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
+local patrolStates = {}
+
+local function debugMessage(config, text, duration)
+    if config.debug then
+        trigger.action.outText("[" .. config.name .. "] " .. text, duration or 5)
     end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 20 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 0.1 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
 end
--- ========================================
--- PATRULLA ISRAEL
--- ========================================
-do
-    local nombre = "PATRULLA_ISRAEL_AIR"
-    local templates = { "Patrol_IA_ISRAEL_1", "Patrol_IA_ISRAEL_2", "Patrol_IA_ISRAEL_3"}
-    local prefijo = "ISRAEL air "
-    local rangoDeteccion = 60 * 1852
-    local rangoEnganche = 50 * 1852
-    local debugMensajes = false
 
-    local categoriasPermitidas = {
-        [Unit.Category.AIRPLANE]   = true,
-        [Unit.Category.HELICOPTER] = false,
-        [Unit.Category.GROUND_UNIT] = false
+local function getActiveGroup(groupName)
+    if not groupName then
+        return nil
+    end
+
+    local group = Group.getByName(groupName)
+    if group and group:isExist() then
+        return group
+    end
+
+    return nil
+end
+
+local function isAllowedUnit(unit, allowedCategories)
+    if not unit or not unit:isExist() then
+        return false
+    end
+
+    if not allowedCategories then
+        return true
+    end
+
+    local desc = unit:getDesc()
+    local category = desc and desc.category
+    return allowedCategories[category] == true
+end
+
+local function findAliveUnit(group, preferredIndex, allowedCategories)
+    if not group or not group:isExist() then
+        return nil
+    end
+
+    if preferredIndex then
+        local preferredUnit = group:getUnit(preferredIndex)
+        if isAllowedUnit(preferredUnit, allowedCategories) then
+            return preferredUnit
+        end
+    end
+
+    local units = group:getUnits()
+    if not units then
+        return nil
+    end
+
+    for _, unit in ipairs(units) do
+        if isAllowedUnit(unit, allowedCategories) then
+            return unit
+        end
+    end
+
+    return nil
+end
+
+local function distance2D(pointA, pointB)
+    local dx = pointA.x - pointB.x
+    local dz = pointA.z - pointB.z
+    return math.sqrt(dx * dx + dz * dz)
+end
+
+local function getSpeedMetersPerSecond(unit)
+    local velocity = unit:getVelocity()
+    if not velocity then
+        return 0
+    end
+
+    return math.sqrt(
+        velocity.x * velocity.x +
+        velocity.y * velocity.y +
+        velocity.z * velocity.z
+    )
+end
+
+local function resetPatrolState(state)
+    state.maxAltitude = 0
+    state.stopMonitoringArmed = false
+    state.lastEngagedGroupId = nil
+    state.nextEngageRefreshAt = 0
+end
+
+local function isPatrolActivationAllowed(config)
+    if config.activationFlag == nil or config.activationValue == nil then
+        return true
+    end
+
+    return trigger.misc.getUserFlag(config.activationFlag) == config.activationValue
+end
+
+local function setPatrolEngagementBlocked(group, blocked)
+    if not group or not group:isExist() then
+        return
+    end
+
+    local controller = group:getController()
+    if not controller then
+        return
+    end
+
+    pcall(function()
+        controller:setOption(9, blocked)
+    end)
+end
+
+local function disablePatrolIfNeeded(config, state)
+    if isPatrolActivationAllowed(config) then
+        return false
+    end
+
+    local group = getActiveGroup(state.groupName)
+    if group then
+        group:destroy()
+        debugMessage(
+            config,
+            "Patrulla desactivada por bandera " .. config.activationFlag .. " distinta de " .. config.activationValue
+        )
+    end
+
+    state.groupName = nil
+    state.isCloning = false
+    state.pendingCloneName = nil
+    resetPatrolState(state)
+    return true
+end
+
+local function resolveClonedGroupName(config, preferredName)
+    local preferredGroup = getActiveGroup(preferredName)
+    if preferredGroup then
+        return preferredName
+    end
+
+    local ownGroups = coalition.getGroups(config.ownCoalition) or {}
+    local prefixLength = string.len(config.clonePrefix)
+
+    for _, group in pairs(ownGroups) do
+        if group and group:isExist() then
+            local groupName = group:getName()
+            if groupName and string.sub(groupName, 1, prefixLength) == config.clonePrefix then
+                return groupName
+            end
+        end
+    end
+
+    return nil
+end
+
+local function scheduleCloneConfirmation(config, state)
+    local function confirmClone(_, now)
+        local clonedName = resolveClonedGroupName(config, state.pendingCloneName)
+
+        state.isCloning = false
+        state.pendingCloneName = nil
+
+        if not clonedName then
+            debugMessage(config, "No se encontro el grupo clonado")
+            return
+        end
+
+        if not isPatrolActivationAllowed(config) then
+            local clonedGroup = getActiveGroup(clonedName)
+            if clonedGroup then
+                clonedGroup:destroy()
+            end
+            debugMessage(
+                config,
+                "Grupo clonado destruido por no cumplir bandera " .. config.activationFlag .. "=" .. config.activationValue
+            )
+            return
+        end
+
+        state.groupName = clonedName
+        resetPatrolState(state)
+
+        local clonedGroup = getActiveGroup(clonedName)
+        if clonedGroup then
+            setPatrolEngagementBlocked(clonedGroup, true)
+        end
+
+        debugMessage(config, "Grupo clonado: " .. clonedName)
+    end
+
+    timer.scheduleFunction(confirmClone, nil, timer.getTime() + CLONE_CONFIRM_DELAY_SECONDS)
+end
+
+local function attemptClone(config, state)
+    if state.isCloning or getActiveGroup(state.groupName) then
+        return
+    end
+
+    if not isPatrolActivationAllowed(config) then
+        return
+    end
+
+    if not mist or not mist.cloneGroup then
+        if not state.reportedMissingMist then
+            state.reportedMissingMist = true
+            trigger.action.outText("[" .. config.name .. "] MIST no esta disponible. No se puede clonar la patrulla.", 10)
+        end
+        return
+    end
+
+    state.reportedMissingMist = false
+    state.isCloning = true
+
+    local templateName = config.templates[math.random(#config.templates)]
+    local ok, clonedData = pcall(mist.cloneGroup, templateName, true)
+
+    if not ok then
+        state.isCloning = false
+        state.pendingCloneName = nil
+        debugMessage(config, "Error clonando plantilla: " .. templateName)
+        return
+    end
+
+    if type(clonedData) == "table" then
+        state.pendingCloneName = clonedData.name
+    elseif type(clonedData) == "string" then
+        state.pendingCloneName = clonedData
+    else
+        state.pendingCloneName = nil
+    end
+
+    scheduleCloneConfirmation(config, state)
+end
+
+local function findClosestEnemyGroup(config, ownUnit, enemyGroups)
+    local ownPoint = ownUnit:getPoint()
+    local closestGroup = nil
+    local closestDistance = config.detectionRange + 1
+
+    for _, enemyGroup in pairs(enemyGroups or {}) do
+        if enemyGroup and enemyGroup:isExist() then
+            local enemyUnit = findAliveUnit(enemyGroup, config.enemyUnitIndex, config.allowedCategories)
+            if enemyUnit then
+                local distance = distance2D(ownPoint, enemyUnit:getPoint())
+                if distance <= config.detectionRange and distance < closestDistance then
+                    closestGroup = enemyGroup
+                    closestDistance = distance
+                end
+            end
+        end
+    end
+
+    return closestGroup, closestDistance
+end
+
+local function engageClosestEnemy(config, state, group, now, coalitionGroupsCache)
+    local ownUnit = findAliveUnit(group, config.ownUnitIndex)
+    if not ownUnit then
+        return
+    end
+
+    local controller = group:getController()
+    if not controller then
+        return
+    end
+
+    local enemyGroups = coalitionGroupsCache[config.enemyCoalition] or {}
+    local enemyGroup, distance = findClosestEnemyGroup(config, ownUnit, enemyGroups)
+
+    if not enemyGroup then
+        state.lastEngagedGroupId = nil
+        state.nextEngageRefreshAt = 0
+        setPatrolEngagementBlocked(group, true)
+        debugMessage(config, "Zona despejada")
+        return
+    end
+
+    if distance > config.engageRange then
+        state.lastEngagedGroupId = nil
+        state.nextEngageRefreshAt = 0
+        setPatrolEngagementBlocked(group, true)
+        debugMessage(config, "Amenaza detectada pero fuera de rango")
+        return
+    end
+
+    local enemyGroupId = enemyGroup:getID()
+    if state.lastEngagedGroupId == enemyGroupId and now < state.nextEngageRefreshAt then
+        return
+    end
+
+    setPatrolEngagementBlocked(group, false)
+
+    controller:pushTask({
+        id = "EngageGroup",
+        params = { groupId = enemyGroupId }
+    })
+
+    state.lastEngagedGroupId = enemyGroupId
+    state.nextEngageRefreshAt = now + ENGAGE_REFRESH_SECONDS
+    debugMessage(config, "Amenaza en rango. Enganchando")
+end
+
+local function monitorStoppedGroup(config, state, group)
+    local monitorUnit = findAliveUnit(group, config.monitorUnitIndex)
+    if not monitorUnit then
+        return false
+    end
+
+    local altitude = monitorUnit:getPoint().y
+    local speed = getSpeedMetersPerSecond(monitorUnit)
+
+    state.maxAltitude = math.max(state.maxAltitude, altitude)
+
+    debugMessage(
+        config,
+        "ALTITUD: " .. math.floor(altitude) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s",
+        10
+    )
+
+    if not state.stopMonitoringArmed and state.maxAltitude >= config.altitudeArm then
+        state.stopMonitoringArmed = true
+        debugMessage(config, "Monitoreo de altitud activado")
+    end
+
+    if state.stopMonitoringArmed and speed < config.stopSpeed then
+        group:destroy()
+        state.groupName = nil
+        resetPatrolState(state)
+        debugMessage(config, "Grupo destruido por estar detenido")
+        return true
+    end
+
+    return false
+end
+
+local function updatePatrol(config, state, now, coalitionGroupsCache)
+    if disablePatrolIfNeeded(config, state) then
+        return
+    end
+
+    local group = getActiveGroup(state.groupName)
+
+    if not group then
+        if state.groupName then
+            debugMessage(config, "Grupo destruido. Clonando...")
+            state.groupName = nil
+            resetPatrolState(state)
+        end
+
+        attemptClone(config, state)
+        return
+    end
+
+    engageClosestEnemy(config, state, group, now, coalitionGroupsCache)
+
+    if monitorStoppedGroup(config, state, group) then
+        attemptClone(config, state)
+    end
+end
+
+local function heartbeat(_, now)
+    local coalitionGroupsCache = {}
+
+    for _, stateData in ipairs(patrolStates) do
+        local config = stateData.config
+        if coalitionGroupsCache[config.enemyCoalition] == nil then
+            coalitionGroupsCache[config.enemyCoalition] = coalition.getGroups(config.enemyCoalition) or {}
+        end
+
+        updatePatrol(config, stateData.state, now, coalitionGroupsCache)
+    end
+
+    return now + HEARTBEAT_SECONDS
+end
+
+for _, config in ipairs(PATROL_DEFINITIONS) do
+    local state = {
+        groupName = nil,
+        isCloning = false,
+        pendingCloneName = nil,
+        reportedMissingMist = false,
+        maxAltitude = 0,
+        stopMonitoringArmed = false,
+        lastEngagedGroupId = nil,
+        nextEngageRefreshAt = 0
     }
 
-    local grupoClonadoActual = nil
-    local altMax = 0
-    local monitoreoVelocidad = false
-    local grupoYaSeDetuvo = false
-    local clonando = false
+    patrolStates[#patrolStates + 1] = {
+        config = config,
+        state = state
+    }
 
-    local nombresClonados01 = {}
-    for i = 1, 9999 do
-        table.insert(nombresClonados01, prefijo .. i)
-    end
-
-    local function debug(texto, tiempo)
-        if debugMensajes then
-            trigger.action.outText("[" .. nombre .. "] " .. texto, tiempo or 5)
-        end
-    end
-
-    local function detectarYEnganchar()
-        if not grupoClonadoActual then
-            debug("grupoClonadoActual es nil. Abortando detectarYEnganchar", 5)
-            return
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then return end
-
-        local unidadIA = grupo:getUnit(1)
-        if not unidadIA or not unidadIA:isExist() then return end
-
-        local posIA = unidadIA:getPoint()
-        local amenazaCercana = nil
-        local grupoEnemigoCercano = nil
-        local menorDistancia = rangoDeteccion
-
-        for _, grupoRojo in pairs(coalition.getGroups(1)) do
-            if Group.isExist(grupoRojo) then
-                local enemigo = grupoRojo:getUnit(1)
-                if enemigo and enemigo:isExist() then
-                    local tipo = enemigo:getDesc().category
-                    if categoriasPermitidas[tipo] then
-                        local posEnemigo = enemigo:getPoint()
-                        local dx = posIA.x - posEnemigo.x
-                        local dz = posIA.z - posEnemigo.z
-                        local dist = math.sqrt(dx * dx + dz * dz)
-
-                        if dist < menorDistancia then
-                            menorDistancia = dist
-                            grupoEnemigoCercano = grupoRojo
-                            if dist < rangoEnganche then
-                                amenazaCercana = enemigo
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        if amenazaCercana and grupoEnemigoCercano then
-            debug("Amenaza en rango. Enganchando")
-            grupo:getController():pushTask({
-                id = "EngageGroup",
-                params = { groupId = grupoEnemigoCercano:getID() }
-            })
-        elseif grupoEnemigoCercano then
-            debug("Amenaza detectada pero fuera de rango")
-        else
-            debug("Zona despejada")
-        end
-
-        timer.scheduleFunction(detectarYEnganchar, {}, timer.getTime() + 10)
-    end
-
-    local function clonarGrupo()
-        if clonando then
-            debug("Ya se está clonando un grupo. Esperando...")
-            return
-        end
-
-        if grupoClonadoActual then
-            local g = Group.getByName(grupoClonadoActual)
-            if g and g:isExist() then
-                debug("Ya hay un grupo activo")
-                return
-            end
-        end
-
-        clonando = true
-
-        local plantilla = templates[math.random(#templates)]
-        mist.cloneGroup(plantilla, true)
-
-        timer.scheduleFunction(function()
-            for _, nombre in ipairs(nombresClonados01) do
-                local g = Group.getByName(nombre)
-                if g and g:isExist() then
-                    grupoClonadoActual = nombre
-                    altMax = 0
-                    monitoreoVelocidad = false
-                    grupoYaSeDetuvo = false
-                    clonando = false
-                    debug("Grupo clonado: " .. grupoClonadoActual)
-                    detectarYEnganchar()
-                    return
-                end
-            end
-            clonando = false
-            debug("No se encontró el grupo clonado")
-        end, {}, timer.getTime() + 1)
-    end
-
-    timer.scheduleFunction(function()
-        if not grupoClonadoActual then
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local grupo = Group.getByName(grupoClonadoActual)
-        if not grupo or not grupo:isExist() then
-            debug("Grupo destruido. Clonando...")
-            grupoClonadoActual = nil
-            clonarGrupo()
-            return timer.getTime() + 10
-        end
-
-        local unidad = grupo:getUnit(1)
-        if unidad and unidad:isExist() then
-            local punto = unidad:getPoint()
-            local altTerreno = land.getHeight({ x = punto.x, y = punto.z })
-            local altAGL = punto.y - altTerreno
-            altMax = math.max(altMax, altAGL)
-
-            local v = unidad:getVelocity()
-            local speed = math.sqrt(v.x^2 + v.y^2 + v.z^2)
-
-            debug("ALTITUD AGL: " .. math.floor(altAGL) .. " m | VELOCIDAD: " .. string.format("%.1f", speed) .. " m/s", 10)
-
-            if not monitoreoVelocidad and altMax >= 200 then
-                monitoreoVelocidad = true
-                debug("Monitoreo de altitud activado")
-            end
-
-            if monitoreoVelocidad and speed < 2 and not grupoYaSeDetuvo then
-                grupoYaSeDetuvo = true
-                debug("El avión se detuvo después de volar, será destruido")
-
-                local nombreViejo = grupoClonadoActual
-                grupoClonadoActual = nil
-
-                timer.scheduleFunction(function()
-                    local g = Group.getByName(nombreViejo)
-                    if g and g:isExist() then
-                        g:destroy()
-                        debug("Grupo destruido por estar detenido")
-                    end
-                    clonarGrupo()
-                end, {}, timer.getTime() + 10)
-            end
-        end
-
-        return timer.getTime() + 10
-    end, {}, timer.getTime() + 10)
-
-    clonarGrupo()
+    attemptClone(config, state)
 end
 
-
+timer.scheduleFunction(heartbeat, nil, timer.getTime() + HEARTBEAT_SECONDS)
