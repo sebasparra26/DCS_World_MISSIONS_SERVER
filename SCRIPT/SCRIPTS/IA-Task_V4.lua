@@ -88,11 +88,11 @@ local TASK_PROFILES = {
 -- ALIASES
 ----------------------------------------------------------------
 local COMMAND_ALIASES = {
-    { alias = "ataque a tierra",   key = "strike" },
-    { alias = "ataque de tierra",  key = "strike" },
-    { alias = "close air support", key = "cas"    },
-    { alias = "ataque terrestre",  key = "strike" },
-    { alias = "escolta",           key = "escort" },
+    --{ alias = "ataque a tierra",   key = "strike" },
+    --{ alias = "ataque de tierra",  key = "strike" },
+    --{ alias = "close air support", key = "cas"    },
+    --{ alias = "ataque terrestre",  key = "strike" },
+    --{ alias = "escolta",           key = "escort" },
     { alias = "escort",            key = "escort" },
     { alias = "strike",            key = "strike" },
     { alias = "sead",              key = "sead"   },
