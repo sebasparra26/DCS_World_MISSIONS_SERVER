@@ -18,11 +18,11 @@ HDEV_LoaderConfig = HDEV_LoaderConfig or {
 
     marketBlue = {
         Total = 7200,
-        Intervalo = 900
+        Intervalo = 20
     },
     marketRed = {
         Total = 7200,
-        Intervalo = 900
+        Intervalo = 20
     },
 
     -- Si ya cargas MIST aparte en el Mission Editor, deja esto en nil.
@@ -163,7 +163,7 @@ run("StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua", true)
 
 -- Nucleos
 run("HDEV_EconomyCore.lua", true)
-run("HDEV_MarketplaceCore.lua", true)
+run("HDEV_MarketplaceCore_1_1.lua", true)
 
 -- Economia y logistica
 run("EconomicSystemCoalition_BLUE_V4.lua", true)

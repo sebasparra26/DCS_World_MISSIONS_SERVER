@@ -1,4 +1,4 @@
-local debugActivo = true
+local debugActivo = false
 
 local grupos = {
     [100] = { rojo = "RU_100_Difarsuwar", azul = "US_100_Difarsuwar" },
@@ -100,4 +100,5 @@ local function verificarBanderas()
 end
 
 timer.scheduleFunction(verificarBanderas, {}, timer.getTime() + 2)
+
 

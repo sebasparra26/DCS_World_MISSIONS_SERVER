@@ -4,7 +4,7 @@
 local CAS = {}
 
 CAS.flagId   = 3030        -- bandera a disparar
-CAS.zoneName = "CAS"       -- nombre de la zona en el ME
+CAS.zoneName = "MONITOREO"       -- nombre de la zona en el ME
 
 CAS.debugText = false     -- mensajes en pantalla
 CAS.debugLog  = false      -- mensajes en dcs.log

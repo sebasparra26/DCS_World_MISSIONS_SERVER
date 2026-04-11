@@ -42,6 +42,24 @@ local PATROL_DEFINITIONS = {
         stopSpeed = DEFAULT_STOP_SPEED,
         allowedCategories = CATEGORY_SETS.AIR_ONLY,
         debug = DEFAULT_DEBUG
+    },
+     {
+        name = "PATRULLA_USA_02",
+        templates = { "Patrol_IA_USA_5", "Patrol_IA_USA_6"},
+        clonePrefix = "USA air ",
+        activationFlag = nil,
+        activationValue = nil,
+        ownCoalition = coalition.side.BLUE,
+        enemyCoalition = coalition.side.RED,
+        ownUnitIndex = 1,
+        enemyUnitIndex = 1,
+        monitorUnitIndex = 1,
+        detectionRange = 30 * NM_TO_METERS,
+        engageRange = 20 * NM_TO_METERS,
+        altitudeArm = DEFAULT_ALTITUDE_ARM,
+        stopSpeed = DEFAULT_STOP_SPEED,
+        allowedCategories = CATEGORY_SETS.AIR_ONLY,
+        debug = DEFAULT_DEBUG
     }
     
 }
