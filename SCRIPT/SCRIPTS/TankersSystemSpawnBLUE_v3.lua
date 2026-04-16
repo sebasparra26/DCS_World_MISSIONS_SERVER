@@ -22,7 +22,7 @@ local Economy = HDEV_Economy.init({
   debug = economySettings.debug and true or false
 })
 
-local USAR_ECONOMIA = true
+local USAR_ECONOMIA = false
 local REEMBOLSAR_SI_FALLA_SPAWN = true
 local AUTO_DELETE_SECONDS = 3600
 local INTERVALO_RESUMEN = 200

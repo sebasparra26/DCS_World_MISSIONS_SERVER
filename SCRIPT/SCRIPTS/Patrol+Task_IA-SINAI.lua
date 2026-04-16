@@ -26,82 +26,23 @@ local CATEGORY_SETS = {
 
 local PATROL_DEFINITIONS = {
     {
-        name = "PATRULLA_RUSSIA",
-        templates = { "Patrol_IA_AIR_RUSSIA_1", "Patrol_IA_AIR_RUSSIA_2", "Patrol_IA_AIR_RUSSIA_3" },
-        clonePrefix = "RUSSIA air ",
-        activationFlag = nil,
-        activationValue = nil,
+        name = "PATRULLA_YUGOSLAVIA",
+        templates = { "Patrol_IA_YUGOSLAVIA_1"},
+        clonePrefix = "YUGOSLAVIA air ",
+        activationFlag = 154,
+        activationValue = 1,
         ownCoalition = coalition.side.RED,
         enemyCoalition = coalition.side.BLUE,
         ownUnitIndex = 1,
         enemyUnitIndex = 1,
         monitorUnitIndex = 1,
-        detectionRange = 40 * NM_TO_METERS,
-        engageRange = 30 * NM_TO_METERS,
-        altitudeArm = DEFAULT_ALTITUDE_ARM,
-        stopSpeed = DEFAULT_STOP_SPEED,
-        allowedCategories = CATEGORY_SETS.AIR_ONLY,
-        debug = DEFAULT_DEBUG
-    },
-
-    {
-        name = "PATRULLA_RUSSIA_HEL",
-        templates = { "Patrol_IA_HEL_RUSSIA_1", "Patrol_IA_HEL_RUSSIA_2"},
-        clonePrefix = "RUSSIA hel ",
-        activationFlag = nil,
-        activationValue = nil,
-        ownCoalition = coalition.side.RED,
-        enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 1,
-        enemyUnitIndex = 1,
-        monitorUnitIndex = 1,
-        detectionRange = 40 * NM_TO_METERS,
-        engageRange = 30 * NM_TO_METERS,
-        altitudeArm = DEFAULT_ALTITUDE_ARM,
-        stopSpeed = DEFAULT_STOP_SPEED,
-        allowedCategories = CATEGORY_SETS.AIR_ONLY,
-        debug = DEFAULT_DEBUG
-    },
-
-    {
-        name = "PATRULLA_SYRIA",
-        templates = { "Patrol_IA_AIR_SYRIA_1", "Patrol_IA_AIR_SYRIA_2", "Patrol_IA_AIR_SYRIA_3", "Patrol_IA_AIR_SYRIA_4" },
-        clonePrefix = "SYRIA air ",
-        activationFlag = nil,
-        activationValue = nil,
-        ownCoalition = coalition.side.RED,
-        enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 1,
-        enemyUnitIndex = 1,
-        monitorUnitIndex = 1,
-        detectionRange = 40 * NM_TO_METERS,
-        engageRange = 30 * NM_TO_METERS,
-        altitudeArm = DEFAULT_ALTITUDE_ARM,
-        stopSpeed = DEFAULT_STOP_SPEED,
-        allowedCategories = CATEGORY_SETS.AIR_ONLY,
-        debug = DEFAULT_DEBUG
-    },
-
-    {
-        name = "PATRULLA_SYRIA_HEL",
-        templates = { "Patrol_IA_HEL_SYRIA_1", "Patrol_IA_HEL_SYRIA_2"},
-        clonePrefix = "SYRIA hel ",
-        activationFlag = nil,
-        activationValue = nil,
-        ownCoalition = coalition.side.RED,
-        enemyCoalition = coalition.side.BLUE,
-        ownUnitIndex = 1,
-        enemyUnitIndex = 1,
-        monitorUnitIndex = 1,
-        detectionRange = 40 * NM_TO_METERS,
-        engageRange = 30 * NM_TO_METERS,
+        detectionRange = 20 * NM_TO_METERS,
+        engageRange = 18 * NM_TO_METERS,
         altitudeArm = DEFAULT_ALTITUDE_ARM,
         stopSpeed = DEFAULT_STOP_SPEED,
         allowedCategories = CATEGORY_SETS.AIR_ONLY,
         debug = DEFAULT_DEBUG
     }
-
-    
     
 }
 

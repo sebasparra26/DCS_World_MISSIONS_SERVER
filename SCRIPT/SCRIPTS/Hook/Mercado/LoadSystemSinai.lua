@@ -1,5 +1,5 @@
 HDEV_LoaderConfig = HDEV_LoaderConfig or {
-    rootRelativePath = "Scripts\\HorizontDev\\SinaiCampaignSystem\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
+    rootRelativePath = "Scripts\\HorizontDev\\SystemCampaingDCS\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
     jsonRelativePath = "Config\\HorizontDev\\money.json",
 
     importWindowSeconds = 30,
@@ -182,7 +182,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
     -- Cores
     
     { file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
-    { file = "MECHANICAL\\ActivateUnitsCampaing_SINAI.lua",           enabled = true,  required = true,  delay = 0 },
+    { file = "MECHANICAL\\SINAI\\ActivateUnitsCampaing_SINAI.lua",           enabled = true,  required = true,  delay = 0 },
     { file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
     { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
 
@@ -216,7 +216,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
      -- Missions Core
 
-   { file = "MISSIONS\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
+   { file = "MISSIONS\\SINAI\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
 
      -- Tankers
 

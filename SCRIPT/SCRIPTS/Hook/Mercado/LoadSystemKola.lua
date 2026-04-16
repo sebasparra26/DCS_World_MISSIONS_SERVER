@@ -1,5 +1,5 @@
 HDEV_LoaderConfig = HDEV_LoaderConfig or {
-    rootRelativePath = "Scripts\\HorizontDev\\SinaiCampaignSystem\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
+    rootRelativePath = "Scripts\\HorizontDev\\SystemCampaingDCS\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
     jsonRelativePath = "Config\\HorizontDev\\money.json",
 
     importWindowSeconds = 30,
@@ -162,9 +162,9 @@ end
 -- ============================================================================
 HDEV_LoadQueue = HDEV_LoadQueue or {
     -- Persistance System
-   { file = "PERSISTANCESYSTEM\\SINAI\\SystemUnitPositionPersistence.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\SINAI\\SistemAirbasePersistanceSinai.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\SINAI\\SystemWarehousesPersistanceSinai.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\KOLA\\SystemUnitPositionPersistenceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\KOLA\\SistemAirbasePersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\KOLA\\SystemWarehousesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "PERSISTANCESYSTEM\\Debug\\SystemWarehousesPersistanceSinai-RC.lua",              enabled = true,  required = true,  delay = 0 }, --DEBUG
     -- Library System 
    -- { file = "MIST\\mist_4_5_128.lua",              enabled = true,  required = true,  delay = 0 },
@@ -172,60 +172,60 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    
     -- Bases de datos
     
-    { file = "SCAN\\DATABASE\\Sinai DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
-    { file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Sinai.lua",              enabled = true,  required = true,  delay = 0 },
-    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE.lua",             enabled = true,  required = true,  delay = 0 },
-    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AG.lua",  enabled = true,  required = true,  delay = 0 },
-    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua",  enabled = true,  required = true,  delay = 0 },
+    --{ file = "SCAN\\DATABASE\\Sinai DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
+    --{ file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Sinai.lua",              enabled = true,  required = true,  delay = 0 },
+    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE.lua",             enabled = true,  required = true,  delay = 0 },
+    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AG.lua",  enabled = true,  required = true,  delay = 0 },
+    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua",  enabled = true,  required = true,  delay = 0 },
     
 
     -- Cores
     
-    { file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
-    { file = "MECHANICAL\\ActivateUnitsCampaing_SINAI.lua",           enabled = true,  required = true,  delay = 0 },
-    { file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
-    { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
+    --{ file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
+    --{ file = "MECHANICAL\\SINAI\\ActivateUnitsCampaing_SINAI.lua",           enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
+    --{ file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
 
-    { file = "MISSIONS\\DATABASE\\DB_Missions.lua",              enabled = true,  required = true,  delay = 0 },
+    --{ file = "MISSIONS\\DATABASE\\DB_Missions.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Economy System
 
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
-    { file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
 
     -- Logística
 
-    { file = "LOGISTIC\\logisticCoalition_BLUE_V4.lua",                enabled = true,  required = true,  delay = 0 },
-    { file = "LOGISTIC\\logisticCoalition_RED_V4.lua",                 enabled = true,  required = true,  delay = 0},
+    --{ file = "LOGISTIC\\logisticCoalition_BLUE_V4.lua",                enabled = true,  required = true,  delay = 0 },
+    --{ file = "LOGISTIC\\logisticCoalition_RED_V4.lua",                 enabled = true,  required = true,  delay = 0},
 
     -- Menús y wallet
 
-    { file = "MARKETPLACE\\MENU_logisticCoalition_BLUE_V4.lua",           enabled = true,  required = true,  delay = 0 },
-    { file = "MARKETPLACE\\MENU_logisticCoalition_RED_V4.lua",            enabled = true,  required = true,  delay = 0 },
-    { file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
+    --{ file = "MARKETPLACE\\MENU_logisticCoalition_BLUE_V4.lua",           enabled = true,  required = true,  delay = 0 },
+    --{ file = "MARKETPLACE\\MENU_logisticCoalition_RED_V4.lua",            enabled = true,  required = true,  delay = 0 },
+    --{ file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
       -- Persistance Ships
    
      -- UI
 
-   { file = "UI\\UI.lua",              enabled = true,  required = true,  delay = 5 },
+   --{ file = "UI\\UI.lua",              enabled = true,  required = true,  delay = 5 },
 
     -- IA TASK 
 
-   { file = "MECHANICAL\\Patrol+Task_IA-SINAI.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\Patrol+Task_IA-SINAI.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Missions Core
 
-   { file = "MISSIONS\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
+   --{ file = "MISSIONS\\SINAI\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
 
      -- Tankers
 
-   { file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Debug
 
-   { file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Extras opcionales
     -- { file = "EconomicSystemAIRPORTS_v3.lua",             enabled = true,  required = false, delay = 2 },
