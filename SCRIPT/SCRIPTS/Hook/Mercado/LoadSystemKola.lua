@@ -1,6 +1,6 @@
 HDEV_LoaderConfig = HDEV_LoaderConfig or {
     rootRelativePath = "Scripts\\HorizontDev\\SystemCampaingDCS\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
-    jsonRelativePath = "Config\\HorizontDev\\money.json",
+    jsonRelativePath = "Config\\HorizontDev\\KOLA\\money.json",
 
     importWindowSeconds = 30,
     autosaveInterval = 10,
@@ -125,7 +125,7 @@ log("Base path resuelta: " .. tostring(BASE_PATH))
 
 -- Config global compartida
 HDEV_EconomyGlobalConfig = {
-    jsonRelativePath = CFG.jsonRelativePath or "Config\\HorizontDev\\money.json",
+    jsonRelativePath = CFG.jsonRelativePath or "Config\\HorizontDev\\KOLA\\money.json",
     importWindowSeconds = CFG.importWindowSeconds or 30,
     autosaveInterval = CFG.autosaveInterval or 10,
     minWriteInterval = CFG.minWriteInterval or 5,
@@ -172,43 +172,43 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    
     -- Bases de datos
     
-    --{ file = "SCAN\\DATABASE\\Sinai DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
-    --{ file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Sinai.lua",              enabled = true,  required = true,  delay = 0 },
-    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE.lua",             enabled = true,  required = true,  delay = 0 },
-    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AG.lua",  enabled = true,  required = true,  delay = 0 },
-    --{ file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua",  enabled = true,  required = true,  delay = 0 },
+    { file = "SCAN\\DATABASE\\Kola DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Kola.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE.lua",             enabled = true,  required = true,  delay = 0 },
+    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AG.lua",  enabled = true,  required = true,  delay = 0 },
+    { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua",  enabled = true,  required = true,  delay = 0 },
     
 
     -- Cores
     
-    --{ file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
-    --{ file = "MECHANICAL\\SINAI\\ActivateUnitsCampaing_SINAI.lua",           enabled = true,  required = true,  delay = 0 },
-    --{ file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
-    --{ file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
+    { file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
+    { file = "MECHANICAL\\KOLA\\ActivateUnitsCampaing_KOLA.lua",           enabled = true,  required = true,  delay = 0 },
+    { file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
+    { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
 
     --{ file = "MISSIONS\\DATABASE\\DB_Missions.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Economy System
 
-    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
-    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
-    --{ file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
+    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
+    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
+    { file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
 
     -- Logística
 
-    --{ file = "LOGISTIC\\logisticCoalition_BLUE_V4.lua",                enabled = true,  required = true,  delay = 0 },
-    --{ file = "LOGISTIC\\logisticCoalition_RED_V4.lua",                 enabled = true,  required = true,  delay = 0},
+    { file = "LOGISTIC\\logisticCoalition_BLUE_V4.lua",                enabled = true,  required = true,  delay = 0 },
+    { file = "LOGISTIC\\logisticCoalition_RED_V4.lua",                 enabled = true,  required = true,  delay = 0},
 
     -- Menús y wallet
 
-    --{ file = "MARKETPLACE\\MENU_logisticCoalition_BLUE_V4.lua",           enabled = true,  required = true,  delay = 0 },
-    --{ file = "MARKETPLACE\\MENU_logisticCoalition_RED_V4.lua",            enabled = true,  required = true,  delay = 0 },
-    --{ file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
+    { file = "MARKETPLACE\\MENU_logisticCoalition_BLUE_V4.lua",           enabled = true,  required = true,  delay = 0 },
+    { file = "MARKETPLACE\\MENU_logisticCoalition_RED_V4.lua",            enabled = true,  required = true,  delay = 0 },
+    { file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
       -- Persistance Ships
    
      -- UI
 
-   --{ file = "UI\\UI.lua",              enabled = true,  required = true,  delay = 5 },
+   { file = "UI\\UIKola.lua",              enabled = true,  required = true,  delay = 5 },
 
     -- IA TASK 
 
@@ -220,12 +220,12 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
      -- Tankers
 
-   --{ file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
-   --{ file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Debug
 
-   --{ file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Extras opcionales
     -- { file = "EconomicSystemAIRPORTS_v3.lua",             enabled = true,  required = false, delay = 2 },
