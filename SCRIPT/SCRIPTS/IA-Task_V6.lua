@@ -1,5 +1,3 @@
-
-
 if not mist or not mist.cloneGroup or not mist.getGroupRoute or not mist.goRoute then
     trigger.action.outText("ERROR: MIST no esta cargado o faltan funciones requeridas.", 15)
     return
@@ -14,12 +12,22 @@ local ASSIGN_DELAY = 1
 local HEARTBEAT_SECONDS = 5
 local MENU_NAME = "Tasking IA"
 
-local STOP_SPEED_THRESHOLD = 1       -- m/s
+local STOP_SPEED_THRESHOLD = 1
 local DESPAWN_AFTER_STOP_SECONDS = 30
-local ARM_STOP_MONITOR_AT_AGL = 10   -- metros AGL
+local ARM_STOP_MONITOR_AT_AGL = 10
+
+local RTB_CRUISE_ALT = 9144      -- Angels 30 en metros
+local RTB_CRUISE_SPEED = 700     -- m/s
+local RTB_CLIMB_OFFSET_NM = 250   -- distancia del waypoint de subida hacia casa
 
 ----------------------------------------------------------------
 -- PERFILES DE MISION
+--
+-- mode internos:
+--   area_engage       -> Orbit + EngageTargetsInZone
+--   bomb_point        -> Bombing con punto exacto en la marca
+--   attack_group_once -> AttackGroup disparado por script cerca del IP
+--   escort_group      -> Escort
 ----------------------------------------------------------------
 local TASK_PROFILES = {
     cap = {
@@ -28,33 +36,43 @@ local TASK_PROFILES = {
         templates = { "CAP_A", "CAP_B", "CAP_C" },
         maxActive = 1,
         cooldownSeconds = 1 * 60,
-        orbitAltitude = 7000,   -- metros
-        orbitSpeed = 300,       -- m/s
-        zoneRadius = 35000,     -- metros
+        orbitAltitude = 7000,
+        orbitSpeed = 300,
+        zoneRadius = 35000,
+        ingressOffsetNm = 12,
         targetTypes = { "Air" }
     },
 
     sead = {
         displayName = "SEAD",
-        mode = "area_engage",
-        templates = { "SEAD_D", "SEAD_E"},
-        maxActive = 1,
+        mode = "attack_group_once",
+        templates = {"SEAD_E" },
+        maxActive = 6,
         cooldownSeconds = 1 * 60,
-        orbitAltitude = 7000,
-        orbitSpeed = 300,
-        zoneRadius = 30000,
-        targetTypes = { "Air Defence", "SAM related", "AAA", "EWR" }
+        ingressAltitude = 11000,
+        ingressSpeed = 700,
+        zoneRadius = 60000,
+        ingressOffsetNm = 35,
+        egressOffsetNm = -30, -- negativo = antes del target
+        targetTypes = { "Air Defence", "SAM related", "AAA", "EWR" },
+        expend = "All",
+        attackQty = 1,
+        attackQtyLimit = true,
+        altitudeEnabled = true,
+        rtbAfterAttack = true,
+        attackTriggerMeters = 12000
     },
 
     cas = {
         displayName = "CAS",
         mode = "area_engage",
-        templates = { "CAS_A", "CAS_B"},
+        templates = { "CAS_A", "CAS_B" },
         maxActive = 1,
         cooldownSeconds = 1 * 60,
         orbitAltitude = 9000,
         orbitSpeed = 300,
         zoneRadius = 18000,
+        ingressOffsetNm = 8,
         targetTypes = { "Ground Units" },
         rtbAfterTaskSeconds = 10 * 60
     },
@@ -62,13 +80,50 @@ local TASK_PROFILES = {
     strike = {
         displayName = "STRIKE",
         mode = "bomb_point",
-        templates = { "STRIKE_A"},
+        templates = { "STRIKE_B" },
+        maxActive = 6,
+        cooldownSeconds = 1 * 60,
+        ingressAltitude = 12000,
+        ingressSpeed = 700,
+        ingressOffsetNm = 40,
+        egressOffsetNm = -30,     -- despues del blanco
+        attackQty = 1,
+        attackQtyLimit = true,
+        groupAttack = true,
+        expend = "All",
+        altitudeEnabled = true,
+        rtbAfterAttack = true
+    },
+
+    strike_standoff = {
+        displayName = "STRIKE_STANDOFF",
+        mode = "bomb_point",
+        templates = { "STRIKE_A" },
         maxActive = 1,
         cooldownSeconds = 20 * 60,
-        ingressAltitude = 6000,
+        ingressAltitude = 8000,
         ingressSpeed = 300,
-        attackQty = 2,
-        groupAttack = true
+        ingressOffsetNm = 30,    -- lanzamiento mas lejos
+        egressOffsetNm = -5,     -- antes del blanco, ideal para JSOW/154C
+        attackQty = 1,
+        attackQtyLimit = true,
+        groupAttack = true,
+        expend = "All",
+        altitudeEnabled = true,
+        rtbAfterAttack = true
+    },
+
+    naval = {
+        displayName = "NAVAL",
+        mode = "area_engage",
+        templates = { "NAVAL_A", "NAVAL_B" },
+        maxActive = 1,
+        cooldownSeconds = 5 * 60,
+        orbitAltitude = 7000,
+        orbitSpeed = 300,
+        zoneRadius = 30000,
+        ingressOffsetNm = 10,
+        targetTypes = { "Ships" }
     },
 
     escort = {
@@ -86,18 +141,22 @@ local TASK_PROFILES = {
 
 ----------------------------------------------------------------
 -- ALIASES
+-- IMPORTANTE: los aliases largos deben ir antes que "strike"
 ----------------------------------------------------------------
 local COMMAND_ALIASES = {
-    --{ alias = "ataque a tierra",   key = "strike" },
-    --{ alias = "ataque de tierra",  key = "strike" },
-    --{ alias = "close air support", key = "cas"    },
-    --{ alias = "ataque terrestre",  key = "strike" },
-    --{ alias = "escolta",           key = "escort" },
-    { alias = "escort",            key = "escort" },
-    { alias = "strike",            key = "strike" },
-    { alias = "sead",              key = "sead"   },
-    { alias = "cas",               key = "cas"    },
-    { alias = "cap",               key = "cap"    }
+    { alias = "strike standoff", key = "strike_standoff" },
+    { alias = "strike_standoff", key = "strike_standoff" },
+    { alias = "standoff",        key = "strike_standoff" },
+    { alias = "jsow",            key = "strike_standoff" },
+
+    { alias = "anti ship",       key = "naval"  },
+    { alias = "antiship",        key = "naval"  },
+    { alias = "naval",           key = "naval"  },
+    { alias = "escort",          key = "escort" },
+    { alias = "strike",          key = "strike" },
+    { alias = "sead",            key = "sead"   },
+    { alias = "cas",             key = "cas"    },
+    { alias = "cap",             key = "cap"    }
 }
 
 ----------------------------------------------------------------
@@ -126,7 +185,9 @@ local function debugMsg(text, duration)
 end
 
 local function trim(s)
-    if not s then return "" end
+    if not s then
+        return ""
+    end
     return (s:gsub("^%s+", ""):gsub("%s+$", ""))
 end
 
@@ -138,19 +199,38 @@ local function deepCopy(tbl)
     if mist and mist.utils and mist.utils.deepCopy then
         return mist.utils.deepCopy(tbl)
     end
-    return tbl
+
+    if type(tbl) ~= "table" then
+        return tbl
+    end
+
+    local out = {}
+    for k, v in pairs(tbl) do
+        out[k] = deepCopy(v)
+    end
+    return out
 end
 
 local function makeVec2(point)
-    if not point then return nil end
+    if not point then
+        return nil
+    end
+
     if point.z then
         return { x = point.x, y = point.z }
     end
+
     return { x = point.x, y = point.y }
 end
 
+local function nmToMeters(nm)
+    return (tonumber(nm) or 0) * 1852
+end
+
 local function getAliveLeadUnit(group)
-    if not group or not group:isExist() then return nil end
+    if not group or not group:isExist() then
+        return nil
+    end
 
     local units = group:getUnits() or {}
     for i = 1, #units do
@@ -175,6 +255,7 @@ local function get2DDistance(a, b)
 
     local dx = ax - bx
     local dy = ay - by
+
     return math.sqrt(dx * dx + dy * dy)
 end
 
@@ -273,7 +354,9 @@ end
 local function getSecondsRemaining(targetTime)
     local now = timer.getAbsTime()
     local remaining = math.floor((targetTime or 0) - now)
-    if remaining < 0 then remaining = 0 end
+    if remaining < 0 then
+        remaining = 0
+    end
     return remaining
 end
 
@@ -292,9 +375,43 @@ local function buildSignature(keyword, point, arg)
     }, "|")
 end
 
-local function formatMeters(v)
-    if not v then return "N/D" end
-    return tostring(math.floor(v))
+local function unitHasAnyAttribute(unit, attrs)
+    if not unit or not unit:isExist() or not attrs then
+        return false
+    end
+
+    for i = 1, #attrs do
+        local attr = attrs[i]
+        local ok, has = pcall(function()
+            return unit:hasAttribute(attr)
+        end)
+        if ok and has then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function groupExistsByName(groupName)
+    if not groupName or groupName == "" then
+        return nil
+    end
+
+    local grp = Group.getByName(groupName)
+    if not grp then
+        return nil
+    end
+
+    local ok, exists = pcall(function()
+        return grp:isExist()
+    end)
+
+    if ok and exists then
+        return grp
+    end
+
+    return nil
 end
 
 ----------------------------------------------------------------
@@ -302,15 +419,17 @@ end
 ----------------------------------------------------------------
 local function removeDeadTaskIdsFromCategory(categoryKey)
     local cat = categoryState[categoryKey]
-    if not cat then return end
+    if not cat then
+        return
+    end
 
     local stillAlive = {}
     for i = 1, #cat.activeTaskIds do
         local taskId = cat.activeTaskIds[i]
         local rec = activeTasks[taskId]
-        local g = rec and Group.getByName(rec.cloneGroupName) or nil
+        local g = rec and groupExistsByName(rec.cloneGroupName) or nil
 
-        if rec and g and g:isExist() and not rec.finished then
+        if rec and g and not rec.finished then
             stillAlive[#stillAlive + 1] = taskId
         end
     end
@@ -349,7 +468,9 @@ end
 local function lockCategoryOnLaunch(categoryKey, taskId)
     local cat = categoryState[categoryKey]
     local profile = TASK_PROFILES[categoryKey]
-    if not cat or not profile then return end
+    if not cat or not profile then
+        return
+    end
 
     cat.activeTaskIds[#cat.activeTaskIds + 1] = taskId
     cat.nextAvailableAt = timer.getAbsTime() + (profile.cooldownSeconds or 20 * 60)
@@ -357,7 +478,9 @@ end
 
 local function releaseCategoryIfTaskFinished(categoryKey, taskId)
     local cat = categoryState[categoryKey]
-    if not cat then return end
+    if not cat then
+        return
+    end
 
     local newList = {}
     for i = 1, #cat.activeTaskIds do
@@ -423,6 +546,54 @@ local function buildLandWaypointFromStart(wpStart)
     return wpLand
 end
 
+local function buildPointTowardHome(fromPoint, homeWp, offsetNm)
+    local fx = fromPoint.x
+    local fy = fromPoint.z
+    local hx = homeWp.x
+    local hy = homeWp.y
+
+    local dx = hx - fx
+    local dy = hy - fy
+    local dist = math.sqrt(dx * dx + dy * dy)
+
+    if dist < 1 then
+        return hx, hy
+    end
+
+    local offsetMeters = nmToMeters(offsetNm or 0)
+    if offsetMeters <= 0 then
+        offsetMeters = nmToMeters(25)
+    end
+
+    if offsetMeters > dist * 0.8 then
+        offsetMeters = dist * 0.8
+    end
+
+    local nx = dx / dist
+    local ny = dy / dist
+
+    return fx + (nx * offsetMeters), fy + (ny * offsetMeters)
+end
+
+local function buildRTBClimbWaypoint(fromPoint, wpStart)
+    local cx, cy = buildPointTowardHome(fromPoint, wpStart, RTB_CLIMB_OFFSET_NM)
+
+    return {
+        type = "Turning Point",
+        action = "Turning Point",
+        x = cx,
+        y = cy,
+        alt = RTB_CRUISE_ALT,
+        alt_type = "BARO",
+        speed = RTB_CRUISE_SPEED,
+        speed_locked = true,
+        ETA = 0,
+        ETA_locked = false,
+        name = "RTB CLIMB",
+        task = buildEmptyComboTask()
+    }
+end
+
 local function buildAreaComboTask(profile, pointVec2)
     return {
         id = "ComboTask",
@@ -460,8 +631,12 @@ local function buildBombPointComboTask(profile, pointVec2)
                     id = "Bombing",
                     params = {
                         point = pointVec2,
+                        expend = profile.expend or "All",
                         attackQty = profile.attackQty or 1,
-                        groupAttack = (profile.groupAttack ~= false)
+                        attackQtyLimit = (profile.attackQtyLimit ~= false),
+                        groupAttack = (profile.groupAttack ~= false),
+                        altitudeEnabled = (profile.altitudeEnabled == true),
+                        altitude = profile.ingressAltitude or profile.orbitAltitude or 2000
                     }
                 }
             }
@@ -482,14 +657,66 @@ local function buildEscortTask(profile, targetGroup)
     }
 end
 
-local function buildAttackGroupTask(targetGroup)
+local function buildAttackGroupTask(targetGroup, profile)
     return {
         id = "AttackGroup",
         params = {
             groupId = targetGroup:getID(),
-            attackQtyLimit = false
+            expend = profile and profile.expend or nil,
+            attackQtyLimit = profile and profile.attackQtyLimit or false,
+            attackQty = profile and profile.attackQty or nil,
+            altitudeEnabled = profile and profile.altitudeEnabled or false,
+            altitude = profile and (profile.ingressAltitude or profile.orbitAltitude) or nil
         }
     }
+end
+
+local function buildIngressPoint(startWp, targetPoint, offsetNm)
+    local sx = startWp.x
+    local sy = startWp.y
+    local tx = targetPoint.x
+    local ty = targetPoint.z
+
+    local dx = tx - sx
+    local dy = ty - sy
+    local dist = math.sqrt(dx * dx + dy * dy)
+
+    if dist < 1 then
+        return tx, ty
+    end
+
+    local offsetMeters = nmToMeters(offsetNm or 0)
+    if offsetMeters <= 0 then
+        return tx, ty
+    end
+
+    if offsetMeters > dist * 0.6 then
+        offsetMeters = dist * 0.6
+    end
+
+    local nx = dx / dist
+    local ny = dy / dist
+
+    return tx - (nx * offsetMeters), ty - (ny * offsetMeters)
+end
+
+local function buildSignedEgressPoint(ipX, ipY, targetPoint, offsetNm)
+    local tx = targetPoint.x
+    local ty = targetPoint.z
+
+    local dx = tx - ipX
+    local dy = ty - ipY
+    local dist = math.sqrt(dx * dx + dy * dy)
+
+    if dist < 1 then
+        return tx, ty
+    end
+
+    local offsetMeters = nmToMeters(offsetNm or 0)
+    local nx = dx / dist
+    local ny = dy / dist
+
+    return tx + (nx * offsetMeters), ty + (ny * offsetMeters)
 end
 
 local function buildWaypointTaskForProfile(profile, pointVec2)
@@ -503,9 +730,6 @@ local function buildWaypointTaskForProfile(profile, pointVec2)
         end
 
         return baseTask
-
-    elseif profile.mode == "bomb_point" then
-        return buildBombPointComboTask(profile, pointVec2)
     end
 
     return buildEmptyComboTask()
@@ -522,34 +746,99 @@ local function buildRouteFromTemplate(templateName, profile, markPoint)
     end
 
     local wp1 = deepCopy(templateRoute[1])
-    local wp2 = deepCopy(templateRoute[2])
+    local wpBase = deepCopy(templateRoute[2])
 
     local pointVec2 = makeVec2(markPoint)
 
-    wp2.x = markPoint.x
-    wp2.y = markPoint.z
-    wp2.name = profile.displayName
-    wp2.alt = profile.orbitAltitude or profile.ingressAltitude or wp2.alt or 2000
-    wp2.alt_type = wp2.alt_type or wp1.alt_type or "BARO"
-    wp2.speed = profile.orbitSpeed or profile.ingressSpeed or wp2.speed or 180
-    wp2.speed_locked = true
-    wp2.ETA_locked = false
-    wp2.task = buildWaypointTaskForProfile(profile, pointVec2)
+    local ipX, ipY = buildIngressPoint(wp1, markPoint, profile.ingressOffsetNm or 0)
+    local egX, egY = buildSignedEgressPoint(ipX, ipY, markPoint, profile.egressOffsetNm or 0)
+
+    local wpIP = deepCopy(wpBase)
+    wpIP.x = ipX
+    wpIP.y = ipY
+    wpIP.name = "IP - " .. profile.displayName
+    wpIP.alt = profile.ingressAltitude or profile.orbitAltitude or wpIP.alt or 2000
+    wpIP.alt_type = wpIP.alt_type or wp1.alt_type or "BARO"
+    wpIP.speed = profile.ingressSpeed or profile.orbitSpeed or wpIP.speed or 180
+    wpIP.speed_locked = true
+    wpIP.ETA_locked = false
+    wpIP.task = buildEmptyComboTask()
+
+    local wpTarget = deepCopy(wpBase)
+    wpTarget.x = markPoint.x
+    wpTarget.y = markPoint.z
+    wpTarget.name = profile.displayName
+    wpTarget.alt = profile.orbitAltitude or profile.ingressAltitude or wpTarget.alt or 2000
+    wpTarget.alt_type = wpTarget.alt_type or wp1.alt_type or "BARO"
+    wpTarget.speed = profile.orbitSpeed or profile.ingressSpeed or wpTarget.speed or 180
+    wpTarget.speed_locked = true
+    wpTarget.ETA_locked = false
+    wpTarget.task = buildEmptyComboTask()
+
+    local wpEgress = deepCopy(wpBase)
+    wpEgress.x = egX
+    wpEgress.y = egY
+    wpEgress.name = "EGRESS - " .. profile.displayName
+    wpEgress.alt = profile.ingressAltitude or profile.orbitAltitude or wpEgress.alt or 2000
+    wpEgress.alt_type = wpEgress.alt_type or wp1.alt_type or "BARO"
+    wpEgress.speed = profile.ingressSpeed or profile.orbitSpeed or wpEgress.speed or 180
+    wpEgress.speed_locked = true
+    wpEgress.ETA_locked = false
+    wpEgress.task = buildEmptyComboTask()
 
     local route = {
-        [1] = wp1,
-        [2] = wp2
+        [1] = wp1
     }
 
-    if profile.rtbAfterTaskSeconds and profile.rtbAfterTaskSeconds > 0 then
-        if not wp1.airdromeId and not wp1.helipadId and not wp1.linkUnit then
-            return nil, "La plantilla no tiene referencia valida para regresar a casa (airdromeId/helipadId/linkUnit): " .. templateName
+    if profile.mode == "bomb_point" then
+        wpIP.task = buildBombPointComboTask(profile, pointVec2)
+
+        route[2] = wpIP
+        route[3] = wpEgress
+
+        if profile.rtbAfterAttack then
+            if not wp1.airdromeId and not wp1.helipadId and not wp1.linkUnit then
+                return nil, "La plantilla no tiene referencia valida para regresar a casa (airdromeId/helipadId/linkUnit): " .. templateName
+            end
+
+            route[4] = buildRTBClimbWaypoint({ x = egX, z = egY }, wp1)
+            route[5] = buildLandWaypointFromStart(wp1)
         end
 
-        route[3] = buildLandWaypointFromStart(wp1)
+    elseif profile.mode == "attack_group_once" then
+        route[2] = wpIP
+        route[3] = wpEgress
+
+        if profile.rtbAfterAttack then
+            if not wp1.airdromeId and not wp1.helipadId and not wp1.linkUnit then
+                return nil, "La plantilla no tiene referencia valida para regresar a casa (airdromeId/helipadId/linkUnit): " .. templateName
+            end
+
+            route[4] = buildRTBClimbWaypoint({ x = egX, z = egY }, wp1)
+            route[5] = buildLandWaypointFromStart(wp1)
+        end
+
+    elseif profile.mode == "area_engage" then
+        wpTarget.task = buildWaypointTaskForProfile(profile, pointVec2)
+
+        route[2] = wpIP
+        route[3] = wpTarget
+
+        if profile.rtbAfterTaskSeconds and profile.rtbAfterTaskSeconds > 0 then
+            if not wp1.airdromeId and not wp1.helipadId and not wp1.linkUnit then
+                return nil, "La plantilla no tiene referencia valida para regresar a casa (airdromeId/helipadId/linkUnit): " .. templateName
+            end
+
+            route[4] = buildRTBClimbWaypoint({ x = markPoint.x, z = markPoint.z }, wp1)
+            route[5] = buildLandWaypointFromStart(wp1)
+        end
     end
 
-    return route
+    return route, {
+        ipPoint = { x = ipX, z = ipY },
+        targetPoint = { x = markPoint.x, z = markPoint.z },
+        egressPoint = { x = egX, z = egY }
+    }
 end
 
 local function getEnemyCoalitionId(groupObject)
@@ -639,15 +928,84 @@ local function getNearestEnemyAirGroupInRadius(fromGroup, centerPoint, radius)
     return nearestGroup, nearestDist
 end
 
+local function getNearestEnemyGroundGroupByAttributesInRadius(fromGroup, centerPoint, radius, attrs)
+    local enemyCoalition = getEnemyCoalitionId(fromGroup)
+    if not enemyCoalition then
+        return nil, nil
+    end
+
+    local enemyGroups = coalition.getGroups(enemyCoalition, Group.Category.GROUND) or {}
+    local nearestGroup = nil
+    local nearestDist = nil
+
+    for i = 1, #enemyGroups do
+        local g = enemyGroups[i]
+        if g and g:isExist() and g:getSize() > 0 then
+            local u = getAliveLeadUnit(g)
+            if u and unitHasAnyAttribute(u, attrs) then
+                local p = u:getPoint()
+                local dx = p.x - centerPoint.x
+                local dz = p.z - centerPoint.z
+                local dist = math.sqrt(dx * dx + dz * dz)
+
+                if dist <= radius then
+                    if not nearestDist or dist < nearestDist then
+                        nearestDist = dist
+                        nearestGroup = g
+                    end
+                end
+            end
+        end
+    end
+
+    return nearestGroup, nearestDist
+end
+
+local function getNearestEnemyShipGroupInRadius(fromGroup, centerPoint, radius, attrs)
+    local enemyCoalition = getEnemyCoalitionId(fromGroup)
+    if not enemyCoalition then
+        return nil, nil
+    end
+
+    local shipCategory = Group.Category.SHIP or 3
+    local enemyGroups = coalition.getGroups(enemyCoalition, shipCategory) or {}
+    local nearestGroup = nil
+    local nearestDist = nil
+
+    for i = 1, #enemyGroups do
+        local g = enemyGroups[i]
+        if g and g:isExist() and g:getSize() > 0 then
+            local u = getAliveLeadUnit(g)
+            if u and unitHasAnyAttribute(u, attrs) then
+                local p = u:getPoint()
+                local dx = p.x - centerPoint.x
+                local dz = p.z - centerPoint.z
+                local dist = math.sqrt(dx * dx + dz * dz)
+
+                if dist <= radius then
+                    if not nearestDist or dist < nearestDist then
+                        nearestDist = dist
+                        nearestGroup = g
+                    end
+                end
+            end
+        end
+    end
+
+    return nearestGroup, nearestDist
+end
+
 ----------------------------------------------------------------
 -- CREACION Y ASIGNACION
 ----------------------------------------------------------------
 local function assignTaskToClone(taskId)
     local rec = activeTasks[taskId]
-    if not rec then return end
+    if not rec then
+        return
+    end
 
-    local group = Group.getByName(rec.cloneGroupName)
-    if not group or not group:isExist() then
+    local group = groupExistsByName(rec.cloneGroupName)
+    if not group then
         rec.state = "ERROR: grupo clonado no existe"
         rec.finished = true
         releaseCategoryIfTaskFinished(rec.keyword, rec.id)
@@ -678,8 +1036,8 @@ local function assignTaskToClone(taskId)
             return
         end
 
-        local targetGroup = Group.getByName(targetName)
-        if not targetGroup or not targetGroup:isExist() then
+        local targetGroup = groupExistsByName(targetName)
+        if not targetGroup then
             rec.state = "ERROR: grupo a escoltar no existe"
             rec.finished = true
             releaseCategoryIfTaskFinished(rec.keyword, rec.id)
@@ -706,14 +1064,18 @@ local function assignTaskToClone(taskId)
         return
     end
 
-    local route, err = buildRouteFromTemplate(rec.templateName, profile, rec.point)
+    local route, metaOrErr = buildRouteFromTemplate(rec.templateName, profile, rec.point)
     if not route then
-        rec.state = "ERROR: " .. (err or "no se pudo crear la ruta")
+        rec.state = "ERROR: " .. tostring(metaOrErr or "no se pudo crear la ruta")
         rec.finished = true
         releaseCategoryIfTaskFinished(rec.keyword, rec.id)
         trigger.action.outText(rec.state, 10)
         return
     end
+
+    rec.ipPoint = metaOrErr and metaOrErr.ipPoint or nil
+    rec.targetPoint = metaOrErr and metaOrErr.targetPoint or nil
+    rec.egressPoint = metaOrErr and metaOrErr.egressPoint or nil
 
     local ok = mist.goRoute(rec.cloneGroupName, route)
     if not ok then
@@ -732,8 +1094,7 @@ local function assignTaskToClone(taskId)
         "ID: " .. rec.id .. "\n" ..
         "Tipo: " .. rec.profile.displayName .. "\n" ..
         "Plantilla: " .. rec.templateName .. "\n" ..
-        "Grupo clonado: " .. rec.cloneGroupName .. "\n" ..
-        "WP operativo: etiqueta F10",
+        "Grupo clonado: " .. rec.cloneGroupName,
         10
     )
 end
@@ -794,6 +1155,16 @@ local function createTask(keyword, arg, point, markId, originalText)
         capTargetGroupName = nil,
         capAttackAssigned = false,
 
+        seadTargetGroupName = nil,
+        seadAttackAssigned = false,
+
+        navalTargetGroupName = nil,
+        navalAttackAssigned = false,
+
+        ipPoint = nil,
+        targetPoint = nil,
+        egressPoint = nil,
+
         hasBeenAbove10AGL = false,
         stopSince = nil
     }
@@ -833,6 +1204,10 @@ local function showAssignedTasks()
                 extra = " | casTarget=" .. rec.casTargetGroupName
             elseif rec.capTargetGroupName then
                 extra = " | capTarget=" .. rec.capTargetGroupName
+            elseif rec.seadTargetGroupName then
+                extra = " | seadTarget=" .. rec.seadTargetGroupName
+            elseif rec.navalTargetGroupName then
+                extra = " | navalTarget=" .. rec.navalTargetGroupName
             end
 
             lines[#lines + 1] =
@@ -855,8 +1230,8 @@ local function cleanDestroyedTasks()
     for _, id in ipairs(ids) do
         local rec = activeTasks[id]
         if rec then
-            local g = Group.getByName(rec.cloneGroupName)
-            if (not g or not g:isExist()) or rec.finished then
+            local g = groupExistsByName(rec.cloneGroupName)
+            if (not g) or rec.finished then
                 releaseCategoryIfTaskFinished(rec.keyword, rec.id)
                 activeTasks[id] = nil
                 removed = removed + 1
@@ -917,15 +1292,17 @@ local function showHelp()
         "sead\n" ..
         "cas\n" ..
         "strike\n" ..
-        "ataque a tierra\n" ..
-        "escort NombreDelGrupo\n" ..
-        "escolta NombreDelGrupo\n\n" ..
+        "strike standoff\n" ..
+        "standoff\n" ..
+        "jsow\n" ..
+        "naval\n" ..
+        "escort NombreDelGrupo\n\n" ..
         "Notas:\n" ..
-        "- La plantilla debe tener WP1 despegue + WP2 operativo en el editor\n" ..
-        "- El script reemplaza ese WP2 por la etiqueta F10\n" ..
-        "- CAP usa AttackGroup al entrar al sector\n" ..
-        "- CAS usa AttackGroup al entrar al sector\n" ..
-        "- CAS vuelve a casa 20 minutos despues de entrar al punto de trabajo\n" ..
+        "- STRIKE usa egress positivo normal\n" ..
+        "- STRIKE_STANDOFF usa egress negativo para salir antes\n" ..
+        "- La marca F10 es el punto exacto del bombardeo\n" ..
+        "- SEAD ya no navega por waypoint target, sale directo al egress\n" ..
+        "- El RTB primero sube a Angels 30\n" ..
         "- Si el clon ya volo y luego se queda quieto 30 s, desaparece"
 
     trigger.action.outText(text, 20)
@@ -945,9 +1322,9 @@ local function heartbeat(_, now)
     for _, id in ipairs(getTaskIdsSorted()) do
         local rec = activeTasks[id]
         if rec then
-            local group = Group.getByName(rec.cloneGroupName)
+            local group = groupExistsByName(rec.cloneGroupName)
 
-            if not group or not group:isExist() then
+            if not group then
                 rec.state = "DESTRUIDA"
                 rec.finished = true
                 releaseCategoryIfTaskFinished(rec.keyword, rec.id)
@@ -989,169 +1366,264 @@ local function heartbeat(_, now)
                     -- LOGICA DE TAREAS
                     ----------------------------------------------------------------
                     if rec.point then
-                        local dist = get2DDistance(lead:getPoint(), rec.point)
-                        rec.lastDistance = dist
+                        local distToTarget = get2DDistance(lead:getPoint(), rec.point)
+                        rec.lastDistance = distToTarget
 
-                        if rec.profile.mode == "area_engage" then
-                            --------------------------------------------------------
-                            -- CAP
-                            --------------------------------------------------------
-                            if rec.keyword == "cap" then
-                                if dist <= (rec.profile.zoneRadius or 0) then
-                                    local currentTarget = nil
+                        if rec.keyword == "cap" then
+                            if distToTarget <= (rec.profile.zoneRadius or 0) then
+                                local currentTarget = nil
 
-                                    if rec.capTargetGroupName then
-                                        currentTarget = Group.getByName(rec.capTargetGroupName)
-                                        if not currentTarget or not currentTarget:isExist() or currentTarget:getSize() <= 0 then
+                                if rec.capTargetGroupName then
+                                    currentTarget = groupExistsByName(rec.capTargetGroupName)
+                                    if not currentTarget or currentTarget:getSize() <= 0 then
+                                        currentTarget = nil
+                                        rec.capTargetGroupName = nil
+                                        rec.capAttackAssigned = false
+                                    else
+                                        local targetLead = getAliveLeadUnit(currentTarget)
+                                        if not targetLead then
                                             currentTarget = nil
                                             rec.capTargetGroupName = nil
                                             rec.capAttackAssigned = false
-                                        else
-                                            local targetLead = getAliveLeadUnit(currentTarget)
-                                            if not targetLead then
-                                                currentTarget = nil
-                                                rec.capTargetGroupName = nil
-                                                rec.capAttackAssigned = false
-                                            else
-                                                local targetPoint = targetLead:getPoint()
-                                                local targetDistFromZone = get2DDistance(targetPoint, rec.point)
-                                                if targetDistFromZone > (rec.profile.zoneRadius or 0) then
-                                                    currentTarget = nil
-                                                    rec.capTargetGroupName = nil
-                                                    rec.capAttackAssigned = false
-                                                end
-                                            end
                                         end
                                     end
+                                end
 
-                                    if not currentTarget then
-                                        local targetGroup, targetDist = getNearestEnemyAirGroupInRadius(
-                                            group,
-                                            rec.point,
-                                            rec.profile.zoneRadius or 0
-                                        )
+                                if not currentTarget then
+                                    local targetGroup, targetDist = getNearestEnemyAirGroupInRadius(
+                                        group,
+                                        rec.point,
+                                        rec.profile.zoneRadius or 0
+                                    )
 
-                                        if targetGroup then
-                                            local controller = group:getController()
-                                            if controller then
-                                                controller:pushTask(buildAttackGroupTask(targetGroup))
-                                                rec.capTargetGroupName = targetGroup:getName()
-                                                rec.capAttackAssigned = true
-                                                rec.state = "ACTIVA - CAP ATACANDO"
+                                    if targetGroup then
+                                        local controller = group:getController()
+                                        if controller then
+                                            controller:pushTask(buildAttackGroupTask(targetGroup, rec.profile))
+                                            rec.capTargetGroupName = targetGroup:getName()
+                                            rec.capAttackAssigned = true
+                                            rec.state = "ACTIVA - CAP ATACANDO"
 
-                                                if DEBUG then
-                                                    trigger.action.outText(
-                                                        "[Tasking IA] CAP atacando grupo: " ..
-                                                        rec.capTargetGroupName ..
-                                                        " | Distancia objetivo: " ..
-                                                        math.floor(targetDist or 0) .. " m",
-                                                        6
-                                                    )
-                                                end
-                                            else
-                                                rec.state = "ACTIVA - CAP SIN CONTROLLER"
+                                            if DEBUG then
+                                                trigger.action.outText(
+                                                    "[Tasking IA] CAP atacando grupo: " ..
+                                                    rec.capTargetGroupName ..
+                                                    " | Distancia objetivo: " ..
+                                                    math.floor(targetDist or 0) .. " m",
+                                                    6
+                                                )
                                             end
                                         else
-                                            rec.state = "ACTIVA - CAP SIN BLANCO"
+                                            rec.state = "ACTIVA - CAP SIN CONTROLLER"
                                         end
                                     else
-                                        rec.state = "ACTIVA - CAP ATACANDO"
+                                        rec.state = "ACTIVA - CAP SIN BLANCO"
+                                    end
+                                else
+                                    rec.state = "ACTIVA - CAP ATACANDO"
+                                end
+                            else
+                                rec.state = "ACTIVA - EN RUTA"
+                            end
+
+                        elseif rec.keyword == "sead" then
+                            local distToIP = rec.ipPoint and get2DDistance(lead:getPoint(), rec.ipPoint) or math.huge
+                            local triggerMeters = rec.profile.attackTriggerMeters or 12000
+
+                            if not rec.seadAttackAssigned then
+                                if distToIP <= triggerMeters then
+                                    local targetGroup, targetDist = getNearestEnemyGroundGroupByAttributesInRadius(
+                                        group,
+                                        rec.point,
+                                        rec.profile.zoneRadius or 0,
+                                        rec.profile.targetTypes
+                                    )
+
+                                    if targetGroup then
+                                        local controller = group:getController()
+                                        if controller then
+                                            controller:pushTask(buildAttackGroupTask(targetGroup, rec.profile))
+                                            rec.seadTargetGroupName = targetGroup:getName()
+                                            rec.seadAttackAssigned = true
+                                            rec.state = "ACTIVA - SEAD ATAQUE UNICO"
+
+                                            if DEBUG then
+                                                trigger.action.outText(
+                                                    "[Tasking IA] SEAD atacando grupo: " ..
+                                                    rec.seadTargetGroupName ..
+                                                    " | Distancia objetivo: " ..
+                                                    math.floor(targetDist or 0) .. " m",
+                                                    6
+                                                )
+                                            end
+                                        else
+                                            rec.state = "ACTIVA - SEAD SIN CONTROLLER"
+                                        end
+                                    else
+                                        rec.state = "ACTIVA - SEAD SIN BLANCO"
                                     end
                                 else
                                     rec.state = "ACTIVA - EN RUTA"
                                 end
+                            else
+                                local distToEgress = rec.egressPoint and get2DDistance(lead:getPoint(), rec.egressPoint) or math.huge
 
-                            --------------------------------------------------------
-                            -- CAS
-                            --------------------------------------------------------
-                            elseif rec.keyword == "cas" then
-                                if dist <= (rec.profile.zoneRadius or 0) then
-                                    local currentTarget = nil
+                                if distToEgress <= 8000 then
+                                    rec.state = "ACTIVA - SEAD EGRESS / RTB"
+                                else
+                                    rec.state = "ACTIVA - SEAD SALIENDO"
+                                end
+                            end
 
-                                    if rec.casTargetGroupName then
-                                        currentTarget = Group.getByName(rec.casTargetGroupName)
-                                        if not currentTarget or not currentTarget:isExist() or currentTarget:getSize() <= 0 then
+                        elseif rec.keyword == "cas" then
+                            if distToTarget <= (rec.profile.zoneRadius or 0) then
+                                local currentTarget = nil
+
+                                if rec.casTargetGroupName then
+                                    currentTarget = groupExistsByName(rec.casTargetGroupName)
+                                    if not currentTarget or currentTarget:getSize() <= 0 then
+                                        currentTarget = nil
+                                        rec.casTargetGroupName = nil
+                                        rec.casAttackAssigned = false
+                                    else
+                                        local targetLead = getAliveLeadUnit(currentTarget)
+                                        if not targetLead then
                                             currentTarget = nil
                                             rec.casTargetGroupName = nil
                                             rec.casAttackAssigned = false
                                         else
-                                            local targetLead = getAliveLeadUnit(currentTarget)
-                                            if not targetLead then
+                                            local targetPoint = targetLead:getPoint()
+                                            local targetDistFromZone = get2DDistance(targetPoint, rec.point)
+                                            if targetDistFromZone > (rec.profile.zoneRadius or 0) then
                                                 currentTarget = nil
                                                 rec.casTargetGroupName = nil
                                                 rec.casAttackAssigned = false
-                                            else
-                                                local targetPoint = targetLead:getPoint()
-                                                local targetDistFromZone = get2DDistance(targetPoint, rec.point)
-                                                if targetDistFromZone > (rec.profile.zoneRadius or 0) then
-                                                    currentTarget = nil
-                                                    rec.casTargetGroupName = nil
-                                                    rec.casAttackAssigned = false
-                                                end
                                             end
                                         end
                                     end
+                                end
 
-                                    if not currentTarget then
-                                        local targetGroup, targetDist = getNearestEnemyGroundGroupInRadius(
-                                            group,
-                                            rec.point,
-                                            rec.profile.zoneRadius or 0
-                                        )
+                                if not currentTarget then
+                                    local targetGroup, targetDist = getNearestEnemyGroundGroupInRadius(
+                                        group,
+                                        rec.point,
+                                        rec.profile.zoneRadius or 0
+                                    )
 
-                                        if targetGroup then
-                                            local controller = group:getController()
-                                            if controller then
-                                                controller:pushTask(buildAttackGroupTask(targetGroup))
-                                                rec.casTargetGroupName = targetGroup:getName()
-                                                rec.casAttackAssigned = true
-                                                rec.state = "ACTIVA - CAS ATACANDO"
+                                    if targetGroup then
+                                        local controller = group:getController()
+                                        if controller then
+                                            controller:pushTask(buildAttackGroupTask(targetGroup, rec.profile))
+                                            rec.casTargetGroupName = targetGroup:getName()
+                                            rec.casAttackAssigned = true
+                                            rec.state = "ACTIVA - CAS ATACANDO"
 
-                                                if DEBUG then
-                                                    trigger.action.outText(
-                                                        "[Tasking IA] CAS atacando grupo: " ..
-                                                        rec.casTargetGroupName ..
-                                                        " | Distancia objetivo: " ..
-                                                        math.floor(targetDist or 0) .. " m",
-                                                        6
-                                                    )
-                                                end
-                                            else
-                                                rec.state = "ACTIVA - CAS SIN CONTROLLER"
+                                            if DEBUG then
+                                                trigger.action.outText(
+                                                    "[Tasking IA] CAS atacando grupo: " ..
+                                                    rec.casTargetGroupName ..
+                                                    " | Distancia objetivo: " ..
+                                                    math.floor(targetDist or 0) .. " m",
+                                                    6
+                                                )
                                             end
                                         else
-                                            rec.state = "ACTIVA - CAS SIN BLANCO"
+                                            rec.state = "ACTIVA - CAS SIN CONTROLLER"
                                         end
                                     else
-                                        rec.state = "ACTIVA - CAS ATACANDO"
+                                        rec.state = "ACTIVA - CAS SIN BLANCO"
                                     end
                                 else
-                                    rec.state = "ACTIVA - EN RUTA"
+                                    rec.state = "ACTIVA - CAS ATACANDO"
                                 end
-
-                            --------------------------------------------------------
-                            -- AREA ENGAGE RESTO
-                            --------------------------------------------------------
                             else
-                                if dist <= (rec.profile.zoneRadius or 0) then
-                                    rec.state = "ACTIVA - EN ZONA"
-                                else
-                                    rec.state = "ACTIVA - EN RUTA"
-                                end
+                                rec.state = "ACTIVA - EN RUTA"
                             end
 
-                        elseif rec.profile.mode == "bomb_point" then
-                            rec.state = "ACTIVA - STRIKE"
+                        elseif rec.keyword == "naval" then
+                            if distToTarget <= (rec.profile.zoneRadius or 0) then
+                                local currentTarget = nil
+
+                                if rec.navalTargetGroupName then
+                                    currentTarget = groupExistsByName(rec.navalTargetGroupName)
+                                    if not currentTarget or currentTarget:getSize() <= 0 then
+                                        currentTarget = nil
+                                        rec.navalTargetGroupName = nil
+                                        rec.navalAttackAssigned = false
+                                    else
+                                        local targetLead = getAliveLeadUnit(currentTarget)
+                                        if not targetLead then
+                                            currentTarget = nil
+                                            rec.navalTargetGroupName = nil
+                                            rec.navalAttackAssigned = false
+                                        end
+                                    end
+                                end
+
+                                if not currentTarget then
+                                    local targetGroup, targetDist = getNearestEnemyShipGroupInRadius(
+                                        group,
+                                        rec.point,
+                                        rec.profile.zoneRadius or 0,
+                                        rec.profile.targetTypes
+                                    )
+
+                                    if targetGroup then
+                                        local controller = group:getController()
+                                        if controller then
+                                            controller:pushTask(buildAttackGroupTask(targetGroup, rec.profile))
+                                            rec.navalTargetGroupName = targetGroup:getName()
+                                            rec.navalAttackAssigned = true
+                                            rec.state = "ACTIVA - NAVAL ATACANDO"
+
+                                            if DEBUG then
+                                                trigger.action.outText(
+                                                    "[Tasking IA] NAVAL atacando grupo: " ..
+                                                    rec.navalTargetGroupName ..
+                                                    " | Distancia objetivo: " ..
+                                                    math.floor(targetDist or 0) .. " m",
+                                                    6
+                                                )
+                                            end
+                                        else
+                                            rec.state = "ACTIVA - NAVAL SIN CONTROLLER"
+                                        end
+                                    else
+                                        rec.state = "ACTIVA - NAVAL SIN BLANCO"
+                                    end
+                                else
+                                    rec.state = "ACTIVA - NAVAL ATACANDO"
+                                end
+                            else
+                                rec.state = "ACTIVA - EN RUTA"
+                            end
+
+                        elseif rec.keyword == "strike" or rec.keyword == "strike_standoff" then
+                            local distToIP = rec.ipPoint and get2DDistance(lead:getPoint(), rec.ipPoint) or math.huge
+                            local distToEgress = rec.egressPoint and get2DDistance(lead:getPoint(), rec.egressPoint) or math.huge
+
+                            if distToIP <= 5000 and distToTarget > 4000 then
+                                rec.state = "ACTIVA - STRIKE EN PASADA"
+                            elseif distToTarget <= 4000 then
+                                rec.state = "ACTIVA - STRIKE SOBRE OBJETIVO"
+                            elseif distToEgress <= 6000 then
+                                rec.state = "ACTIVA - STRIKE EGRESS / RTB"
+                            else
+                                rec.state = "ACTIVA - EN RUTA"
+                            end
 
                         elseif rec.profile.mode == "escort_group" then
                             if rec.targetGroupName then
-                                local targetGroup = Group.getByName(rec.targetGroupName)
-                                if not targetGroup or not targetGroup:isExist() then
+                                local targetGroup = groupExistsByName(rec.targetGroupName)
+                                if not targetGroup then
                                     rec.state = "ESCORT SIN OBJETIVO"
                                 else
                                     rec.state = "ACTIVA - ESCORT"
                                 end
                             end
+
+                        else
+                            rec.state = "ACTIVA - EN RUTA"
                         end
                     end
                 end
@@ -1170,7 +1642,9 @@ timer.scheduleFunction(heartbeat, nil, timer.getTime() + HEARTBEAT_SECONDS)
 local markHandler = {}
 
 function markHandler:onEvent(event)
-    if not event then return end
+    if not event then
+        return
+    end
 
     if event.id == world.event.S_EVENT_MARK_ADDED
         or event.id == world.event.S_EVENT_MARK_CHANGE then
@@ -1211,7 +1685,6 @@ world.addEventHandler(markHandler)
 
 trigger.action.outText(
     "Tasking IA cargado.\n" ..
-    "La plantilla debe tener WP1 despegue + WP2 operativo en el editor.\n" ..
-    "El WP2 se reemplaza por la etiqueta F10.",
+    "Prueba STRIKE normal y STRIKE_STANDOFF.",
     12
 )

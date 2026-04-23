@@ -3,7 +3,7 @@
 --------------------------------------------------------
 local CAS = {}
 
-CAS.flagId   = 3030        -- bandera a disparar
+CAS.flagId   = 901        -- bandera a disparar
 CAS.zoneName = "MONITOREO"       -- nombre de la zona en el ME
 
 CAS.debugText = false     -- mensajes en pantalla

@@ -165,10 +165,8 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemUnitPositionPersistenceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SistemAirbasePersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemWarehousesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "PERSISTANCESYSTEM\\KOLA\\SistemFlagPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "PERSISTANCESYSTEM\\Debug\\SystemWarehousesPersistanceSinai-RC.lua",              enabled = true,  required = true,  delay = 0 }, --DEBUG
-    -- Library System 
-   -- { file = "MIST\\mist_4_5_128.lua",              enabled = true,  required = true,  delay = 0 },
-    
    
     -- Bases de datos
     
@@ -212,7 +210,11 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
     -- IA TASK 
 
-   --{ file = "MECHANICAL\\Patrol+Task_IA-SINAI.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\KOLA\\Patrol+Task_IA-KOLA.lua",              enabled = true,  required = true,  delay = 0 },
+
+     -- Kill DETECTOR
+
+   { file = "MECHANICAL\\DetectKill.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Missions Core
 
@@ -223,9 +225,21 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    { file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
 
+   
+
+     -- IA 
+   --{ file = "CTDL\\CTDL_ActivateGroupIA.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\KOLA\\ActivateUnitsCampaingFlag_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\KOLA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
+
+
     -- Debug
 
    { file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
+
+     -- AUDIO
+
+   { file = "AUDIO\\SystemAudio.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Extras opcionales
     -- { file = "EconomicSystemAIRPORTS_v3.lua",             enabled = true,  required = false, delay = 2 },
