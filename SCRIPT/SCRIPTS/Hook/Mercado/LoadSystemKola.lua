@@ -165,6 +165,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemUnitPositionPersistenceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SistemAirbasePersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemWarehousesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\KOLA\\SystemNotesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "PERSISTANCESYSTEM\\KOLA\\SistemFlagPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "PERSISTANCESYSTEM\\Debug\\SystemWarehousesPersistanceSinai-RC.lua",              enabled = true,  required = true,  delay = 0 }, --DEBUG
    
