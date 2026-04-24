@@ -184,7 +184,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
     { file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
     { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
 
-    --{ file = "MISSIONS\\DATABASE\\DB_Missions.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "MISSIONS\\DATABASE\\DB_MissionsKola.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Economy System
 
@@ -218,7 +218,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
      -- Missions Core
 
-   --{ file = "MISSIONS\\SINAI\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
+   { file = "MISSIONS\\KOLA\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
 
      -- Tankers
 
