@@ -166,7 +166,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
    { file = "PERSISTANCESYSTEM\\KOLA\\SistemAirbasePersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemWarehousesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "PERSISTANCESYSTEM\\KOLA\\SystemNotesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
-   --{ file = "PERSISTANCESYSTEM\\KOLA\\SistemFlagPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\KOLA\\SistemFlagPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "PERSISTANCESYSTEM\\Debug\\SystemWarehousesPersistanceSinai-RC.lua",              enabled = true,  required = true,  delay = 0 }, --DEBUG
    
     -- Bases de datos
@@ -212,6 +212,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
     -- IA TASK 
 
    { file = "MECHANICAL\\KOLA\\Patrol+Task_IA-KOLA.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\TrainigGroupsCloner.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Kill DETECTOR
 
