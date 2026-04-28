@@ -4,7 +4,7 @@
 --DETECTOR DE UNIDADES - NOMBRES TENICOS Y NOSMBRES DE UI m(ONLY DEV)  USE LOAD CONTINUOS TRIGGER
 
 local nombresDeUnidades = {
-    "InfUSA_01",
+    "Aerial-1-1",
     "InfUSA_02",
     "InfUSA_03",
     "InfUSA_04",
