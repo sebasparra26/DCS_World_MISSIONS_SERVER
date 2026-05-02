@@ -218,6 +218,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
    { file = "MECHANICAL\\DetectKill.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "MECHANICAL\\MissileDetect.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\CargoPersistance.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Missions Core
 
