@@ -1,6 +1,6 @@
 HDEV_LoaderConfig = HDEV_LoaderConfig or {
     rootRelativePath = "Scripts\\HorizontDev\\SystemCampaingDCS\\", -- Original "rootRelativePath = "Scripts\\HorizontDev\\MarketSystem\\","
-    jsonRelativePath = "Config\\HorizontDev\\KOLA\\money.json",
+    jsonRelativePath = "Config\\HorizontDev\\AFGHANISTAN\\money.json",
 
     importWindowSeconds = 30,
     autosaveInterval = 10,
@@ -125,7 +125,7 @@ log("Base path resuelta: " .. tostring(BASE_PATH))
 
 -- Config global compartida
 HDEV_EconomyGlobalConfig = {
-    jsonRelativePath = CFG.jsonRelativePath or "Config\\HorizontDev\\KOLA\\money.json",
+    jsonRelativePath = CFG.jsonRelativePath or "Config\\HorizontDev\\AFGHANISTAN\\money.json",
     importWindowSeconds = CFG.importWindowSeconds or 30,
     autosaveInterval = CFG.autosaveInterval or 10,
     minWriteInterval = CFG.minWriteInterval or 5,
@@ -162,18 +162,18 @@ end
 -- ============================================================================
 HDEV_LoadQueue = HDEV_LoadQueue or {
     -- Persistance System
-   { file = "PERSISTANCESYSTEM\\KOLA\\SystemUnitPositionPersistenceKola.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\KOLA\\SistemAirbasePersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\KOLA\\SystemWarehousesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\KOLA\\SystemNotesPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "PERSISTANCESYSTEM\\KOLA\\SistemFlagPersistanceKola.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\AFGHANISTAN\\SystemUnitPositionPersistenceAfghanistan.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\AFGHANISTAN\\SistemAirbasePersistanceAfghanistan.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\AFGHANISTAN\\SystemWarehousesPersistanceAfghanistan.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\AFGHANISTAN\\SystemNotesPersistanceAfghanistan.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "PERSISTANCESYSTEM\\AFGHANISTAN\\SistemFlagPersistanceAfghanistan.lua",              enabled = true,  required = true,  delay = 0 },
    
-   --{ file = "PERSISTANCESYSTEM\\Debug\\SystemWarehousesPersistanceSinai-RC.lua",              enabled = true,  required = true,  delay = 0 }, --DEBUG
+   
    
     -- Bases de datos
     
-    { file = "SCAN\\DATABASE\\Kola DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
-    { file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Kola.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "SCAN\\DATABASE\\Afghanistan DB Aiports.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "MARKETPLACE\\DATABASE\\MENU_CONTENT_logistic_Afghanistan.lua",              enabled = true,  required = true,  delay = 0 },
     { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE.lua",             enabled = true,  required = true,  delay = 0 },
     { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AG.lua",  enabled = true,  required = true,  delay = 0 },
     { file = "WAREHOUSES\\StockWarehouse_MODERNWARFARE_WEAPONS_AA.lua",  enabled = true,  required = true,  delay = 0 },
@@ -182,17 +182,19 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
     -- Cores
     
     { file = "SCAN\\EconomicSystemAIRPORTS_v3.lua",                         enabled = true,  required = true,  delay = 1 },
-    { file = "MECHANICAL\\KOLA\\ActivateUnitsCampaing_KOLA.lua",           enabled = true,  required = true,  delay = 0 },
+    { file = "MECHANICAL\\AFGHANISTAN\\ActivateUnitsCampaing_AFGHANISTAN.lua",           enabled = true,  required = true,  delay = 0 },
     { file = "ECONOMICSYSTEM\\HDEV_EconomyCore.lua",                         enabled = true,  required = true,  delay = 1 },
-    { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_1.lua",                     enabled = true,  required = true,  delay = 0 },
+    { file = "MARKETPLACE\\HDEV_MarketplaceCore_1_2.lua",                     enabled = true,  required = true,  delay = 0 },
+     { file = "MARKETPLACE\\HDEV_MarketplaceMenu_1_2.lua",                     enabled = true,  required = true,  delay = 0 },
+    { file = "MARKETPLACE\\HDEV_MarketplaceAutoRoutes.lua",                     enabled = true,  required = true,  delay = 1 },
 
-    { file = "MISSIONS\\DATABASE\\DB_MissionsKola.lua",              enabled = true,  required = true,  delay = 0 },
+    --{ file = "MISSIONS\\DATABASE\\DB_MissionsKola.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Economy System
 
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
-    { file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
 
     -- Logística
 
@@ -203,51 +205,50 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
     { file = "MARKETPLACE\\MENU_logisticCoalition_BLUE_V4.lua",           enabled = true,  required = true,  delay = 0 },
     { file = "MARKETPLACE\\MENU_logisticCoalition_RED_V4.lua",            enabled = true,  required = true,  delay = 0 },
-    { file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
+    --{ file = "CTDL\\HookEconomyV4.lua",            enabled = true,  required = true,  delay = 4 },
       -- Persistance Ships
-
+   
      -- UI
 
-   { file = "UI\\UIKola.lua",              enabled = true,  required = true,  delay = 5 },
+   --{ file = "UI\\UIKola.lua",              enabled = true,  required = true,  delay = 5 },
 
     -- IA TASK 
 
-   { file = "MECHANICAL\\KOLA\\Patrol+Task_IA-KOLA.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\AFGHANISTAN\\Patrol+Task_IA-AFGHANISTAN.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "MECHANICAL\\TrainigGroupsCloner.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Kill DETECTOR
 
-   { file = "MECHANICAL\\DetectKill.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\MissileDetect.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\CargoPersistance.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\DetectKill.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\MissileDetect.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\CargoPersistance.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Missions Core
 
-   { file = "MISSIONS\\KOLA\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
+   --{ file = "MISSIONS\\KOLA\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
 
      -- Tankers
 
-   { file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\TankersSystemSpawnBLUE_v3.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\TankersSystemSpawnRED_v3.lua",              enabled = true,  required = true,  delay = 0 },
 
-     -- Message System
-
-   { file = "MECHANICAL\\MessageSystem.lua",              enabled = true,  required = true,  delay = 0 },
+   
 
      -- IA 
    --{ file = "CTDL\\CTDL_ActivateGroupIA.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\KOLA\\ActivateUnitsCampaingFlag_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\KOLA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "CTDL\\CTLD_Persistance.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\KOLA\\ActivateUnitsCampaingFlag_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "MECHANICAL\\KOLA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "CTDL\\CTLD_Persistance.lua",              enabled = true,  required = true,  delay = 0 },
 
 
     -- Debug
 
    { file = "MECHANICAL\\BoomDebug.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "DEBUG\\HDEV_MenuBuyKey.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- AUDIO
 
-   { file = "AUDIO\\SystemAudio.lua",              enabled = true,  required = true,  delay = 0 },
+   --{ file = "AUDIO\\SystemAudio.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Extras opcionales
     -- { file = "EconomicSystemAIRPORTS_v3.lua",             enabled = true,  required = false, delay = 2 },
