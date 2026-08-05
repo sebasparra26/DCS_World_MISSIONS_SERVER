@@ -188,7 +188,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
      --{ file = "MARKETPLACE\\HDEV_MarketplaceMenu_1_2.lua",                     enabled = true,  required = true,  delay = 0 },
     --{ file = "MARKETPLACE\\HDEV_MarketplaceAutoRoutes.lua",                     enabled = true,  required = true,  delay = 1 },
 
-    --{ file = "MISSIONS\\DATABASE\\DB_MissionsKola.lua",              enabled = true,  required = true,  delay = 0 },
+    { file = "MISSIONS\\DATABASE\\DB_MissionsNormandia.lua",              enabled = true,  required = true,  delay = 0 },
 
     -- Economy System
 
@@ -214,7 +214,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
     -- IA TASK 
 
-   --{ file = "MECHANICAL\\AFGHANISTAN\\Patrol+Task_IA-AFGHANISTAN.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\NORMANDIA\\Patrol+Task_IA-NORMANDIA.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "MECHANICAL\\TrainigGroupsCloner.lua",              enabled = true,  required = true,  delay = 0 },
 
      -- Kill DETECTOR
@@ -225,7 +225,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
      -- Missions Core
 
-   --{ file = "MISSIONS\\KOLA\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
+   { file = "MISSIONS\\NORMANDIA\\HDEV_MissionSystem_Core.lua",              enabled = true,  required = true,  delay = 4 },
 
      -- Tankers
 
@@ -237,8 +237,8 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
      -- IA 
    --{ file = "CTDL\\CTDL_ActivateGroupIA.lua",              enabled = true,  required = true,  delay = 0 },
    --{ file = "MECHANICAL\\KOLA\\ActivateUnitsCampaingFlag_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
-   --{ file = "MECHANICAL\\KOLA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
-   --{ file = "CTDL\\CTLD_Persistance.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\NORMANDIA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "CTDL\\NORMANDIA\\CTLD_Persistance.lua",              enabled = true,  required = true,  delay = 0 },
 
 
     -- Debug

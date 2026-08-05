@@ -191,8 +191,8 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
 
     -- Economy System
 
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
-    { file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_BLUE_V4.lua",          enabled = true,  required = true,  delay = 0 },
+    --{ file = "ECONOMICSYSTEM\\EconomicSystemCoalition_RED_V4.lua",           enabled = true,  required = true,  delay = 0},
     { file = "ECONOMICSYSTEM\\EconomicSystemCounterWallet_V2.lua",           enabled = true,  required = true,  delay = 0 },
 
     -- Logística
@@ -238,7 +238,7 @@ HDEV_LoadQueue = HDEV_LoadQueue or {
      -- IA 
    --{ file = "CTDL\\CTDL_ActivateGroupIA.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "MECHANICAL\\KOLA\\ActivateUnitsCampaingFlag_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
-   { file = "MECHANICAL\\KOLA\\IA-Task_V7.lua",              enabled = true,  required = true,  delay = 0 },
+   { file = "MECHANICAL\\KOLA\\IA-Task_V7_KOLA.lua",              enabled = true,  required = true,  delay = 0 },
    { file = "CTDL\\CTLD_Persistance.lua",              enabled = true,  required = true,  delay = 0 },
 
 
